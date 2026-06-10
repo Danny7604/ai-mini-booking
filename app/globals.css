@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 32.1% 91.4%;
+  --input: 214.3 32.1% 91.4%;
+  --ring: 222.2 84% 4.9%;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217.2 32.6 17.5%;
+  --input: 217.2 32.6 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+/* =========================================================================
+   BLISS HOME PREMIUM DARK MODE OVERRIDES (MIDNIGHT NAVY & CYBER CARBON)
+   ========================================================================= */
+
+.dark body, 
+.dark .bg-stone-50 {
+  background-color: #08121a !important;
+  color: #f3f4f6 !important;
+}
+
+.dark .bg-white {
+  background-color: #0e1820 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark .bg-stone-100 {
+  background-color: #16222b !important;
+}
+
+.dark .hover\:bg-stone-100:hover {
+  background-color: #1c2a36 !important;
+}
+
+.dark .hover\:bg-stone-50:hover {
+  background-color: #121e27 !important;
+}
+
+.dark .bg-stone-100\/40, 
+.dark .bg-stone-50\/40,
+.dark .bg-stone-50\/50,
+.dark .bg-blue-50\/50 {
+  background-color: rgba(22, 34, 43, 0.5) !important;
+}
+
+/* Text Overrides */
+.dark .text-stone-850,
+.dark .text-stone-800,
+.dark .text-stone-750,
+.dark .text-stone-700 {
+  color: #f3f4f6 !important;
+}
+
+.dark .text-stone-500,
+.dark .text-stone-600,
+.dark .text-stone-450 {
+  color: #9ca3af !important;
+}
+
+.dark .text-stone-400 {
+  color: #8b96a5 !important;
+}
+
+/* Border Overrides */
+.dark .border-stone-100,
+.dark .border-stone-150,
+.dark .border-stone-200,
+.dark .border-stone-200\/80,
+.dark .border-stone-200\/50,
+.dark .border-stone-200\/60,
+.dark .border-stone-300 {
+  border-color: #1c2e3d !important;
+}
+
+.dark .divide-stone-100 > * + *,
+.dark .divide-stone-200 > * + * {
+  border-color: #1c2e3d !important;
+}
+
+/* Inputs & Form Elements */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #121e27 !important;
+  border-color: #1c2e3d !important;
+  color: #f3f4f6 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Modals & Popups */
+.dark .shadow-2xl,
+.dark .shadow-xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* SVG Chart Tooltips and Overrides */
+.dark text {
+  fill: #9ca3af !important;
+}
+
+.dark .fill-stone-800 {
+  fill: #f3f4f6 !important;
+}
+
+.dark .fill-stone-500 {
+  fill: #9ca3af !important;
+}
+
+/* Custom styles for Automation Node Builder Canvas */
+.dark .grid-pattern {
+  background-image: radial-gradient(rgba(28, 46, 61, 0.4) 1px, transparent 0) !important;
+}
+
+.dark .node-card {
+  background-color: rgba(14, 24, 32, 0.8) !important;
+  border-color: #1c2e3d !important;
+  backdrop-filter: blur(8px);
+}
