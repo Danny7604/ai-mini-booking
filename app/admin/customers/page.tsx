@@ -130,7 +130,7 @@ const getTierThemeClasses = (colorTheme: 'stone' | 'slate' | 'amber' | 'violet')
 const renderTierIcon = (colorTheme: 'stone' | 'slate' | 'amber' | 'violet', size = 18) => {
   switch (colorTheme) {
     case 'stone':
-      return <Shield size={size} className="text-stone-400 animate-pulse" />
+      return <Shield size={size} className="text-zinc-400 dark:text-zinc-500 animate-pulse" />
     case 'slate':
       return <Award size={size} className="text-blue-300 animate-pulse" />
     case 'amber':
@@ -1294,7 +1294,7 @@ export default function CRMManagementPage() {
       
       {/* 🔮 CUSTOM TOAST SYSTEM */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#0A273A] border border-purple-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-50 bg-zinc-900 dark:bg-zinc-100 border border-zinc-250 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -1303,12 +1303,12 @@ export default function CRMManagementPage() {
       )}
 
       {/* HEADER CRM AREA */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200/50 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-250 dark:border-zinc-800 pb-5">
         <div>
-          <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Khách Hàng & CRM
           </h2>
-          <p className="text-xs text-stone-500 font-medium mt-0.5">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
             Quản lý quan hệ khách hàng đa tầng, tổ chức các nhóm hành vi tiếp thị và đồng bộ phân hạng hội viên bằng AI.
           </p>
         </div>
@@ -1327,7 +1327,7 @@ export default function CRMManagementPage() {
               </button>
               <button
                 onClick={() => setIsAddCustomerOpen(true)}
-                className="bg-stone-900 hover:bg-stone-850 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition flex-shrink-0"
+                className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition flex-shrink-0"
               >
                 <Plus size={14} className="stroke-[3]" />
                 <span>Thêm Khách Hàng</span>
@@ -1345,7 +1345,7 @@ export default function CRMManagementPage() {
               </button>
               <button
                 onClick={() => setIsAddGroupOpen(true)}
-                className="bg-stone-900 hover:bg-stone-850 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition flex-shrink-0"
+                className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition flex-shrink-0"
               >
                 <Plus size={14} className="stroke-[3]" />
                 <span>Tạo Nhóm Mới</span>
@@ -1356,13 +1356,13 @@ export default function CRMManagementPage() {
       </div>
 
       {/* TAB NAVIGATION BUTTONS (CHUYỂN TAB DANH SÁCH / DANH MỤC NHÓM) */}
-      <div className="flex border-b border-stone-200 gap-1.5">
+      <div className="flex border-b border-zinc-200 dark:border-zinc-800 gap-1.5">
         <button
           onClick={() => setActiveTab('customers')}
           className={`px-5 py-3 text-xs uppercase tracking-wider font-black border-b-2 cursor-pointer transition ${
             activeTab === 'customers' 
-              ? 'border-[#0A273A] text-[#0A273A]' 
-              : 'border-transparent text-stone-400 hover:text-stone-700'
+              ? 'border-zinc-900 dark:border-zinc-100 text-zinc-900 dark:text-zinc-100' 
+              : 'border-transparent text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300'
           }`}
         >
           👤 Danh sách khách hàng ({customers.length})
@@ -1371,8 +1371,8 @@ export default function CRMManagementPage() {
           onClick={() => setActiveTab('groups')}
           className={`px-5 py-3 text-xs uppercase tracking-wider font-black border-b-2 cursor-pointer transition ${
             activeTab === 'groups' 
-              ? 'border-[#0A273A] text-[#0A273A]' 
-              : 'border-transparent text-stone-400 hover:text-stone-700'
+              ? 'border-zinc-900 dark:border-zinc-100 text-zinc-900 dark:text-zinc-100' 
+              : 'border-transparent text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300'
           }`}
         >
           🗂️ Danh mục nhóm khách hàng ({groups.length})
@@ -1383,7 +1383,7 @@ export default function CRMManagementPage() {
       {activeTab === 'customers' && (
         <div className="flex flex-col gap-5">
           {/* SEARCH BAR & LỌC TÀI CRM */}
-          <div className="flex flex-col md:flex-row gap-3 items-center justify-between bg-white border border-stone-150 p-4 rounded-3xl shadow-2xs">
+          <div className="flex flex-col md:flex-row gap-3 items-center justify-between bg-white border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
             
             {/* Search */}
             <div className="relative w-full md:w-80">
@@ -1392,18 +1392,18 @@ export default function CRMManagementPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Tìm khách hàng theo Tên hoặc SĐT..."
-                className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 focus:bg-white transition"
+                className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 focus:bg-white transition"
               />
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
             </div>
 
             {/* Filter by Group */}
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] text-stone-400 font-black uppercase tracking-wider hidden sm:inline">Lọc theo nhóm:</span>
+              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider hidden sm:inline">Lọc theo nhóm:</span>
               <select
                 value={selectedGroupFilter}
                 onChange={(e) => setSelectedGroupFilter(e.target.value)}
-                className="bg-white border border-stone-250 rounded-xl px-3 py-2 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer transition"
+                className="bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer transition"
               >
                 <option value="all">Tất cả nhóm</option>
                 {groups.map(g => (
@@ -1417,16 +1417,16 @@ export default function CRMManagementPage() {
           {isLoading ? (
             <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
               <div className="w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
-              <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest animate-pulse">
+              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
                 Đang đồng bộ cơ sở dữ liệu khách hàng...
               </span>
             </div>
           ) : (
-            <div className="bg-white border border-stone-200/60 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+            <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl shadow-sm overflow-hidden flex flex-col">
               <div className="overflow-x-auto w-full">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-stone-50/80 border-b border-stone-100 text-[10px] font-black text-stone-400 uppercase tracking-wider">
+                    <tr className="bg-zinc-50 dark:bg-zinc-900/60/80 border-b border-zinc-150 dark:border-zinc-850 text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                       <th className="py-4 px-6">Mã Khách</th>
                       <th className="py-4 px-5">Khách Hàng</th>
                       <th className="py-4 px-5 text-center">Lịch Sử Đặt Đơn</th>
@@ -1436,10 +1436,10 @@ export default function CRMManagementPage() {
                       <th className="py-4 px-6 text-center">Thao Tác</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-100 text-xs font-semibold text-stone-700">
+                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                     {filteredCustomers.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="py-12 text-center text-stone-400">
+                        <td colSpan={7} className="py-12 text-center text-zinc-400 dark:text-zinc-500">
                           <div className="flex flex-col items-center gap-2">
                             <AlertCircle size={24} className="text-stone-300" />
                             <span>Không tìm thấy thông tin khách hàng nào khớp.</span>
@@ -1457,39 +1457,39 @@ export default function CRMManagementPage() {
                             className={`transition-all duration-700 ${
                               isRowHighlighted 
                                 ? 'bg-emerald-50/75 border-y-2 border-emerald-500 animate-pulse relative z-10' 
-                                : 'hover:bg-stone-50/40'
+                                : 'hover:bg-zinc-50/40 dark:bg-zinc-900/30'
                             }`}
                           >
-                            <td className="py-4 px-6 font-mono text-stone-400 font-extrabold">{cust.id}</td>
+                            <td className="py-4 px-6 font-mono text-zinc-400 dark:text-zinc-500 font-extrabold">{cust.id}</td>
                             <td className="py-4 px-5">
                               <div className="flex flex-col gap-0.5">
                                 <button
                                   onClick={() => openHistoryModal(cust)}
-                                  className="font-extrabold text-stone-850 text-sm hover:text-[#0A273A] hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block"
+                                  className="font-extrabold text-zinc-800 dark:text-zinc-200 text-sm hover:text-zinc-900 dark:text-zinc-100 hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block"
                                   title="Xem hồ sơ chi tiết khách hàng"
                                 >
                                   {cust.name}
                                 </button>
-                                <span className="text-[10px] text-stone-400 font-semibold font-mono flex items-center gap-0.5 mt-0.5">
+                                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold font-mono flex items-center gap-0.5 mt-0.5">
                                   <Phone size={10} /> {cust.phone}
                                 </span>
                               </div>
                             </td>
                             <td className="py-4 px-5 text-center">
                               <div className="flex flex-col gap-0.5 justify-center">
-                                <span className="font-bold text-stone-850">{cust.totalBookings} đơn đặt phòng</span>
-                                <span className="text-[10px] text-stone-400 font-bold font-mono">Tích lũy: {formatVND(cust.totalSpent)}</span>
+                                <span className="font-bold text-zinc-800 dark:text-zinc-200">{cust.totalBookings} đơn đặt phòng</span>
+                                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold font-mono">Tích lũy: {formatVND(cust.totalSpent)}</span>
                               </div>
                             </td>
                             <td className="py-4 px-5 max-w-[200px]">
-                              <p className="text-stone-500 font-medium leading-relaxed line-clamp-2 italic" title={cust.notes.join(' | ')}>
+                              <p className="text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed line-clamp-2 italic" title={cust.notes.join(' | ')}>
                                 "{cust.notes[cust.notes.length - 1] || 'Chưa có ghi chú'}"
                               </p>
                             </td>
                             <td className="py-4 px-5">
                               <div className="flex items-center gap-1.5 flex-wrap max-w-[220px]">
                                 {cust.groupIds.length === 0 ? (
-                                  <span className="text-[10px] text-stone-400 font-bold italic select-none">Chưa gán nhóm</span>
+                                  <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold italic select-none">Chưa gán nhóm</span>
                                 ) : (
                                   cust.groupIds.map(gId => {
                                     const g = groups.find(group => group.id === gId)
@@ -1500,7 +1500,7 @@ export default function CRMManagementPage() {
                                         className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 ${
                                           g.type === 'ai' 
                                             ? 'bg-purple-50 text-purple-750 border-purple-200' 
-                                            : 'bg-stone-50 text-stone-600 border-stone-250'
+                                            : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-350 border-zinc-250 dark:border-zinc-700'
                                         }`}
                                       >
                                         {g.type === 'ai' && <Bot size={9} className="text-purple-600" />}
@@ -1511,9 +1511,9 @@ export default function CRMManagementPage() {
                                 )}
                               </div>
                             </td>
-                            <td className="py-4 px-6 text-center text-stone-500 font-mono font-bold">
+                            <td className="py-4 px-6 text-center text-zinc-500 dark:text-zinc-400 font-mono font-bold">
                               <span className="inline-flex items-center gap-1">
-                                <Calendar size={11} className="text-stone-400" />
+                                <Calendar size={11} className="text-zinc-400 dark:text-zinc-500" />
                                 {cust.lastActive}
                               </span>
                             </td>
@@ -1528,7 +1528,7 @@ export default function CRMManagementPage() {
                                 </button>
                                 <button
                                   onClick={() => openHistoryModal(cust)}
-                                  className="w-9 h-9 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-850 flex items-center justify-center border border-stone-200 hover:border-stone-300 transition cursor-pointer shadow-sm"
+                                  className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 hover:text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-zinc-200 dark:border-zinc-800 hover:border-stone-300 transition cursor-pointer shadow-sm"
                                   title="Xem lịch sử đặt phòng trực quan"
                                 >
                                   <Eye size={15} />
@@ -1552,7 +1552,7 @@ export default function CRMManagementPage() {
         <div className="flex flex-col gap-6 animate-in fade-in duration-300">
 
           {/* HORIZONTAL SHEET TABS (Google Sheets Style) */}
-          <div className="flex border-b border-stone-200 overflow-x-auto gap-2 bg-stone-50 p-2 rounded-2xl">
+          <div className="flex border-b border-zinc-200 dark:border-zinc-800 overflow-x-auto gap-2 bg-zinc-50 dark:bg-zinc-900/60 p-2 rounded-2xl">
             {groups.map((group) => {
               const isActive = selectedGroupTabId === group.id
               const membersCount = customers.filter(c => c.groupIds.includes(group.id)).length
@@ -1566,13 +1566,13 @@ export default function CRMManagementPage() {
                   }}
                   className={`flex items-center gap-2 px-6 py-3.5 text-xs md:text-sm font-bold transition-all border rounded-xl cursor-pointer whitespace-nowrap ${
                     isActive 
-                      ? 'bg-[#0A273A] text-white border-[#0A273A] shadow-md font-extrabold' 
-                      : 'bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 border-stone-200/60'
+                      ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-white border-zinc-900 dark:border-zinc-100 shadow-md font-extrabold' 
+                      : 'bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 hover:text-stone-900 border-zinc-200 dark:border-zinc-850'
                   }`}
                 >
                   <span>{cleanGroupName(group.name)}</span>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-black leading-none ${
-                    isActive ? 'bg-white/20 text-white' : 'bg-stone-200 text-stone-600'
+                    isActive ? 'bg-white/20 text-white' : 'bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350'
                   }`}>
                     {membersCount}
                   </span>
@@ -1586,7 +1586,7 @@ export default function CRMManagementPage() {
             const activeGroup = groups.find(g => g.id === selectedGroupTabId) || groups[0]
             if (!activeGroup) {
               return (
-                <div className="text-center py-10 text-stone-400 text-xs font-semibold">
+                <div className="text-center py-10 text-zinc-400 dark:text-zinc-500 text-xs font-semibold">
                   Chưa cấu hình danh mục nhóm khách hàng. Vui lòng bấm "Tạo Nhóm Mới" ở trên đầu.
                 </div>
               )
@@ -1601,19 +1601,19 @@ export default function CRMManagementPage() {
             return (
               <div className="flex flex-col gap-5 animate-in fade-in duration-200">
                 {/* INLINE GROUP METADATA & FINANCIAL KPIs PANEL */}
-                <div className="border border-stone-200/80 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 relative overflow-hidden bg-[#0A273A]/5">
+                <div className="border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 relative overflow-hidden bg-zinc-500/10 dark:bg-zinc-500/15">
                   <div className="flex flex-col gap-2 max-w-xl">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="text-sm md:text-base font-black text-stone-850 uppercase tracking-wide">{cleanGroupName(activeGroup.name)}</h4>
+                      <h4 className="text-sm md:text-base font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-wide">{cleanGroupName(activeGroup.name)}</h4>
                       
                       {/* Help / Guide Tooltip */}
                       <div className="relative group/desc flex items-center">
-                        <button className="bg-transparent border-none p-1 text-stone-400 hover:text-stone-700 cursor-pointer flex items-center justify-center transition" title="Xem mô tả đặc tính nhóm">
+                        <button className="bg-transparent border-none p-1 text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 cursor-pointer flex items-center justify-center transition" title="Xem mô tả đặc tính nhóm">
                           <HelpCircle size={14} className="stroke-[2.5]" />
                         </button>
                         
                         {/* Tooltip Popup container */}
-                        <div className="absolute left-0 bottom-full mb-2 w-72 bg-stone-900 text-white text-[10px] leading-relaxed p-3.5 rounded-2xl shadow-xl z-40 opacity-0 pointer-events-none group-hover/desc:opacity-100 group-hover/desc:pointer-events-auto transition-all duration-200 border border-stone-800/80">
+                        <div className="absolute left-0 bottom-full mb-2 w-72 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-white text-[10px] leading-relaxed p-3.5 rounded-2xl shadow-xl z-40 opacity-0 pointer-events-none group-hover/desc:opacity-100 group-hover/desc:pointer-events-auto transition-all duration-200 border border-stone-800/80">
                           <div className="font-extrabold mb-1 uppercase tracking-wide text-sky-300 flex items-center gap-1">
                             <HelpCircle size={10} /> Hướng Dẫn & Đặc Tính Nhóm:
                           </div>
@@ -1628,16 +1628,16 @@ export default function CRMManagementPage() {
                   {/* Financial KPIs and Controls */}
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full md:w-auto flex-shrink-0">
                     <div className="flex gap-3">
-                      <div className="bg-white border border-stone-200/50 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
-                        <span className="text-[9px] text-stone-400 font-black uppercase tracking-wider flex items-center gap-1">
-                          <Coins size={10} className="text-stone-500" /> Doanh Thu Nhóm
+                      <div className="bg-white border border-zinc-250 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
+                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
+                          <Coins size={10} className="text-zinc-500 dark:text-zinc-400" /> Doanh Thu Nhóm
                         </span>
-                        <span className="text-xs font-black text-stone-850 font-mono mt-0.5">
+                        <span className="text-xs font-black text-zinc-800 dark:text-zinc-200 font-mono mt-0.5">
                           {formatVND(groupSpent)}
                         </span>
                       </div>
-                      <div className="bg-white border border-stone-200/50 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
-                        <span className="text-[9px] text-stone-400 font-black uppercase tracking-wider flex items-center gap-1">
+                      <div className="bg-white border border-zinc-250 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
+                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
                           <TrendingUp size={10} className="text-emerald-500" /> Tỷ lệ Đóng Góp
                         </span>
                         <span className="text-xs font-black text-emerald-600 font-mono mt-0.5">
@@ -1680,14 +1680,14 @@ export default function CRMManagementPage() {
                           setEditGroupType(activeGroup.type)
                           setIsEditGroupOpen(true)
                         }}
-                        className="p-2.5 rounded-xl border-none cursor-pointer transition flex items-center justify-center bg-white border border-stone-200 text-stone-600 hover:bg-[#0A273A]/5 hover:text-[#0A273A]"
+                        className="p-2.5 rounded-xl border-none cursor-pointer transition flex items-center justify-center bg-white border border-zinc-200 dark:border-zinc-800 text-zinc-650 dark:text-zinc-350 hover:bg-zinc-500/10 dark:bg-zinc-500/15 hover:text-zinc-900 dark:text-zinc-100"
                         title="Chỉnh sửa danh mục"
                       >
                         <Pencil size={14} />
                       </button>
                       <button
                         onClick={() => handleDeleteGroup(activeGroup.id, cleanGroupName(activeGroup.name))}
-                        className="p-2.5 bg-white hover:bg-red-50 text-stone-400 hover:text-red-600 border border-stone-200 rounded-xl cursor-pointer transition flex items-center justify-center"
+                        className="p-2.5 bg-white hover:bg-red-50 text-zinc-400 dark:text-zinc-500 hover:text-red-600 border border-zinc-200 dark:border-zinc-800 rounded-xl cursor-pointer transition flex items-center justify-center"
                         title="Xóa danh mục nhóm"
                       >
                         <Trash2 size={14} />
@@ -1697,10 +1697,10 @@ export default function CRMManagementPage() {
                 </div>
 
                 {/* MEMBERS DATA SHEET AND ACTIONS */}
-                <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 flex flex-col gap-4 shadow-2xs">
+                <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl p-5 md:p-6 flex flex-col gap-4 shadow-2xs">
                   {/* Table Header Controls */}
-                  <div className="flex justify-between items-center pb-2 border-b border-stone-100">
-                    <h3 className="text-xs font-black text-stone-850 uppercase tracking-wider">
+                  <div className="flex justify-between items-center pb-2 border-b border-zinc-150 dark:border-zinc-850">
+                    <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
                       Danh sách khách hàng ({groupMembers.length})
                     </h3>
 
@@ -1708,19 +1708,19 @@ export default function CRMManagementPage() {
                     <div className="relative">
                       <button
                         onClick={() => setIsAddMemberOpen(!isAddMemberOpen)}
-                        className="px-3 py-2 text-[10px] font-black uppercase tracking-wider text-white border-none rounded-xl transition cursor-pointer flex items-center gap-1 bg-[#0A273A] hover:bg-[#123e5c] shadow-md shadow-stone-800/10"
+                        className="px-3 py-2 text-[10px] font-black uppercase tracking-wider text-white border-none rounded-xl transition cursor-pointer flex items-center gap-1 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 shadow-md shadow-stone-800/10"
                       >
                         <Plus size={11} className="stroke-[3]" /> Thêm khách hàng
                       </button>
 
                       {/* Add Member Popover Overlay */}
                       {isAddMemberOpen && (
-                        <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-stone-200 rounded-2xl shadow-xl p-4 z-40 animate-in slide-in-from-top-2 duration-150 flex flex-col gap-3">
+                        <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl p-4 z-40 animate-in slide-in-from-top-2 duration-150 flex flex-col gap-3">
                           <div className="flex justify-between items-center">
-                            <span className="text-[10px] font-black uppercase text-stone-500 tracking-wider">Chọn khách hàng</span>
+                            <span className="text-[10px] font-black uppercase text-zinc-500 dark:text-zinc-400 tracking-wider">Chọn khách hàng</span>
                             <button 
                               onClick={() => { setIsAddMemberOpen(false); setSearchMemberTerm(''); }}
-                              className="text-stone-400 hover:text-stone-700 bg-none border-none text-[10px] cursor-pointer"
+                              className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 bg-none border-none text-[10px] cursor-pointer"
                             >
                               ✕ Đóng
                             </button>
@@ -1728,13 +1728,13 @@ export default function CRMManagementPage() {
                           
                           {/* Search box inside popover */}
                           <div className="relative flex items-center">
-                            <Search size={11} className="text-stone-400 absolute left-2.5 pointer-events-none" />
+                            <Search size={11} className="text-zinc-400 dark:text-zinc-500 absolute left-2.5 pointer-events-none" />
                             <input
                               type="text"
                               value={searchMemberTerm}
                               onChange={(e) => setSearchMemberTerm(e.target.value)}
                               placeholder="Tìm tên hoặc số điện thoại..."
-                              className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-7 pr-3 py-1.5 text-[10px] font-bold focus:outline-none focus:border-[#0A273A] text-stone-800"
+                              className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-7 pr-3 py-1.5 text-[10px] font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                             />
                           </div>
 
@@ -1750,7 +1750,7 @@ export default function CRMManagementPage() {
 
                               if (eligibleCustomers.length === 0) {
                                 return (
-                                  <div className="text-center py-6 text-[10px] font-semibold text-stone-400">
+                                  <div className="text-center py-6 text-[10px] font-semibold text-zinc-400 dark:text-zinc-500">
                                     Không tìm thấy khách hàng phù hợp.
                                   </div>
                                 )
@@ -1764,11 +1764,11 @@ export default function CRMManagementPage() {
                                     setIsAddMemberOpen(false)
                                     setSearchMemberTerm('')
                                   }}
-                                  className="w-full flex items-center justify-between p-2 rounded-xl border-none hover:bg-stone-50 text-left transition cursor-pointer bg-white border border-stone-100"
+                                  className="w-full flex items-center justify-between p-2 rounded-xl border-none hover:bg-zinc-50 dark:bg-zinc-900/60 text-left transition cursor-pointer bg-white border border-zinc-150 dark:border-zinc-850"
                                 >
                                   <div className="flex flex-col">
-                                    <span className="text-[10px] font-extrabold text-stone-800 leading-tight">{cust.name}</span>
-                                    <span className="text-[9px] text-stone-400 font-bold mt-0.5">{cust.phone}</span>
+                                    <span className="text-[10px] font-extrabold text-zinc-800 dark:text-zinc-200 leading-tight">{cust.name}</span>
+                                    <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold mt-0.5">{cust.phone}</span>
                                   </div>
                                   <span className="text-[8px] font-black uppercase text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">
                                     + Thêm
@@ -1784,9 +1784,9 @@ export default function CRMManagementPage() {
 
                   {/* Members Table */}
                   {groupMembers.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-16 px-4 text-stone-400 gap-3 border border-dashed border-stone-200 rounded-3xl">
+                    <div className="flex flex-col items-center justify-center py-16 px-4 text-zinc-400 dark:text-zinc-500 gap-3 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl">
                       <Users size={36} className="stroke-[1.5] text-stone-300 animate-pulse" />
-                      <p className="text-xs font-semibold text-stone-400 text-center leading-relaxed max-w-lg">
+                      <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 text-center leading-relaxed max-w-lg">
                         Nhấn nút <strong>Đồng bộ hành vi bằng AI</strong> để tự động phân nhóm dựa trên dữ liệu hành vi người dùng đã thu thập hoặc bạn có thể tự thêm khách hàng.
                       </p>
                     </div>
@@ -1794,7 +1794,7 @@ export default function CRMManagementPage() {
                     <div className="overflow-x-auto">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="border-b border-stone-100 text-stone-400 text-[10px] font-black uppercase tracking-wider">
+                          <tr className="border-b border-zinc-150 dark:border-zinc-850 text-zinc-400 dark:text-zinc-500 text-[10px] font-black uppercase tracking-wider">
                             <th className="pb-3 pl-2 w-[40px]"></th>
                             <th className="pb-3">Khách hàng</th>
                             <th className="pb-3 hidden sm:table-cell">Lượt đặt phòng</th>
@@ -1805,7 +1805,7 @@ export default function CRMManagementPage() {
                             <th className="pb-3 pr-2 text-right w-[60px]">Thao tác</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-stone-100 text-xs font-semibold text-stone-800">
+                        <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
                           {groupMembers.map((member) => {
                             const tierInfo = getCustomerTier(member.totalSpent)
                             const isMemberAI = activeGroup.type === 'ai'
@@ -1814,7 +1814,7 @@ export default function CRMManagementPage() {
                             return (
                               <tr 
                                 key={member.id}
-                                className="group hover:bg-stone-50/40 transition duration-150 relative"
+                                className="group hover:bg-zinc-50/40 dark:bg-zinc-900/30 transition duration-150 relative"
                                 onMouseEnter={() => setHoveredCustomerId(member.id)}
                                 onMouseLeave={() => setHoveredCustomerId(null)}
                               >
@@ -1824,7 +1824,7 @@ export default function CRMManagementPage() {
                                     tierInfo.colorTheme === 'violet' ? 'bg-purple-100 text-purple-700' :
                                     tierInfo.colorTheme === 'amber' ? 'bg-amber-100 text-amber-700' :
                                     tierInfo.colorTheme === 'slate' ? 'bg-slate-100 text-slate-700' :
-                                    'bg-stone-100 text-stone-700'
+                                    'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
                                   }`}>
                                     {member.name.charAt(0)}
                                   </div>
@@ -1835,12 +1835,12 @@ export default function CRMManagementPage() {
                                   <div className="flex flex-col">
                                     <button
                                       onClick={() => openHistoryModal(member)}
-                                      className="font-extrabold text-stone-850 text-sm hover:text-[#0A273A] hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block leading-tight font-sans"
+                                      className="font-extrabold text-zinc-800 dark:text-zinc-200 text-sm hover:text-zinc-900 dark:text-zinc-100 hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block leading-tight font-sans"
                                       title="Xem hồ sơ chi tiết khách hàng"
                                     >
                                       {member.name}
                                     </button>
-                                    <span className="text-[10px] text-stone-400 font-bold mt-0.5">
+                                    <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold mt-0.5">
                                       {member.phone}
                                     </span>
                                   </div>
@@ -1878,7 +1878,7 @@ export default function CRMManagementPage() {
                                       tierInfo.colorTheme === 'violet' ? 'bg-purple-50 text-purple-700 border-purple-200' :
                                       tierInfo.colorTheme === 'amber' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                                       tierInfo.colorTheme === 'slate' ? 'bg-slate-50 text-slate-700 border-slate-200' :
-                                      'bg-stone-50 text-stone-600 border-stone-250'
+                                      'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-350 border-zinc-250 dark:border-zinc-700'
                                     }`}>
                                       {renderTierIcon(tierInfo.colorTheme, 9)}
                                       {tierInfo.name.split('(')[0]}
@@ -1912,7 +1912,7 @@ export default function CRMManagementPage() {
                                           handleTransferCustomerGroup(member.id, activeGroup.id, targetGroupId)
                                         }
                                       }}
-                                      className="bg-stone-50 border border-stone-200 rounded-xl px-2 py-1 text-[10px] font-bold focus:outline-none focus:border-[#0A273A] text-stone-850 hover:bg-stone-100 transition cursor-pointer max-w-[140px]"
+                                      className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-1 text-[10px] font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:bg-zinc-800 transition cursor-pointer max-w-[140px]"
                                     >
                                       <option value={activeGroup.id} disabled>— Chuyển nhóm —</option>
                                       {groups.filter(g => g.id !== activeGroup.id).map(g => (
@@ -1953,76 +1953,76 @@ export default function CRMManagementPage() {
           onClick={() => setIsAssignModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-lg rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-850 max-h-[90vh]"
+            className="bg-card border border-zinc-200 dark:border-zinc-800 w-full max-w-lg rounded-2xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsAssignModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-purple-50 text-purple-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Pencil size={18} className="text-purple-600" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Chỉnh Sửa Hồ Sơ Khách Hàng</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">MÃ KHÁCH HÀNG: {selectedCustomer.id}</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Chỉnh Sửa Hồ Sơ Khách Hàng</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">MÃ KHÁCH HÀNG: {selectedCustomer.id}</span>
               </div>
             </div>
 
             {/* Form */}
-            <div className="flex flex-col gap-4 text-xs font-semibold text-[#0A273A] overflow-y-auto pr-1">
+            <div className="flex flex-col gap-4 text-xs font-semibold text-zinc-900 dark:text-zinc-100 overflow-y-auto pr-1">
               
               {/* 1. Phần thông tin cơ bản */}
-              <div className="flex flex-col gap-3 bg-stone-50 p-4 rounded-2xl border border-stone-200/60">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1">1. Thông tin liên hệ cơ bản</span>
+              <div className="flex flex-col gap-3 bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-850">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1">1. Thông tin liên hệ cơ bản</span>
                 
                 {/* Tên & SĐT */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1 text-stone-800">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1 text-zinc-800 dark:text-zinc-200">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Họ và Tên *</label>
+                    <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Họ và Tên *</label>
                     <input 
                       type="text"
                       required
                       value={editCustomerName}
                       onChange={(e) => setEditCustomerName(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Số Điện Thoại *</label>
+                    <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Số Điện Thoại *</label>
                     <input 
                       type="text"
                       required
                       value={editCustomerPhone}
                       onChange={(e) => setEditCustomerPhone(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                     />
                   </div>
                 </div>
 
                 {/* Ghi chú hành vi */}
                 <div className="flex flex-col gap-1.5 mt-1">
-                  <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Ghi Chú Đặc Tính Hành Vi (AI CRM Profile)</label>
+                  <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ghi Chú Đặc Tính Hành Vi (AI CRM Profile)</label>
                   <textarea 
                     rows={2}
                     value={editCustomerNote}
                     onChange={(e) => setEditCustomerNote(e.target.value)}
                     placeholder="Ví dụ: Thích yên tĩnh tuyệt đối, đi cùng gia đình lớn, thích ăn BBQ ngoài ban công..."
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed font-sans text-stone-800"
+                    className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans text-zinc-800 dark:text-zinc-200"
                   />
-                  <span className="text-[8px] text-stone-400 italic block font-medium">Lưu ý: Mô tả hành vi này sẽ được AI sử dụng để tự động phân tích và kết nạp nhóm khi đồng bộ AI.</span>
+                  <span className="text-[8px] text-zinc-400 dark:text-zinc-500 italic block font-medium">Lưu ý: Mô tả hành vi này sẽ được AI sử dụng để tự động phân tích và kết nạp nhóm khi đồng bộ AI.</span>
                 </div>
               </div>
 
               {/* 2. Phần gán nhóm */}
-              <div className="flex flex-col gap-3 bg-stone-50 p-4 rounded-2xl border border-stone-200/60 max-h-[25vh] overflow-y-auto">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1">2. Danh mục nhóm áp dụng</span>
+              <div className="flex flex-col gap-3 bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-850 max-h-[25vh] overflow-y-auto">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1">2. Danh mục nhóm áp dụng</span>
                 
                 <div className="flex flex-col gap-2.5 mt-1">
                   {groups.map((group) => {
@@ -2035,7 +2035,7 @@ export default function CRMManagementPage() {
                         className={`w-full text-left p-3 rounded-xl border transition flex items-start gap-2.5 cursor-pointer ${
                           isSelected
                             ? 'bg-purple-50/50 border-purple-300 text-purple-900 shadow-3xs'
-                            : 'bg-white hover:bg-stone-50 border-stone-200 text-stone-750'
+                            : 'bg-white hover:bg-zinc-50 dark:bg-zinc-900/60 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300'
                         }`}
                       >
                         <div className="mt-0.5 flex-shrink-0">
@@ -2049,14 +2049,14 @@ export default function CRMManagementPage() {
                         </div>
                         <div className="flex flex-col gap-0.5 flex-grow">
                           <div className="flex justify-between items-center">
-                            <span className="font-extrabold text-stone-850 text-xs">{cleanGroupName(group.name)}</span>
+                            <span className="font-extrabold text-zinc-800 dark:text-zinc-200 text-xs">{cleanGroupName(group.name)}</span>
                             <span className={`text-[8px] font-black uppercase tracking-wider px-1.5 py-0.2 border rounded-full ${
-                              group.type === 'ai' ? 'bg-purple-50 text-purple-700 border-purple-100' : 'bg-stone-50 text-stone-500 border-stone-200'
+                              group.type === 'ai' ? 'bg-purple-50 text-purple-700 border-purple-100' : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'
                             }`}>
                               {group.type === 'ai' ? 'AI' : 'Thủ công'}
                             </span>
                           </div>
-                          <p className="text-[9px] text-stone-500 leading-normal font-medium mt-0.5">
+                          <p className="text-[9px] text-zinc-500 dark:text-zinc-400 leading-normal font-medium mt-0.5">
                             {group.description}
                           </p>
                         </div>
@@ -2071,14 +2071,14 @@ export default function CRMManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsAssignModalOpen(false)}
-                  className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-250 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-stone-250 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="button"
                   onClick={handleSaveCustomerEdits}
-                  className="flex-grow py-2.5 bg-[#0A273A] hover:bg-[#124263] text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Lưu Hồ Sơ Khách Hàng
                 </button>
@@ -2096,51 +2096,51 @@ export default function CRMManagementPage() {
           onClick={() => setIsAddGroupOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsAddGroupOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-purple-50 text-purple-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Layers size={18} />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Tạo Nhóm Khách Hàng</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider">CẤU HÌNH DANH MỤC NHÓM CRM MỚI</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Tạo Nhóm Khách Hàng</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider">CẤU HÌNH DANH MỤC NHÓM CRM MỚI</span>
               </div>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleCreateGroup} className="flex flex-col gap-4 text-xs font-semibold text-stone-700">
+            <form onSubmit={handleCreateGroup} className="flex flex-col gap-4 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
               
               {/* Tên nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tên nhóm khách hàng *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên nhóm khách hàng *</label>
                 <input 
                   type="text"
                   required
                   value={newGroupName}
                   onChange={(e) => setNewGroupName(e.target.value)}
                   placeholder="Ví dụ: Đặt phòng VIP CS5 💎"
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
               {/* Loại nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Hình thức phân nhóm *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Hình thức phân nhóm *</label>
                 <select
                   value={newGroupType}
                   onChange={(e) => setNewGroupType(e.target.value as any)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                 >
                   <option value="ai">🤖 AI Tự Động (Phân loại dựa trên mô tả & hành vi)</option>
                   <option value="manual">👤 Thủ công (Admin chỉ định từng người)</option>
@@ -2149,14 +2149,14 @@ export default function CRMManagementPage() {
 
               {/* Mô tả nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Mô tả đặc tính nhóm (Dành cho AI đối chiếu hành vi) *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Mô tả đặc tính nhóm (Dành cho AI đối chiếu hành vi) *</label>
                 <textarea 
                   required
                   rows={3}
                   value={newGroupDesc}
                   onChange={(e) => setNewGroupDesc(e.target.value)}
                   placeholder="Ví dụ: Khách hàng đi nghỉ dưỡng lớn cùng gia đình, yêu cầu nướng BBQ, hoặc bồn Hinoki lớn ngoài ban công..."
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed placeholder:font-normal"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed placeholder:font-normal"
                 />
               </div>
 
@@ -2165,13 +2165,13 @@ export default function CRMManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsAddGroupOpen(false)}
-                  className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
-                  className="flex-grow py-2.5 bg-stone-900 hover:bg-stone-850 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Tạo Nhóm Danh Mục
                 </button>
@@ -2194,26 +2194,26 @@ export default function CRMManagementPage() {
             onClick={() => setIsHistoryModalOpen(false)}
           >
             <div 
-              className="bg-white w-full max-w-2xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-850 max-h-[90vh]"
+              className="bg-card border border-zinc-200 dark:border-zinc-850 w-full max-w-2xl rounded-2xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Nút Đóng Modal */}
               <button
                 onClick={() => setIsHistoryModalOpen(false)}
-                className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+                className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
               >
                 ✕
               </button>
 
               {/* Title & Customer Badge */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-100 pb-4 text-stone-800">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-150 dark:border-zinc-850 pb-4 text-zinc-800 dark:text-zinc-200">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#0A273A] text-white rounded-2xl flex items-center justify-center shadow-inner font-black text-base uppercase">
+                  <div className="w-12 h-12 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-white rounded-2xl flex items-center justify-center shadow-inner font-black text-base uppercase">
                     {cust.name.substring(0, 2)}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-black text-stone-850 tracking-tight leading-none">{cust.name}</h3>
+                      <h3 className="text-lg font-black text-zinc-800 dark:text-zinc-200 tracking-tight leading-none">{cust.name}</h3>
                       <button
                         onClick={() => {
                           setIsHistoryModalOpen(false)
@@ -2225,7 +2225,7 @@ export default function CRMManagementPage() {
                         <Pencil size={10} /> Chỉnh sửa
                       </button>
                     </div>
-                    <span className="text-[10px] text-stone-400 font-bold block mt-1.5 tracking-wider uppercase">Mã khách: {cust.id} | SĐT: {cust.phone}</span>
+                    <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1.5 tracking-wider uppercase">Mã khách: {cust.id} | SĐT: {cust.phone}</span>
                   </div>
                 </div>
 
@@ -2240,7 +2240,7 @@ export default function CRMManagementPage() {
                         className={`px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 ${
                           g.type === 'ai' 
                             ? 'bg-purple-50 text-purple-700 border-purple-200' 
-                            : 'bg-stone-50 text-stone-600 border-stone-250'
+                            : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-350 border-zinc-250 dark:border-zinc-700'
                         }`}
                       >
                         {g.type === 'ai' && <Bot size={10} className="text-purple-600" />}
@@ -2263,26 +2263,26 @@ export default function CRMManagementPage() {
                 </div>
 
                 {/* 2. Tổng Tích Lũy */}
-                <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-4 flex flex-col justify-between gap-2 shadow-xs">
+                <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-850 rounded-2xl p-4 flex flex-col justify-between gap-2 shadow-xs">
                   <div className="flex items-center justify-between animate-pulse">
-                    <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Tích Lũy Chi Tiêu</span>
+                    <span className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-black">Tích Lũy Chi Tiêu</span>
                     <TrendingUp size={14} className="text-emerald-500" />
                   </div>
-                  <strong className="text-base font-black font-sans leading-none text-[#0A273A]">{formatVND(cust.totalSpent)}</strong>
+                  <strong className="text-base font-black font-sans leading-none text-zinc-900 dark:text-zinc-100">{formatVND(cust.totalSpent)}</strong>
                 </div>
 
                 {/* 3. Tổng Đơn Đặt */}
-                <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-4 flex flex-col justify-between gap-2 shadow-xs">
+                <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-850 rounded-2xl p-4 flex flex-col justify-between gap-2 shadow-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Tổng Số Đơn Đặt</span>
+                    <span className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-black">Tổng Số Đơn Đặt</span>
                     <Calendar size={14} className="text-indigo-500" />
                   </div>
-                  <strong className="text-base font-black font-sans leading-none text-[#0A273A]">{cust.totalBookings} đơn phòng</strong>
+                  <strong className="text-base font-black font-sans leading-none text-zinc-900 dark:text-zinc-100">{cust.totalBookings} đơn phòng</strong>
                 </div>
               </div>
 
               {/* Ghi chú */}
-              <div className="bg-purple-50/40 border border-purple-100 rounded-2xl p-4 flex flex-col gap-2.5 shadow-2xs text-stone-850">
+              <div className="bg-purple-50/40 border border-purple-100 rounded-2xl p-4 flex flex-col gap-2.5 shadow-2xs text-zinc-800 dark:text-zinc-200">
                 <span className="text-[10px] text-purple-750 uppercase tracking-widest font-black flex items-center gap-1 border-b border-purple-100/60 pb-1.5">
                   📝 Ghi chú
                 </span>
@@ -2341,11 +2341,11 @@ export default function CRMManagementPage() {
                     value={newDetailNote}
                     onChange={(e) => setNewDetailNote(e.target.value)}
                     placeholder="Nhập ghi chú mới để lưu..."
-                    className="flex-grow bg-white border border-purple-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-purple-650 text-stone-800 font-sans"
+                    className="flex-grow bg-white border border-purple-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-purple-650 text-zinc-800 dark:text-zinc-200 font-sans"
                   />
                   <button
                     type="submit"
-                    className="bg-[#0A273A] hover:bg-[#154666] text-white font-extrabold text-xs px-4 py-2 rounded-xl border-none cursor-pointer active:scale-95 transition flex-shrink-0 font-sans"
+                    className="bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white font-extrabold text-xs px-4 py-2 rounded-xl border-none cursor-pointer active:scale-95 transition flex-shrink-0 font-sans"
                   >
                     Thêm
                   </button>
@@ -2354,13 +2354,13 @@ export default function CRMManagementPage() {
 
               {/* Timeline Lịch sử Đặt phòng */}
               <div className="flex flex-col gap-3 flex-grow overflow-hidden">
-                <h4 className="text-xs font-black text-[#0A273A] uppercase tracking-widest flex items-center gap-1.5 border-b border-stone-100 pb-2">
-                  <History size={14} className="text-[#0A273A]" /> Lịch Sử Đặt Phòng Gần Nhất
+                <h4 className="text-xs font-black text-zinc-900 dark:text-zinc-100 uppercase tracking-widest flex items-center gap-1.5 border-b border-zinc-150 dark:border-zinc-850 pb-2">
+                  <History size={14} className="text-zinc-900 dark:text-zinc-100" /> Lịch Sử Đặt Phòng Gần Nhất
                 </h4>
 
                 <div className="overflow-y-auto pr-2 max-h-[32vh] flex flex-col gap-4 relative">
                   {bookings.length === 0 ? (
-                    <div className="py-8 text-center text-stone-400 text-xs font-semibold flex flex-col items-center gap-2">
+                    <div className="py-8 text-center text-zinc-400 dark:text-zinc-500 text-xs font-semibold flex flex-col items-center gap-2">
                       <AlertCircle size={20} className="text-stone-300" />
                       <span>Không tìm thấy lịch sử đặt phòng nào cho khách hàng này.</span>
                     </div>
@@ -2369,47 +2369,47 @@ export default function CRMManagementPage() {
                       <div key={bk.id} className="flex gap-4 relative">
                         {/* Timeline Connector Line */}
                         {index < bookings.length - 1 && (
-                          <div className="absolute left-[15px] top-8 bottom-[-20px] w-0.5 bg-stone-100"></div>
+                          <div className="absolute left-[15px] top-8 bottom-[-20px] w-0.5 bg-zinc-100 dark:bg-zinc-800"></div>
                         )}
                         
                         {/* Dot Icon */}
-                        <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-250 flex items-center justify-center flex-shrink-0 z-10 text-[#0A273A]">
+                        <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-250 dark:border-zinc-700 flex items-center justify-center flex-shrink-0 z-10 text-zinc-900 dark:text-zinc-100">
                           <Clock size={12} />
                         </div>
 
                         {/* Booking Card Content */}
-                        <div className="bg-white border border-stone-200/80 rounded-2xl p-4 flex-grow shadow-2xs hover:shadow-xs transition duration-200 flex flex-col gap-2.5">
+                        <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 flex-grow shadow-2xs hover:shadow-xs transition duration-200 flex flex-col gap-2.5">
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                             <div className="flex flex-col gap-0.5">
-                              <span className="font-extrabold text-stone-850 text-xs sm:text-sm">{bk.roomName}</span>
-                              <span className="text-[10px] text-stone-400 font-mono font-bold flex items-center gap-1">
+                              <span className="font-extrabold text-zinc-800 dark:text-zinc-200 text-xs sm:text-sm">{bk.roomName}</span>
+                              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-mono font-bold flex items-center gap-1">
                                 Mã đơn: {bk.id} | Chi nhánh: {bk.branch}
                               </span>
                             </div>
                             
                             <div className="flex items-center gap-2">
-                              <span className="text-xs font-black text-[#0A273A] font-mono">{formatVND(bk.amount)}</span>
+                              <span className="text-xs font-black text-zinc-900 dark:text-zinc-100 font-mono">{formatVND(bk.amount)}</span>
                               <span className="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-wider bg-green-50 text-green-700 border border-green-200 select-none font-sans font-extrabold">
                                 Thành công
                               </span>
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-2 text-[10px] bg-stone-50 p-2.5 rounded-xl border border-stone-150 font-bold text-stone-600 font-sans">
+                          <div className="grid grid-cols-2 gap-2 text-[10px] bg-zinc-50 dark:bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 font-bold text-zinc-650 dark:text-zinc-350 font-sans">
                             <div>
-                              <span className="text-stone-400 block uppercase tracking-wider font-extrabold text-[8px] mb-0.5">Thời gian check-in</span>
+                              <span className="text-zinc-400 dark:text-zinc-500 block uppercase tracking-wider font-extrabold text-[8px] mb-0.5">Thời gian check-in</span>
                               <span>{bk.checkIn}</span>
                             </div>
                             {bk.checkOut && bk.checkOut !== bk.checkIn && (
                               <div>
-                                <span className="text-stone-400 block uppercase tracking-wider font-extrabold text-[8px] mb-0.5">Thời gian check-out</span>
+                                <span className="text-zinc-400 dark:text-zinc-500 block uppercase tracking-wider font-extrabold text-[8px] mb-0.5">Thời gian check-out</span>
                                 <span>{bk.checkOut}</span>
                               </div>
                             )}
                           </div>
 
                           {bk.specialRequest && (
-                            <p className="text-[11px] text-stone-500 font-medium leading-relaxed italic pl-2.5 border-l-2 border-stone-200">
+                            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed italic pl-2.5 border-l-2 border-zinc-200 dark:border-zinc-800">
                               Lưu ý: "{bk.specialRequest}"
                             </p>
                           )}
@@ -2418,7 +2418,7 @@ export default function CRMManagementPage() {
                     ))
                   )}
                   {cust.totalBookings > bookings.length && (
-                    <div className="text-center py-2 text-[10px] text-stone-400 font-bold uppercase tracking-wider bg-stone-50 rounded-xl border border-dashed border-stone-200 mt-2 font-sans">
+                    <div className="text-center py-2 text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider bg-zinc-50 dark:bg-zinc-900/60 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 mt-2 font-sans">
                       Hiển thị {bookings.length} trên {cust.totalBookings} đơn đặt phòng gần nhất của khách hàng.
                     </div>
                   )}
@@ -2426,7 +2426,7 @@ export default function CRMManagementPage() {
               </div>
 
               {/* Close / Action Footer */}
-              <div className="flex gap-2.5 border-t border-stone-100 pt-3">
+              <div className="flex gap-2.5 border-t border-zinc-150 dark:border-zinc-850 pt-3">
                 <button
                   type="button"
                   onClick={() => {
@@ -2440,7 +2440,7 @@ export default function CRMManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsHistoryModalOpen(false)}
-                  className="flex-grow py-2.5 bg-[#0A273A] hover:bg-[#154666] text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer text-center font-sans"
+                  className="flex-grow py-2.5 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer text-center font-sans"
                 >
                   Đóng Cửa Sổ Chi Tiết
                 </button>
@@ -2458,66 +2458,66 @@ export default function CRMManagementPage() {
           onClick={() => setIsAddCustomerOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-850"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsAddCustomerOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
-              <div className="w-10 h-10 bg-[#0A273A]/5 text-[#0A273A] rounded-2xl flex items-center justify-center shadow-inner">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
+              <div className="w-10 h-10 bg-zinc-500/10 dark:bg-zinc-500/15 text-zinc-900 dark:text-zinc-100 rounded-2xl flex items-center justify-center shadow-inner">
                 <Plus size={18} className="stroke-[3]" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Thêm Khách Hàng</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider">KHỞI TẠO HỒ SƠ KHÁCH HÀNG CRM MỚI</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Thêm Khách Hàng</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider">KHỞI TẠO HỒ SƠ KHÁCH HÀNG CRM MỚI</span>
               </div>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleCreateCustomer} className="flex flex-col gap-4 text-xs font-semibold text-stone-700">
+            <form onSubmit={handleCreateCustomer} className="flex flex-col gap-4 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
               
               {/* Họ tên */}
-              <div className="flex flex-col gap-1.5 text-[#0A273A]">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Họ Và Tên Khách Hàng *</label>
+              <div className="flex flex-col gap-1.5 text-zinc-900 dark:text-zinc-100">
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Họ Và Tên Khách Hàng *</label>
                 <input 
                   type="text"
                   required
                   value={newCustomerName}
                   onChange={(e) => setNewCustomerName(e.target.value)}
                   placeholder="Ví dụ: Hoàng Minh Hải"
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
               {/* Số điện thoại */}
-              <div className="flex flex-col gap-1.5 text-[#0A273A]">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Số Điện Thoại *</label>
+              <div className="flex flex-col gap-1.5 text-zinc-900 dark:text-zinc-100">
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Số Điện Thoại *</label>
                 <input 
                   type="text"
                   required
                   value={newCustomerPhone}
                   onChange={(e) => setNewCustomerPhone(e.target.value)}
                   placeholder="Ví dụ: 0988123456"
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
               {/* Ghi chú hành vi */}
-              <div className="flex flex-col gap-1.5 text-[#0A273A]">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Ghi chú hành vi (AI CRM Profile)</label>
+              <div className="flex flex-col gap-1.5 text-zinc-900 dark:text-zinc-100">
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ghi chú hành vi (AI CRM Profile)</label>
                 <textarea 
                   rows={3}
                   value={newCustomerNote}
                   onChange={(e) => setNewCustomerNote(e.target.value)}
                   placeholder="Ví dụ: Khách hàng thường thuê phòng yên tĩnh để làm việc, cần ban công có view ngắm hoàng hôn..."
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed text-stone-800"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
@@ -2526,13 +2526,13 @@ export default function CRMManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsAddCustomerOpen(false)}
-                  className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
-                  className="flex-grow py-2.5 bg-[#0A273A] hover:bg-[#154666] text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Lưu và Thêm Khách
                 </button>
@@ -2553,7 +2553,7 @@ export default function CRMManagementPage() {
           }}
         >
           <div 
-            className="bg-white w-full max-w-2xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800 max-h-[90vh]"
+            className="bg-card border border-zinc-200 dark:border-zinc-850 w-full max-w-2xl rounded-2xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
@@ -2562,21 +2562,21 @@ export default function CRMManagementPage() {
                 setIsGroupMembersOpen(false)
                 setSelectedGroupForMembers(null)
               }}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-inner ${
                 selectedGroupForMembers.type === 'ai' ? 'bg-purple-50 text-purple-700' : 'bg-amber-50 text-amber-700'
               }`}>
                 {selectedGroupForMembers.type === 'ai' ? <Bot size={18} /> : <Users size={18} />}
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Thành Viên Nhóm</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Thành Viên Nhóm</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">
                   Danh mục: {selectedGroupForMembers.name} ({selectedGroupForMembers.type === 'ai' ? 'Tự Động AI' : 'Thủ công đặc cách'})
                 </span>
               </div>
@@ -2589,9 +2589,9 @@ export default function CRMManagementPage() {
                 
                 if (members.length === 0) {
                   return (
-                    <div className="flex flex-col items-center justify-center py-12 px-4 text-stone-400 gap-3 border border-dashed border-stone-200 rounded-2xl">
+                    <div className="flex flex-col items-center justify-center py-12 px-4 text-zinc-400 dark:text-zinc-500 gap-3 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-2xl">
                       <Users size={32} className="stroke-[1.5] text-stone-300" />
-                      <p className="text-xs font-semibold text-stone-400 text-center leading-relaxed">
+                      <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 text-center leading-relaxed">
                         Chưa có khách hàng nào thuộc danh mục này.<br />
                         {selectedGroupForMembers.type === 'ai' 
                           ? 'Nhấn "Đồng bộ hành vi bằng AI" để tự động quét & xếp nhóm!' 
@@ -2606,7 +2606,7 @@ export default function CRMManagementPage() {
                   return (
                     <div 
                       key={member.id}
-                      className="flex items-center justify-between border border-stone-150 rounded-2xl p-4 hover:border-stone-300 hover:shadow-xs transition duration-200 gap-4"
+                      className="flex items-center justify-between border border-zinc-200 dark:border-zinc-800/80 rounded-2xl p-4 hover:border-stone-300 hover:shadow-xs transition duration-200 gap-4"
                     >
                       <div className="flex items-center gap-3">
                         {/* Avatar Initials */}
@@ -2614,15 +2614,15 @@ export default function CRMManagementPage() {
                           tierInfo.colorTheme === 'violet' ? 'bg-purple-100 text-purple-700' :
                           tierInfo.colorTheme === 'amber' ? 'bg-amber-100 text-amber-700' :
                           tierInfo.colorTheme === 'slate' ? 'bg-slate-100 text-slate-700' :
-                          'bg-stone-100 text-stone-700'
+                          'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
                         }`}>
                           {member.name.charAt(0)}
                         </div>
 
                         {/* Name and Contact info */}
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-stone-850 text-xs">{member.name}</span>
-                          <span className="text-[10px] text-stone-400 font-bold mt-0.5">{member.phone}</span>
+                          <span className="font-extrabold text-zinc-800 dark:text-zinc-200 text-xs">{member.name}</span>
+                          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold mt-0.5">{member.phone}</span>
                         </div>
                       </div>
 
@@ -2630,8 +2630,8 @@ export default function CRMManagementPage() {
                       <div className="flex items-center gap-5">
                         {/* Spent / Bookings */}
                         <div className="hidden sm:flex flex-col items-end">
-                          <span className="text-[10px] text-stone-500 font-black font-mono">{formatVND(member.totalSpent)}</span>
-                          <span className="text-[9px] text-stone-400 font-bold uppercase mt-0.5">{member.totalBookings} bookings</span>
+                          <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black font-mono">{formatVND(member.totalSpent)}</span>
+                          <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold uppercase mt-0.5">{member.totalBookings} bookings</span>
                         </div>
 
                         {/* Tier badge */}
@@ -2639,7 +2639,7 @@ export default function CRMManagementPage() {
                           tierInfo.colorTheme === 'violet' ? 'bg-purple-50 text-purple-700 border-purple-200' :
                           tierInfo.colorTheme === 'amber' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                           tierInfo.colorTheme === 'slate' ? 'bg-slate-50 text-slate-750 border-slate-200' :
-                          'bg-stone-50 text-stone-600 border-stone-250'
+                          'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-350 border-zinc-250 dark:border-zinc-700'
                         }`}>
                           {renderTierIcon(tierInfo.colorTheme, 9)}
                           {tierInfo.name.split('(')[0]}
@@ -2668,8 +2668,8 @@ export default function CRMManagementPage() {
             </div>
 
             {/* Note about OR logic at footer */}
-            <div className="border-t border-stone-100 pt-3 flex items-start gap-1.5 text-stone-400">
-              <AlertCircle size={12} className="text-stone-400 mt-0.5 flex-shrink-0" />
+            <div className="border-t border-zinc-150 dark:border-zinc-850 pt-3 flex items-start gap-1.5 text-zinc-400 dark:text-zinc-500">
+              <AlertCircle size={12} className="text-zinc-400 dark:text-zinc-500 mt-0.5 flex-shrink-0" />
               <p className="text-[10px] leading-relaxed font-semibold">
                 {selectedGroupForMembers.type === 'manual' 
                   ? 'Gỡ khách tại đây sẽ xóa ngay quyền đặc cách thủ công. Khách có thể bị quét tự động bởi AI ở lượt đồng bộ tiếp theo nếu phù hợp với hành vi.'
@@ -2684,7 +2684,7 @@ export default function CRMManagementPage() {
                   setIsGroupMembersOpen(false)
                   setSelectedGroupForMembers(null)
                 }}
-                className="px-5 py-2.5 bg-stone-900 hover:bg-stone-850 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer"
+                className="px-5 py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer"
               >
                 Đóng lại
               </button>
@@ -2703,7 +2703,7 @@ export default function CRMManagementPage() {
           }}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
@@ -2712,45 +2712,45 @@ export default function CRMManagementPage() {
                 setIsEditGroupOpen(false)
                 setEditingGroup(null)
               }}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-indigo-50 text-indigo-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Pencil size={18} />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Sửa Nhóm Khách Hàng</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">Cập nhật cấu hình danh mục CRM</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Sửa Nhóm Khách Hàng</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">Cập nhật cấu hình danh mục CRM</span>
               </div>
             </div>
 
             {/* Form */}
-            <div className="flex flex-col gap-4 text-xs font-semibold text-stone-700">
+            <div className="flex flex-col gap-4 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
               
               {/* Tên nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tên nhóm khách hàng *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên nhóm khách hàng *</label>
                 <input 
                   type="text"
                   required
                   value={editGroupName}
                   onChange={(e) => setEditGroupName(e.target.value)}
                   placeholder="Ví dụ: Đặt phòng VIP CS5 💎"
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
               {/* Loại nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Hình thức phân nhóm *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Hình thức phân nhóm *</label>
                 <select
                   value={editGroupType}
                   onChange={(e) => setEditGroupType(e.target.value as any)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                 >
                   <option value="ai">🤖 AI Tự Động (Phân loại dựa trên mô tả & hành vi)</option>
                   <option value="manual">👤 Thủ công (Admin chỉ định từng người)</option>
@@ -2759,14 +2759,14 @@ export default function CRMManagementPage() {
 
               {/* Mô tả nhóm */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Mô tả đặc tính nhóm (Dành cho AI đối chiếu hành vi) *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Mô tả đặc tính nhóm (Dành cho AI đối chiếu hành vi) *</label>
                 <textarea 
                   required
                   rows={3}
                   value={editGroupDesc}
                   onChange={(e) => setEditGroupDesc(e.target.value)}
                   placeholder="Ví dụ: Khách hàng đi nghỉ dưỡng lớn cùng gia đình, yêu cầu nướng BBQ, hoặc bồn Hinoki lớn ngoài ban công..."
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed placeholder:font-normal text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed placeholder:font-normal text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
@@ -2778,14 +2778,14 @@ export default function CRMManagementPage() {
                     setIsEditGroupOpen(false)
                     setEditingGroup(null)
                   }}
-                  className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="button"
                   onClick={handleEditGroup}
-                  className="flex-grow py-2.5 bg-stone-900 hover:bg-stone-850 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Lưu Thay Đổi
                 </button>
@@ -2807,25 +2807,25 @@ export default function CRMManagementPage() {
             onClick={() => setIsMarketingModalOpen(false)}
           >
             <div 
-              className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800 max-h-[92vh]"
+              className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Nút Đóng Modal */}
               <button
                 onClick={() => setIsMarketingModalOpen(false)}
-                className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
+                className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
               >
                 ✕
               </button>
 
               {/* Icon & Title */}
-              <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+              <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
                 <div className="w-10 h-10 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center shadow-inner">
                   <Megaphone size={18} className="text-emerald-600" />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-[#0A273A] uppercase leading-none">Liên Kết Chiến Dịch Tiếp Thị</h3>
-                  <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">TẠO CHIẾN DỊCH CHO NHÓM KHÁCH HÀNG CRM</span>
+                  <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100 uppercase leading-none">Liên Kết Chiến Dịch Tiếp Thị</h3>
+                  <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">TẠO CHIẾN DỊCH CHO NHÓM KHÁCH HÀNG CRM</span>
                 </div>
               </div>
 
@@ -2833,51 +2833,51 @@ export default function CRMManagementPage() {
               <form onSubmit={handleCreateMarketingCampaign} className="grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto pr-1">
                 
                 {/* Cột Thiết Lập */}
-                <div className="flex flex-col gap-4 text-xs font-semibold text-stone-700">
+                <div className="flex flex-col gap-4 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   
                   {/* Tên chiến dịch */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
                     <input 
                       type="text"
                       required
                       value={marketingCampName}
                       onChange={(e) => setMarketingCampName(e.target.value)}
                       placeholder="Ví dụ: Ưu đãi sum vầy cho nhóm gia đình 🏡"
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                     />
                   </div>
 
                   {/* Kênh truyền thông & Ngân sách */}
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
+                      <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
                       <select
                         value={marketingCampChannel}
                         onChange={(e) => setMarketingCampChannel(e.target.value as any)}
-                        className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                        className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                       >
                         <option value="Zalo ZNS">💬 Zalo ZNS (Đề xuất)</option>
                         <option value="Email">📧 Email Bản Tin</option>
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Ngân Sách Ước Tính (VND) *</label>
+                      <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ngân Sách Ước Tính (VND) *</label>
                       <input 
                         type="number"
                         required
                         min={10000}
                         value={marketingCampBudget}
                         onChange={(e) => setMarketingCampBudget(parseInt(e.target.value) || 0)}
-                        className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                        className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                       />
                     </div>
                   </div>
 
                   {/* Mã Voucher Liên Kết */}
-                  <div className="flex flex-col gap-1.5 bg-[#0A273A]/5 p-3 rounded-2xl border border-stone-200/50">
+                  <div className="flex flex-col gap-1.5 bg-zinc-500/10 dark:bg-zinc-500/15 p-3 rounded-2xl border border-zinc-250 dark:border-zinc-800">
                     <div className="flex justify-between items-center mb-1">
-                      <label className="text-[10px] text-[#0A273A] font-black uppercase tracking-wider flex items-center gap-1">
+                      <label className="text-[10px] text-zinc-900 dark:text-zinc-100 font-black uppercase tracking-wider flex items-center gap-1">
                         <Percent size={11} /> Liên Kết Mã Voucher Đã Tạo
                       </label>
                       <span className="text-[8px] text-emerald-600 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200 uppercase font-black">Khuyên Dùng</span>
@@ -2885,14 +2885,14 @@ export default function CRMManagementPage() {
                     <select
                       value={marketingCampVoucher}
                       onChange={(e) => setMarketingCampVoucher(e.target.value)}
-                      className="w-full bg-white border border-stone-250 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850"
+                      className="w-full bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200"
                     >
                       <option value="">-- Không đính kèm mã voucher --</option>
                       {activeVouchers.map(v => (
                         <option key={v.code} value={v.code}>{v.label}</option>
                       ))}
                     </select>
-                    <span className="text-[8.5px] text-stone-450 font-semibold leading-normal block mt-1">
+                    <span className="text-[8.5px] text-zinc-400 dark:text-zinc-500 font-semibold leading-normal block mt-1">
                       Hệ thống tự động liên kết các Voucher đang hoạt động từ cơ sở dữ liệu để đính kèm vào tin nhắn cho khách hàng.
                     </span>
                   </div>
@@ -2900,14 +2900,14 @@ export default function CRMManagementPage() {
                   {/* Soạn thảo nội dung */}
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
-                      <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Soạn Nội Dung Tin Nhắn *</label>
+                      <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Soạn Nội Dung Tin Nhắn *</label>
                       
                       {/* Placeholder Triggers */}
                       <div className="flex gap-1">
                         <button
                           type="button"
                           onClick={() => setMarketingCampContent(prev => prev + '{ten_khach}')}
-                          className="bg-stone-100 hover:bg-stone-200 text-stone-700 text-[9px] font-extrabold px-2 py-0.5 rounded border border-stone-250 cursor-pointer active:scale-95 transition animate-none"
+                          className="bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 text-[9px] font-extrabold px-2 py-0.5 rounded border border-zinc-250 dark:border-zinc-700 cursor-pointer active:scale-95 transition animate-none"
                           title="Chèn tên khách hàng động"
                         >
                           + Tên khách
@@ -2915,7 +2915,7 @@ export default function CRMManagementPage() {
                         <button
                           type="button"
                           onClick={() => setMarketingCampContent(prev => prev + '{ma_voucher}')}
-                          className="bg-stone-100 hover:bg-stone-200 text-stone-700 text-[9px] font-extrabold px-2 py-0.5 rounded border border-stone-250 cursor-pointer active:scale-95 transition animate-none"
+                          className="bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 text-[9px] font-extrabold px-2 py-0.5 rounded border border-zinc-250 dark:border-zinc-700 cursor-pointer active:scale-95 transition animate-none"
                           title="Chèn mã voucher liên kết động"
                         >
                           + Mã voucher
@@ -2928,9 +2928,9 @@ export default function CRMManagementPage() {
                       value={marketingCampContent}
                       onChange={(e) => setMarketingCampContent(e.target.value)}
                       placeholder="Nhập nội dung gửi tin nhắn..."
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed placeholder:font-normal text-stone-850"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed placeholder:font-normal text-zinc-800 dark:text-zinc-200"
                     />
-                    <span className="text-[9px] text-stone-400 font-medium italic leading-relaxed">
+                    <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-medium italic leading-relaxed">
                       Sử dụng các biến động `{`ten_khach`}` và `{`ma_voucher`}` để hệ thống tự động cá nhân hóa khi gửi cho từng khách hàng.
                     </span>
                   </div>
@@ -2940,7 +2940,7 @@ export default function CRMManagementPage() {
                     <button
                       type="button"
                       onClick={() => setIsMarketingModalOpen(false)}
-                      className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                      className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                     >
                       Hủy bỏ
                     </button>
@@ -2956,31 +2956,31 @@ export default function CRMManagementPage() {
 
                 {/* Cột Live Preview */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider block">Bản Xem Trước Trên Thiết Bị (Live Preview)</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider block">Bản Xem Trước Trên Thiết Bị (Live Preview)</label>
                   
                   {/* Điện thoại mô phỏng */}
-                  <div className="border border-stone-200/80 bg-stone-100 rounded-3xl p-4 flex flex-col gap-2 relative shadow-inner w-full max-w-[320px] mx-auto min-h-[380px] font-sans">
+                  <div className="border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800 rounded-3xl p-4 flex flex-col gap-2 relative shadow-inner w-full max-w-[320px] mx-auto min-h-[380px] font-sans">
                     {/* Notch / Speaker */}
-                    <div className="w-24 h-4 bg-stone-900 rounded-full mx-auto mb-2 flex items-center justify-center gap-1 select-none">
+                    <div className="w-24 h-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 rounded-full mx-auto mb-2 flex items-center justify-center gap-1 select-none">
                       <div className="w-1.5 h-1.5 rounded-full bg-stone-700"></div>
                       <div className="w-10 h-1 bg-stone-800 rounded-full"></div>
                     </div>
 
                     {/* Zalo ZNS Preview Bubble */}
-                    <div className="bg-white border border-stone-200 rounded-2xl p-4 shadow-sm flex flex-col gap-2 mt-4 animate-in fade-in duration-200">
+                    <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 shadow-sm flex flex-col gap-2 mt-4 animate-in fade-in duration-200">
                       {/* Header */}
-                      <div className="flex items-center gap-1.5 border-b border-stone-200 pb-2 mb-1 select-none">
+                      <div className="flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-2 mb-1 select-none">
                         <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
                           BH
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-[10px] font-black text-stone-850 leading-tight">Bliss Home Sài Gòn</span>
-                          <span className="text-[8px] text-stone-400 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
+                          <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+                          <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
                         </div>
                       </div>
 
                       {/* Evaluated message body */}
-                      <p className="text-[10px] text-stone-800 font-medium leading-relaxed whitespace-pre-wrap">
+                      <p className="text-[10px] text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed whitespace-pre-wrap">
                         {marketingCampContent
                           .replace(/{ten_khach}/g, 'Nguyễn Văn Hùng')
                           .replace(/{ma_voucher}/g, marketingCampVoucher || '[Chưa gán Voucher]')}
@@ -2988,9 +2988,9 @@ export default function CRMManagementPage() {
 
                       {/* Action buttons preview if voucher exists */}
                       {marketingCampVoucher && (
-                        <div className="mt-2 pt-2 border-t border-dashed border-stone-200 flex flex-col gap-1 select-none">
-                          <div className="bg-stone-50 border border-stone-250 p-2 rounded-xl flex items-center justify-between text-[9px] font-bold">
-                            <span className="text-stone-500">Mã ưu đãi của bạn:</span>
+                        <div className="mt-2 pt-2 border-t border-dashed border-zinc-200 dark:border-zinc-800 flex flex-col gap-1 select-none">
+                          <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-250 dark:border-zinc-700 p-2 rounded-xl flex items-center justify-between text-[9px] font-bold">
+                            <span className="text-zinc-500 dark:text-zinc-400">Mã ưu đãi của bạn:</span>
                             <span className="text-blue-600 font-black font-mono bg-blue-50 px-1 border border-blue-100 rounded">{marketingCampVoucher}</span>
                           </div>
                           <div className="w-full py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[9px] font-black text-center uppercase tracking-wider cursor-default shadow-3xs">
@@ -3001,7 +3001,7 @@ export default function CRMManagementPage() {
                     </div>
 
                     {/* Simulator details footer */}
-                    <span className="absolute bottom-2 left-0 right-0 text-center text-[8px] font-bold text-stone-400 select-none uppercase tracking-widest">
+                    <span className="absolute bottom-2 left-0 right-0 text-center text-[8px] font-bold text-zinc-400 dark:text-zinc-500 select-none uppercase tracking-widest">
                       Bliss ZNS Simulator
                     </span>
                   </div>

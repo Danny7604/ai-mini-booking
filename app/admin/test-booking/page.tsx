@@ -196,9 +196,9 @@ export default function RoomGridManagementDashboard() {
         }
       case 'cleaning':
         return {
-          bg: 'bg-stone-50/90 hover:bg-stone-100/50',
-          border: 'border-stone-250 hover:border-stone-350',
-          text: 'text-stone-700',
+          bg: 'bg-zinc-50 dark:bg-zinc-900/60/90 hover:bg-zinc-100 dark:bg-zinc-800/50',
+          border: 'border-zinc-250 dark:border-zinc-700 hover:border-stone-350',
+          text: 'text-zinc-700 dark:text-zinc-300',
           badgeBg: 'bg-stone-400 text-white',
           dot: 'bg-stone-400',
           icon: <Sparkles size={16} />,
@@ -384,11 +384,11 @@ export default function RoomGridManagementDashboard() {
   })
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-stone-850">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-800 dark:text-zinc-200">
       
       {/* 🔮 CUSTOM TOAST SYSTEM */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-[999] bg-[#0A273A] border border-emerald-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-[999] bg-zinc-900 dark:bg-zinc-100 border border-zinc-250 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -411,17 +411,17 @@ export default function RoomGridManagementDashboard() {
       </div>
 
       {/* HEADER SECTION */}
-      <div className="flex flex-col gap-2 border-b border-stone-200/50 pb-5">
-        <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+      <div className="flex flex-col gap-2 border-b border-zinc-250 dark:border-zinc-800 pb-5">
+        <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
           Sơ Đồ Phòng & Quản Lý Chi Nhánh
         </h2>
-        <p className="text-xs text-stone-500 font-medium">
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
           Bản đồ phòng nghỉ đa nhiệm: Lọc tình trạng, tìm kiếm nhanh, thêm mới phòng và book lịch nhanh chóng.
         </p>
       </div>
 
       {/* THANH CÔNG CỤ ĐIỀU HƯỚNG & BỘ LỌC ĐA HƯỚNG */}
-      <div className="bg-white border border-stone-150 p-4 rounded-3xl shadow-2xs">
+      <div className="bg-white border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
         {/* Lưới phân chia đều 4 ô trong frame */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full items-center">
           
@@ -432,9 +432,9 @@ export default function RoomGridManagementDashboard() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Tìm theo tên phòng, mã, khách..."
-              className="w-full bg-stone-50/60 border border-stone-200/80 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#0A273A] focus:bg-white text-stone-750 shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white text-zinc-700 dark:text-zinc-300 shadow-2xs transition duration-200"
             />
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
           </div>
 
           {/* 2. Dropdown chọn tình trạng phòng (Room's Status) */}
@@ -442,13 +442,13 @@ export default function RoomGridManagementDashboard() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full bg-stone-50/60 border border-stone-200/80 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-stone-750 focus:outline-none focus:border-[#0A273A] focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
             >
               {STATUS_FILTER_OPTIONS.map(s => (
                 <option key={s.id} value={s.id}>{s.name}</option>
               ))}
             </select>
-            <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none stroke-[2.5]" />
+            <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500 pointer-events-none stroke-[2.5]" />
           </div>
 
           {/* 3. Dropdown chọn chi nhánh (Chi nhánh/Branch) */}
@@ -456,19 +456,19 @@ export default function RoomGridManagementDashboard() {
             <select
               value={selectedBranch}
               onChange={(e) => setSelectedBranch(e.target.value)}
-              className="w-full bg-stone-50/60 border border-stone-200/80 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-stone-750 focus:outline-none focus:border-[#0A273A] focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
             >
               {BRANCHES.map(b => (
                 <option key={b.id} value={b.id}>{b.name}</option>
               ))}
             </select>
-            <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none stroke-[2.5]" />
+            <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500 pointer-events-none stroke-[2.5]" />
           </div>
 
           {/* 4. Nút Thêm Phòng Mới (Căn chỉnh đều cùng dòng) */}
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="w-full py-2.5 bg-stone-900 hover:bg-stone-850 text-white font-extrabold text-xs rounded-xl border border-transparent cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition duration-200"
+            className="w-full py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white font-extrabold text-xs rounded-xl border border-transparent cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition duration-200"
           >
             <Plus size={14} className="stroke-[3]" />
             <span>Thêm Phòng Mới</span>
@@ -485,7 +485,7 @@ export default function RoomGridManagementDashboard() {
           { key: 'checked_in', label: 'Đã Check-In', color: 'bg-pink-50 text-pink-950 border-pink-200/70', dot: 'bg-pink-500' },
           { key: 'checkout_imminent', label: 'Sắp Check-Out ⚠️', color: 'bg-rose-50 text-rose-950 border-rose-250/70', dot: 'bg-rose-600' },
           { key: 'maintenance', label: 'Đang Bảo Trì', color: 'bg-blue-50 text-blue-950 border-blue-200/70', dot: 'bg-blue-600' },
-          { key: 'cleaning', label: 'Đang Dọn Dẹp', color: 'bg-stone-50 text-stone-900 border-stone-200/80', dot: 'bg-stone-500' }
+          { key: 'cleaning', label: 'Đang Dọn Dẹp', color: 'bg-zinc-50 dark:bg-zinc-900/60 text-stone-900 border-zinc-200 dark:border-zinc-800', dot: 'bg-zinc-50 dark:bg-zinc-900/600' }
         ].map(stat => {
           const count = getStatusCount(stat.key as any)
           return (
@@ -506,7 +506,7 @@ export default function RoomGridManagementDashboard() {
       {/* LƯỚI SƠ ĐỒ PHÒNG GIẢ LẬP (GRID MAP) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {filteredRooms.length === 0 ? (
-          <div className="col-span-full py-16 bg-white border border-stone-200/60 rounded-3xl text-center text-stone-400 flex flex-col items-center justify-center gap-3">
+          <div className="col-span-full py-16 bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl text-center text-zinc-400 dark:text-zinc-500 flex flex-col items-center justify-center gap-3">
             <Info size={28} className="text-stone-300" />
             <span className="text-xs font-bold">Không tìm thấy phòng nghỉ nào khớp với bộ lọc tìm kiếm.</span>
           </div>
@@ -527,13 +527,13 @@ export default function RoomGridManagementDashboard() {
                     {config.icon}
                     <span>{config.label}</span>
                   </div>
-                  <span className="text-xs font-black text-stone-400 font-mono">#{room.id}</span>
+                  <span className="text-xs font-black text-zinc-400 dark:text-zinc-500 font-mono">#{room.id}</span>
                 </div>
 
                 {/* Giữa thẻ phòng: Tên & Loại phòng */}
                 <div className="mb-4">
-                  <h3 className="text-base font-extrabold text-stone-850 leading-snug line-clamp-1">{room.name}</h3>
-                  <div className="flex items-center gap-1.5 text-[10px] text-stone-400 font-bold mt-1 uppercase tracking-wide">
+                  <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 leading-snug line-clamp-1">{room.name}</h3>
+                  <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 dark:text-zinc-500 font-bold mt-1 uppercase tracking-wide">
                     <Building2 size={10} className="stroke-[2.5]" />
                     <span>{room.branchName} • {room.type}</span>
                   </div>
@@ -545,7 +545,7 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 1: Trống (Green) - Hiển thị giá phòng */}
                   {room.status === 'available' && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">Giá cơ bản:</span>
+                      <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">Giá cơ bản:</span>
                       <strong className="text-emerald-700 text-sm font-black font-mono">{formatVND(room.price)}</strong>
                     </div>
                   )}
@@ -553,7 +553,7 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 2: Đã Đặt Chưa Đến (Cam) - Tên khách đặt và lịch giờ nhận */}
                   {room.status === 'booked_not_checked_in' && (
                     <div className="flex flex-col gap-0.5">
-                      <div className="text-xs font-extrabold text-stone-800 truncate">Khách: {room.guest}</div>
+                      <div className="text-xs font-extrabold text-zinc-800 dark:text-zinc-200 truncate">Khách: {room.guest}</div>
                       <div className="text-[10px] text-orange-700 font-bold flex items-center gap-1 mt-1 font-mono">
                         <Clock size={11} /> {room.timeInfo}
                       </div>
@@ -593,8 +593,8 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 6: Đang Dọn Dẹp (Xám trắng) - Thời gian dự kiến hoàn tất */}
                   {room.status === 'cleaning' && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider">Dự kiến xong:</span>
-                      <strong className="text-stone-700 text-xs font-black font-mono flex items-center gap-1">
+                      <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">Dự kiến xong:</span>
+                      <strong className="text-zinc-700 dark:text-zinc-300 text-xs font-black font-mono flex items-center gap-1">
                         <Clock size={11} /> {room.timeInfo}
                       </strong>
                     </div>
@@ -614,25 +614,25 @@ export default function RoomGridManagementDashboard() {
           onClick={() => setIsAddModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-stone-850"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-zinc-800 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng */}
             <button
               onClick={() => setIsAddModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Tiêu đề */}
-            <div className="border-b border-stone-100 pb-3 flex items-center gap-3">
-              <div className="w-10 h-10 bg-stone-900 text-white rounded-2xl flex items-center justify-center shadow-inner">
+            <div className="border-b border-zinc-150 dark:border-zinc-850 pb-3 flex items-center gap-3">
+              <div className="w-10 h-10 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-white rounded-2xl flex items-center justify-center shadow-inner">
                 <Plus size={18} className="stroke-[3]" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Thêm Phòng Nghỉ Mới</h3>
-                <span className="text-[10px] text-stone-400 tracking-wider block mt-1">Khởi tạo thực thể phòng nghỉ trên sơ đồ</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Thêm Phòng Nghỉ Mới</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider block mt-1">Khởi tạo thực thể phòng nghỉ trên sơ đồ</span>
               </div>
             </div>
 
@@ -640,45 +640,45 @@ export default function RoomGridManagementDashboard() {
             <div className="flex flex-col gap-3 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
-                  <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Mã Phòng (Duy nhất):</label>
+                  <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Mã Phòng (Duy nhất):</label>
                   <input
                     type="text"
                     value={newRoomId}
                     onChange={(e) => setNewRoomId(e.target.value)}
                     placeholder="Ví dụ: P-106..."
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Loại Phòng:</label>
+                  <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Loại Phòng:</label>
                   <input
                     type="text"
                     value={newRoomType}
                     onChange={(e) => setNewRoomType(e.target.value)}
                     placeholder="Ví dụ: View Vườn Thông..."
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Tên Phòng Nghỉ:</label>
+                <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên Phòng Nghỉ:</label>
                 <input
                   type="text"
                   value={newRoomName}
                   onChange={(e) => setNewRoomName(e.target.value)}
                   placeholder="Ví dụ: Bungalow Hoa Sữa..."
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col gap-1">
-                  <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Chi Nhánh Lắp Đặt:</label>
+                  <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Chi Nhánh Lắp Đặt:</label>
                   <select
                     value={newRoomBranchId}
                     onChange={(e) => setNewRoomBranchId(e.target.value as any)}
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
                   >
                     <option value="cs1">Tân Bình (CS1)</option>
                     <option value="cs2">Quận 10 (CS2)</option>
@@ -687,23 +687,23 @@ export default function RoomGridManagementDashboard() {
                   </select>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Giá Thuê Phòng (VND/đêm):</label>
+                  <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Giá Thuê Phòng (VND/đêm):</label>
                   <input
                     type="number"
                     value={newRoomPrice}
                     onChange={(e) => setNewRoomPrice(Number(e.target.value))}
                     placeholder="850000"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-stone-750 focus:outline-none focus:border-[#0A273A]"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Trạng Thái Khởi Tạo:</label>
+                <label className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Trạng Thái Khởi Tạo:</label>
                 <select
                   value={newRoomStatus}
                   onChange={(e) => setNewRoomStatus(e.target.value as any)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
                 >
                   <option value="available">🟢 Trống / Available</option>
                   <option value="booked_not_checked_in">🟠 Đã Đặt Chưa Đến</option>
@@ -718,13 +718,13 @@ export default function RoomGridManagementDashboard() {
             <div className="flex gap-2.5 mt-3">
               <button
                 onClick={handleAddNewRoom}
-                className="flex-grow py-2.5 bg-stone-900 hover:bg-stone-850 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5"
+                className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <Check size={14} className="stroke-[3]" /> Tạo Mới Ngay
               </button>
               <button
                 onClick={() => setIsAddModalOpen(false)}
-                className="px-4 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                className="px-4 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
               >
                 Hủy bỏ
               </button>
@@ -741,25 +741,25 @@ export default function RoomGridManagementDashboard() {
           onClick={() => setActiveEditingRoom(null)}
         >
           <div 
-            className="bg-white w-full max-w-3xl rounded-3xl p-7 md:p-9 overflow-y-auto shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-6 text-stone-800 max-h-[90vh]"
+            className="bg-white w-full max-w-3xl rounded-3xl p-7 md:p-9 overflow-y-auto shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-6 text-zinc-800 dark:text-zinc-200 max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút đóng */}
             <button
               onClick={() => setActiveEditingRoom(null)}
-              className="absolute top-5 right-5 text-stone-500 hover:text-stone-850 bg-stone-100 hover:bg-stone-200 border-none w-8 h-8 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
+              className="absolute top-5 right-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-8 h-8 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Tiêu đề Modal */}
-            <div className="border-b border-stone-100 pb-4 flex items-center gap-3.5">
+            <div className="border-b border-zinc-150 dark:border-zinc-850 pb-4 flex items-center gap-3.5">
               <div className="w-11 h-11 bg-emerald-50 text-emerald-800 rounded-2xl flex items-center justify-center shadow-inner">
                 <CheckCircle2 size={20} />
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-black text-stone-850 uppercase leading-none">Cập Nhật Phòng Sandbox</h3>
-                <span className="text-[10px] md:text-xs text-stone-400 font-mono tracking-wider block mt-1.5">Phòng: {activeEditingRoom.id} • {activeEditingRoom.name}</span>
+                <h3 className="text-base md:text-lg font-black text-zinc-800 dark:text-zinc-200 uppercase leading-none">Cập Nhật Phòng Sandbox</h3>
+                <span className="text-[10px] md:text-xs text-zinc-400 dark:text-zinc-500 font-mono tracking-wider block mt-1.5">Phòng: {activeEditingRoom.id} • {activeEditingRoom.name}</span>
               </div>
             </div>
 
@@ -768,17 +768,17 @@ export default function RoomGridManagementDashboard() {
               
               {/* CỘT TRÁI: Cập nhật Trạng thái nhanh của hệ thống */}
               <div className="flex flex-col gap-4 text-xs pb-5 md:pb-0">
-                <h4 className="font-extrabold text-stone-800 text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-50 pb-1.5 text-[#0A273A]">
+                <h4 className="font-extrabold text-zinc-800 dark:text-zinc-200 text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-1.5 text-zinc-900 dark:text-zinc-100">
                   🛠️ Trạng thái cơ bản
                 </h4>
 
                 {/* Dropdown trạng thái */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Trạng thái phòng:</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Trạng thái phòng:</label>
                   <select
                     value={tempStatus}
                     onChange={(e) => setTempStatus(e.target.value as any)}
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
                   >
                     <option value="available">🟢 Trống / Available</option>
                     <option value="booked_not_checked_in">🟠 Đã Đặt Chưa Đến (Sunset Orange)</option>
@@ -792,20 +792,20 @@ export default function RoomGridManagementDashboard() {
                 {/* Tên khách hàng nếu có khách */}
                 {(tempStatus === 'booked_not_checked_in' || tempStatus === 'checked_in' || tempStatus === 'checkout_imminent') && (
                   <div className="flex flex-col gap-1.5 animate-in slide-in-from-top duration-150">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Họ và Tên khách hàng:</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Họ và Tên khách hàng:</label>
                     <input
                       type="text"
                       value={tempGuest}
                       onChange={(e) => setTempGuest(e.target.value)}
                       placeholder="Tên khách đang ở..."
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
                     />
                   </div>
                 )}
 
                 {/* Lịch trình chi tiết */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">
                     {tempStatus === 'available' ? 'Ghi chú phụ (Tùy chọn):' :
                      tempStatus === 'booked_not_checked_in' ? 'Giờ check-in dự kiến:' :
                      tempStatus === 'checked_in' || tempStatus === 'checkout_imminent' ? 'Hạn giờ check-out:' :
@@ -821,7 +821,7 @@ export default function RoomGridManagementDashboard() {
                       tempStatus === 'checked_in' || tempStatus === 'checkout_imminent' ? 'Ví dụ: Hôm nay, 12:00...' :
                       tempStatus === 'maintenance' ? 'Ví dụ: Sửa bồn Hinoki rò nước...' : 'Ví dụ: 14:30...'
                     }
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
 
@@ -829,7 +829,7 @@ export default function RoomGridManagementDashboard() {
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleSaveStatus}
-                    className="flex-grow py-3 bg-stone-900 hover:bg-stone-850 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
+                    className="flex-grow py-3 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
                   >
                     <Check size={14} className="stroke-[3]" /> Lưu Thay Đổi
                   </button>
@@ -838,38 +838,38 @@ export default function RoomGridManagementDashboard() {
 
               {/* CỘT PHẢI: ĐẶT PHÒNG NHANH LIÊN KẾT HỆ THỐNG BOOKING */}
               <div className="flex flex-col gap-4 text-xs pt-5 md:pt-0 md:pl-8">
-                <h4 className="font-extrabold text-[#0A273A] text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-50 pb-1.5">
+                <h4 className="font-extrabold text-zinc-900 dark:text-zinc-100 text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
                   <KeyRound size={14} className="text-emerald-600 animate-pulse" /> 🔑 Đặt phòng nhanh liên kết Booking
                 </h4>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Họ & Tên Khách Hàng:</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Họ & Tên Khách Hàng:</label>
                   <input
                     type="text"
                     value={bookingGuestName}
                     onChange={(e) => setBookingGuestName(e.target.value)}
                     placeholder="Nhập tên đầy đủ của khách..."
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3.5">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Số Điện Thoại:</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Số Điện Thoại:</label>
                     <input
                       type="text"
                       value={bookingPhone}
                       onChange={(e) => setBookingPhone(e.target.value)}
                       placeholder="09..."
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-stone-750 font-mono"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-zinc-700 dark:text-zinc-300 font-mono"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Lịch Đặt Phòng:</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Lịch Đặt Phòng:</label>
                     <select
                       value={bookingStatus}
                       onChange={(e) => setBookingStatus(e.target.value as any)}
-                      className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-bold text-stone-750 focus:outline-none focus:border-emerald-600 cursor-pointer"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-emerald-600 cursor-pointer"
                     >
                       <option value="booked_not_checked_in">🟠 Đặt trước chưa đến</option>
                       <option value="checked_in">💗 Check-in ở ngay</option>
@@ -878,24 +878,24 @@ export default function RoomGridManagementDashboard() {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Thời gian lưu trú (Lịch trình):</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Thời gian lưu trú (Lịch trình):</label>
                   <input
                     type="text"
                     value={bookingDates}
                     onChange={(e) => setBookingDates(e.target.value)}
                     placeholder="Hôm nay, 14:00 - Mai, 12:00"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Ghi chú đặc biệt (Voucher/BBQ):</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ghi chú đặc biệt (Voucher/BBQ):</label>
                   <input
                     type="text"
                     value={bookingNotes}
                     onChange={(e) => setBookingNotes(e.target.value)}
                     placeholder="Ví dụ: Hưởng tuần trăng mật, chuẩn bị BBQ..."
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-stone-750"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-emerald-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
 
@@ -912,7 +912,7 @@ export default function RoomGridManagementDashboard() {
             </div>
 
             {/* KHU VỰC NGUY HIỂM: NÚT XÓA PHÒNG Ở CUỐI TRANG POPUP */}
-            <div className="border-t border-stone-150 pt-5 flex items-center justify-between mt-3">
+            <div className="border-t border-zinc-200 dark:border-zinc-800/80 pt-5 flex items-center justify-between mt-3">
               <button
                 onClick={() => handleDeleteRoom(activeEditingRoom.id, activeEditingRoom.name)}
                 className="bg-red-50 hover:bg-red-650 text-red-600 hover:text-white border border-red-200 hover:border-red-600 px-5 py-2.5 rounded-xl font-black text-xs cursor-pointer flex items-center gap-1.5 transition-all duration-200 shadow-2xs active:scale-95"
@@ -924,7 +924,7 @@ export default function RoomGridManagementDashboard() {
               
               <button
                 onClick={() => setActiveEditingRoom(null)}
-                className="px-6 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-black text-xs transition border-none cursor-pointer"
+                className="px-6 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-black text-xs transition border-none cursor-pointer"
               >
                 Đóng lại
               </button>

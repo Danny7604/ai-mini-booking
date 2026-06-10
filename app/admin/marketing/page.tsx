@@ -415,7 +415,7 @@ export default function MarketingCampaignsPage() {
   const renderZaloPreview = (content: string, voucher: string) => {
     if (!content.trim()) {
       return (
-        <span className="text-stone-400 italic text-[11px] font-normal leading-relaxed block text-center py-6">
+        <span className="text-zinc-400 dark:text-zinc-500 italic text-[11px] font-normal leading-relaxed block text-center py-6">
           Vui lòng nhập nội dung soạn thảo ở cột thiết lập để xem live preview tại đây...
         </span>
       )
@@ -428,26 +428,26 @@ export default function MarketingCampaignsPage() {
     return (
       <div className="flex flex-col gap-2">
         {/* Banner Zalo ZNS Header */}
-        <div className="flex items-center gap-1.5 border-b border-stone-200/50 pb-2 mb-1 select-none">
+        <div className="flex items-center gap-1.5 border-b border-zinc-250 dark:border-zinc-800 pb-2 mb-1 select-none">
           <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
             BH
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-black text-stone-850 leading-tight">Bliss Home Sài Gòn</span>
-            <span className="text-[8px] text-stone-400 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
+            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+            <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
           </div>
         </div>
 
         {/* Nội dung Evaluated text */}
-        <p className="text-[11px] text-stone-800 font-medium leading-relaxed whitespace-pre-wrap font-sans">
+        <p className="text-[11px] text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed whitespace-pre-wrap font-sans">
           {evaluated}
         </p>
 
         {/* Khối Button Call To Action giả lập nếu có voucher */}
         {voucher && (
-          <div className="mt-2.5 pt-2 border-t border-dashed border-stone-200 flex flex-col gap-1.5 font-sans select-none">
-            <div className="bg-stone-50 border border-stone-200/60 p-2 rounded-xl flex items-center justify-between text-[10px] font-bold">
-              <span className="text-stone-500">Mã ưu đãi của bạn:</span>
+          <div className="mt-2.5 pt-2 border-t border-dashed border-zinc-200 dark:border-zinc-800 flex flex-col gap-1.5 font-sans select-none">
+            <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-850 p-2 rounded-xl flex items-center justify-between text-[10px] font-bold">
+              <span className="text-zinc-500 dark:text-zinc-400">Mã ưu đãi của bạn:</span>
               <span className="text-blue-600 font-black font-mono bg-blue-50 px-1.5 py-0.5 border border-blue-105 rounded">{voucher}</span>
             </div>
             <div className="w-full py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[9px] font-black text-center uppercase tracking-wider cursor-pointer shadow-3xs">
@@ -478,11 +478,11 @@ export default function MarketingCampaignsPage() {
   })
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-stone-750">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-700 dark:text-zinc-300">
       
       {/* 🔮 CUSTOM TOAST NOTIFICATION */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#0A273A] border border-blue-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-50 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border border-blue-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -491,12 +491,12 @@ export default function MarketingCampaignsPage() {
       )}
 
       {/* HEADER SECTION */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200/50 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-250 dark:border-zinc-800 pb-5">
         <div>
-          <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Chiến Dịch Marketing
           </h2>
-          <p className="text-xs text-stone-500 font-medium mt-0.5">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
             Tạo chiến dịch tin nhắn chăm sóc tự động Zalo ZNS và Email dựa trên tệp hành vi khách hàng CRM Bliss Home.
           </p>
         </div>
@@ -514,23 +514,23 @@ export default function MarketingCampaignsPage() {
       {/* THREE STATS TILES GRID */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Stat 1: Tổng tin nhắn gửi */}
-        <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
+        <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-stone-400 uppercase tracking-widest font-black">Tin Nhắn Gửi Trong Tháng</span>
-            <Send size={15} className="text-[#0A273A]" />
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-black">Tin Nhắn Gửi Trong Tháng</span>
+            <Send size={15} className="text-zinc-900 dark:text-zinc-100" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-xl font-black text-[#0A273A] font-mono leading-none">
+            <span className="text-xl font-black text-zinc-900 dark:text-zinc-100 font-mono leading-none">
               {totalSent.toLocaleString('vi-VN')} tin gửi
             </span>
-            <span className="text-[9px] text-stone-400 font-bold block mt-1 uppercase">Đã gửi tự động qua hệ thống ZNS</span>
+            <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 uppercase">Đã gửi tự động qua hệ thống ZNS</span>
           </div>
         </div>
 
         {/* Stat 2: Tỷ lệ CTR trung bình */}
-        <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
+        <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-stone-400 uppercase tracking-widest font-black">CTR Trung Bình (Tỉ lệ Click)</span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-black">CTR Trung Bình (Tỉ lệ Click)</span>
             <Percent size={15} className="text-emerald-600" />
           </div>
           <div className="flex flex-col gap-0.5">
@@ -542,22 +542,22 @@ export default function MarketingCampaignsPage() {
         </div>
 
         {/* Stat 3: Tổng ngân sách hoạt động */}
-        <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
+        <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-stone-400 uppercase tracking-widest font-black">Ngân Sách Tin Gửi Thực Tế</span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-black">Ngân Sách Tin Gửi Thực Tế</span>
             <DollarSign size={15} className="text-blue-600" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-xl font-black text-[#0A273A] font-mono leading-none">
+            <span className="text-xl font-black text-zinc-900 dark:text-zinc-100 font-mono leading-none">
               {formatVND(totalBudgetSpent)}
             </span>
-            <span className="text-[9px] text-stone-400 font-bold block mt-1 uppercase">Ước tính phí Zalo ZNS đã chạy</span>
+            <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 uppercase">Ước tính phí Zalo ZNS đã chạy</span>
           </div>
         </div>
       </div>
 
       {/* FILTERING AREA */}
-      <div className="flex flex-col md:flex-row gap-3 items-center justify-between bg-white border border-stone-150 p-4 rounded-3xl shadow-2xs">
+      <div className="flex flex-col md:flex-row gap-3 items-center justify-between bg-white border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
         
         {/* Tìm kiếm */}
         <div className="relative w-full md:w-80">
@@ -566,9 +566,9 @@ export default function MarketingCampaignsPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Tìm theo tên chiến dịch hoặc đối tượng..."
-            className="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 focus:bg-white transition"
+            className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 focus:bg-white transition"
           />
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
         </div>
 
         {/* Dropdown Filters */}
@@ -576,11 +576,11 @@ export default function MarketingCampaignsPage() {
           
           {/* Lọc Kênh */}
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-stone-400 font-black uppercase tracking-wider hidden sm:inline">Kênh:</span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider hidden sm:inline">Kênh:</span>
             <select
               value={channelFilter}
               onChange={(e) => setChannelFilter(e.target.value)}
-              className="bg-white border border-stone-250 rounded-xl px-3 py-2 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer transition"
+              className="bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer transition"
             >
               <option value="all">Tất cả kênh</option>
               <option value="Zalo ZNS">💬 Zalo ZNS</option>
@@ -590,11 +590,11 @@ export default function MarketingCampaignsPage() {
 
           {/* Lọc Trạng thái */}
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-stone-400 font-black uppercase tracking-wider hidden sm:inline">Trạng thái:</span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider hidden sm:inline">Trạng thái:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-white border border-stone-250 rounded-xl px-3 py-2 text-xs font-bold text-stone-700 focus:outline-none focus:border-[#0A273A] cursor-pointer transition"
+              className="bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer transition"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="draft">Bản nháp (Draft)</option>
@@ -610,16 +610,16 @@ export default function MarketingCampaignsPage() {
       {isLoading ? (
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
           <div className="w-8 h-8 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest animate-pulse">
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
             Đang tải dữ liệu chiến dịch Bliss...
           </span>
         </div>
       ) : (
-        <div className="bg-white border border-stone-200/60 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+        <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl shadow-sm overflow-hidden flex flex-col">
           <div className="overflow-x-auto w-full">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-stone-50/80 border-b border-stone-100 text-[10px] font-black text-stone-400 uppercase tracking-wider">
+                <tr className="bg-zinc-50 dark:bg-zinc-900/60/80 border-b border-zinc-150 dark:border-zinc-850 text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   <th className="py-4 px-6">Chiến Dịch</th>
                   <th className="py-4 px-5">Tệp Khách Hàng</th>
                   <th className="py-4 px-5 text-right">Ngân Sách</th>
@@ -629,10 +629,10 @@ export default function MarketingCampaignsPage() {
                   <th className="py-4 px-6 text-center">Thao Tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 text-xs font-semibold text-stone-750">
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                 {filteredCampaigns.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-stone-400">
+                    <td colSpan={7} className="py-12 text-center text-zinc-400 dark:text-zinc-500">
                       <div className="flex flex-col items-center gap-2">
                         <AlertCircle size={24} className="text-stone-300" />
                         <span>Không tìm thấy chiến dịch tiếp thị nào.</span>
@@ -641,19 +641,19 @@ export default function MarketingCampaignsPage() {
                   </tr>
                 ) : (
                   filteredCampaigns.map((camp) => (
-                    <tr key={camp.id} className="hover:bg-stone-50/40 transition">
+                    <tr key={camp.id} className="hover:bg-zinc-50/40 dark:bg-zinc-900/30 transition">
                       
                       {/* Cột Tên & Kênh */}
                       <td className="py-4 px-6">
                         <div className="flex flex-col gap-1">
-                          <span className="font-extrabold text-stone-850 text-xs sm:text-sm">{camp.name}</span>
+                          <span className="font-extrabold text-zinc-800 dark:text-zinc-200 text-xs sm:text-sm">{camp.name}</span>
                           <div className="flex items-center gap-1">
-                            <span className="text-[9px] text-stone-400 font-mono font-bold">{camp.id}</span>
+                            <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-mono font-bold">{camp.id}</span>
                             <span 
                               className={`px-1.5 py-0.2 rounded text-[8px] font-black uppercase tracking-wider border flex items-center gap-0.5 ${
                                 camp.channel === 'Zalo ZNS'
                                   ? 'bg-blue-50 text-blue-750 border-blue-150'
-                                  : 'bg-stone-100 text-stone-600 border-stone-250'
+                                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-350 border-zinc-250 dark:border-zinc-700'
                               }`}
                             >
                               {camp.channel === 'Zalo ZNS' ? <MessageSquare size={8} /> : <Mail size={8} />}
@@ -665,26 +665,26 @@ export default function MarketingCampaignsPage() {
 
                       {/* Cột tệp khách hàng */}
                       <td className="py-4 px-5">
-                        <span className="inline-flex items-center gap-1 bg-stone-100 px-2.5 py-1 rounded-lg text-[10px] font-extrabold text-stone-700">
-                          <Layers size={10} className="text-stone-500" />
+                        <span className="inline-flex items-center gap-1 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-lg text-[10px] font-extrabold text-zinc-700 dark:text-zinc-300">
+                          <Layers size={10} className="text-zinc-500 dark:text-zinc-400" />
                           {camp.targetAudience}
                         </span>
                       </td>
 
                       {/* Cột ngân sách */}
-                      <td className="py-4 px-5 text-right font-black font-mono text-[#0A273A] text-xs">
+                      <td className="py-4 px-5 text-right font-black font-mono text-zinc-900 dark:text-zinc-100 text-xs">
                         {formatVND(camp.budget)}
                       </td>
 
                       {/* Cột đã gửi */}
-                      <td className="py-4 px-5 text-center font-bold font-mono text-stone-600 text-xs">
+                      <td className="py-4 px-5 text-center font-bold font-mono text-zinc-650 dark:text-zinc-350 text-xs">
                         {camp.sentCount}
                       </td>
 
                       {/* Cột hiệu suất progress bar */}
                       <td className="py-4 px-5">
                         <div className="flex flex-col gap-1 items-center justify-center max-w-[100px] mx-auto">
-                          <div className="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden border border-stone-200/50">
+                          <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden border border-zinc-250 dark:border-zinc-800">
                             <div 
                               className="bg-emerald-500 h-full rounded-full transition-all duration-500" 
                               style={{ width: `${camp.clickRate}%` }}
@@ -702,7 +702,7 @@ export default function MarketingCampaignsPage() {
                               ? 'bg-green-50 text-green-700 border-green-200'
                               : camp.status === 'completed'
                               ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
-                              : 'bg-stone-50 text-stone-500 border-stone-200'
+                              : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'
                           }`}
                         >
                           {camp.status === 'active' ? '● Đang chạy' : camp.status === 'completed' ? '● Hoàn tất' : '● Nháp'}
@@ -718,7 +718,7 @@ export default function MarketingCampaignsPage() {
                             disabled={camp.status === 'completed'}
                             className={`w-7 h-7 rounded-lg flex items-center justify-center border-none transition cursor-pointer ${
                               camp.status === 'completed'
-                                ? 'bg-stone-100 text-stone-300 cursor-not-allowed'
+                                ? 'bg-zinc-100 dark:bg-zinc-800 text-stone-300 cursor-not-allowed'
                                 : 'bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white shadow-2xs'
                             }`}
                             title="Gửi hàng loạt ngay lập tức"
@@ -732,7 +732,7 @@ export default function MarketingCampaignsPage() {
                             disabled={camp.status === 'completed'}
                             className={`w-7 h-7 rounded-lg flex items-center justify-center border-none transition cursor-pointer ${
                               camp.status === 'completed'
-                                ? 'bg-stone-100 text-stone-300 cursor-not-allowed'
+                                ? 'bg-zinc-100 dark:bg-zinc-800 text-stone-300 cursor-not-allowed'
                                 : camp.status === 'active'
                                 ? 'bg-amber-50 hover:bg-amber-600 text-amber-600 hover:text-white shadow-2xs'
                                 : 'bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white shadow-2xs'
@@ -745,7 +745,7 @@ export default function MarketingCampaignsPage() {
                           {/* Nút Edit */}
                           <button
                             onClick={() => openEditModal(camp)}
-                            className="w-7 h-7 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-850 flex items-center justify-center border-none transition cursor-pointer"
+                            className="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 hover:text-zinc-800 dark:text-zinc-200 flex items-center justify-center border-none transition cursor-pointer"
                             title="Chỉnh sửa chiến dịch"
                           >
                             <Pencil size={11} />
@@ -778,69 +778,69 @@ export default function MarketingCampaignsPage() {
           onClick={() => setIsCreateModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800 max-h-[92vh]"
+            className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[92vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsCreateModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
             >
               ✕
             </button>
 
             {/* Icon & Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Megaphone size={18} className="text-emerald-600" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-[#0A273A] uppercase leading-none">Thiết Lập Chiến Dịch Tiếp Thị</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">CẤU HÌNH GỬI TỰ ĐỘNG ZALO ZNS & EMAIL</span>
+                <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100 uppercase leading-none">Thiết Lập Chiến Dịch Tiếp Thị</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">CẤU HÌNH GỬI TỰ ĐỘNG ZALO ZNS & EMAIL</span>
               </div>
             </div>
 
             {/* Smart Form chia làm 2 cột layout trên màn hình lớn */}
-            <form onSubmit={handleCreateCampaign} className="grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto text-xs font-semibold text-stone-700 leading-relaxed max-h-[72vh] pr-1">
+            <form onSubmit={handleCreateCampaign} className="grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto text-xs font-semibold text-zinc-700 dark:text-zinc-300 leading-relaxed max-h-[72vh] pr-1">
               
               {/* CỘT TRÁI: THIẾT LẬP */}
-              <div className="flex flex-col gap-4 bg-stone-50/50 p-4.5 rounded-2xl border border-stone-200/50">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1.5 mb-1">
+              <div className="flex flex-col gap-4 bg-zinc-50 dark:bg-zinc-900/60/50 p-4.5 rounded-2xl border border-zinc-250 dark:border-zinc-800">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1.5 mb-1">
                   1. Cấu hình kỹ thuật chiến dịch
                 </span>
 
                 {/* Tên chiến dịch */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
                   <input 
                     type="text"
                     required
                     value={newCampName}
                     onChange={(e) => setNewCampName(e.target.value)}
                     placeholder="Ví dụ: Chào mùa đông ấm áp - Giảm 15% VIP ❄️"
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850 shadow-3xs"
+                    className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 shadow-3xs"
                   />
                 </div>
 
                 {/* Kênh & Tệp khách hàng */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
                     <select
                       value={newCampChannel}
                       onChange={(e) => setNewCampChannel(e.target.value as any)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       <option value="Zalo ZNS">💬 Zalo ZNS (Ưu tiên)</option>
                       <option value="Email">📧 Email</option>
                     </select>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tệp Khách Hàng Mục Tiêu *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tệp Khách Hàng Mục Tiêu *</label>
                     <select
                       value={newCampTarget}
                       onChange={(e) => setNewCampTarget(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       {TARGETS.map(t => (
                         <option key={t} value={t}>{t}</option>
@@ -852,11 +852,11 @@ export default function MarketingCampaignsPage() {
                 {/* Voucher đính kèm & Ngân sách */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Đính Kèm Voucher (Tùy chọn)</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Đính Kèm Voucher (Tùy chọn)</label>
                     <select
                       value={newCampVoucher}
                       onChange={(e) => setNewCampVoucher(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       <option value="">-- Không đính kèm --</option>
                       {AVAILABLE_VOUCHERS.map(v => (
@@ -865,7 +865,7 @@ export default function MarketingCampaignsPage() {
                     </select>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Ngân Sách Chiến Dịch (VND) *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ngân Sách Chiến Dịch (VND) *</label>
                     <input 
                       type="number"
                       required
@@ -873,29 +873,29 @@ export default function MarketingCampaignsPage() {
                       step={50000}
                       value={newCampBudget}
                       onChange={(e) => setNewCampBudget(Number(e.target.value) || 0)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-black focus:outline-none focus:border-[#0A273A] text-stone-850 shadow-3xs"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-black focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 shadow-3xs"
                     />
                   </div>
                 </div>
               </div>
 
               {/* CỘT PHẢI: SOẠN THẢO & PREVIEW CHUYÊN NGHIỆP */}
-              <div className="flex flex-col gap-4 bg-stone-50/50 p-4.5 rounded-2xl border border-stone-200/50">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1.5 mb-1">
+              <div className="flex flex-col gap-4 bg-zinc-50 dark:bg-zinc-900/60/50 p-4.5 rounded-2xl border border-zinc-250 dark:border-zinc-800">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1.5 mb-1">
                   2. Biên tập nội dung & Preview Zalo
                 </span>
 
                 {/* Textarea Soạn thảo tin nhắn */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center justify-between">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Soạn Thảo Nội Dung Tin *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Soạn Thảo Nội Dung Tin *</label>
                     
                     {/* Các nút chèn Placeholder nhanh */}
                     <div className="flex gap-1.5">
                       <button
                         type="button"
                         onClick={() => insertPlaceholder('{ten_khach}', 'new')}
-                        className="bg-stone-200 hover:bg-stone-300 text-stone-700 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
+                        className="bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
                         title="Chèn tên khách hàng động"
                       >
                         + Tên Khách
@@ -903,7 +903,7 @@ export default function MarketingCampaignsPage() {
                       <button
                         type="button"
                         onClick={() => insertPlaceholder('{ma_voucher}', 'new')}
-                        className="bg-stone-200 hover:bg-stone-300 text-stone-700 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
+                        className="bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
                         title="Chèn mã voucher đã chọn"
                       >
                         + Mã Voucher
@@ -916,23 +916,23 @@ export default function MarketingCampaignsPage() {
                     value={newCampContent}
                     onChange={(e) => setNewCampContent(e.target.value)}
                     placeholder="Sử dụng biến {ten_khach} và {ma_voucher} để tự động cá nhân hóa khi gửi Zalo ZNS..."
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed font-sans shadow-3xs"
+                    className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans shadow-3xs"
                   />
                 </div>
 
                 {/* Khung Preview mô phỏng màn hình điện thoại */}
                 <div className="flex flex-col gap-1.5 mt-1">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider flex items-center gap-1">
-                    <Smartphone size={12} className="text-stone-500" /> Mô Phỏng Hiển Thị Live (Zalo Mobile Frame)
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
+                    <Smartphone size={12} className="text-zinc-500 dark:text-zinc-400" /> Mô Phỏng Hiển Thị Live (Zalo Mobile Frame)
                   </label>
                   
                   {/* Phone Mockup bubble box */}
-                  <div className="bg-stone-200 rounded-2xl p-4.5 border border-stone-300/60 shadow-inner flex flex-col gap-2 max-w-[340px] mx-auto w-full relative">
+                  <div className="bg-zinc-200 dark:bg-zinc-800/80 rounded-2xl p-4.5 border border-stone-300/60 shadow-inner flex flex-col gap-2 max-w-[340px] mx-auto w-full relative">
                     {/* Khuyên tai loa thoại giả lập trên đầu */}
                     <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-stone-400/40 rounded-full"></div>
                     
                     {/* Bong bóng tin nhắn chat */}
-                    <div className="bg-white rounded-2xl p-3.5 shadow-md border border-stone-100 flex flex-col mt-2">
+                    <div className="bg-white rounded-2xl p-3.5 shadow-md border border-zinc-150 dark:border-zinc-850 flex flex-col mt-2">
                       {renderZaloPreview(newCampContent, newCampVoucher)}
                     </div>
                   </div>
@@ -943,7 +943,7 @@ export default function MarketingCampaignsPage() {
                   <button
                     type="button"
                     onClick={() => setIsCreateModalOpen(false)}
-                    className="flex-grow py-2.5 bg-stone-200 hover:bg-stone-300 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                    className="flex-grow py-2.5 bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                   >
                     Hủy bỏ
                   </button>
@@ -968,68 +968,68 @@ export default function MarketingCampaignsPage() {
           onClick={() => setIsEditModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800 max-h-[92vh]"
+            className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200 max-h-[92vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsEditModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer z-10"
             >
               ✕
             </button>
 
             {/* Icon & Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-purple-50 text-purple-750 rounded-2xl flex items-center justify-center shadow-inner">
                 <Pencil size={18} className="text-purple-600" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-[#0A273A] uppercase leading-none">Chỉnh Sửa Chiến Dịch Tiếp Thị</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider uppercase">CẬP NHẬT CHI TIẾT CHIẾN DỊCH: {selectedCampaign.id}</span>
+                <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100 uppercase leading-none">Chỉnh Sửa Chiến Dịch Tiếp Thị</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider uppercase">CẬP NHẬT CHI TIẾT CHIẾN DỊCH: {selectedCampaign.id}</span>
               </div>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSaveCampaignEdits} className="grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto text-xs font-semibold text-stone-750 leading-relaxed max-h-[72vh] pr-1">
+            <form onSubmit={handleSaveCampaignEdits} className="grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto text-xs font-semibold text-zinc-700 dark:text-zinc-300 leading-relaxed max-h-[72vh] pr-1">
               
               {/* CỘT TRÁI: THIẾT LẬP CHỈNH SỬA */}
-              <div className="flex flex-col gap-4 bg-stone-50/50 p-4.5 rounded-2xl border border-stone-200/50">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1.5 mb-1">
+              <div className="flex flex-col gap-4 bg-zinc-50 dark:bg-zinc-900/60/50 p-4.5 rounded-2xl border border-zinc-250 dark:border-zinc-800">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1.5 mb-1">
                   1. Cấu hình kỹ thuật chiến dịch
                 </span>
 
                 {/* Tên chiến dịch */}
-                <div className="flex flex-col gap-1.5 text-stone-800">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
+                <div className="flex flex-col gap-1.5 text-zinc-800 dark:text-zinc-200">
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tên Chiến Dịch *</label>
                   <input 
                     type="text"
                     required
                     value={editCampName}
                     onChange={(e) => setEditCampName(e.target.value)}
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A] text-stone-850 shadow-3xs"
+                    className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 shadow-3xs"
                   />
                 </div>
 
                 {/* Kênh & Tệp khách hàng */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-stone-800">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-zinc-800 dark:text-zinc-200">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Kênh Truyền Thông *</label>
                     <select
                       value={editCampChannel}
                       onChange={(e) => setEditCampChannel(e.target.value as any)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       <option value="Zalo ZNS">💬 Zalo ZNS (Ưu tiên)</option>
                       <option value="Email">📧 Email</option>
                     </select>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Tệp Khách Hàng Mục Tiêu *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Tệp Khách Hàng Mục Tiêu *</label>
                     <select
                       value={editCampTarget}
                       onChange={(e) => setEditCampTarget(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       {TARGETS.map(t => (
                         <option key={t} value={t}>{t}</option>
@@ -1039,13 +1039,13 @@ export default function MarketingCampaignsPage() {
                 </div>
 
                 {/* Voucher đính kèm & Ngân sách */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-stone-800">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-zinc-800 dark:text-zinc-200">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Đính Kèm Voucher (Tùy chọn)</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Đính Kèm Voucher (Tùy chọn)</label>
                     <select
                       value={editCampVoucher}
                       onChange={(e) => setEditCampVoucher(e.target.value)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#0A273A]"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
                     >
                       <option value="">-- Không đính kèm --</option>
                       {AVAILABLE_VOUCHERS.map(v => (
@@ -1054,7 +1054,7 @@ export default function MarketingCampaignsPage() {
                     </select>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Ngân Sách Chiến Dịch (VND) *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Ngân Sách Chiến Dịch (VND) *</label>
                     <input 
                       type="number"
                       required
@@ -1062,29 +1062,29 @@ export default function MarketingCampaignsPage() {
                       step={50000}
                       value={editCampBudget}
                       onChange={(e) => setEditCampBudget(Number(e.target.value) || 0)}
-                      className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-black focus:outline-none focus:border-[#0A273A] text-stone-850 shadow-3xs"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-black focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 shadow-3xs"
                     />
                   </div>
                 </div>
               </div>
 
               {/* CỘT PHẢI: SOẠN THẢO & PREVIEW CHỈNH SỬA */}
-              <div className="flex flex-col gap-4 bg-stone-50/50 p-4.5 rounded-2xl border border-stone-200/50">
-                <span className="text-[9px] text-[#0A273A] uppercase tracking-widest font-black block border-b border-stone-200 pb-1.5 mb-1">
+              <div className="flex flex-col gap-4 bg-zinc-50 dark:bg-zinc-900/60/50 p-4.5 rounded-2xl border border-zinc-250 dark:border-zinc-800">
+                <span className="text-[9px] text-zinc-900 dark:text-zinc-100 uppercase tracking-widest font-black block border-b border-zinc-200 dark:border-zinc-800 pb-1.5 mb-1">
                   2. Biên tập nội dung & Preview Zalo
                 </span>
 
                 {/* Textarea Soạn thảo tin nhắn */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center justify-between">
-                    <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Soạn Thảo Nội Dung Tin *</label>
+                    <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Soạn Thảo Nội Dung Tin *</label>
                     
                     {/* Các nút chèn Placeholder nhanh */}
                     <div className="flex gap-1.5">
                       <button
                         type="button"
                         onClick={() => insertPlaceholder('{ten_khach}', 'edit')}
-                        className="bg-stone-200 hover:bg-stone-300 text-stone-700 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
+                        className="bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
                         title="Chèn tên khách hàng động"
                       >
                         + Tên Khách
@@ -1092,7 +1092,7 @@ export default function MarketingCampaignsPage() {
                       <button
                         type="button"
                         onClick={() => insertPlaceholder('{ma_voucher}', 'edit')}
-                        className="bg-stone-200 hover:bg-stone-300 text-stone-700 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
+                        className="bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-black text-[9px] px-1.5 py-0.5 rounded cursor-pointer border-none active:scale-95 transition"
                         title="Chèn mã voucher đã chọn"
                       >
                         + Mã Voucher
@@ -1104,23 +1104,23 @@ export default function MarketingCampaignsPage() {
                     rows={4}
                     value={editCampContent}
                     onChange={(e) => setEditCampContent(e.target.value)}
-                    className="w-full bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750 leading-relaxed font-sans shadow-3xs text-stone-850"
+                    className="w-full bg-white border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans shadow-3xs text-zinc-800 dark:text-zinc-200"
                   />
                 </div>
 
                 {/* Khung Preview mô phỏng màn hình điện thoại */}
                 <div className="flex flex-col gap-1.5 mt-1">
-                  <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider flex items-center gap-1">
-                    <Smartphone size={12} className="text-stone-500" /> Mô Phỏng Hiển Thị Live (Zalo Mobile Frame)
+                  <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
+                    <Smartphone size={12} className="text-zinc-500 dark:text-zinc-400" /> Mô Phỏng Hiển Thị Live (Zalo Mobile Frame)
                   </label>
                   
                   {/* Phone Mockup bubble box */}
-                  <div className="bg-stone-200 rounded-2xl p-4.5 border border-stone-300/60 shadow-inner flex flex-col gap-2 max-w-[340px] mx-auto w-full relative">
+                  <div className="bg-zinc-200 dark:bg-zinc-800/80 rounded-2xl p-4.5 border border-stone-300/60 shadow-inner flex flex-col gap-2 max-w-[340px] mx-auto w-full relative">
                     {/* Khuyên tai loa thoại giả lập trên đầu */}
                     <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-stone-400/40 rounded-full"></div>
                     
                     {/* Bong bóng tin nhắn chat */}
-                    <div className="bg-white rounded-2xl p-3.5 shadow-md border border-stone-100 flex flex-col mt-2">
+                    <div className="bg-white rounded-2xl p-3.5 shadow-md border border-zinc-150 dark:border-zinc-850 flex flex-col mt-2">
                       {renderZaloPreview(editCampContent, editCampVoucher)}
                     </div>
                   </div>
@@ -1131,13 +1131,13 @@ export default function MarketingCampaignsPage() {
                   <button
                     type="button"
                     onClick={() => setIsEditModalOpen(false)}
-                    className="flex-grow py-2.5 bg-stone-200 hover:bg-stone-300 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                    className="flex-grow py-2.5 bg-zinc-200 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:bg-zinc-700 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                   >
                     Hủy bỏ
                   </button>
                   <button
                     type="submit"
-                    className="flex-grow py-2.5 bg-[#0A273A] hover:bg-[#124263] text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                    className="flex-grow py-2.5 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <Check size={12} className="stroke-[3]" /> Lưu Thay Đổi
                   </button>

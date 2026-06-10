@@ -7,11 +7,7 @@ import {
   Check, 
   X, 
   Eye, 
-  Calendar, 
-  User, 
   Phone, 
-  DollarSign, 
-  Clock, 
   Sparkles,
   FileText,
   AlertCircle
@@ -215,7 +211,6 @@ export default function BookingsManagementPage() {
   /**
    * Hàm xử lý Cập nhật Trạng thái Đơn hàng
    * Áp dụng Optimistic UI Update để cập nhật ngay lập tức giao diện người dùng
-   * Bọc try...catch cẩn thận và có log console chuẩn bị tích hợp Supabase
    */
   const handleUpdateStatus = async (bookingId: string, newStatus: 'confirmed' | 'cancelled') => {
     const originalBookings = [...bookings]
@@ -268,15 +263,15 @@ export default function BookingsManagementPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-700 dark:text-zinc-300">
       
       {/* HEADER AREA */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200/50 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800/60 pb-5">
         <div>
-          <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Quản Lý Đơn Booking
           </h2>
-          <p className="text-xs text-stone-500 font-medium mt-0.5">
+          <p className="text-xs text-muted-foreground font-medium mt-0.5 animate-in fade-in">
             Xem lịch trình, kiểm soát trạng thái đơn hàng và duyệt lịch đặt phòng của khách.
           </p>
         </div>
@@ -288,13 +283,13 @@ export default function BookingsManagementPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Tìm theo tên, SĐT, mã đơn..."
-            className="w-full bg-white border border-stone-200 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-[#0A273A] text-stone-750"
+            className="w-full bg-card border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 transition"
           />
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
         </div>
       </div>
 
-      {/* BỘ LỌC TRẠNG THÁI CAO CẤP (STATUS FILTER TABS) */}
+      {/* BỘ LỌC TRẠNG THÁI (STATUS FILTER TABS) */}
       <div className="flex flex-wrap gap-2">
         {[
           { value: 'all', label: 'Tất cả đơn' },
@@ -310,17 +305,17 @@ export default function BookingsManagementPage() {
             <button
               key={tab.value}
               onClick={() => setStatusFilter(tab.value as any)}
-              className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 border cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-xl text-xs font-extrabold border cursor-pointer flex items-center gap-1.5 transition-all duration-200 ${
                 isSelected
-                  ? 'bg-[#0A273A] border-[#0A273A] text-white shadow-md'
-                  : 'bg-white hover:bg-stone-50 border-stone-200 text-stone-600 hover:text-stone-900'
-              } ${isHighlighted ? 'ring-4 ring-emerald-500/80 scale-[1.05] animate-pulse duration-150' : ''}`}
+                  ? 'bg-zinc-900 border-zinc-900 text-white dark:bg-zinc-100 dark:border-zinc-100 dark:text-zinc-950 shadow-xs'
+                  : 'bg-card hover:bg-zinc-50 dark:hover:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400'
+              } ${isHighlighted ? 'ring-2 ring-emerald-500/80 scale-[1.03] animate-pulse' : ''}`}
             >
               <span>{tab.label}</span>
-              <span className={`px-2 py-0.5 rounded-full text-[10px] ${
+              <span className={`px-2 py-0.5 rounded-full text-[9px] ${
                 isSelected 
-                  ? 'bg-emerald-600 text-white font-extrabold' 
-                  : 'bg-stone-100 text-stone-500 font-bold'
+                  ? 'bg-emerald-600 text-white font-extrabold dark:bg-emerald-500/20 dark:text-emerald-450' 
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 font-bold'
               }`}>
                 {getCount(tab.value as any)}
               </span>
@@ -332,18 +327,18 @@ export default function BookingsManagementPage() {
       {/* RENDER KHI ĐANG TẢI DỮ LIỆU */}
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
-          <div className="w-8 h-8 border-4 border-[#0A273A] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest animate-pulse">
+          <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
             Đang đồng bộ dữ liệu booking...
           </span>
         </div>
       ) : (
-        /* DATA TABLE (BẢNG HIỂN THỊ ĐƠN ĐẶT PHÒNG HIỆN ĐẠI) */
-        <div className="bg-white border border-stone-200/60 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+        /* DATA TABLE (BẢNG HIỂN THỊ ĐƠN ĐẶT PHÒNG) */
+        <div className="bg-card border border-zinc-200 dark:border-zinc-850 rounded-2xl shadow-xs overflow-hidden flex flex-col">
           <div className="overflow-x-auto w-full">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-stone-50/80 border-b border-stone-100 text-[10px] font-black text-stone-400 uppercase tracking-wider">
+                <tr className="bg-zinc-50/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 text-[10px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                   <th className="py-4 px-6">Mã Đơn</th>
                   <th className="py-4 px-5">Khách Hàng</th>
                   <th className="py-4 px-5">Phòng & Chi Nhánh</th>
@@ -353,12 +348,12 @@ export default function BookingsManagementPage() {
                   <th className="py-4 px-6 text-center">Thao Tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 text-xs font-semibold text-stone-700">
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                 {filteredBookings.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-stone-450">
+                    <td colSpan={7} className="py-12 text-center text-zinc-400">
                       <div className="flex flex-col items-center gap-2">
-                        <AlertCircle size={24} className="text-stone-300" />
+                        <AlertCircle size={24} className="text-zinc-300 dark:text-zinc-700" />
                         <span>Không tìm thấy đơn booking nào khớp với bộ lọc.</span>
                       </div>
                     </td>
@@ -370,23 +365,23 @@ export default function BookingsManagementPage() {
                     return (
                       <tr 
                         key={booking.id} 
-                        className={`transition-all duration-700 ${
+                        className={`transition-all duration-500 ${
                           isRowHighlighted 
-                            ? 'bg-emerald-50/75 border-y-2 border-emerald-500 animate-pulse relative z-10' 
-                            : 'hover:bg-stone-50/40 border-b border-stone-100'
+                            ? 'bg-emerald-500/10 dark:bg-emerald-500/5 border-y-2 border-emerald-500 animate-pulse relative z-10' 
+                            : 'hover:bg-zinc-50/50 dark:hover:bg-zinc-900/40 border-b border-zinc-100 dark:border-zinc-850/60'
                         }`}
                       >
                         
                         {/* Mã đơn */}
-                        <td className="py-4 px-6 font-mono text-[#0A273A] font-extrabold tracking-wider">
+                        <td className="py-4 px-6 font-mono text-zinc-900 dark:text-zinc-100 font-extrabold tracking-wider">
                           {booking.id}
                         </td>
   
                         {/* Khách hàng */}
                         <td className="py-4 px-5">
                           <div className="flex flex-col gap-0.5">
-                            <span className="font-extrabold text-stone-850">{booking.customerName}</span>
-                            <span className="text-[10px] text-stone-400 font-semibold font-mono flex items-center gap-0.5">
+                            <span className="font-extrabold text-zinc-900 dark:text-zinc-50">{booking.customerName}</span>
+                            <span className="text-[10px] text-zinc-450 dark:text-zinc-500 font-semibold font-mono flex items-center gap-0.5">
                               <Phone size={9} /> {booking.phone}
                             </span>
                           </div>
@@ -395,23 +390,23 @@ export default function BookingsManagementPage() {
                         {/* Phòng & Chi nhánh */}
                         <td className="py-4 px-5">
                           <div className="flex flex-col gap-0.5">
-                            <span className="text-stone-800 font-bold leading-tight">{booking.roomName.split('(')[0]}</span>
-                            <span className="text-[10px] text-stone-400 font-medium">{booking.branch.replace(' 🏡', '').replace(' 🏙️', '').replace(' 🪟', '').replace(' 🌸', '')}</span>
+                            <span className="text-zinc-800 dark:text-zinc-200 font-bold leading-tight">{booking.roomName.split('(')[0]}</span>
+                            <span className="text-[10px] text-zinc-450 dark:text-zinc-500 font-medium">{booking.branch.replace(' 🏡', '').replace(' 🏙️', '').replace(' 🪟', '').replace(' 🌸', '')}</span>
                           </div>
                         </td>
   
                         {/* Thời gian */}
                         <td className="py-4 px-4 text-center">
                           <div className="flex flex-col justify-center gap-0.5">
-                            <span className="font-bold text-stone-800">{booking.checkIn.split(' ')[0]}</span>
-                            <span className="text-[9px] text-stone-400 font-semibold font-mono">
+                            <span className="font-bold text-zinc-800 dark:text-zinc-200">{booking.checkIn.split(' ')[0]}</span>
+                            <span className="text-[9.5px] text-zinc-450 dark:text-zinc-500 font-semibold font-mono">
                               {booking.checkIn.split(' ')[1]} - {booking.checkOut.split(' ')[1]}
                             </span>
                           </div>
                         </td>
   
                         {/* Tổng tiền */}
-                        <td className="py-4 px-5 text-right font-black font-mono text-[#0A273A] text-sm">
+                        <td className="py-4 px-5 text-right font-black font-mono text-zinc-900 dark:text-zinc-50 text-sm">
                           {formatVND(booking.totalAmount)}
                         </td>
   
@@ -419,21 +414,21 @@ export default function BookingsManagementPage() {
                         <td className="py-4 px-6 text-center">
                           <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${
                             booking.status === 'pending'
-                              ? 'bg-amber-50 text-amber-700 border border-amber-200 animate-pulse'
+                              ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 animate-pulse'
                               : booking.status === 'confirmed'
-                              ? 'bg-green-50 text-green-700 border border-green-200'
+                              ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20'
                               : booking.status === 'completed'
-                              ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                              : 'bg-stone-100 text-stone-500 border border-stone-200'
+                              ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20'
+                              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 border border-zinc-200 dark:border-zinc-700'
                           }`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${
                               booking.status === 'pending'
                                 ? 'bg-amber-500'
                                 : booking.status === 'confirmed'
-                                ? 'bg-green-500'
+                                ? 'bg-emerald-555'
                                 : booking.status === 'completed'
                                 ? 'bg-blue-500'
-                                : 'bg-stone-400'
+                                : 'bg-zinc-400'
                             }`}></span>
                             {booking.status === 'pending' ? 'Chờ duyệt' :
                              booking.status === 'confirmed' ? 'Đã xác nhận' :
@@ -448,7 +443,7 @@ export default function BookingsManagementPage() {
                             {/* Nút Xem chi tiết (Cho mọi trạng thái) */}
                             <button
                               onClick={() => setSelectedBooking(booking)}
-                              className="w-9 h-9 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-850 flex items-center justify-center border border-stone-200 hover:border-stone-300 transition duration-200 cursor-pointer shadow-sm"
+                              className="w-9 h-9 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-650 hover:text-zinc-900 dark:text-zinc-350 dark:hover:text-zinc-100 flex items-center justify-center border border-zinc-200/60 dark:border-zinc-700 transition cursor-pointer shadow-xs"
                               title="Xem chi tiết đơn"
                             >
                               <Eye size={15} />
@@ -459,14 +454,14 @@ export default function BookingsManagementPage() {
                               <>
                                 <button
                                   onClick={() => handleUpdateStatus(booking.id, 'confirmed')}
-                                  className="w-9 h-9 rounded-xl bg-green-50 hover:bg-green-600 text-green-600 hover:text-white flex items-center justify-center border border-green-200 hover:border-green-500 transition duration-200 cursor-pointer shadow-sm"
+                                  className="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-600 dark:bg-emerald-550/15 dark:hover:bg-emerald-600 text-emerald-600 hover:text-white dark:text-emerald-400 dark:hover:text-white flex items-center justify-center border border-emerald-250 dark:border-emerald-500/30 transition cursor-pointer shadow-xs"
                                   title="Xác nhận lịch đặt"
                                 >
                                   <Check size={15} />
                                 </button>
                                 <button
                                   onClick={() => handleUpdateStatus(booking.id, 'cancelled')}
-                                  className="w-9 h-9 rounded-xl bg-red-50 hover:bg-red-600 text-red-600 hover:text-white flex items-center justify-center border border-red-200 hover:border-red-500 transition duration-200 cursor-pointer shadow-sm"
+                                  className="w-9 h-9 rounded-xl bg-rose-50 hover:bg-rose-650 dark:bg-rose-550/15 dark:hover:bg-rose-600 text-rose-600 hover:text-white dark:text-rose-400 dark:hover:text-white flex items-center justify-center border border-rose-250 dark:border-rose-500/30 transition cursor-pointer shadow-xs"
                                   title="Hủy đơn booking"
                                 >
                                   <X size={15} />
@@ -493,85 +488,85 @@ export default function BookingsManagementPage() {
           onClick={() => setSelectedBooking(null)}
         >
           <div 
-            className="bg-white w-full max-w-lg rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4"
+            className="bg-card border border-zinc-200 dark:border-zinc-800 w-full max-w-lg rounded-2xl p-6 md:p-8 overflow-hidden shadow-xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setSelectedBooking(null)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
               title="Đóng"
             >
               ✕
             </button>
 
             {/* Icon & Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
-              <div className="w-10 h-10 bg-blue-50 text-[#0A273A] rounded-2xl flex items-center justify-center shadow-inner">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
+              <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl flex items-center justify-center shadow-inner">
                 <FileText size={18} />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Chi Tiết Đơn Booking</h3>
-                <span className="text-[10px] text-stone-400 font-mono tracking-wider block mt-1">Mã: {selectedBooking.id}</span>
+                <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100 uppercase leading-none">Chi Tiết Đơn Booking</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-mono tracking-wider block mt-1">Mã: {selectedBooking.id}</span>
               </div>
             </div>
 
             {/* Thông tin chi tiết */}
-            <div className="bg-stone-50 border border-stone-200/50 rounded-2xl p-4 flex flex-col gap-3 text-xs leading-relaxed">
-              <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">👤 Khách hàng đặt:</span>
-                <strong className="text-stone-800 font-bold">{selectedBooking.customerName}</strong>
+            <div className="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/60 dark:border-zinc-800 rounded-xl p-4 flex flex-col gap-3 text-xs leading-relaxed">
+              <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">👤 Khách hàng đặt:</span>
+                <strong className="text-zinc-800 dark:text-zinc-200 font-bold">{selectedBooking.customerName}</strong>
               </div>
 
-              <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">📞 Số điện thoại:</span>
-                <strong className="text-stone-800 font-mono">{selectedBooking.phone}</strong>
+              <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📞 Số điện thoại:</span>
+                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">{selectedBooking.phone}</strong>
               </div>
 
-              <div className="flex justify-between items-start border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">🏢 Chi nhánh lưu trú:</span>
-                <span className="text-stone-750 font-semibold text-right max-w-[200px]">{selectedBooking.branch}</span>
+              <div className="flex justify-between items-start border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🏢 Chi nhánh lưu trú:</span>
+                <span className="text-zinc-700 dark:text-zinc-300 font-semibold text-right max-w-[200px]">{selectedBooking.branch}</span>
               </div>
 
-              <div className="flex justify-between items-start border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">🚪 Phòng nghỉ:</span>
-                <span className="text-stone-750 font-semibold text-right max-w-[200px]">{selectedBooking.roomName}</span>
+              <div className="flex justify-between items-start border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🚪 Phòng nghỉ:</span>
+                <span className="text-zinc-700 dark:text-zinc-300 font-semibold text-right max-w-[200px]">{selectedBooking.roomName}</span>
               </div>
 
-              <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-in:</span>
-                <strong className="text-stone-800 font-semibold">{selectedBooking.checkIn}</strong>
+              <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-in:</span>
+                <strong className="text-zinc-800 dark:text-zinc-200 font-semibold">{selectedBooking.checkIn}</strong>
               </div>
 
-              <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-out:</span>
-                <strong className="text-stone-800 font-semibold">{selectedBooking.checkOut}</strong>
+              <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-out:</span>
+                <strong className="text-zinc-800 dark:text-zinc-200 font-semibold">{selectedBooking.checkOut}</strong>
               </div>
 
-              <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">⏱️ Ngày lập hóa đơn:</span>
-                <span className="text-stone-700 font-mono">{selectedBooking.createdAt}</span>
+              <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">⏱️ Ngày lập hóa đơn:</span>
+                <span className="text-zinc-700 dark:text-zinc-300 font-mono">{selectedBooking.createdAt}</span>
               </div>
 
               {selectedBooking.notes && (
-                <div className="flex flex-col gap-1.5 border-b border-stone-200/30 pb-2.5">
-                  <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">📝 Ghi chú yêu cầu của khách:</span>
-                  <p className="bg-white border border-stone-150 p-2.5 rounded-xl text-stone-600 font-medium leading-relaxed italic">
+                <div className="flex flex-col gap-1.5 border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2.5">
+                  <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📝 Ghi chú yêu cầu của khách:</span>
+                  <p className="bg-white dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-800 p-2.5 rounded-xl text-zinc-650 dark:text-zinc-300 font-medium leading-relaxed italic">
                     {selectedBooking.notes}
                   </p>
                 </div>
               )}
 
               <div className="flex justify-between items-center pt-1">
-                <span className="text-stone-450 uppercase tracking-widest text-[9px] font-bold">Trạng thái đơn:</span>
+                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">Trạng thái đơn:</span>
                 <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${
                   selectedBooking.status === 'pending'
-                    ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                    ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20'
                     : selectedBooking.status === 'confirmed'
-                    ? 'bg-green-50 text-green-700 border border-green-200'
+                    ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20'
                     : selectedBooking.status === 'completed'
-                    ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                    : 'bg-stone-100 text-stone-500 border border-stone-200'
+                    ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20'
+                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 border border-zinc-200 dark:border-zinc-700'
                 }`}>
                   {selectedBooking.status === 'pending' ? 'Chờ duyệt' :
                    selectedBooking.status === 'confirmed' ? 'Đã xác nhận' :
@@ -579,9 +574,9 @@ export default function BookingsManagementPage() {
                 </span>
               </div>
 
-              <div className="flex justify-between items-center border-t border-dashed border-stone-200 pt-3 mt-1.5">
-                <span className="text-[#0A273A] uppercase tracking-wider text-[9px] font-black">Hóa đơn tổng thanh toán:</span>
-                <strong className="text-[#0A273A] text-base md:text-lg font-black font-mono">{formatVND(selectedBooking.totalAmount)}</strong>
+              <div className="flex justify-between items-center border-t border-dashed border-zinc-200 dark:border-zinc-800 pt-3 mt-1.5">
+                <span className="text-zinc-900 dark:text-zinc-100 uppercase tracking-wider text-[9px] font-black">Hóa đơn tổng thanh toán:</span>
+                <strong className="text-zinc-900 dark:text-zinc-50 text-base md:text-lg font-black font-mono">{formatVND(selectedBooking.totalAmount)}</strong>
               </div>
             </div>
 
@@ -611,7 +606,7 @@ export default function BookingsManagementPage() {
 
             <button
               onClick={() => setSelectedBooking(null)}
-              className="w-full py-2.5 bg-stone-800 hover:bg-stone-900 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer mt-1"
+              className="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 rounded-xl font-bold text-xs shadow-xs transition border-none cursor-pointer mt-1"
             >
               Quay lại danh sách đơn
             </button>

@@ -143,12 +143,12 @@ export default function AdminLayout({
     } catch (error) {
       console.error('Lỗi nghiêm trọng khi hiển thị trang con Admin:', error)
       return (
-        <div className="bg-red-50 border border-red-200 rounded-3xl p-8 text-center flex flex-col items-center gap-3 my-6 mx-4">
-          <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-700">
+        <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-8 text-center flex flex-col items-center gap-3 my-6 mx-4">
+          <div className="w-12 h-12 bg-rose-500/10 rounded-full flex items-center justify-center text-rose-600 dark:text-rose-400">
             <ShieldAlert size={24} />
           </div>
-          <h3 className="font-extrabold text-stone-850 text-base">Hệ thống ghi nhận lỗi hiển thị</h3>
-          <p className="text-xs text-stone-500 max-w-sm leading-relaxed">
+          <h3 className="font-extrabold text-zinc-900 dark:text-zinc-50 text-base">Hệ thống ghi nhận lỗi hiển thị</h3>
+          <p className="text-xs text-muted-foreground max-w-sm leading-relaxed">
             Dữ liệu trang con quản trị đang gặp sự cố khi xử lý dữ liệu. Vui lòng liên hệ nhóm Dancin Builder hoặc kỹ thuật viên hệ thống để kiểm tra chi tiết.
           </p>
         </div>
@@ -164,9 +164,9 @@ export default function AdminLayout({
   // Nếu đang quét phiên đăng nhập, hiển thị loading screen glassmorphic
   if (isAuthChecking) {
     return (
-      <div className="min-h-screen bg-[#0A273A] flex flex-col items-center justify-center gap-4 text-white font-sans">
-        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-        <span className="text-[10px] text-white/50 font-black uppercase tracking-widest animate-pulse">
+      <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center gap-4 text-white font-sans">
+        <div className="w-10 h-10 border-4 border-zinc-500 border-t-transparent rounded-full animate-spin"></div>
+        <span className="text-[10px] text-zinc-500 font-black uppercase tracking-widest animate-pulse">
           Đang kiểm tra bảo mật...
         </span>
       </div>
@@ -174,25 +174,25 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="h-screen max-h-screen bg-stone-50 flex font-sans antialiased text-stone-800 relative overflow-hidden">
+    <div className="h-screen max-h-screen bg-zinc-50 dark:bg-zinc-950 flex font-sans antialiased text-zinc-800 dark:text-zinc-200 relative overflow-hidden">
       
       {/* 1. SIDEBAR CO-EX FIXED/STICKY & SCROLLABLE */}
-      <aside className={`bg-[#0A273A] text-white flex flex-col flex-shrink-0 border-r border-white/10 shadow-lg z-20 transition-all duration-300 h-screen overflow-hidden ${
+      <aside className={`bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex flex-col flex-shrink-0 border-r border-zinc-200 dark:border-zinc-850 shadow-xs z-20 transition-all duration-300 h-screen overflow-hidden ${
         isCollapsed ? 'w-20' : 'w-64'
       }`}>
         
         {/* Logo & Brand Title (Collapsible Header Layout) */}
-        <div className={`border-b border-white/10 flex items-center justify-between bg-stone-950/20 transition-all duration-300 flex-shrink-0 ${
+        <div className={`border-b border-zinc-200 dark:border-zinc-850 flex items-center justify-between bg-zinc-100/30 dark:bg-zinc-900/20 transition-all duration-300 flex-shrink-0 ${
           isCollapsed ? 'flex-col gap-3.5 px-3 py-5' : 'pl-6 pr-3 py-5'
         }`}>
           {isCollapsed ? (
             <>
-              <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner">
+              <div className="w-9 h-9 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner">
                 <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
               </div>
               <button 
                 onClick={toggleSidebar} 
-                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-stone-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition active:scale-90 cursor-pointer"
+                className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition active:scale-90 cursor-pointer shadow-xs"
                 title="Mở rộng menu"
               >
                 <ChevronRight size={20} />
@@ -205,13 +205,13 @@ export default function AdminLayout({
                   <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h1 className="text-base font-black tracking-tight leading-none uppercase text-white">Bliss Home</h1>
-                  <span className="text-[9px] text-white/55 tracking-widest uppercase block mt-0.5 font-bold">Admin Portal</span>
+                  <h1 className="text-base font-black tracking-tight leading-none uppercase text-zinc-900 dark:text-zinc-50">Bliss Home</h1>
+                  <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mt-0.5 font-bold">Admin Portal</span>
                 </div>
               </div>
               <button 
                 onClick={toggleSidebar} 
-                className="w-9 h-9 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center text-stone-300 hover:text-white hover:bg-white/10 hover:border-white/25 transition active:scale-90 cursor-pointer shadow-sm translate-x-1"
+                className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition active:scale-90 cursor-pointer shadow-xs translate-x-1"
                 title="Thu gọn menu"
               >
                 <ChevronLeft size={20} />
@@ -239,25 +239,21 @@ export default function AdminLayout({
                   className={
                     isCollapsed
                       ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
-                          isActive
-                            ? 'bg-emerald-700 text-white border-emerald-500 shadow-md shadow-emerald-950/20'
-                            : 'text-stone-300 hover:text-white border-white/10 hover:border-white/25 hover:bg-white/5'
+                          isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'text-zinc-650 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-900 dark:hover:text-zinc-100'
                         }`
                       : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-                          isActive
-                            ? 'bg-emerald-700 hover:bg-emerald-600 text-white shadow-md'
-                            : 'text-stone-300 hover:bg-white/5 hover:text-white'
+                          isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
                         }`
                   }
                   title={isCollapsed ? item.label : undefined}
                 >
-                  <Icon size={isCollapsed ? 20 : 16} className={isActive ? 'text-white' : 'text-stone-400'} />
+                  <Icon size={isCollapsed ? 20 : 16} className={isActive ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
                   {!isCollapsed && <span>{item.label}</span>}
                 </button>
                 
                 {/* Render children submenus if not collapsed and main item has children and is active */}
                 {!isCollapsed && 'children' in item && item.children && isActive && (
-                  <div className="flex flex-col gap-1 pl-7 pr-1 py-1 border-l border-white/10 ml-6 animate-in slide-in-from-top-1 duration-200">
+                  <div className="flex flex-col gap-1 pl-7 pr-1 py-1 border-l border-zinc-200 dark:border-zinc-800 ml-6 animate-in slide-in-from-top-1 duration-200">
                     {item.children.map((child) => {
                       const isSubActive = isChildActive(child.path)
                       return (
@@ -265,9 +261,7 @@ export default function AdminLayout({
                           key={child.id}
                           onClick={() => router.push(child.path)}
                           className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11.5px] font-semibold transition-all border-none text-left cursor-pointer ${
-                            isSubActive
-                              ? 'bg-white/10 text-white font-bold'
-                              : 'text-stone-400 hover:text-stone-200 hover:bg-white/5'
+                            isSubActive ? 'bg-zinc-200/50 dark:bg-zinc-900/60 text-zinc-950 dark:text-zinc-50 font-bold' : 'text-zinc-500 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30'
                           }`}
                         >
                           <div className={`w-1.5 h-1.5 rounded-full ${isSubActive ? 'bg-emerald-400 scale-110 shadow-xs' : 'bg-stone-500'}`} />
@@ -283,26 +277,22 @@ export default function AdminLayout({
         </nav>
 
         {/* Thin Bottom Config / Aligned Settings & Logout at the very bottom of the screen */}
-        <div className="p-4 border-t border-white/10 bg-stone-950/20 flex flex-col gap-2.5 flex-shrink-0">
+        <div className="p-4 border-t border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/10 flex flex-col gap-2.5 flex-shrink-0">
           {/* Cài đặt (Linked to integrations path) */}
           <button
             onClick={() => router.push('/admin/integrations')}
             className={
               isCollapsed
                 ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
-                    pathname === '/admin/integrations'
-                      ? 'bg-emerald-700 text-white border-emerald-500 shadow-md shadow-emerald-950/20'
-                      : 'text-stone-300 hover:text-white border-white/10 hover:border-white/25 hover:bg-white/5'
+                    pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'text-zinc-650 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-900 dark:hover:text-zinc-100'
                   }`
                 : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-                    pathname === '/admin/integrations'
-                      ? 'bg-emerald-700 hover:bg-emerald-600 text-white shadow-md'
-                      : 'text-stone-300 hover:bg-white/5 hover:text-white'
+                    pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
                   }`
             }
             title={isCollapsed ? "Cài đặt" : undefined}
           >
-            <Settings size={isCollapsed ? 20 : 16} className={pathname === '/admin/integrations' ? 'text-white' : 'text-stone-400'} />
+            <Settings size={isCollapsed ? 20 : 16} className={pathname === '/admin/integrations' ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
             {!isCollapsed && <span>Cài đặt</span>}
           </button>
 
@@ -320,7 +310,7 @@ export default function AdminLayout({
             {!isCollapsed && <span>Đăng xuất</span>}
           </button>
 
-          <span className="text-[9px] text-stone-550 font-mono block text-center select-none mt-1">
+          <span className="text-[9px] text-zinc-450 dark:text-zinc-500 font-mono block text-center select-none mt-1">
             {isCollapsed ? 'v2.4' : 'Version 2.4.0 • Dancin Builder'}
           </span>
         </div>
@@ -330,9 +320,9 @@ export default function AdminLayout({
       <div className="flex-grow flex flex-col h-screen max-h-screen relative overflow-hidden">
         
         {/* TOP HEADER CONTROLS (Always fixed at the top) */}
-        <header className="bg-white border-b border-stone-200/80 h-16 px-6 md:px-8 flex items-center justify-between flex-shrink-0 shadow-xs select-none">
+        <header className="bg-card border-b border-zinc-200 dark:border-zinc-850 h-16 px-6 md:px-8 flex items-center justify-between flex-shrink-0 shadow-xs select-none">
           <div>
-            <h2 className="text-sm md:text-base font-extrabold text-[#0A273A] uppercase tracking-wider">
+            <h2 className="text-sm md:text-base font-extrabold text-zinc-900 dark:text-zinc-50 uppercase tracking-wider">
               Hệ Thống Quản Trị Bliss Home
             </h2>
           </div>
@@ -342,9 +332,7 @@ export default function AdminLayout({
             <button
               onClick={() => setIsAIOpen(!isAIOpen)}
               className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all duration-300 shadow-sm border cursor-pointer flex items-center gap-1.5 ${
-                isAIOpen
-                  ? 'bg-emerald-700 border-emerald-700 text-white shadow-emerald-700/10'
-                  : 'bg-white border-stone-200 hover:border-emerald-700 hover:text-emerald-700 text-[#0a273a]'
+                isAIOpen ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'bg-card border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 text-zinc-700 dark:text-zinc-350'
               }`}
             >
               <Sparkles size={13} className={isAIOpen ? 'text-white animate-spin' : 'text-emerald-500'} />
@@ -354,24 +342,24 @@ export default function AdminLayout({
             {/* NÚT CHUYỂN ĐỔI LIGHT/DARK MODE */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-xl border border-stone-200 bg-white dark:bg-stone-900 text-stone-700 dark:text-stone-300 hover:border-emerald-700 hover:text-emerald-700 flex items-center justify-center transition-all duration-300 shadow-sm cursor-pointer"
+              className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card hover:bg-zinc-50 dark:hover:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-all duration-300 shadow-xs cursor-pointer"
               title={theme === 'light' ? "Chuyển sang Chế độ tối" : "Chuyển sang Chế độ sáng"}
             >
               {theme === 'light' ? <Moon size={15} /> : <Sun size={15} className="text-amber-400" />}
             </button>
 
             {/* Profile Avatar */}
-            <div className="flex items-center gap-2.5 pl-3 border-l border-stone-200">
-              <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 border border-stone-200 shadow-inner overflow-hidden">
+            <div className="flex items-center gap-2.5 pl-3 border-l border-zinc-200 dark:border-zinc-800">
+              <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 shadow-inner overflow-hidden">
                 <UserCircle2 size={20} />
               </div>
-              <span className="hidden sm:inline text-xs font-extrabold text-[#0A273A] uppercase">{adminName}</span>
+              <span className="hidden sm:inline text-xs font-extrabold text-zinc-900 dark:text-zinc-50 uppercase">{adminName}</span>
             </div>
           </div>
         </header>
 
         {/* SCROLLABLE MAIN CONTENT WRAPPER */}
-        <div className="flex-grow p-6 md:p-8 bg-stone-50 overflow-y-auto">
+        <div className="flex-grow p-6 md:p-8 bg-zinc-50/50 dark:bg-zinc-950/20 overflow-y-auto">
           {renderChildrenSafely()}
         </div>
       </div>

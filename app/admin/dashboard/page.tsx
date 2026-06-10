@@ -186,25 +186,25 @@ const BAR_DATA_BY_PERIOD: Record<TimeFilter, BarDataPoint[]> = {
 
 const REVENUE_DIST_BY_PERIOD: Record<TimeFilter, RevenueDistribution[]> = {
   week: [
-    { groupName: 'Đi gia đình', revenue: 7100000, percentage: 50, color: '#0A273A' },
+    { groupName: 'Đi gia đình', revenue: 7100000, percentage: 50, color: '#18181b' },
     { groupName: 'Thích yên tĩnh', revenue: 4260000, percentage: 30, color: '#10b981' },
     { groupName: 'Thuê ngắn giờ', revenue: 2130000, percentage: 15, color: '#f59e0b' },
     { groupName: 'Đại trà / Khác', revenue: 710000, percentage: 5, color: '#ef4444' }
   ],
   month: [
-    { groupName: 'Đi gia đình', revenue: 34225000, percentage: 50, color: '#0A273A' },
+    { groupName: 'Đi gia đình', revenue: 34225000, percentage: 50, color: '#18181b' },
     { groupName: 'Thích yên tĩnh', revenue: 20535000, percentage: 30, color: '#10b981' },
     { groupName: 'Thuê ngắn giờ', revenue: 10267500, percentage: 15, color: '#f59e0b' },
     { groupName: 'Đại trà / Khác', revenue: 3422500, percentage: 5, color: '#ef4444' }
   ],
   quarter: [
-    { groupName: 'Đi gia đình', revenue: 102250000, percentage: 50, color: '#0A273A' },
+    { groupName: 'Đi gia đình', revenue: 102250000, percentage: 50, color: '#18181b' },
     { groupName: 'Thích yên tĩnh', revenue: 61350000, percentage: 30, color: '#10b981' },
     { groupName: 'Thuê ngắn giờ', revenue: 30675000, percentage: 15, color: '#f59e0b' },
     { groupName: 'Đại trà / Khác', revenue: 10225000, percentage: 5, color: '#ef4444' }
   ],
   year: [
-    { groupName: 'Đi gia đình', revenue: 409000000, percentage: 50, color: '#0A273A' },
+    { groupName: 'Đi gia đình', revenue: 409000000, percentage: 50, color: '#18181b' },
     { groupName: 'Thích yên tĩnh', revenue: 245400000, percentage: 30, color: '#10b981' },
     { groupName: 'Thuê ngắn giờ', revenue: 122700000, percentage: 15, color: '#f59e0b' },
     { groupName: 'Đại trà / Khác', revenue: 40900000, percentage: 5, color: '#ef4444' }
@@ -355,25 +355,25 @@ export default function AnalyticsDashboardPage() {
   }, [timeFilter])
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-stone-750">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-700 dark:text-zinc-300">
       
       {/* HEADER & TIME FILTER CONTROLS */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200/50 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800/60 pb-5">
         <div>
-          <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Báo Cáo & Phân Tích Dữ Liệu
           </h2>
-          <p className="text-xs text-stone-500 font-medium mt-0.5">
+          <p className="text-xs text-muted-foreground font-medium mt-0.5">
             Dữ liệu trực quan hóa về doanh số, buồng phòng, khách hàng quay lại và hiệu suất tiếp thị Bliss Home.
           </p>
         </div>
 
         {/* Bộ lọc thời gian phẳng Google Sheets style */}
-        <div className="flex items-center gap-1.5 bg-stone-100 p-1 rounded-xl self-start md:self-auto border border-stone-200/40">
+        <div className="flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 p-1 rounded-xl self-start md:self-auto border border-zinc-200 dark:border-zinc-750">
           <button
             onClick={() => setTimeFilter('week')}
             className={`px-4 py-2 text-[10px] md:text-xs font-extrabold border-none rounded-lg cursor-pointer transition ${
-              timeFilter === 'week' ? 'bg-[#0A273A] text-white shadow-xs' : 'bg-transparent text-stone-500 hover:text-stone-700'
+              timeFilter === 'week' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'bg-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
             }`}
           >
             Tuần
@@ -381,7 +381,7 @@ export default function AnalyticsDashboardPage() {
           <button
             onClick={() => setTimeFilter('month')}
             className={`px-4 py-2 text-[10px] md:text-xs font-extrabold border-none rounded-lg cursor-pointer transition ${
-              timeFilter === 'month' ? 'bg-[#0A273A] text-white shadow-xs' : 'bg-transparent text-stone-500 hover:text-stone-700'
+              timeFilter === 'month' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'bg-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
             }`}
           >
             Tháng
@@ -389,7 +389,7 @@ export default function AnalyticsDashboardPage() {
           <button
             onClick={() => setTimeFilter('quarter')}
             className={`px-4 py-2 text-[10px] md:text-xs font-extrabold border-none rounded-lg cursor-pointer transition ${
-              timeFilter === 'quarter' ? 'bg-[#0A273A] text-white shadow-xs' : 'bg-transparent text-stone-500 hover:text-stone-700'
+              timeFilter === 'quarter' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'bg-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
             }`}
           >
             Quý
@@ -397,7 +397,7 @@ export default function AnalyticsDashboardPage() {
           <button
             onClick={() => setTimeFilter('year')}
             className={`px-4 py-2 text-[10px] md:text-xs font-extrabold border-none rounded-lg cursor-pointer transition ${
-              timeFilter === 'year' ? 'bg-[#0A273A] text-white shadow-xs' : 'bg-transparent text-stone-500 hover:text-stone-700'
+              timeFilter === 'year' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'bg-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
             }`}
           >
             Năm
@@ -407,9 +407,9 @@ export default function AnalyticsDashboardPage() {
 
       {isLoading ? (
         /* LOADING SYSTEM STATE */
-        <div className="flex flex-col items-center justify-center min-h-[450px] gap-3 bg-white border border-stone-200/60 rounded-3xl p-12">
-          <div className="w-9 h-9 border-4 border-[#0A273A] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-stone-400 font-black uppercase tracking-widest animate-pulse">
+        <div className="flex flex-col items-center justify-center min-h-[450px] gap-3 bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-12 shadow-xs">
+          <div className="w-9 h-9 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-[10px] text-muted-foreground font-black uppercase tracking-widest animate-pulse">
             Đang xử lý dữ liệu và vẽ biểu đồ SVG...
           </span>
         </div>
@@ -419,72 +419,72 @@ export default function AnalyticsDashboardPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             
             {/* Tile 1: Doanh Thu */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-sm hover:border-stone-300 transition-all duration-200 relative overflow-hidden group">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-xs hover:shadow-xs transition-all duration-200 relative overflow-hidden group">
               <div className="flex items-center justify-between">
-                <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Doanh Thu Tổng Hợp</span>
-                <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-black">Doanh Thu Tổng Hợp</span>
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
                   <Coins size={14} />
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <strong className="text-xl md:text-2xl font-black text-[#0A273A] font-mono leading-none">
+                <strong className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 font-mono leading-none">
                   {formatVND(stats.revenue)}
                 </strong>
-                <span className="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5 mt-1 select-none">
+                <span className="text-[9px] text-emerald-600 dark:text-emerald-500 font-bold flex items-center gap-0.5 mt-1 select-none">
                   <ArrowUpRight size={12} className="stroke-[3]" /> +{stats.growth.revenue}% so với kỳ trước
                 </span>
               </div>
             </div>
 
             {/* Tile 2: Đơn Booking */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-sm hover:border-stone-300 transition-all duration-200 relative overflow-hidden group">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-xs hover:shadow-xs transition-all duration-200 relative overflow-hidden group">
               <div className="flex items-center justify-between">
-                <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Số Lượng Đơn Booking</span>
-                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
+                <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-black">Số Lượng Đơn Booking</span>
+                <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/20 text-blue-700 dark:text-blue-400 flex items-center justify-center">
                   <CalendarRange size={14} />
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <strong className="text-xl md:text-2xl font-black text-[#0A273A] font-mono leading-none">
+                <strong className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 font-mono leading-none">
                   {stats.bookings} đơn
                 </strong>
-                <span className="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5 mt-1 select-none">
+                <span className="text-[9px] text-emerald-600 dark:text-emerald-500 font-bold flex items-center gap-0.5 mt-1 select-none">
                   <ArrowUpRight size={12} className="stroke-[3]" /> +{stats.growth.bookings}% so với kỳ trước
                 </span>
               </div>
             </div>
 
             {/* Tile 3: Khách Mới vs Quay Lại */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-sm hover:border-stone-300 transition-all duration-200 relative overflow-hidden group">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-xs hover:shadow-xs transition-all duration-200 relative overflow-hidden group">
               <div className="flex items-center justify-between">
-                <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Khách Mới / Quay Lại</span>
-                <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+                <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-black">Khách Mới / Quay Lại</span>
+                <div className="w-7 h-7 rounded-lg bg-amber-50 dark:bg-amber-950/20 text-amber-700 dark:text-amber-400 flex items-center justify-center">
                   <Users size={14} />
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <strong className="text-xl md:text-2xl font-black text-[#0A273A] font-mono leading-none">
+                <strong className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 font-mono leading-none">
                   {stats.newCustomers} / {stats.returningCustomers}
                 </strong>
-                <span className="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5 mt-1 select-none">
+                <span className="text-[9px] text-emerald-600 dark:text-emerald-500 font-bold flex items-center gap-0.5 mt-1 select-none">
                   <ArrowUpRight size={12} className="stroke-[3]" /> +{stats.growth.returningCust}% khách quay lại
                 </span>
               </div>
             </div>
 
             {/* Tile 4: Voucher Phát Hành / Dùng */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-sm hover:border-stone-300 transition-all duration-200 relative overflow-hidden group">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 flex flex-col justify-between gap-3 shadow-xs hover:shadow-xs transition-all duration-200 relative overflow-hidden group">
               <div className="flex items-center justify-between">
-                <span className="text-[9px] text-stone-400 uppercase tracking-widest font-black">Tỉ Lệ Tiêu Dùng Voucher</span>
-                <div className="w-7 h-7 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+                <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-black">Tỉ Lệ Tiêu Dùng Voucher</span>
+                <div className="w-7 h-7 rounded-lg bg-purple-50 dark:bg-purple-950/20 text-purple-700 dark:text-purple-400 flex items-center justify-center">
                   <Ticket size={14} />
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                <strong className="text-xl md:text-2xl font-black text-[#0A273A] font-mono leading-none">
+                <strong className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 font-mono leading-none">
                   {stats.vouchersUsed} / {stats.vouchersIssued}
                 </strong>
-                <span className="text-[9px] text-purple-700 font-bold flex items-center gap-0.5 mt-1 select-none">
+                <span className="text-[9px] text-purple-700 dark:text-purple-400 font-bold flex items-center gap-0.5 mt-1 select-none">
                   🎯 CTR sử dụng: {((stats.vouchersUsed / stats.vouchersIssued) * 100).toFixed(1)}%
                 </span>
               </div>
@@ -496,15 +496,15 @@ export default function AnalyticsDashboardPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* CHART A: LINE & AREA TREND (Xu Hướng Booking & Loại Khách) */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-2xs flex flex-col gap-4 relative">
-              <div className="flex justify-between items-center border-b border-stone-100 pb-3">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4 relative">
+              <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-[#0A273A] uppercase tracking-wider">📈 Xu hướng Booking & Loại Khách</h3>
-                  <span className="text-[9.5px] text-stone-450 font-semibold block mt-0.5">Biểu đồ biểu diễn tăng trưởng tệp khách hàng theo thời gian</span>
+                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">📈 Xu hướng Booking & Loại Khách</h3>
+                  <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Biểu đồ biểu diễn tăng trưởng tệp khách hàng theo thời gian</span>
                 </div>
                 {/* Legends */}
                 <div className="flex items-center gap-2 text-[9px] font-extrabold select-none">
-                  <span className="flex items-center gap-1"><span className="w-2.5 h-1.5 bg-[#0A273A] rounded-sm"></span>Booking</span>
+                  <span className="flex items-center gap-1"><span className="w-2.5 h-1.5 bg-zinc-900 dark:bg-zinc-100 rounded-sm"></span>Booking</span>
                   <span className="flex items-center gap-1"><span className="w-2.5 h-1.5 bg-emerald-500 rounded-sm"></span>Khách mới</span>
                   <span className="flex items-center gap-1"><span className="w-2.5 h-1.5 bg-amber-500 rounded-sm"></span>Quay lại</span>
                 </div>
@@ -514,10 +514,10 @@ export default function AnalyticsDashboardPage() {
               <div className="w-full h-64 mt-2 relative select-none">
                 <svg className="w-full h-full" viewBox="0 0 500 240" preserveAspectRatio="none">
                   {/* Grid Lines */}
-                  <line x1="40" y1="30" x2="480" y2="30" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="80" x2="480" y2="80" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="130" x2="480" y2="130" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="180" x2="480" y2="180" stroke="#f1f1f0" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="480" y2="30" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="80" x2="480" y2="80" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="130" x2="480" y2="130" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="180" x2="480" y2="180" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
 
                   {/* SVG Paths Generator */}
                   {(() => {
@@ -540,18 +540,18 @@ export default function AnalyticsDashboardPage() {
                     return (
                       <>
                         {/* Shaded Area for Bookings */}
-                        <path d={bookingArea} fill="url(#navyGrad)" opacity="0.08" />
+                        <path d={bookingArea} fill="url(#monoGrad)" opacity="0.08" />
 
                         {/* Curved Paths */}
-                        <path d={bookingPath} fill="none" stroke="#0A273A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d={bookingPath} fill="none" stroke="currentColor" className="text-zinc-900 dark:text-zinc-50" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                         <path d={newCustPath} fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 3" />
                         <path d={returningCustPath} fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 
                         {/* Gradient Definitions */}
                         <defs>
-                          <linearGradient id="navyGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#0A273A" />
-                            <stop offset="100%" stopColor="#ffffff" />
+                          <linearGradient id="monoGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="currentColor" className="text-zinc-900 dark:text-zinc-100" />
+                            <stop offset="100%" stopColor="transparent" />
                           </linearGradient>
                         </defs>
 
@@ -567,14 +567,14 @@ export default function AnalyticsDashboardPage() {
                           return (
                             <g key={i} className="cursor-pointer group/node">
                               {/* Thin vertical grid highlight line */}
-                              <line x1={bx} y1="30" x2={bx} y2="180" stroke="#0A273A" strokeWidth="1" strokeDasharray="2 2" className="opacity-0 group-hover/node:opacity-30 transition duration-150" />
+                              <line x1={bx} y1="30" x2={bx} y2="180" stroke="currentColor" className="text-zinc-300 dark:text-zinc-700 opacity-0 group-hover/node:opacity-50 transition duration-150" strokeWidth="1" strokeDasharray="2 2" />
                               
                               {/* Pulse effect rings */}
-                              <circle cx={bx} cy={by} r="7" fill="#0A273A" opacity="0" className="group-hover/node:opacity-20 transition duration-150" />
-                              <circle cx={bx} cy={by} r="4.5" fill="#0A273A" stroke="#ffffff" strokeWidth="1.5" />
+                              <circle cx={bx} cy={by} r="7" className="text-zinc-900 dark:text-zinc-100 fill-current opacity-0 group-hover/node:opacity-20 transition duration-150" />
+                              <circle cx={bx} cy={by} r="4.5" className="text-zinc-900 dark:text-zinc-100 fill-current stroke-white dark:stroke-zinc-950" strokeWidth="1.5" />
                               
-                              <circle cx={ncx} cy={ncy} r="3.5" fill="#10b981" stroke="#ffffff" strokeWidth="1" />
-                              <circle cx={rcx} cy={rcy} r="3.5" fill="#f59e0b" stroke="#ffffff" strokeWidth="1" />
+                              <circle cx={ncx} cy={ncy} r="3.5" fill="#10b981" className="stroke-white dark:stroke-zinc-950" strokeWidth="1" />
+                              <circle cx={rcx} cy={rcy} r="3.5" fill="#f59e0b" className="stroke-white dark:stroke-zinc-950" strokeWidth="1" />
 
                               {/* Interactive Hover Area (Invisible wider slice) */}
                               <rect 
@@ -608,7 +608,7 @@ export default function AnalyticsDashboardPage() {
                             x={getX(i)} 
                             y="202" 
                             textAnchor="middle" 
-                            className="fill-stone-400 font-bold text-[9px]"
+                            className="fill-zinc-400 dark:fill-zinc-500 font-bold text-[9px]"
                           >
                             {d.label}
                           </text>
@@ -618,7 +618,7 @@ export default function AnalyticsDashboardPage() {
                   })()}
 
                   {/* Y-Axis Line */}
-                  <line x1="40" y1="30" x2="40" y2="180" stroke="#e7e7e6" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
                 </svg>
 
                 {/* Shared Interactive Tooltip Card Overlay */}
@@ -637,11 +637,11 @@ export default function AnalyticsDashboardPage() {
             </div>
 
             {/* CHART B: VOUCHER PERFORMANCE (Hiệu Suất Phát Hành & Sử Dụng) */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-2xs flex flex-col gap-4 relative">
-              <div className="flex justify-between items-center border-b border-stone-100 pb-3">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4 relative">
+              <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-[#0A273A] uppercase tracking-wider">🎟️ Thống kê phát hành & Sử dụng Voucher</h3>
-                  <span className="text-[9.5px] text-stone-450 font-semibold block mt-0.5">Tỷ lệ tương quan phát hành so với mức tiêu dùng khuyến mãi thực tế</span>
+                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🎟️ Thống kê phát hành & Sử dụng Voucher</h3>
+                  <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Tỷ lệ tương quan phát hành so với mức tiêu dùng khuyến mãi thực tế</span>
                 </div>
                 {/* Legends */}
                 <div className="flex items-center gap-2 text-[9px] font-extrabold select-none">
@@ -654,10 +654,10 @@ export default function AnalyticsDashboardPage() {
               <div className="w-full h-64 mt-2 relative select-none">
                 <svg className="w-full h-full" viewBox="0 0 500 240" preserveAspectRatio="none">
                   {/* Grid Lines */}
-                  <line x1="40" y1="30" x2="480" y2="30" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="80" x2="480" y2="80" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="130" x2="480" y2="130" stroke="#f1f1f0" strokeWidth="1.5" />
-                  <line x1="40" y1="180" x2="480" y2="180" stroke="#f1f1f0" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="480" y2="30" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="80" x2="480" y2="80" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="130" x2="480" y2="130" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
+                  <line x1="40" y1="180" x2="480" y2="180" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="1.5" />
 
                   {/* SVG Bar Generator */}
                   {(() => {
@@ -709,7 +709,7 @@ export default function AnalyticsDashboardPage() {
                                 x={groupCenterX} 
                                 y="202" 
                                 textAnchor="middle" 
-                                className="fill-stone-400 font-bold text-[9px]"
+                                className="fill-zinc-400 dark:fill-zinc-500 font-bold text-[9px]"
                               >
                                 {d.label}
                               </text>
@@ -743,17 +743,17 @@ export default function AnalyticsDashboardPage() {
                   })()}
 
                   {/* Y Axis Line */}
-                  <line x1="40" y1="30" x2="40" y2="180" stroke="#e7e7e6" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
                 </svg>
 
                 {/* Shared Interactive Tooltip Card Overlay for Chart B */}
                 {activeTooltip && activeTooltip.label.startsWith('🎟️') && (
                   <div 
-                    className="absolute bg-stone-900 border border-stone-800 text-white rounded-2xl p-3 shadow-xl z-30 animate-in fade-in duration-100 flex flex-col gap-1 w-44 pointer-events-none"
+                    className="absolute bg-zinc-950 border border-zinc-800 text-white rounded-2xl p-3 shadow-xl z-30 animate-in fade-in duration-100 flex flex-col gap-1 w-44 pointer-events-none text-xs font-semibold"
                     style={{ left: `${Math.min(activeTooltip.x - 30, 310)}px`, top: `${Math.max(activeTooltip.y - 80, 5)}px` }}
                   >
-                    <span className="text-[10px] font-black text-stone-450 uppercase tracking-wider">{activeTooltip.label}</span>
-                    <div className="flex flex-col text-[10px] leading-relaxed font-bold mt-1 text-stone-200 font-sans gap-0.5">
+                    <span className="text-[10px] font-black text-zinc-450 uppercase tracking-wider">{activeTooltip.label}</span>
+                    <div className="flex flex-col text-[10px] leading-relaxed font-bold mt-1 text-zinc-200 font-sans gap-0.5">
                       {activeTooltip.values.map((v, index) => <span key={index}>{v}</span>)}
                     </div>
                   </div>
@@ -767,11 +767,11 @@ export default function AnalyticsDashboardPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             {/* WIDGET C1: REVENUE BY CUSTOMER CRM GROUPS */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-2xs flex flex-col gap-4">
-              <div className="flex justify-between items-center border-b border-stone-100 pb-3">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
+              <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-[#0A273A] uppercase tracking-wider">🎯 Phân Bổ Doanh Thu CRM</h3>
-                  <span className="text-[9.5px] text-stone-450 font-semibold block mt-0.5">Thống kê doanh số theo nhóm đối tượng khách hàng</span>
+                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🎯 Phân Bổ Doanh Thu CRM</h3>
+                  <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Thống kê doanh số theo nhóm đối tượng khách hàng</span>
                 </div>
               </div>
 
@@ -779,7 +779,7 @@ export default function AnalyticsDashboardPage() {
               <div className="flex flex-col items-center gap-5 mt-2">
                 <div className="relative w-40 h-40">
                   <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#f1f1f0" strokeWidth="3" />
+                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeWidth="3" />
                     
                     {/* Dynamic Cohort Percentages Stroke Dasharray */}
                     {(() => {
@@ -789,6 +789,10 @@ export default function AnalyticsDashboardPage() {
                         const strokeOffset = 100 - accumulatedPercent
                         accumulatedPercent += item.percentage
 
+                        // Replace brand color dynamically if it matches dark zinc
+                        const displayColor = item.color === '#18181b' ? 'currentColor' : item.color;
+                        const classText = item.color === '#18181b' ? 'text-zinc-900 dark:text-zinc-100' : '';
+
                         return (
                           <circle 
                             key={i}
@@ -796,11 +800,11 @@ export default function AnalyticsDashboardPage() {
                             cy="18" 
                             r="15.915" 
                             fill="transparent" 
-                            stroke={item.color} 
+                            stroke={displayColor} 
+                            className={`${classText} hover:stroke-[4.2] transition duration-200 cursor-pointer`}
                             strokeWidth="3.5" 
                             strokeDasharray={strokeDash}
                             strokeDashoffset={strokeOffset}
-                            className="hover:stroke-[4.2] transition duration-200 cursor-pointer"
                           >
                             <title>{`${item.groupName}: ${item.percentage}%`}</title>
                           </circle>
@@ -810,8 +814,8 @@ export default function AnalyticsDashboardPage() {
                   </svg>
                   {/* Donut hole center content */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center font-sans">
-                    <span className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Tổng Thu</span>
-                    <strong className="text-sm font-black text-[#0A273A] font-mono mt-0.5">
+                    <span className="text-[9px] text-muted-foreground font-black uppercase tracking-wider">Tổng Thu</span>
+                    <strong className="text-sm font-black text-zinc-900 dark:text-zinc-50 font-mono mt-0.5">
                       {formatVND(stats.revenue)}
                     </strong>
                   </div>
@@ -820,14 +824,14 @@ export default function AnalyticsDashboardPage() {
                 {/* Custom Cohort list legends */}
                 <div className="flex flex-col gap-1.5 w-full">
                   {revenueDist.map((item, i) => (
-                    <div key={i} className="flex justify-between items-center text-[10px] font-bold border-b border-stone-50 pb-1">
-                      <span className="flex items-center gap-1.5 text-stone-600">
+                    <div key={i} className="flex justify-between items-center text-[10px] font-bold border-b border-zinc-100 dark:border-zinc-850 pb-1">
+                      <span className="flex items-center gap-1.5 text-zinc-650 dark:text-zinc-400">
                         <span className="w-2.5 h-2.5 rounded-xs" style={{ backgroundColor: item.color }} />
                         {item.groupName}
                       </span>
                       <div className="flex gap-2 font-mono">
-                        <span className="text-stone-850 font-black">{formatVND(item.revenue)}</span>
-                        <span className="text-stone-400 font-extrabold">({item.percentage}%)</span>
+                        <span className="text-zinc-800 dark:text-zinc-200 font-black">{formatVND(item.revenue)}</span>
+                        <span className="text-muted-foreground font-extrabold">({item.percentage}%)</span>
                       </div>
                     </div>
                   ))}
@@ -836,11 +840,11 @@ export default function AnalyticsDashboardPage() {
             </div>
 
             {/* WIDGET C2: ROOMS & BRANCHES PERFORMANCE RANKING */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-2xs flex flex-col gap-4">
-              <div className="flex justify-between items-center border-b border-stone-100 pb-3">
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
+              <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-[#0A273A] uppercase tracking-wider">🏢 Hiệu Suất Buồng Phòng</h3>
-                  <span className="text-[9.5px] text-stone-450 font-semibold block mt-0.5">Xếp hạng doanh thu và công suất chi nhánh</span>
+                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🏢 Hiệu Suất Buồng Phòng</h3>
+                  <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Xếp hạng doanh thu và công suất chi nhánh</span>
                 </div>
               </div>
 
@@ -849,26 +853,26 @@ export default function AnalyticsDashboardPage() {
                 {ROOM_PERFORMANCE.map((perf, i) => (
                   <div 
                     key={i} 
-                    className={`p-3 rounded-2xl border flex justify-between items-center transition hover:shadow-2xs ${
+                    className={`p-3 rounded-xl border flex justify-between items-center transition ${
                       perf.status === 'excellent' 
-                        ? 'bg-green-50/45 border-green-200/50 text-green-950' 
+                        ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-400' 
                         : perf.status === 'good'
-                        ? 'bg-stone-50 border-stone-200/50 text-stone-800'
-                        : 'bg-red-50/45 border-red-200/50 text-red-950'
+                        ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200'
+                        : 'bg-rose-500/10 border-rose-500/20 text-rose-700 dark:text-rose-450'
                     }`}
                   >
-                    <div className="flex flex-col gap-0.5">
-                      <strong className="text-[10.5px] font-black leading-none tracking-tight">{perf.name}</strong>
-                      <span className="text-[9px] text-stone-400 font-semibold block mt-1 leading-none">Chi nhánh: {perf.branch} | {perf.bookingsCount} đặt phòng</span>
+                    <div className="flex flex-col gap-1">
+                      <strong className="text-xs font-bold leading-none tracking-tight">{perf.name}</strong>
+                      <span className="text-[9.5px] text-zinc-555 dark:text-zinc-400 font-medium leading-none">Chi nhánh: {perf.branch} | {perf.bookingsCount} đặt phòng</span>
                     </div>
-                    <div className="flex flex-col items-end gap-1 font-mono text-[10px]">
-                      <strong className="font-black text-stone-850 leading-none">{formatVND(perf.revenue)}</strong>
+                    <div className="flex flex-col items-end gap-1.5 font-mono text-xs">
+                      <strong className="font-extrabold text-zinc-900 dark:text-zinc-50 leading-none">{formatVND(perf.revenue)}</strong>
                       
                       {/* Occupancy Indicator badge */}
-                      <span className={`px-1.5 py-0.2 rounded text-[8px] font-black uppercase tracking-wider ${
-                        perf.status === 'excellent' ? 'bg-green-100 text-green-800' :
-                        perf.status === 'good' ? 'bg-stone-150 text-stone-600' :
-                        'bg-red-100 text-red-800'
+                      <span className={`px-1.5 py-0.5 rounded text-[8.5px] font-black uppercase tracking-wider ${
+                        perf.status === 'excellent' ? 'bg-emerald-500/20 text-emerald-800 dark:text-emerald-400' :
+                        perf.status === 'good' ? 'bg-zinc-150 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400' :
+                        'bg-rose-500/20 text-rose-800 dark:text-rose-400'
                       }`}>
                         ⚡ lấp {perf.occupancy}%
                       </span>
@@ -878,34 +882,34 @@ export default function AnalyticsDashboardPage() {
               </div>
             </div>
 
-            {/* WIDGET C2: MARKETING CAMPAIGNS SUCCESS AND FAILURES (1 col width) */}
-            <div className="bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-2xs flex flex-col gap-4">
-              <div className="flex justify-between items-center border-b border-stone-100 pb-3">
+            {/* WIDGET C3: MARKETING CAMPAIGNS SUCCESS AND FAILURES (1 col width) */}
+            <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
+              <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-[#0A273A] uppercase tracking-wider">📢 Phân Tích Chiến Dịch Marketing</h3>
-                  <span className="text-[9.5px] text-stone-450 font-semibold block mt-0.5">Bảng đo hiệu suất chuyển đổi tin nhắn (CTR)</span>
+                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">📢 Phân Tích Chiến Dịch Marketing</h3>
+                  <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Bảng đo hiệu suất chuyển đổi tin nhắn (CTR)</span>
                 </div>
               </div>
 
               {/* Campaign performance cards */}
               <div className="flex flex-col gap-3 font-sans">
                 {CAMPAIGNS_PERFORMANCE.map((camp, i) => (
-                  <div key={i} className="flex flex-col gap-2 bg-stone-50/60 border border-stone-200/40 p-3 rounded-2xl transition hover:shadow-2xs">
+                  <div key={i} className="flex flex-col gap-2 bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 p-3 rounded-xl transition hover:shadow-2xs">
                     <div className="flex justify-between items-start">
                       <div className="flex flex-col gap-1 max-w-[70%]">
-                        <strong className="text-[10px] font-black text-stone-850 truncate block" title={camp.name}>
+                        <strong className="text-[10.5px] font-bold text-zinc-850 dark:text-zinc-200 truncate block" title={camp.name}>
                           {camp.name}
                         </strong>
-                        <span className="text-[8px] text-stone-400 font-extrabold uppercase tracking-wide leading-none">
+                        <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide leading-none">
                           Tệp: {camp.targetGroup} | {camp.sentCount} tin gửi
                         </span>
                       </div>
                       
                       {/* Success / Conversion Status tag */}
-                      <span className={`px-2 py-0.5 border rounded text-[8px] font-black uppercase tracking-wider ${
-                        camp.status === 'excellent' ? 'bg-green-50 text-green-700 border-green-200' :
-                        camp.status === 'normal' ? 'bg-blue-50 text-blue-700 border-blue-200' :
-                        'bg-rose-50 text-rose-700 border-rose-200'
+                      <span className={`px-2 py-0.5 border rounded-md text-[8.5px] font-black uppercase tracking-wider ${
+                        camp.status === 'excellent' ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-450 border-emerald-500/20' :
+                        camp.status === 'normal' ? 'bg-zinc-100 dark:bg-zinc-850 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700' :
+                        'bg-rose-500/10 text-rose-700 dark:text-rose-455 border-rose-500/20'
                       }`}>
                         {camp.status === 'excellent' ? 'Thành công 🚀' :
                          camp.status === 'normal' ? 'Bình thường ✅' : 'Tối ưu ⚠️'}
@@ -914,17 +918,17 @@ export default function AnalyticsDashboardPage() {
 
                     {/* Progress conversion bar */}
                     <div className="flex items-center gap-3">
-                      <div className="flex-grow bg-stone-200/80 h-2 rounded-full overflow-hidden border border-stone-300/30">
+                      <div className="flex-grow bg-zinc-150 dark:bg-zinc-800 h-2 rounded-full overflow-hidden border border-zinc-200/40 dark:border-zinc-700/40">
                         <div 
                           className={`h-full rounded-full transition-all duration-500 ${
-                            camp.status === 'excellent' ? 'bg-green-500' :
-                            camp.status === 'normal' ? 'bg-blue-500' :
-                            'bg-rose-500'
+                            camp.status === 'excellent' ? 'bg-emerald-500 dark:bg-emerald-400' :
+                            camp.status === 'normal' ? 'bg-zinc-500 dark:bg-zinc-400' :
+                            'bg-rose-500 dark:bg-rose-400'
                           }`}
                           style={{ width: `${camp.ctr}%` }}
                         />
                       </div>
-                      <span className="text-[10px] font-black font-mono text-[#0A273A] min-w-[36px] text-right">
+                      <span className="text-[10.5px] font-extrabold font-mono text-zinc-900 dark:text-zinc-50 min-w-[36px] text-right">
                         {camp.ctr}% CTR
                       </span>
                     </div>
@@ -936,10 +940,10 @@ export default function AnalyticsDashboardPage() {
           </div>
 
           {/* 🔮 4. INTERACTIVE AI COPILOT ANALYST & MARKETING RECOMMENDATION PANEL */}
-          <div className="bg-gradient-to-br from-[#0A273A] to-stone-950 text-white rounded-3xl p-5 md:p-8 flex flex-col gap-5 md:gap-6 shadow-xl relative overflow-hidden border border-white/10 select-none">
+          <div className="bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white rounded-2xl p-5 md:p-8 flex flex-col gap-5 md:gap-6 shadow-xl relative overflow-hidden border border-zinc-800 select-none">
             
             {/* Background glowing pattern */}
-            <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+            <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full bg-emerald-550/5 blur-3xl pointer-events-none" />
 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-4">
               <div className="flex items-center gap-3">
@@ -956,7 +960,7 @@ export default function AnalyticsDashboardPage() {
               <button
                 onClick={handleTriggerAIAnalysis}
                 disabled={isAnalyzing}
-                className="bg-emerald-600 hover:bg-emerald-500 disabled:bg-stone-850 disabled:text-stone-400 text-white font-black text-xs px-5 py-3 rounded-2xl border-none cursor-pointer flex items-center justify-center gap-2 shadow-md hover:shadow-emerald-500/10 active:scale-95 transition-all duration-200"
+                className="bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-black text-xs px-5 py-3 rounded-2xl border-none cursor-pointer flex items-center justify-center gap-2 shadow-md hover:shadow-emerald-500/10 active:scale-95 transition-all duration-200"
               >
                 {isAnalyzing ? (
                   <>
@@ -975,7 +979,7 @@ export default function AnalyticsDashboardPage() {
             {/* Output Analytics Area */}
             {isAnalyzing && (
               <div className="flex flex-col items-center justify-center py-16 gap-3 animate-in fade-in duration-300 select-none">
-                <Flame size={32} className="text-emerald-500 animate-bounce" />
+                <Flame size={32} className="text-emerald-550 animate-bounce" />
                 <span className="text-[10px] text-white/60 font-black tracking-widest uppercase animate-pulse">
                   AI đang quét doanh thu từng chi nhánh và đo lường CTR chiến dịch...
                 </span>
@@ -991,23 +995,23 @@ export default function AnalyticsDashboardPage() {
             {!isAnalyzing && aiAnalysis && (
               <div className="bg-white/5 border border-white/10 p-5 md:p-6 rounded-2xl leading-relaxed animate-in slide-in-from-bottom duration-300 max-h-[480px] overflow-y-auto pr-1">
                 {/* Structured reports inside custom Markdown view */}
-                <div className="prose prose-invert prose-xs text-xs text-stone-200 select-text selection:bg-emerald-600 font-sans">
+                <div className="prose prose-invert prose-xs text-xs text-zinc-200 select-text selection:bg-emerald-600 font-sans">
                   
                   {/* Executive Summary */}
                   <div className="mb-5 border-b border-white/5 pb-4">
                     <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                       <CheckCircle size={13} /> 1. Đánh giá sức khỏe kinh doanh & công suất chi nhánh:
                     </h4>
-                    <p className="font-medium text-stone-300 leading-relaxed pl-5">
+                    <p className="font-medium text-zinc-300 leading-relaxed pl-5">
                       {timeFilter === 'week' && 'Tuần này ghi nhận doanh số ổn định 14.200.000đ từ 9 lượt booking thành công, cải thiện +8.5% so với tuần trước.'}
                       {timeFilter === 'month' && 'Doanh thu tháng này ghi nhận cột mốc bùng nổ 68.450.000đ (+14.2% so với tháng trước), với phân khúc "Đi gia đình" làm động cơ sinh lời cốt lõi (chiếm 50% doanh thu).'}
                       {timeFilter === 'quarter' && 'Doanh thu quý đạt tốc độ tăng trưởng ổn định vượt mong đợi 204.500.000đ (+22.1%), với lượng khách hàng trung thành quay lại đặt đơn đạt tỷ lệ cao trên 38%.'}
                       {timeFilter === 'year' && 'Doanh thu thường niên chạm mốc đột phá vượt trội 818.000.000đ (+38.4%), ghi dấu một năm hoạt động vô cùng hiệu quả với 540 đơn booking thành công.'}
                     </p>
-                    <p className="font-medium text-stone-300 leading-relaxed pl-5 mt-2">
+                    <p className="font-medium text-zinc-300 leading-relaxed pl-5 mt-2">
                       <strong className="text-emerald-300 font-bold">Điểm Sáng Vận Hành:</strong> Cozy Wooden Cabin CS3 (Quận 5) đạt công suất buồng phòng xuất sắc trên 90%, dẫn đầu về doanh số nhờ các combo setup nướng BBQ Hinoki tiện ích gia đình cực vui.
                     </p>
-                    <p className="font-medium text-stone-300 leading-relaxed pl-5 mt-2">
+                    <p className="font-medium text-zinc-300 leading-relaxed pl-5 mt-2">
                       <strong className="text-rose-300 font-bold">Điểm Cần Cải Thiện:</strong> Sunlit Glass House CS4 (Gò Vấp) đang chịu hiệu suất lấp đầy rất thấp (~20%). Thiết kế kính ngắm nắng hoàn toàn ngoài trời đang tạo rào cản lớn về tính bảo mật riêng tư vào ban ngày của tệp khách lẻ, cần sớm có giải pháp khắc phục che chắn.
                     </p>
                   </div>
@@ -1017,9 +1021,9 @@ export default function AnalyticsDashboardPage() {
                     <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                       <CheckCircle size={13} /> 2. Đánh giá chiến dịch marketing & voucher đa tầng:
                     </h4>
-                    <ul className="list-disc pl-9 flex flex-col gap-1.5 font-medium text-stone-300">
-                      <li><strong className="text-stone-100 font-bold">💬 Kênh truyền thông Zalo ZNS đại thắng:</strong> Chiến dịch chăm sóc hội viên Gold <code className="bg-white/10 px-1 rounded text-emerald-300 font-mono text-[10px]">MKT-02</code> đạt tỷ lệ CTR chuyển đổi kỷ lục lên đến <strong className="text-emerald-400 font-bold">38.2%</strong>. Đây là kênh tin nhắn chủ lực mang lại hiệu quả vượt trội.</li>
-                      <li><strong className="text-stone-100 font-bold">📧 Kênh Email cần xem xét điều chỉnh:</strong> Chiến dịch email tiếp thị <code className="bg-white/10 px-1 rounded text-emerald-300 font-mono text-[10px]">MKT-03</code> chỉ đạt CTR <strong className="text-rose-400 font-bold">9.8%</strong>. Lý do cốt lõi nằm ở tiêu đề gửi chưa tạo tính tò mò và chưa chèn đúng biến voucher cá nhân hóa.</li>
+                    <ul className="list-disc pl-9 flex flex-col gap-1.5 font-medium text-zinc-300">
+                      <li><strong className="text-zinc-100 font-bold">💬 Kênh truyền thông Zalo ZNS đại thắng:</strong> Chiến dịch chăm sóc hội viên Gold <code className="bg-white/10 px-1 rounded text-emerald-300 font-mono text-[10px]">MKT-02</code> đạt tỷ lệ CTR chuyển đổi kỷ lục lên đến <strong className="text-emerald-400 font-bold">38.2%</strong>. Đây là kênh tin nhắn chủ lực mang lại hiệu quả vượt trội.</li>
+                      <li><strong className="text-zinc-100 font-bold">📧 Kênh Email cần xem xét điều chỉnh:</strong> Chiến dịch email tiếp thị <code className="bg-white/10 px-1 rounded text-emerald-300 font-mono text-[10px]">MKT-03</code> chỉ đạt CTR <strong className="text-rose-400 font-bold">9.8%</strong>. Lý do cốt lõi nằm ở tiêu đề gửi chưa tạo tính tò mò và chưa chèn đúng biến voucher cá nhân hóa.</li>
                     </ul>
                   </div>
 
@@ -1028,12 +1032,12 @@ export default function AnalyticsDashboardPage() {
                     <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                       <CheckCircle size={13} /> 3. Đề xuất kế hoạch hành động Sales & Marketing cụ thể:
                     </h4>
-                    <div className="flex flex-col gap-3.5 pl-5 mt-3 font-medium text-stone-300 leading-relaxed">
+                    <div className="flex flex-col gap-3.5 pl-5 mt-3 font-medium text-zinc-300 leading-relaxed">
                       
                       <div className="bg-white/5 border border-white/5 p-3 rounded-xl flex gap-2.5">
                         <div className="w-5 h-5 bg-emerald-500/20 text-emerald-400 font-black text-[11px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">1</div>
                         <p>
-                          <strong className="text-stone-100 block font-bold mb-1">Cải tạo và kích cầu khẩn cấp cho chi nhánh Gò Vấp (CS4):</strong>
+                          <strong className="text-zinc-100 block font-bold mb-1">Cải tạo và kích cầu khẩn cấp cho chi nhánh Gò Vấp (CS4):</strong>
                           Tiến hành bổ sung rèm tự động hoặc rèm tre mỹ thuật tại Sunlit Glass House để tạo không gian kín đáo ban ngày. Thiết lập chiến dịch Zalo ZNS flash sale giảm giá 25% giờ thấp điểm trưa giữa tuần dành riêng cho nhóm khách hàng <strong>"Thuê ngắn giờ"</strong> để lấp trống phòng.
                         </p>
                       </div>
@@ -1041,7 +1045,7 @@ export default function AnalyticsDashboardPage() {
                       <div className="bg-white/5 border border-white/5 p-3 rounded-xl flex gap-2.5">
                         <div className="w-5 h-5 bg-emerald-500/20 text-emerald-400 font-black text-[11px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">2</div>
                         <p>
-                          <strong className="text-stone-100 block font-bold mb-1">Nhân rộng mô hình "Cabin Sum Vầy" sang chi nhánh Tân Bình (CS1):</strong>
+                          <strong className="text-zinc-100 block font-bold mb-1">Nhân rộng mô hình "Cabin Sum Vầy" sang chi nhánh Tân Bình (CS1):</strong>
                           Tạo gói đặt phòng cuối tuần sum họp đính kèm ưu đãi miễn phí nướng BBQ và setup bồn Hinoki tặng rèm che ngoài trời cho nhóm khách hàng <strong>"Đi gia đình"</strong> có doanh số cao trong quý.
                         </p>
                       </div>
@@ -1049,7 +1053,7 @@ export default function AnalyticsDashboardPage() {
                       <div className="bg-white/5 border border-white/5 p-3 rounded-xl flex gap-2.5">
                         <div className="w-5 h-5 bg-emerald-500/20 text-emerald-400 font-black text-[11px] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">3</div>
                         <p>
-                          <strong className="text-stone-100 block font-bold mb-1">Dịch chuyển ngân sách sang kênh Zalo ZNS ZNS đính kèm voucher động:</strong>
+                          <strong className="text-zinc-100 block font-bold mb-1">Dịch chuyển ngân sách sang kênh Zalo ZNS ZNS đính kèm voucher động:</strong>
                           Tạm dừng các chiến dịch email thủ công CTR thấp. Kích hoạt tính năng gửi tin nhắn cá nhân hóa tự động mừng sinh nhật khách hàng VIP Gold/Diamond trước 7 ngày, đính kèm mã code giảm giá 20% tự động để gia tăng tỷ lệ khách quay lại đặt phòng dài lâu.
                         </p>
                       </div>

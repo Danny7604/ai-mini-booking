@@ -230,7 +230,7 @@ export default function MembershipsManagementPage() {
   const getTierIcon = (colorTheme: MembershipTier['colorTheme']) => {
     switch (colorTheme) {
       case 'stone':
-        return <Shield size={22} className="text-stone-400 animate-pulse" />
+        return <Shield size={22} className="text-zinc-400 dark:text-zinc-500 animate-pulse" />
       case 'slate':
         return <Award size={22} className="text-blue-300 animate-pulse" />
       case 'amber':
@@ -245,7 +245,7 @@ export default function MembershipsManagementPage() {
       
       {/* 🔮 CUSTOM TOAST SYSTEM */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#0A273A] border border-indigo-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-50 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border border-indigo-500 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-indigo-600 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -254,12 +254,12 @@ export default function MembershipsManagementPage() {
       )}
 
       {/* HEADER AREA */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200/50 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-250 dark:border-zinc-800 pb-5">
         <div>
-          <h2 className="text-xl md:text-2xl font-black text-[#0A273A] tracking-tight font-sans">
+          <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Luật Hạng Thành Viên (Membership Rules)
           </h2>
-          <p className="text-xs text-stone-500 font-medium mt-0.5">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
             Thiết lập điều kiện chi tiêu tích lũy tối thiểu và chiết khấu ưu đãi để hệ thống tự động phân cấp thứ hạng khách hàng.
           </p>
         </div>
@@ -268,8 +268,8 @@ export default function MembershipsManagementPage() {
       {/* HIỂN THỊ LOADING */}
       {isLoading ? (
         <div className="flex flex-col items-center justify-center min-h-[350px] gap-3">
-          <div className="w-8 h-8 border-4 border-[#0A273A] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest animate-pulse">
+          <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
             Đang đồng bộ luật thành viên Bliss...
           </span>
         </div>
@@ -345,34 +345,34 @@ export default function MembershipsManagementPage() {
           onClick={() => setIsEditModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-stone-800"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsEditModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-500 hover:text-stone-800 bg-stone-100 hover:bg-stone-200 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
               <div className="w-10 h-10 bg-indigo-50 text-indigo-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Award size={18} />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-stone-850 uppercase leading-none">Cấu Hình Luật Hạng</h3>
-                <span className="text-[10px] text-stone-400 font-bold block mt-1 tracking-wider">HẠNG: {editingTier.name.split('(')[0].toUpperCase()}</span>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Cấu Hình Luật Hạng</h3>
+                <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider">HẠNG: {editingTier.name.split('(')[0].toUpperCase()}</span>
               </div>
             </div>
 
             {/* Biểu mẫu chỉnh sửa */}
-            <form onSubmit={handleUpdateTier} className="flex flex-col gap-4 text-xs font-semibold text-stone-700">
+            <form onSubmit={handleUpdateTier} className="flex flex-col gap-4 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
               
               {/* Điều kiện chi tiêu */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Mức Chi Tiêu Tích Lũy Tối Thiểu (VND) *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Mức Chi Tiêu Tích Lũy Tối Thiểu (VND) *</label>
                 <input 
                   type="number"
                   required
@@ -381,7 +381,7 @@ export default function MembershipsManagementPage() {
                   value={editMinSpent}
                   onChange={(e) => setEditMinSpent(parseInt(e.target.value) || 0)}
                   disabled={editingTier.id === 'tier-bronze'}
-                  className="w-full bg-stone-50 disabled:bg-stone-100 disabled:text-stone-400 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-indigo-600 text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 disabled:bg-zinc-100 dark:bg-zinc-800 disabled:text-zinc-400 dark:text-zinc-500 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-indigo-600 text-zinc-800 dark:text-zinc-200"
                 />
                 {editingTier.id === 'tier-bronze' && (
                   <span className="text-[9px] text-amber-600 block italic">Hạng khởi đầu mặc định luôn có điều kiện tích lũy là 0đ.</span>
@@ -390,7 +390,7 @@ export default function MembershipsManagementPage() {
 
               {/* Mức chiết khấu */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-stone-400 font-black uppercase tracking-wider">Mức Giảm Chiết Khấu Trực Tiếp (%) *</label>
+                <label className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Mức Giảm Chiết Khấu Trực Tiếp (%) *</label>
                 <input 
                   type="number"
                   required
@@ -398,14 +398,14 @@ export default function MembershipsManagementPage() {
                   max={90}
                   value={editDiscount}
                   onChange={(e) => setEditDiscount(parseInt(e.target.value) || 0)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-indigo-600 text-stone-850"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-indigo-600 text-zinc-800 dark:text-zinc-200"
                 />
               </div>
 
               {/* Đặc quyền xem trước */}
-              <div className="flex flex-col gap-2 bg-stone-50 p-4 rounded-2xl border border-stone-200/50">
-                <span className="text-[9px] text-stone-400 font-black uppercase tracking-wider">Đặc quyền được bảo lưu:</span>
-                <ul className="flex flex-col gap-1.5 list-none p-0 m-0 text-stone-600 leading-relaxed font-medium">
+              <div className="flex flex-col gap-2 bg-zinc-50 dark:bg-zinc-900/60 p-4 rounded-2xl border border-zinc-250 dark:border-zinc-800">
+                <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Đặc quyền được bảo lưu:</span>
+                <ul className="flex flex-col gap-1.5 list-none p-0 m-0 text-zinc-650 dark:text-zinc-350 leading-relaxed font-medium">
                   {editingTier.benefits.map((b, idx) => (
                     <li key={idx} className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0"></span>
@@ -420,13 +420,13 @@ export default function MembershipsManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsEditModalOpen(false)}
-                  className="flex-grow py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
-                  className="flex-grow py-2.5 bg-[#0A273A] hover:bg-[#124263] text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 hover:bg-zinc-850 dark:bg-zinc-100 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Cập nhật Luật Hạng
                 </button>

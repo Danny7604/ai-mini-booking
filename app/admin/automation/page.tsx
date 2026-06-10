@@ -112,7 +112,7 @@ function renderOutputPills(nodeType: string, config: any, isTrigger: boolean) {
 
   if (activeVars.length === 0) {
     return (
-      <span className="text-[7.5px] text-slate-400 font-bold italic mt-0.5 block">
+      <span className="text-[7.5px] text-zinc-400 dark:text-zinc-500 font-bold italic mt-0.5 block">
         (Không có dữ liệu đầu ra)
       </span>
     )
@@ -150,7 +150,7 @@ function TriggerNode({ data: rawData, selected }: NodeProps) {
   const IconComponent = iconMap[data.nodeType as string] || Database
 
   return (
-    <div className={`px-4 py-3 bg-white border-2 rounded-2xl shadow-md w-60 transition-all duration-200 ${
+    <div className={`px-4 py-3 bg-card border-2 rounded-2xl shadow-md w-60 transition-all duration-200 ${
       selected ? 'border-emerald-600 ring-2 ring-emerald-100 scale-102' : 'border-emerald-400 hover:border-emerald-500'
     }`}>
       <div className="flex items-center gap-2.5">
@@ -158,10 +158,10 @@ function TriggerNode({ data: rawData, selected }: NodeProps) {
           <IconComponent size={16} />
         </div>
         <div className="text-left leading-tight min-w-0 flex-grow">
-          <h4 className="text-[11px] font-black text-black uppercase tracking-wider truncate">
+          <h4 className="text-[11px] font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-wider truncate">
             {data.label as string}
           </h4>
-          <span className="text-[9px] text-slate-500 font-bold block mt-0.5 truncate">
+          <span className="text-[9px] text-zinc-500 dark:text-zinc-450 font-bold block mt-0.5 truncate">
             {data.description as string}
           </span>
         </div>
@@ -169,7 +169,7 @@ function TriggerNode({ data: rawData, selected }: NodeProps) {
       
       {/* Node output summary snippet */}
       <div className="mt-2 pt-2 border-t border-slate-100 text-left">
-        <span className="text-[8px] uppercase tracking-wider font-extrabold text-slate-400 block">Dữ liệu đầu ra:</span>
+        <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-400 dark:text-zinc-500 block">Dữ liệu đầu ra:</span>
         {renderOutputPills(data.nodeType, data.config, true)}
       </div>
 
@@ -196,7 +196,7 @@ function ActionNode({ data: rawData, selected }: NodeProps) {
   const IconComponent = iconMap[data.nodeType as string] || Send
 
   return (
-    <div className={`px-4 py-3 bg-white border-2 rounded-2xl shadow-md w-60 transition-all duration-200 ${
+    <div className={`px-4 py-3 bg-card border-2 rounded-2xl shadow-md w-60 transition-all duration-200 ${
       selected ? 'border-indigo-600 ring-2 ring-indigo-100 scale-102' : 'border-indigo-400 hover:border-indigo-500'
     }`}>
       <Handle
@@ -210,10 +210,10 @@ function ActionNode({ data: rawData, selected }: NodeProps) {
           <IconComponent size={16} />
         </div>
         <div className="text-left leading-tight min-w-0 flex-grow">
-          <h4 className="text-[11px] font-black text-black uppercase tracking-wider truncate">
+          <h4 className="text-[11px] font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-wider truncate">
             {data.label as string}
           </h4>
-          <span className="text-[9px] text-slate-500 font-bold block mt-0.5 truncate">
+          <span className="text-[9px] text-zinc-500 dark:text-zinc-450 font-bold block mt-0.5 truncate">
             {data.description as string}
           </span>
         </div>
@@ -221,7 +221,7 @@ function ActionNode({ data: rawData, selected }: NodeProps) {
 
       {/* Action variables summary snippet */}
       <div className="mt-2 pt-2 border-t border-slate-100 text-left">
-        <span className="text-[8px] uppercase tracking-wider font-extrabold text-slate-400 block">Cấu hình:</span>
+        <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-400 dark:text-zinc-500 block">Cấu hình:</span>
         <div className="text-[8.5px] font-semibold text-slate-600 mt-1 truncate">
           {data.nodeType === 'action_internal_room' && `Phòng: ${data.config?.room_id || 'Chưa chọn'} ➔ ${data.config?.new_status || 'Chưa chọn'}`}
           {data.nodeType === 'action_external_zalo_zns' && `Mẫu: ${data.config?.template_id || 'Chưa chọn'}`}
@@ -230,7 +230,7 @@ function ActionNode({ data: rawData, selected }: NodeProps) {
       </div>
 
       <div className="mt-2 pt-2 border-t border-slate-100 text-left">
-        <span className="text-[8px] uppercase tracking-wider font-extrabold text-slate-400 block">Dữ liệu đầu ra:</span>
+        <span className="text-[8px] uppercase tracking-wider font-extrabold text-zinc-400 dark:text-zinc-500 block">Dữ liệu đầu ra:</span>
         {renderOutputPills(data.nodeType, data.config, false)}
       </div>
 
@@ -477,14 +477,14 @@ export default function AutomationPage() {
 
   if (!mounted) {
     return (
-      <div className="w-full h-full min-h-screen flex items-center justify-center bg-[#FAF9F5]">
+      <div className="w-full h-full min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
         <div className="animate-spin h-8 w-8 border-4 border-indigo-600 border-t-transparent rounded-full"></div>
       </div>
     )
   }
 
   return (
-    <div className="w-full h-full select-none font-sans text-black bg-[#FAF9F5] p-6 rounded-3xl min-h-screen relative flex flex-col gap-6">
+    <div className="w-full h-full select-none font-sans text-zinc-800 dark:text-zinc-200 bg-zinc-50 dark:bg-zinc-950 p-6 rounded-3xl min-h-screen relative flex flex-col gap-6">
       
       {/* Toast popup indicator */}
       {toast.show && (
@@ -503,7 +503,7 @@ export default function AutomationPage() {
       {/* =========================================================================
          HEADER CONTROLLER (Premium Light Theme)
          ========================================================================= */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white border-2 border-slate-200 p-5 rounded-3xl shadow-xs gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-card border-2 border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl shadow-xs gap-4">
         <div className="flex-grow min-w-0">
           <div className="flex items-center gap-2">
             <span className="bg-indigo-50 text-indigo-600 border border-indigo-200 text-[9px] uppercase tracking-widest font-black px-2 py-0.5 rounded-full">
@@ -517,7 +517,7 @@ export default function AutomationPage() {
             type="text"
             value={workflowName}
             onChange={(e) => setWorkflowName(e.target.value)}
-            className="text-base font-black text-black uppercase tracking-tight outline-none border-b-2 border-transparent focus:border-indigo-500 w-full mt-1 bg-transparent"
+            className="text-base font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-tight outline-none border-b-2 border-transparent focus:border-indigo-500 w-full mt-1 bg-transparent"
             title="Đổi tên kịch bản"
           />
         </div>
@@ -526,7 +526,7 @@ export default function AutomationPage() {
           <select
             value={workflowStatus}
             onChange={(e) => setWorkflowStatus(e.target.value as any)}
-            className="bg-[#FAF9F5] border-2 border-slate-350 text-xs font-black rounded-2xl px-3 py-2 text-black outline-none focus:border-indigo-500 cursor-pointer shadow-inner"
+            className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-xs font-black rounded-2xl px-3 py-2 text-zinc-800 dark:text-zinc-200 outline-none focus:border-indigo-500 cursor-pointer shadow-inner"
           >
             <option value="draft">Bản nháp (Draft)</option>
             <option value="active">Kích hoạt (Active)</option>
@@ -559,7 +559,7 @@ export default function AutomationPage() {
       <div className="flex-grow flex flex-col lg:flex-row gap-6 h-[640px]">
         
         {/* React Flow drawing zone */}
-        <div className="flex-grow bg-white border-2 border-slate-200 rounded-3xl overflow-hidden relative shadow-sm h-full">
+        <div className="flex-grow bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden relative shadow-sm h-full">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -571,19 +571,19 @@ export default function AutomationPage() {
             onPaneClick={() => setSelectedNodeId(null)}
             fitView
           >
-            <Controls className="!bg-white !border-slate-200 !shadow-md" />
+            <Controls className="!bg-card !border-zinc-200 dark:border-zinc-800 !shadow-md" />
             <MiniMap 
               nodeColor={(node) => {
                 if (node.type === 'trigger') return '#10b981'
                 return '#6366f1'
               }}
-              className="!bg-[#FAF9F5] !border-2 !border-slate-300 !rounded-2xl"
+              className="!bg-zinc-50 dark:bg-zinc-950 !border-2 !border-zinc-300 dark:border-zinc-700 !rounded-2xl"
             />
             <Background color="#cbd5e1" gap={16} size={1.2} />
 
             {/* Quick adding triggers/actions float menu */}
-            <Panel position="top-left" className="bg-white border-2 border-slate-200 rounded-2xl p-2.5 shadow-md flex flex-col gap-1.5 max-w-[200px]">
-              <span className="text-[9px] uppercase tracking-widest font-black text-slate-400 block mb-1">
+            <Panel position="top-left" className="bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-2.5 shadow-md flex flex-col gap-1.5 max-w-[200px]">
+              <span className="text-[9px] uppercase tracking-widest font-black text-zinc-400 dark:text-zinc-500 block mb-1">
                 + Thêm Module
               </span>
               
@@ -637,7 +637,7 @@ export default function AutomationPage() {
         </div>
 
         {/* Right configuration side drawer */}
-        <div className="w-full lg:w-80 bg-white border-2 border-slate-200 rounded-3xl p-5 shadow-sm flex flex-col gap-4 h-full overflow-y-auto">
+        <div className="w-full lg:w-80 bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 shadow-sm flex flex-col gap-4 h-full overflow-y-auto">
           {selectedNode ? (
             <div className="flex flex-col gap-4 text-left">
               <div className="flex justify-between items-start border-b border-slate-100 pb-3">
@@ -647,13 +647,13 @@ export default function AutomationPage() {
                   }`}>
                     {selectedNode.type}
                   </span>
-                  <h3 className="text-xs font-black text-black uppercase mt-2 tracking-wide leading-tight">
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-200 uppercase mt-2 tracking-wide leading-tight">
                     {selectedNode.data.label as string}
                   </h3>
                 </div>
                 <button
                   onClick={() => handleDeleteNode(selectedNode.id)}
-                  className="p-1.5 text-slate-400 hover:text-red-600 bg-slate-50 hover:bg-red-50 rounded-xl transition border-none cursor-pointer"
+                  className="p-1.5 text-zinc-400 dark:text-zinc-500 hover:text-red-600 bg-zinc-50/50 dark:bg-zinc-900/40 hover:bg-red-50 rounded-xl transition border-none cursor-pointer"
                   title="Xóa node này"
                 >
                   <Trash2 size={13} />
@@ -662,42 +662,42 @@ export default function AutomationPage() {
 
               {/* INPUT FIELDS CONFIGURATION */}
               <div className="flex flex-col gap-4">
-                <span className="text-[9px] uppercase tracking-widest font-black text-slate-400 block">
+                <span className="text-[9px] uppercase tracking-widest font-black text-zinc-400 dark:text-zinc-500 block">
                   Thuộc tính node
                 </span>
 
                 {/* 1. Trigger Booking node type */}
                 {selectedNode.data.nodeType === 'trigger_internal_booking' && (
-                  <div className="bg-[#FAF9F5] border border-slate-200 rounded-xl p-3 flex flex-col gap-1.5">
+                  <div className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex flex-col gap-1.5">
                     <span className="text-[10px] font-bold text-slate-700">Loại sự kiện (eventType)</span>
                     <code className="text-[9.5px] font-mono font-bold text-emerald-800 bg-emerald-50 py-1 px-2.5 rounded-lg border border-emerald-100">
                       booking_created
                     </code>
-                    <span className="text-[8.5px] text-slate-500 block mt-1">Kích hoạt mỗi khi có lượt thanh toán cọc đơn đặt phòng mới trên ứng dụng Bliss.</span>
+                    <span className="text-[8.5px] text-zinc-500 dark:text-zinc-450 block mt-1">Kích hoạt mỗi khi có lượt thanh toán cọc đơn đặt phòng mới trên ứng dụng Bliss.</span>
                   </div>
                 )}
 
                 {/* 2. Trigger CRM node type */}
                 {selectedNode.data.nodeType === 'trigger_internal_crm' && (
-                  <div className="bg-[#FAF9F5] border border-slate-200 rounded-xl p-3 flex flex-col gap-1.5">
+                  <div className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex flex-col gap-1.5">
                     <span className="text-[10px] font-bold text-slate-700">Loại sự kiện (eventType)</span>
                     <code className="text-[9.5px] font-mono font-bold text-emerald-800 bg-emerald-50 py-1 px-2.5 rounded-lg border border-emerald-100">
                       crm_tier_changed
                     </code>
-                    <span className="text-[8.5px] text-slate-500 block mt-1">Kích hoạt tự động khi phân loại AI CRM cập nhật nhóm VIP của khách.</span>
+                    <span className="text-[8.5px] text-zinc-500 dark:text-zinc-450 block mt-1">Kích hoạt tự động khi phân loại AI CRM cập nhật nhóm VIP của khách.</span>
                   </div>
                 )}
 
                 {/* 3. Trigger Webhook node type */}
                 {selectedNode.data.nodeType === 'trigger_external_webhook' && (
-                  <div className="bg-[#FAF9F5] border border-slate-200 rounded-xl p-3 flex flex-col gap-2">
+                  <div className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex flex-col gap-2">
                     <span className="text-[10px] font-bold text-slate-700">Đường dẫn Webhook URL nhận dữ liệu</span>
                     <div className="flex items-center gap-1">
                       <input
                         type="text"
                         readOnly
                         value={`https://n8n.blisshome.vn/webhook/${selectedNode.id}`}
-                        className="w-full bg-white border border-slate-300 py-1 px-2 text-[9px] font-mono rounded-lg outline-none"
+                        className="w-full bg-card border border-zinc-300 dark:border-zinc-700 py-1 px-2 text-[9px] font-mono rounded-lg outline-none"
                       />
                       <button 
                         onClick={() => {
@@ -729,7 +729,7 @@ export default function AutomationPage() {
                       <select
                         value={(selectedNode.data.config as any)?.new_status || 'dirty'}
                         onChange={(e) => updateNodeConfig('new_status', e.target.value)}
-                        className="bg-[#FAF9F5] border-2 border-slate-300 text-xs font-bold rounded-xl px-2.5 py-2 outline-none focus:border-indigo-650 text-black shadow-inner"
+                        className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-xs font-bold rounded-xl px-2.5 py-2 outline-none focus:border-indigo-650 text-zinc-800 dark:text-zinc-200 shadow-inner"
                       >
                         <option value="clean">Sạch sẽ (Available)</option>
                         <option value="dirty">Đang dọn dẹp (Cleaning)</option>
@@ -807,9 +807,9 @@ export default function AutomationPage() {
 
                 {/* 7. OUTPUT SCHEMA SELECTION */}
                 {NODE_OUTPUTS_SCHEMA[selectedNode.data.nodeType as string] && (
-                  <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-2.5">
+                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-2.5">
                     <div className="flex justify-between items-center">
-                      <span className="text-[9px] uppercase tracking-widest font-black text-slate-400 block">
+                      <span className="text-[9px] uppercase tracking-widest font-black text-zinc-400 dark:text-zinc-500 block">
                         Dữ liệu đầu ra (Output Schema)
                       </span>
                       <div className="flex gap-1.5">
@@ -828,14 +828,14 @@ export default function AutomationPage() {
                           onClick={() => {
                             updateNodeConfig('output_variables', [])
                           }}
-                          className="text-[8.5px] font-extrabold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 px-1.5 py-0.5 rounded-md cursor-pointer transition border-none"
+                          className="text-[8.5px] font-extrabold text-zinc-500 dark:text-zinc-450 hover:text-slate-700 bg-zinc-50/50 dark:bg-zinc-900/40 hover:bg-slate-100 px-1.5 py-0.5 rounded-md cursor-pointer transition border-none"
                         >
                           Bỏ chọn
                         </button>
                       </div>
                     </div>
 
-                    <div className="bg-[#FAF9F5] border border-slate-200 rounded-xl p-3 flex flex-col gap-2 max-h-[220px] overflow-y-auto">
+                    <div className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex flex-col gap-2 max-h-[220px] overflow-y-auto">
                       {NODE_OUTPUTS_SCHEMA[selectedNode.data.nodeType as string]?.map((v) => {
                         const schema = NODE_OUTPUTS_SCHEMA[selectedNode.data.nodeType as string]
                         const selectedKeys: string[] = (selectedNode.data.config as any)?.output_variables || schema.map(s => s.key)
@@ -858,17 +858,17 @@ export default function AutomationPage() {
                                 }
                                 updateNodeConfig('output_variables', updated)
                               }}
-                              className="mt-0.5 h-3.5 w-3.5 rounded border-slate-350 text-indigo-650 focus:ring-indigo-650 focus:ring-offset-0 cursor-pointer accent-indigo-650 transition"
+                              className="mt-0.5 h-3.5 w-3.5 rounded border-zinc-300 dark:border-zinc-700 text-indigo-650 focus:ring-indigo-650 focus:ring-offset-0 cursor-pointer accent-indigo-650 transition"
                             />
                             <div className="flex flex-col leading-tight">
-                              <span className="text-[10px] font-bold text-slate-800 group-hover:text-black transition flex items-center gap-1">
+                              <span className="text-[10px] font-bold text-slate-800 group-hover:text-zinc-800 dark:text-zinc-200 transition flex items-center gap-1">
                                 {v.name}
-                                <code className="text-[8px] font-mono text-slate-400 bg-slate-100 px-1 rounded-sm">
+                                <code className="text-[8px] font-mono text-zinc-400 dark:text-zinc-500 bg-slate-100 px-1 rounded-sm">
                                   {v.key}
                                 </code>
                               </span>
                               {v.description && (
-                                <span className="text-[8.5px] text-slate-400 font-semibold block mt-0.5">
+                                <span className="text-[8.5px] text-zinc-400 dark:text-zinc-500 font-semibold block mt-0.5">
                                   {v.description}
                                 </span>
                               )}
@@ -882,10 +882,10 @@ export default function AutomationPage() {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center h-full text-center text-slate-400 gap-2">
+            <div className="flex flex-col items-center justify-center h-full text-center text-zinc-400 dark:text-zinc-500 gap-2">
               <Settings size={28} className="animate-spin duration-6000 text-slate-300" />
               <span className="text-xs font-semibold">Chưa chọn Node để cấu hình</span>
-              <span className="text-[9px] font-bold text-slate-400">Chọn đúp hoặc nhấp chuột vào một Node trên Canvas để điều khiển cấu hình chi tiết và chèn biến.</span>
+              <span className="text-[9px] font-bold text-zinc-400 dark:text-zinc-500">Chọn đúp hoặc nhấp chuột vào một Node trên Canvas để điều khiển cấu hình chi tiết và chèn biến.</span>
             </div>
           )}
         </div>

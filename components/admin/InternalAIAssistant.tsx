@@ -173,26 +173,26 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-stone-900 text-stone-100 shadow-2xl flex flex-col border-l border-stone-800 animate-in slide-in-from-right duration-300">
+    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 shadow-2xl flex flex-col border-l border-zinc-200 dark:border-zinc-800 animate-in slide-in-from-right duration-300">
       
       {/* HEADER KHUNG CHAT AI COPILOT */}
-      <div className="bg-gradient-to-r from-stone-950 via-[#0D3149] to-stone-950 p-4 border-b border-stone-850 flex items-center justify-between">
+      <div className="bg-zinc-50 dark:bg-zinc-900 p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white shadow-inner animate-pulse">
+          <div className="w-8 h-8 bg-zinc-900 dark:bg-zinc-100 rounded-lg flex items-center justify-center text-white dark:text-zinc-900 shadow-inner">
             <Sparkles size={16} />
           </div>
           <div>
-            <h3 className="text-sm font-black tracking-tight text-white uppercase flex items-center gap-1.5">
-              Bliss Copilot <span className="text-[8px] bg-emerald-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">INTERNAL AI</span>
+            <h3 className="text-sm font-black tracking-tight text-zinc-900 dark:text-zinc-50 uppercase flex items-center gap-1.5">
+              Bliss Copilot <span className="text-[8px] bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">INTERNAL AI</span>
             </h3>
-            <span className="text-[9px] text-stone-400 block -mt-0.5 font-mono flex items-center gap-1">
-              <Terminal size={8} className="text-emerald-500" /> Hệ thống sẵn sàng vận hành RAG & Actionable
+            <span className="text-[9px] text-zinc-500 dark:text-zinc-400 block -mt-0.5 font-mono flex items-center gap-1">
+              <Terminal size={8} className="text-zinc-650 dark:text-zinc-450" /> Hệ thống sẵn sàng vận hành RAG & Actionable
             </span>
           </div>
         </div>
         <button
           onClick={onClose}
-          className="w-7 h-7 rounded-md bg-stone-800 hover:bg-stone-700 border-none text-stone-400 hover:text-white flex items-center justify-center cursor-pointer transition"
+          className="w-7 h-7 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border-none text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center cursor-pointer transition"
           title="Đóng ngăn kéo"
         >
           <X size={14} />
@@ -200,7 +200,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
       </div>
 
       {/* KHU VỰC TIN NHẮN ĐÀM THOẠI (CHAT LIST) */}
-      <div className="flex-grow overflow-y-auto p-4 flex flex-col gap-4 bg-stone-950/40">
+      <div className="flex-grow overflow-y-auto p-4 flex flex-col gap-4 bg-zinc-50/30 dark:bg-zinc-950/40">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -208,56 +208,56 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
               msg.sender === 'user' ? 'self-end' : 'self-start'
             }`}
           >
-            <div className="flex items-center gap-1 text-[9px] text-stone-500 font-bold px-1">
+            <div className="flex items-center gap-1 text-[9px] text-zinc-500 dark:text-zinc-400 font-bold px-1">
               {msg.sender === 'user' ? (
                 <>
                   <span>Quản trị viên</span> <User size={8} />
                 </>
               ) : msg.sender === 'system' ? (
-                <span className="text-red-400 font-mono">⚠️ Hệ Thống</span>
+                <span className="text-rose-500 font-mono">⚠️ Hệ Thống</span>
               ) : (
                 <>
-                  <Bot size={8} className="text-emerald-500" /> <span>Bliss Copilot</span>
+                  <Bot size={8} className="text-zinc-600 dark:text-zinc-400" /> <span>Bliss Copilot</span>
                 </>
               )}
             </div>
             
             {/* Hộp nội dung văn bản */}
             <div
-              className={`px-3 py-2.5 rounded-2xl text-xs md:text-sm leading-relaxed shadow-sm font-medium ${
+              className={`px-3 py-2.5 rounded-2xl text-xs md:text-sm leading-relaxed shadow-xs font-medium ${
                 msg.sender === 'user'
-                  ? 'bg-[#0D3149] text-white rounded-tr-none border border-[#1A3E5C]'
+                  ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 rounded-tr-none border border-zinc-900 dark:border-zinc-100'
                   : msg.sender === 'system'
-                  ? 'bg-red-950/40 text-red-300 border border-red-900/60 rounded-tl-none font-mono'
-                  : 'bg-stone-850 text-stone-200 border border-stone-800 rounded-tl-none'
+                  ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 rounded-tl-none font-mono'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 rounded-tl-none'
               }`}
             >
               {/* Parse in đậm markdown giả lập */}
               {msg.text.split('**').map((part, i) => (
-                i % 2 === 1 ? <strong key={i} className="text-emerald-400 font-bold">{part}</strong> : part
+                i % 2 === 1 ? <strong key={i} className="text-zinc-950 dark:text-white font-bold">{part}</strong> : part
               ))}
             </div>
 
             {/* RENDER THẺ THAO TÁC (GENERATIVE ACTION CARD - NẾU CÓ) */}
             {msg.action && !msg.actionExecuted && (
-              <div className="bg-emerald-950/35 border border-emerald-800/50 rounded-2xl p-3 flex flex-col gap-2.5 mt-1 shadow-md animate-in slide-in-from-bottom duration-300 border-l-4 border-l-emerald-500">
+              <div className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3 flex flex-col gap-2.5 mt-1 shadow-md animate-in slide-in-from-bottom duration-300 border-l-4 border-l-zinc-900 dark:border-l-zinc-100">
                 <div className="flex items-start gap-2">
-                  <Zap size={14} className="text-emerald-400 animate-pulse mt-0.5 flex-shrink-0" />
+                  <Zap size={14} className="text-zinc-900 dark:text-zinc-100 animate-pulse mt-0.5 flex-shrink-0" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-[10px] text-emerald-400 font-black uppercase tracking-wider">Hành Động Khuyên Dùng</span>
-                    <span className="text-xs font-semibold text-stone-200">{msg.action.description}</span>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider">Hành Động Khuyên Dùng</span>
+                    <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">{msg.action.description}</span>
                   </div>
                 </div>
                 <div className="flex gap-2 justify-end items-center">
                   <button
                     onClick={() => handleIgnoreAction(msg.id)}
-                    className="px-2.5 py-1.5 bg-stone-850 hover:bg-stone-850/80 active:bg-stone-800 text-stone-400 hover:text-stone-300 rounded-lg text-[10px] font-bold transition border-none cursor-pointer"
+                    className="px-2.5 py-1.5 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-850 dark:hover:bg-zinc-800 text-zinc-650 dark:text-zinc-400 rounded-lg text-[10px] font-bold transition border-none cursor-pointer"
                   >
                     Bỏ qua
                   </button>
                   <button
                     onClick={() => handleExecuteAction(msg.id, msg.action!)}
-                    className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white rounded-lg text-[10px] font-black tracking-wider uppercase transition shadow-md border-none flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 rounded-lg text-[10px] font-black tracking-wider uppercase transition shadow-md border-none flex items-center gap-1 cursor-pointer"
                   >
                     <CornerDownRight size={10} /> Đồng ý thực thi
                   </button>
@@ -267,13 +267,13 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
 
             {/* RENDER TRẠNG THÁI ĐÃ THỰC THI (NẾU CÓ) */}
             {msg.action && msg.actionExecuted && (
-              <div className="bg-stone-850/30 border border-stone-800/40 rounded-xl px-3 py-2 flex items-center gap-2 mt-0.5 text-stone-500 select-none transition">
-                <Check size={11} className="text-emerald-500 font-bold" />
+              <div className="bg-zinc-100/50 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-800/40 rounded-xl px-3 py-2 flex items-center gap-2 mt-0.5 text-zinc-500 select-none transition">
+                <Check size={11} className="text-zinc-600 dark:text-zinc-400 font-bold" />
                 <span className="text-[10px] font-semibold italic">Đã đồng ý thực thi thao tác tự động</span>
               </div>
             )}
 
-            <span className={`text-[8px] text-stone-500 px-1 mt-0.5 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+            <span className={`text-[8px] text-zinc-400 dark:text-zinc-500 px-1 mt-0.5 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
               {msg.time}
             </span>
           </div>
@@ -282,13 +282,13 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
         {/* AI TYPING INDICATOR */}
         {isTyping && (
           <div className="self-start max-w-[80%] flex flex-col gap-1">
-            <span className="text-[9px] text-stone-500 font-bold flex items-center gap-1">
-              <Bot size={8} className="text-emerald-500 animate-spin" /> Bliss Copilot đang phân tích dữ liệu...
+            <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold flex items-center gap-1">
+              <Bot size={8} className="text-zinc-600 dark:text-zinc-400 animate-spin" /> Bliss Copilot đang phân tích dữ liệu...
             </span>
-            <div className="bg-stone-850 border border-stone-800 px-3.5 py-2.5 rounded-2xl rounded-tl-none shadow-xs flex gap-1 items-center justify-center w-14">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce"></span>
+            <div className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-3.5 py-2.5 rounded-2xl rounded-tl-none shadow-xs flex gap-1 items-center justify-center w-14">
+              <span className="w-1.5 h-1.5 bg-zinc-900 dark:bg-zinc-100 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+              <span className="w-1.5 h-1.5 bg-zinc-900 dark:bg-zinc-100 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+              <span className="w-1.5 h-1.5 bg-zinc-900 dark:bg-zinc-100 rounded-full animate-bounce"></span>
             </div>
           </div>
         )}
@@ -296,18 +296,18 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
       </div>
 
       {/* Ô NHẬP LIỆU CHAT COPILOT */}
-      <div className="p-3 bg-stone-900 border-t border-stone-850 flex gap-2 items-center">
+      <div className="p-3 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 flex gap-2 items-center">
         <input
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
           placeholder="Hỏi về doanh thu, phòng trống, vouchers..."
-          className="flex-grow border border-stone-800 bg-stone-950 rounded-xl px-3 py-2.5 text-xs text-stone-200 focus:outline-none focus:border-emerald-500 font-sans"
+          className="flex-grow border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 rounded-xl px-3 py-2.5 text-xs text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 font-sans"
         />
         <button
           onClick={handleSendMessage}
-          className="w-10 h-10 rounded-xl bg-emerald-700 hover:bg-emerald-600 active:bg-emerald-800 text-white flex items-center justify-center cursor-pointer transition border-none shadow-md flex-shrink-0"
+          className="w-10 h-10 rounded-xl bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 flex items-center justify-center cursor-pointer transition border-none shadow-xs flex-shrink-0"
           title="Gửi yêu cầu"
         >
           <Send size={14} />
