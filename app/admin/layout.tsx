@@ -18,7 +18,9 @@ import {
   ChevronRight,
   BarChart3,
   Sun,
-  Moon
+  Moon,
+  Menu,
+  X
 } from 'lucide-react'
 import InternalAIAssistant from '@/components/admin/InternalAIAssistant'
 
@@ -34,6 +36,7 @@ export default function AdminLayout({
   const [adminName, setAdminName] = useState('Admin CS')
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   // Đọc theme từ localStorage
   useEffect(() => {
@@ -177,7 +180,7 @@ export default function AdminLayout({
     <div className="h-screen max-h-screen bg-zinc-50 dark:bg-zinc-950 flex font-sans antialiased text-zinc-800 dark:text-zinc-200 relative overflow-hidden">
       
       {/* 1. SIDEBAR CO-EX FIXED/STICKY & SCROLLABLE */}
-      <aside className={`bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex flex-col flex-shrink-0 border-r border-zinc-200 dark:border-zinc-850 shadow-xs z-20 transition-all duration-300 h-screen overflow-hidden ${
+      <aside className={`hidden md:flex bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex-col flex-shrink-0 border-r border-zinc-200 dark:border-zinc-850 shadow-xs z-20 transition-all duration-300 h-screen overflow-hidden ${
         isCollapsed ? 'w-20' : 'w-64'
       }`}>
         
@@ -316,12 +319,129 @@ export default function AdminLayout({
         </div>
       </aside>
 
+      {/* Mobile Sidebar overlay backdrop */}
+      {isMobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 md:hidden"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {/* Mobile Sidebar drawer */}
+      <aside className={`fixed inset-y-0 left-0 bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex flex-col w-64 border-r border-zinc-200 dark:border-zinc-850 shadow-xl z-50 transition-transform duration-300 md:hidden ${
+        isMobileOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="flex items-center justify-between pl-6 pr-3 py-5 border-b border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/20">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner">
+              <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <h1 className="text-base font-black tracking-tight leading-none uppercase text-zinc-900 dark:text-zinc-50">Bliss Home</h1>
+              <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mt-0.5 font-bold">Admin Portal</span>
+            </div>
+          </div>
+          <button 
+            onClick={() => setIsMobileOpen(false)}
+            className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <nav className="flex-grow p-4 flex flex-col gap-1.5 mt-2 overflow-y-auto">
+          {menuItems.map((item) => {
+            const Icon = item.icon
+            const isActive = item.id === 'marketing'
+              ? pathname.startsWith('/admin/automation')
+              : pathname === item.path
+
+            const isChildActive = (childPath: string) => pathname === childPath
+
+            return (
+              <div key={item.id} className="flex flex-col gap-1 w-full">
+                <button
+                  onClick={() => {
+                    router.push(item.path)
+                    setIsMobileOpen(false)
+                  }}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
+                    isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+                  }`}
+                >
+                  <Icon size={16} className={isActive ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+                  <span>{item.label}</span>
+                </button>
+
+                {!isActive && item.children && (
+                  <div className="border-l border-zinc-200 dark:border-zinc-800 ml-6 animate-in slide-in-from-top-1 duration-200">
+                    {item.children.map((child) => {
+                      const isSubActive = isChildActive(child.path)
+                      return (
+                        <button
+                          key={child.id}
+                          onClick={() => {
+                            router.push(child.path)
+                            setIsMobileOpen(false)
+                          }}
+                          className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11.5px] font-semibold transition-all border-none text-left cursor-pointer ${
+                            isSubActive ? 'bg-zinc-200/50 dark:bg-zinc-900/60 text-zinc-950 dark:text-zinc-50 font-bold' : 'text-zinc-500 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30'
+                          }`}
+                        >
+                          <div className={`w-1.5 h-1.5 rounded-full ${isSubActive ? 'bg-emerald-400 scale-110 shadow-xs' : 'bg-stone-500'}`} />
+                          <span>{child.label}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </nav>
+
+        <div className="p-4 border-t border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/10 flex flex-col gap-2.5 flex-shrink-0">
+          <button
+            onClick={() => {
+              router.push('/admin/integrations')
+              setIsMobileOpen(false)
+            }}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
+              pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-455 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+            }`}
+          >
+            <Settings size={16} className={pathname === '/admin/integrations' ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+            <span>Cài đặt</span>
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold text-rose-600 hover:bg-rose-500/10 transition border-none text-left cursor-pointer"
+          >
+            <UserCircle2 size={16} />
+            <span>Đăng xuất</span>
+          </button>
+
+          <span className="text-[9px] text-zinc-455 dark:text-zinc-500 font-mono block text-center select-none mt-1">
+            Version 2.4.0 • Dancin Builder
+          </span>
+        </div>
+      </aside>
+
       {/* 2. MAIN CONTAINER AREA (Header stays frozen, Content scrolls) */}
       <div className="flex-grow flex flex-col h-screen max-h-screen relative overflow-hidden">
         
         {/* TOP HEADER CONTROLS (Always fixed at the top) */}
         <header className="bg-card border-b border-zinc-200 dark:border-zinc-850 h-16 px-6 md:px-8 flex items-center justify-between flex-shrink-0 shadow-xs select-none">
-          <div>
+          <div className="flex items-center gap-3">
+            {/* Hamburger button on mobile */}
+            <button
+              onClick={() => setIsMobileOpen(true)}
+              className="md:hidden w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition cursor-pointer shadow-xs"
+              title="Mở menu"
+            >
+              <Menu size={18} />
+            </button>
             <h2 className="text-sm md:text-base font-extrabold text-zinc-900 dark:text-zinc-50 uppercase tracking-wider">
               Hệ Thống Quản Trị Bliss Home
             </h2>
