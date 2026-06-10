@@ -154,38 +154,38 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
       const isRelevant = relevantKeywords.some(kw => cleanText.includes(kw))
 
       if (!isRelevant) {
-        botResponse = 'Dạ hiện tại Bliss help center chưa có thông tin chính thức về chủ đề này của Bliss Home ở Sài Gòn ạ. 🌸 Bạn có muốn mình tư vấn về các phòng nghỉ có bồn tắm gỗ Hinoki ngoài trời, bể bơi vô cực, hay 5 chi nhánh hiện tại của Bliss Home không ạ?'
+        botResponse = 'Ui da, chủ đề này "hack não" Bé Bliss quá! 🧠💦 Hiện tại Bé Bliss chỉ giỏi tư vấn phòng đi trốn ở Bliss Home thôi hà. Hay là mình thử tìm mấy phòng có bồn tắm gỗ Hinoki ngoài trời sang chảnh, view săn mây đồi núi hoặc hỏi về 5 chi nhánh của Bliss Home nha!'
       } else {
         if (cleanText.includes('bồn tắm') || cleanText.includes('tắm') || cleanText.includes('bath') || cleanText.includes('jacuzzi')) {
           newFilter = 'bath'
           newLabel = 'Có bồn tắm chill'
-          botResponse = 'Dạ tuyệt vời! Bliss help center đã lọc ngay các phòng **có bồn tắm cực đỉnh** tại Bliss Home cho bạn rồi đó ạ. 🛁🌲 Đặc biệt là căn **Pine Forest Loft** có bồn tắm Hinoki gỗ ngoài trời cực chill, hoặc căn **Valley View Suite** có bồn tắm sát cửa kính săn mây. Bạn lướt xem danh sách bên cạnh nhé!'
+          botResponse = 'Úi chà, gu ngâm mình thư giãn ngắm cảnh đúng không nè? 🛁 Bé Bliss đã lọc ngay các căn phòng có bồn tắm đắt giá nhất Bliss Home rồi đây. Đặc biệt căn **Pine Forest Loft** có bồn tắm Hinoki ngoài trời cho bạn tha hồ "sống ảo" xà phòng bay phấp phới luôn! Lướt xem liền nha!'
         } else if (cleanText.includes('mây') || cleanText.includes('thung lũng') || cleanText.includes('săn mây') || cleanText.includes('view đồi') || cleanText.includes('panorama')) {
           newFilter = 'cloud'
           newLabel = 'View săn mây cực đỉnh'
-          botResponse = 'Săn mây cao nguyên là trải nghiệm đáng giá nhất luôn đó bạn! ☁️ Bliss help center đã mở bộ lọc các phòng sở hữu **tầm nhìn săn mây hoặc hoàng hôn đỉnh cao**. Đặc biệt là căn **Valley View Suite** ngắm mây 180 độ ngay tại giường ngủ nằm nha!'
+          botResponse = 'Muốn làm "thần tiên tỉ tỉ" bay bổng giữa biển mây đúng không? ☁️ Đã lọc ngay các căn view đỉnh chóp rồi nè! Điển hình là căn **Valley View Suite** ngắm mây 180 độ. Sáng ngủ dậy kéo nhẹ rèm là mây ùa vào mát rượi, nằm lười ôm gối ngủ tiếp là hết sảy!'
         } else if (cleanText.includes('cặp đôi') || cleanText.includes('2 người') || cleanText.includes('lãng mạn') || cleanText.includes('yêu') || cleanText.includes('vợ chồng') || cleanText.includes('hai người')) {
           newFilter = 'couple'
           newLabel = 'Cho cặp đôi lãng mạn'
-          botResponse = 'Ngọt ngào quá đi ạ! Bliss help center vừa lọc các phòng riêng tư, ấm cúng có **thiết kế lãng mạn vô cùng thích hợp cho 2 người** du lịch cùng nhau. 👩‍❤️‍👨 Bạn hãy tham khảo căn **Sunlit Glass House (Nhà kính ngập nắng)** giữa vườn hồng xem nhé!'
+          botResponse = 'Hí hí, có mùi "cẩu lương" đâu đây nha! 👩‍❤️‍👨 Đã lọc ngay các căn phòng siêu lãng mạn, ấm cúng và kín đáo để hai bạn tha hồ sưởi ấm tình cảm nhé. Đề xuất nhiệt tình căn **Sunlit Glass House (Nhà kính ngập nắng)** giữa vườn hoa cực kỳ thơ mộng!'
         } else if (cleanText.includes('gia đình') || cleanText.includes('4 người') || cleanText.includes('trẻ em') || cleanText.includes('nhóm') || cleanText.includes('đông người') || cleanText.includes('family')) {
           newFilter = 'family'
           newLabel = 'Thích hợp gia đình'
-          botResponse = 'Chào cả gia đình mình ạ! Bliss help center đã lọc ngay các không gian rộng rãi, đầy đủ bếp nút tiện nghi và **sức chứa lớn từ 4-6 người**. Căn cabin gỗ **Cozy Wooden Cabin** (có bếp lò & hiên nướng BBQ) hoặc căn hộ **Sunset Panorama** sang trọng sẽ cực kỳ phù hợp đó ạ!'
+          botResponse = 'Chào cả nhà mình ạ! Biệt đội đi trốn thế giới tụ họp đông đủ chưa nè? 🏡 Bé Bliss đã lọc ngay các căn rộng rãi, đầy đủ bếp núc cho các chiến thần trổ tài nấu nướng. Căn cabin gỗ **Cozy Wooden Cabin** có lò sưởi ấm áp và hiên nướng BBQ sẽ là nơi lý tưởng để "tám" xuyên màn đêm đó!'
         } else if (cleanText.includes('rẻ') || cleanText.includes('tiết kiệm') || cleanText.includes('giá tốt') || cleanText.includes('ít tiền') || cleanText.includes('budget') || cleanText.includes('dưới 1.5 triệu')) {
           newFilter = 'budget'
           newLabel = 'Tiết kiệm (Dưới 1.5tr)'
-          botResponse = 'Dạ vâng, du lịch thả ga không lo về giá! Bliss help center đã gom các phòng có **chi phí cực tốt dưới 1.5 triệu/đêm** mà không gian vẫn cực chill. Căn **Riverside Nest (Tổ chim ven suối)** có võng lưới sát nước chỉ 950k/đêm sẽ làm bạn hài lòng!'
+          botResponse = 'Đang "xẹp ví" nhưng tâm hồn vẫn muốn bay bổng đi trốn? Bé Bliss hiểu mà! 💸 Đã gom ngay danh sách các phòng siêu hạt dẻ dưới 1.5 triệu/đêm. Cực kỳ đề xuất căn **Riverside Nest (Tổ chim ven suối)** chỉ 950k/đêm để bạn tha hồ chill mà không lo "cháy túi"!'
         } else if (cleanText.includes('hồ bơi') || cleanText.includes('bể bơi') || cleanText.includes('pool') || cleanText.includes('bơi')) {
           newFilter = 'pool'
           newLabel = 'Có hồ bơi vô cực'
-          botResponse = 'Đắm mình giữa làn nước ngắm hoàng hôn buông xuống rừng thông thì quá đã! 🏊‍♂️ Bliss help center đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng siêu sang chảnh cho bạn rồi nhé!'
+          botResponse = 'Đắm mình giữa làn nước ấm ngắm hoàng hôn buông xuống rừng thông thì sang chảnh thôi rồi! 🏊‍♂️ Đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng. Chuẩn bị bikini để thả dáng sống ảo triệu like thôi bạn ơi!'
         } else if (cleanText.includes('công') || cleanText.includes('địa chỉ') || cleanText.includes('chi nhánh') || cleanText.includes('ở đâu') || cleanText.includes('vị trí')) {
-          botResponse = 'Dạ Bliss Home hiện tại có 5 chi nhánh tại TP.HCM: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nBạn muốn mình tư vấn phòng cụ thể ở chi nhánh nào ạ? 🏡'
+          botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Bliss Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Bliss dắt đi trốn nhé! 🏡'
         } else if (cleanText.includes('cảm ơn') || cleanText.includes('thank') || cleanText.includes('tuyệt') || cleanText.includes('ok')) {
-          botResponse = 'Dạ không có gì ạ! Niềm vui của Bliss help center là được hỗ trợ bạn. Chúc bạn tìm được căn phòng ưng ý tại Bliss Home nha! 🌸✨'
+          botResponse = 'Hì hì, không có chi nè! Niềm vui của Bé Bliss là được hỗ trợ bạn tìm phòng đi trốn deadline. Chúc bạn tìm được căn phòng ưng ý tại Bliss Home nha! 🌸✨'
         } else {
-          botResponse = `Dạ Bliss help center đã ghi nhận yêu cầu: *" ${text} "* của bạn rồi ạ! ✨ Dựa trên mô tả đó, Bliss help center đã đề xuất tất cả các phòng nghỉ có không gian thư giãn, gần gũi thiên nhiên nhất tại Bliss Home. Bạn xem chi tiết các phòng ở danh sách bên cạnh nha!`
+          botResponse = `A ha! Nhận được tín hiệu vũ trụ từ bạn rồi nè: *" ${text} "*. ✨ Dựa trên tần số này, Bé Bliss đã lọc ra những phòng nghỉ chill nhất, gần gũi thiên nhiên nhất tại Bliss Home. Bạn xem chi tiết các phòng ở danh sách bên cạnh nha!`
         }
       }
 
@@ -228,25 +228,25 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
 
       switch (filter) {
         case 'bath':
-          botResponse = 'Bliss help center đã lọc các phòng **có bồn tắm cực kỳ thư giãn**. Ngâm mình ngắm rừng thông hay thung lũng mây bay thì còn gì chill bằng đúng không bạn! 🛁🌲'
+          botResponse = 'Bé Bliss đã lọc các phòng **có bồn tắm cực kỳ thư giãn**. Ngâm mình ngắm rừng thông hay thung lũng mây bay thì còn gì chill bằng đúng không bạn! 🛁🌲'
           break
         case 'cloud':
-          botResponse = 'Biển mây cao nguyên đang đợi bạn! Bliss help center vừa mở bộ lọc những phòng **săn mây đẹp nhất**. Kéo nhẹ rèm là thấy mây ùa vào tận giường nằm đó nha! ☁️✨'
+          botResponse = 'Biển mây đang đợi bạn! Bé Bliss vừa mở bộ lọc những phòng **săn mây đẹp nhất**. Kéo nhẹ rèm là thấy mây ùa vào tận giường nằm luôn đó nha! ☁️✨'
           break
         case 'couple':
-          botResponse = 'Tình yêu bay bổng trong không gian bình yên! Bliss help center đã lựa ra các góc nhỏ ấm áp, lãng mạn **thích hợp nhất cho 2 người** du lịch cùng nhau. 👩‍❤️‍👨'
+          botResponse = 'Tình yêu bay bổng trong không gian bình yên! Bé Bliss đã lựa ra các góc nhỏ ấm áp, lãng mạn **thích hợp nhất cho 2 người** du lịch cùng nhau. 👩‍❤️‍👨'
           break
         case 'family':
-          botResponse = 'Chuyến đi gắn kết của cả nhà! Bliss help center đã lọc các căn cabin gỗ rộng lớn, có bếp nấu nướng và sân nướng BBQ nướng khoai sưởi ấm rất **phù hợp cho gia đình từ 4-6 người**.'
+          botResponse = 'Chuyến đi gắn kết của cả nhà! Bé Bliss đã lọc các căn cabin gỗ rộng lớn, có bếp nấu nướng và sân nướng BBQ sưởi ấm rất **phù hợp cho gia đình từ 4-6 người**.'
           break
         case 'budget':
-          botResponse = 'Đi trốn sương mù nhưng chi phí cực kỳ nhẹ nhàng! Bliss help center đã lọc các căn có **giá vô cùng hạt dẻ chỉ dưới 1.5 triệu/đêm** để bạn vui chơi không lo nghĩ.'
+          botResponse = 'Đi trốn thế giới nhưng chi phí cực kỳ nhẹ nhàng! Bé Bliss đã lọc các căn có **giá vô cùng hạt dẻ chỉ dưới 1.5 triệu/đêm** để bạn vui chơi không lo nghĩ.'
           break
         case 'pool':
-          botResponse = 'Thư thái vẫy vùng giữa mây ngàn! Bliss help center đã lọc căn phòng hoàng hôn có **bể bơi nước ấm vô cực mini ngoài trời** siêu VIP cho bạn trải nghiệm.'
+          botResponse = 'Thư thái vẫy vùng giữa mây ngàn! Bé Bliss đã lọc căn phòng hoàng hôn có **bể bơi nước ấm vô cực mini ngoài trời** siêu VIP cho bạn trải nghiệm.'
           break
         default:
-          botResponse = 'Bliss help center hiển thị danh sách các phòng lý tưởng cho bạn nhé!'
+          botResponse = 'Bé Bliss hiển thị danh sách các phòng lý tưởng cho bạn nhé!'
       }
 
       onFilterChange(filter, label)
