@@ -24,6 +24,33 @@ const suggestions: Suggestion[] = [
   { filter: 'pool', label: 'Có hồ bơi vô cực', icon: '🏊‍♂️' }
 ]
 
+const wittyScenarios = [
+  {
+    keywords: ['thời tiết', 'nắng', 'mưa', 'lạnh', 'nóng', 'weather', 'bão', 'sương'],
+    response: 'Thời tiết Sài Gòn dạo này nắng mưa thất thường như tâm trạng người yêu cũ vậy đó! 🌧️☀️ Nhưng bạn yên tâm, ở Bliss Home thì phòng lúc nào cũng ấm áp, nước nóng đầy đủ và có bồn tắm gỗ Hinoki cực chill. Hay để Bé Bliss lọc mấy phòng có bồn tắm chill cho bạn ngâm mình trốn mưa trốn nắng nha? 👇'
+  },
+  {
+    keywords: ['ai', 'tên gì', 'là gì', 'who', 'identify', 'tên là', 'bot', 'assistant'],
+    response: 'Bé Bliss là "chiến thần tư vấn" và là trợ lý ảo chính thức của Bliss Home Sài Gòn đây ạ! 👑 Nhiệm vụ lớn nhất đời mình là giúp các bạn yêu tìm phòng đi trốn deadline và thế giới. Bạn muốn tìm phòng gác mái lãng mạn cho 2 người hay phòng cabin rộng rãi cho cả hội bạn thân nè? 👇'
+  },
+  {
+    keywords: ['ăn', 'uống', 'đói', 'nhậu', 'tiệc', 'food', 'bbq', 'nướng', 'lẩu', 'đồ ăn'],
+    response: 'Nhắc tới ăn uống là bụng Bé Bliss reo lên rồi nè! 🍲 Đi trốn tại Bliss Home thì tuyệt nhất là làm một bữa tiệc nướng BBQ thơm phức ngoài sân vườn. Bé Bliss có phòng **Cozy Wooden Cabin** có bếp lò và hiên nướng BBQ riêng cực đỉnh. Bạn có muốn mình lọc phòng này ra xem thử không? 👇'
+  },
+  {
+    keywords: ['thất tình', 'buồn', 'cô đơn', 'mệt', 'stress', 'deadline', 'áp lực', 'khóc', 'yếu lòng', 'nản', 'tệ', 'chán'],
+    response: 'Thương bạn yêu quá hà! 🥺 Cuộc sống ngoài kia nhiều áp lực quá thì mình tạm gác lại hết, xách balo lên đi trốn để chữa lành thôi. Bé Bliss đề xuất căn **Riverside Nest** sát suối chảy róc rách cực yên bình, hoặc căn **Valley View Suite** nằm lười săn mây ngắm cảnh. Để mình lọc danh sách này cho bạn phục hồi năng lượng nha! 👇'
+  },
+  {
+    keywords: ['đẹp trai', 'xinh gái', 'yêu bé', 'thả thính', 'dễ thương', 'cute', 'thính'],
+    response: 'Ái chà, bạn thính ngọt như mật vậy làm Bé Bliss ngại chín cả mặt rồi nè! 🥰 Nhưng mà Bé Bliss chỉ chung thủy với việc tìm phòng đẹp cho bạn thôi. Để đáp lại sự dễ thương này, mình lọc danh sách các phòng view hoàng hôn lãng mạn nhất Bliss Home cho hai đứa... à cho bạn xem nha! 👇'
+  },
+  {
+    keywords: ['giá', 'bao nhiêu', 'tiền', 'đắt', 'rẻ', 'mắc', 'price', 'cost', 'hủy', 'cancel', 'book', 'đặt'],
+    response: 'Dạ giá phòng tại Bliss Home luôn được hiển thị công khai, minh bạch ngay bên cạnh danh sách phòng đó ạ. Rất nhiều lựa chọn từ bình dân đến sang chảnh! Để tiết kiệm thời gian, Bé Bliss lọc sẵn các phòng giá siêu "hạt dẻ" dưới 1.5 triệu/đêm cho bạn tham khảo trước nha? 👇'
+  }
+];
+
 interface AIAssistantProps {
   currentFilter: string
   onFilterChange: (filter: string, label: string) => void
@@ -153,8 +180,12 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
       
       const isRelevant = relevantKeywords.some(kw => cleanText.includes(kw))
 
-      if (!isRelevant) {
-        botResponse = 'Ui da, chủ đề này "hack não" Bé Bliss quá! 🧠💦 Hiện tại Bé Bliss chỉ giỏi tư vấn phòng đi trốn ở Bliss Home thôi hà. Hay là mình thử tìm mấy phòng có bồn tắm gỗ Hinoki ngoài trời sang chảnh, view săn mây đồi núi hoặc hỏi về 5 chi nhánh của Bliss Home nha!'
+      const matchedScenario = wittyScenarios.find(sc => sc.keywords.some(kw => cleanText.includes(kw)));
+
+      if (matchedScenario) {
+        botResponse = matchedScenario.response;
+      } else if (!isRelevant) {
+        botResponse = 'Ui da, câu hỏi này của bạn làm Bé Bliss "đứng hình mất 2 giây" vì nằm ngoài vùng vũ trụ của mình rồi! 🛸 Chắc do bạn nói chuyện sâu sắc quá đó hihi. Để quay lại quỹ đạo đi trốn, bạn muốn Bé Bliss tìm phòng có bồn tắm chill ngâm mình hay phòng view thung lũng săn mây siêu thực đây? 👇';
       } else {
         if (cleanText.includes('bồn tắm') || cleanText.includes('tắm') || cleanText.includes('bath') || cleanText.includes('jacuzzi')) {
           newFilter = 'bath'
