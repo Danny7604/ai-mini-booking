@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { getSupabase } from '@/lib/supabase'
+import { useAdminData } from '../AdminDataContext'
 import { 
   Search, 
   Filter, 
@@ -90,6 +91,7 @@ const INITIAL_ROOMS: Room[] = [
 
 export default function RoomGridManagementDashboard() {
   const [rooms, setRooms] = useState<Room[]>(INITIAL_ROOMS)
+  const { theme } = useAdminData()
   const [selectedBranch, setSelectedBranch] = useState<string>('all')
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState<string>('')
@@ -142,13 +144,18 @@ export default function RoomGridManagementDashboard() {
   }
 
   // Cấu hình mã màu sắc, biểu tượng cho từng Trạng thái phòng (Tinh tế, HSL cao cấp)
-  const getStatusConfig = (status: Room['status']) => {
+  const getStatusConfig = (status: Room['status'], currentTheme: 'light' | 'dark') => {
+    const isDark = currentTheme === 'dark'
     switch (status) {
       case 'available':
         return {
-          bg: 'bg-emerald-50/80 hover:bg-emerald-50',
-          border: 'border-emerald-200 hover:border-emerald-400',
-          text: 'text-emerald-800',
+          bg: isDark
+            ? 'bg-emerald-900 hover:bg-emerald-850'
+            : 'bg-emerald-100 hover:bg-emerald-200/70',
+          border: isDark
+            ? 'border-emerald-700 hover:border-emerald-600'
+            : 'border-emerald-300 hover:border-emerald-400',
+          text: isDark ? 'text-white' : 'text-emerald-950 font-black',
           badgeBg: 'bg-emerald-600 text-white',
           dot: 'bg-emerald-500',
           icon: <CheckCircle2 size={16} />,
@@ -156,9 +163,13 @@ export default function RoomGridManagementDashboard() {
         }
       case 'booked_not_checked_in':
         return {
-          bg: 'bg-orange-50/80 hover:bg-orange-50',
-          border: 'border-orange-200 hover:border-orange-400',
-          text: 'text-orange-800',
+          bg: isDark
+            ? 'bg-orange-900 hover:bg-orange-850'
+            : 'bg-orange-100 hover:bg-orange-200/70',
+          border: isDark
+            ? 'border-orange-700 hover:border-orange-600'
+            : 'border-orange-300 hover:border-orange-400',
+          text: isDark ? 'text-white' : 'text-orange-950 font-black',
           badgeBg: 'bg-orange-500 text-white',
           dot: 'bg-orange-500',
           icon: <Calendar size={16} />,
@@ -166,9 +177,13 @@ export default function RoomGridManagementDashboard() {
         }
       case 'checked_in':
         return {
-          bg: 'bg-pink-50/80 hover:bg-pink-50',
-          border: 'border-pink-200 hover:border-pink-400',
-          text: 'text-pink-850',
+          bg: isDark
+            ? 'bg-pink-900 hover:bg-pink-850'
+            : 'bg-pink-100 hover:bg-pink-200/70',
+          border: isDark
+            ? 'border-pink-700 hover:border-pink-600'
+            : 'border-pink-300 hover:border-pink-400',
+          text: isDark ? 'text-white' : 'text-pink-950 font-black',
           badgeBg: 'bg-pink-500 text-white',
           dot: 'bg-pink-500',
           icon: <User size={16} />,
@@ -176,19 +191,27 @@ export default function RoomGridManagementDashboard() {
         }
       case 'checkout_imminent':
         return {
-          bg: 'bg-rose-50/85 hover:bg-rose-50',
-          border: 'border-rose-250 hover:border-rose-450',
-          text: 'text-rose-800',
+          bg: isDark
+            ? 'bg-rose-900 hover:bg-rose-850'
+            : 'bg-rose-100 hover:bg-rose-200/70',
+          border: isDark
+            ? 'border-rose-700 hover:border-rose-600'
+            : 'border-rose-300 hover:border-rose-400',
+          text: isDark ? 'text-white' : 'text-rose-950 font-black',
           badgeBg: 'bg-rose-600 text-white',
-          dot: 'bg-rose-600',
+          dot: 'bg-rose-650',
           icon: <Flame size={16} className="animate-pulse" />,
           label: 'Sắp Check-Out ⚠️'
         }
       case 'maintenance':
         return {
-          bg: 'bg-blue-50/80 hover:bg-blue-50',
-          border: 'border-blue-200 hover:border-blue-400',
-          text: 'text-blue-800',
+          bg: isDark
+            ? 'bg-blue-900 hover:bg-blue-850'
+            : 'bg-blue-100 hover:bg-blue-200/70',
+          border: isDark
+            ? 'border-blue-700 hover:border-blue-600'
+            : 'border-blue-300 hover:border-blue-400',
+          text: isDark ? 'text-white' : 'text-blue-950 font-black',
           badgeBg: 'bg-blue-600 text-white',
           dot: 'bg-blue-500',
           icon: <Wrench size={16} />,
@@ -196,11 +219,15 @@ export default function RoomGridManagementDashboard() {
         }
       case 'cleaning':
         return {
-          bg: 'bg-zinc-50 dark:bg-zinc-900/60/90 hover:bg-zinc-100 dark:bg-zinc-800/50',
-          border: 'border-zinc-250 dark:border-zinc-700 hover:border-stone-350',
-          text: 'text-zinc-700 dark:text-zinc-300',
-          badgeBg: 'bg-stone-400 text-white',
-          dot: 'bg-stone-400',
+          bg: isDark
+            ? 'bg-zinc-800 hover:bg-zinc-700'
+            : 'bg-zinc-200 hover:bg-zinc-300/70',
+          border: isDark
+            ? 'border-zinc-700 hover:border-zinc-600'
+            : 'border-zinc-350 hover:border-zinc-400',
+          text: isDark ? 'text-white' : 'text-zinc-900 font-black',
+          badgeBg: 'bg-zinc-550 text-white',
+          dot: 'bg-zinc-500',
           icon: <Sparkles size={16} />,
           label: 'Đang Dọn Dẹp'
         }
@@ -384,11 +411,11 @@ export default function RoomGridManagementDashboard() {
   })
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-800 dark:text-zinc-200">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-300 relative text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
       
       {/* 🔮 CUSTOM TOAST SYSTEM */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-[999] bg-zinc-900 dark:bg-zinc-100 border border-zinc-250 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-[999] bg-zinc-900 dark:bg-zinc-100 border border-zinc-200 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -411,7 +438,7 @@ export default function RoomGridManagementDashboard() {
       </div>
 
       {/* HEADER SECTION */}
-      <div className="flex flex-col gap-2 border-b border-zinc-250 dark:border-zinc-800 pb-5">
+      <div className="flex flex-col gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-5">
         <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
           Sơ Đồ Phòng & Quản Lý Chi Nhánh
         </h2>
@@ -432,7 +459,7 @@ export default function RoomGridManagementDashboard() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Tìm theo tên phòng, mã, khách..."
-              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white text-zinc-700 dark:text-zinc-300 shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white text-zinc-700 dark:text-zinc-300 shadow-2xs transition duration-200"
             />
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
           </div>
@@ -442,7 +469,7 @@ export default function RoomGridManagementDashboard() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
             >
               {STATUS_FILTER_OPTIONS.map(s => (
                 <option key={s.id} value={s.id}>{s.name}</option>
@@ -456,7 +483,7 @@ export default function RoomGridManagementDashboard() {
             <select
               value={selectedBranch}
               onChange={(e) => setSelectedBranch(e.target.value)}
-              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
+              className="w-full bg-zinc-50/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 focus:bg-white cursor-pointer appearance-none shadow-2xs transition duration-200"
             >
               {BRANCHES.map(b => (
                 <option key={b.id} value={b.id}>{b.name}</option>
@@ -468,7 +495,7 @@ export default function RoomGridManagementDashboard() {
           {/* 4. Nút Thêm Phòng Mới (Căn chỉnh đều cùng dòng) */}
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="w-full py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white font-extrabold text-xs rounded-xl border border-transparent cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition duration-200"
+            className="w-full py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:bg-zinc-200 text-white font-extrabold text-xs rounded-xl border border-transparent cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition duration-200"
           >
             <Plus size={14} className="stroke-[3]" />
             <span>Thêm Phòng Mới</span>
@@ -506,13 +533,13 @@ export default function RoomGridManagementDashboard() {
       {/* LƯỚI SƠ ĐỒ PHÒNG GIẢ LẬP (GRID MAP) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {filteredRooms.length === 0 ? (
-          <div className="col-span-full py-16 bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl text-center text-zinc-400 dark:text-zinc-500 flex flex-col items-center justify-center gap-3">
+          <div className="col-span-full py-16 bg-white border border-zinc-200 dark:border-zinc-800 rounded-3xl text-center text-zinc-400 dark:text-zinc-500 flex flex-col items-center justify-center gap-3">
             <Info size={28} className="text-stone-300" />
             <span className="text-xs font-bold">Không tìm thấy phòng nghỉ nào khớp với bộ lọc tìm kiếm.</span>
           </div>
         ) : (
           filteredRooms.map((room) => {
-            const config = getStatusConfig(room.status)
+            const config = getStatusConfig(room.status, theme)
 
             return (
               <div
@@ -523,38 +550,56 @@ export default function RoomGridManagementDashboard() {
               >
                 {/* Header thẻ phòng */}
                 <div className="flex justify-between items-start mb-4">
-                  <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-wider bg-white/70 backdrop-blur-xs ${config.text} border border-black/5`}>
+                  <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-wider backdrop-blur-xs ${config.text} border border-black/5 ${
+                    theme === 'dark' ? 'bg-zinc-950/70' : 'bg-white/70'
+                  }`}>
                     {config.icon}
                     <span>{config.label}</span>
                   </div>
-                  <span className="text-xs font-black text-zinc-400 dark:text-zinc-500 font-mono">#{room.id}</span>
+                  <span className={`text-xs font-black font-mono ${
+                    theme === 'dark' ? 'text-zinc-300' : 'text-zinc-400'
+                  }`}>#{room.id}</span>
                 </div>
 
                 {/* Giữa thẻ phòng: Tên & Loại phòng */}
                 <div className="mb-4">
-                  <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 leading-snug line-clamp-1">{room.name}</h3>
-                  <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 dark:text-zinc-500 font-bold mt-1 uppercase tracking-wide">
+                  <h3 className={`text-base font-extrabold leading-snug line-clamp-1 ${
+                    theme === 'dark' ? 'text-white' : 'text-zinc-800'
+                  }`}>{room.name}</h3>
+                  <div className={`flex items-center gap-1.5 text-[10px] font-bold mt-1 uppercase tracking-wide ${
+                    theme === 'dark' ? 'text-zinc-600 dark:text-zinc-200' : 'text-zinc-400'
+                  }`}>
                     <Building2 size={10} className="stroke-[2.5]" />
                     <span>{room.branchName} • {room.type}</span>
                   </div>
                 </div>
 
                 {/* Cuối thẻ phòng: Thông tin động theo màu sắc yêu cầu */}
-                <div className="mt-auto pt-3.5 border-t border-dashed border-stone-900/10">
+                <div className={`mt-auto pt-3.5 border-t border-dashed ${
+                  theme === 'dark' ? 'border-zinc-700' : 'border-stone-900/10'
+                }`}>
                   
                   {/* TRẠNG THÁI 1: Trống (Green) - Hiển thị giá phòng */}
                   {room.status === 'available' && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">Giá cơ bản:</span>
-                      <strong className="text-emerald-700 text-sm font-black font-mono">{formatVND(room.price)}</strong>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                        theme === 'dark' ? 'text-zinc-600 dark:text-zinc-200' : 'text-zinc-400'
+                      }`}>Giá cơ bản:</span>
+                      <strong className={`text-sm font-black font-mono ${
+                        theme === 'dark' ? 'text-white' : 'text-emerald-700'
+                      }`}>{formatVND(room.price)}</strong>
                     </div>
                   )}
 
                   {/* TRẠNG THÁI 2: Đã Đặt Chưa Đến (Cam) - Tên khách đặt và lịch giờ nhận */}
                   {room.status === 'booked_not_checked_in' && (
                     <div className="flex flex-col gap-0.5">
-                      <div className="text-xs font-extrabold text-zinc-800 dark:text-zinc-200 truncate">Khách: {room.guest}</div>
-                      <div className="text-[10px] text-orange-700 font-bold flex items-center gap-1 mt-1 font-mono">
+                      <div className={`text-xs font-extrabold truncate ${
+                        theme === 'dark' ? 'text-white' : 'text-zinc-800'
+                      }`}>Khách: {room.guest}</div>
+                      <div className={`text-[10px] font-bold flex items-center gap-1 mt-1 font-mono ${
+                        theme === 'dark' ? 'text-white' : 'text-orange-700'
+                      }`}>
                         <Clock size={11} /> {room.timeInfo}
                       </div>
                     </div>
@@ -563,8 +608,8 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 3: Đã Check-In (Hồng) - Tên khách đang ở và lịch trả phòng */}
                   {room.status === 'checked_in' && (
                     <div className="flex flex-col gap-0.5">
-                      <div className="text-xs font-extrabold text-stone-900 truncate">Đang ở: {room.guest}</div>
-                      <div className="text-[10px] text-pink-700 font-bold flex items-center gap-1 mt-1 font-mono">
+                      <div className={`text-xs font-extrabold truncate ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>Đang ở: {room.guest}</div>
+                      <div className={`text-[10px] font-bold flex items-center gap-1 mt-1 font-mono ${theme === 'dark' ? 'text-white' : 'text-pink-700'}`}>
                         <Clock size={11} /> Hạn trả: {room.timeInfo}
                       </div>
                     </div>
@@ -583,8 +628,12 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 5: Bảo Trì (Xanh dương) - Hiển thị lý do sự cố */}
                   {room.status === 'maintenance' && (
                     <div className="flex flex-col gap-0.5">
-                      <span className="text-[10px] text-blue-800 font-black uppercase tracking-wider">Lý do bảo trì:</span>
-                      <p className="text-[10px] text-blue-700 font-semibold leading-relaxed mt-0.5 line-clamp-1 italic">
+                      <span className={`text-[10px] font-black uppercase tracking-wider ${
+                        theme === 'dark' ? 'text-blue-300' : 'text-blue-800'
+                      }`}>Lý do bảo trì:</span>
+                      <p className={`text-[10px] font-semibold leading-relaxed mt-0.5 line-clamp-1 italic ${
+                        theme === 'dark' ? 'text-white' : 'text-blue-700'
+                      }`}>
                         "{room.timeInfo}"
                       </p>
                     </div>
@@ -593,8 +642,12 @@ export default function RoomGridManagementDashboard() {
                   {/* TRẠNG THÁI 6: Đang Dọn Dẹp (Xám trắng) - Thời gian dự kiến hoàn tất */}
                   {room.status === 'cleaning' && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">Dự kiến xong:</span>
-                      <strong className="text-zinc-700 dark:text-zinc-300 text-xs font-black font-mono flex items-center gap-1">
+                      <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                        theme === 'dark' ? 'text-zinc-600 dark:text-zinc-200' : 'text-zinc-400'
+                      }`}>Dự kiến xong:</span>
+                      <strong className={`text-xs font-black font-mono flex items-center gap-1 ${
+                        theme === 'dark' ? 'text-zinc-100' : 'text-zinc-700'
+                      }`}>
                         <Clock size={11} /> {room.timeInfo}
                       </strong>
                     </div>
@@ -614,24 +667,24 @@ export default function RoomGridManagementDashboard() {
           onClick={() => setIsAddModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-zinc-800 dark:text-zinc-200"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng */}
             <button
               onClick={() => setIsAddModalOpen(false)}
-              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Tiêu đề */}
-            <div className="border-b border-zinc-150 dark:border-zinc-850 pb-3 flex items-center gap-3">
+            <div className="border-b border-zinc-150 dark:border-zinc-800 pb-3 flex items-center gap-3">
               <div className="w-10 h-10 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 text-white rounded-2xl flex items-center justify-center shadow-inner">
                 <Plus size={18} className="stroke-[3]" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Thêm Phòng Nghỉ Mới</h3>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase leading-none">Thêm Phòng Nghỉ Mới</h3>
                 <span className="text-[10px] text-zinc-400 dark:text-zinc-500 tracking-wider block mt-1">Khởi tạo thực thể phòng nghỉ trên sơ đồ</span>
               </div>
             </div>
@@ -646,7 +699,7 @@ export default function RoomGridManagementDashboard() {
                     value={newRoomId}
                     onChange={(e) => setNewRoomId(e.target.value)}
                     placeholder="Ví dụ: P-106..."
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -656,7 +709,7 @@ export default function RoomGridManagementDashboard() {
                     value={newRoomType}
                     onChange={(e) => setNewRoomType(e.target.value)}
                     placeholder="Ví dụ: View Vườn Thông..."
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
               </div>
@@ -668,7 +721,7 @@ export default function RoomGridManagementDashboard() {
                   value={newRoomName}
                   onChange={(e) => setNewRoomName(e.target.value)}
                   placeholder="Ví dụ: Bungalow Hoa Sữa..."
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                 />
               </div>
 
@@ -678,7 +731,7 @@ export default function RoomGridManagementDashboard() {
                   <select
                     value={newRoomBranchId}
                     onChange={(e) => setNewRoomBranchId(e.target.value as any)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer"
                   >
                     <option value="cs1">Tân Bình (CS1)</option>
                     <option value="cs2">Quận 10 (CS2)</option>
@@ -693,7 +746,7 @@ export default function RoomGridManagementDashboard() {
                     value={newRoomPrice}
                     onChange={(e) => setNewRoomPrice(Number(e.target.value))}
                     placeholder="850000"
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
               </div>
@@ -703,7 +756,7 @@ export default function RoomGridManagementDashboard() {
                 <select
                   value={newRoomStatus}
                   onChange={(e) => setNewRoomStatus(e.target.value as any)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer"
                 >
                   <option value="available">🟢 Trống / Available</option>
                   <option value="booked_not_checked_in">🟠 Đã Đặt Chưa Đến</option>
@@ -718,13 +771,13 @@ export default function RoomGridManagementDashboard() {
             <div className="flex gap-2.5 mt-3">
               <button
                 onClick={handleAddNewRoom}
-                className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5"
+                className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <Check size={14} className="stroke-[3]" /> Tạo Mới Ngay
               </button>
               <button
                 onClick={() => setIsAddModalOpen(false)}
-                className="px-4 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none cursor-pointer"
+                className="px-4 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 rounded-xl font-bold text-xs transition border-none cursor-pointer"
               >
                 Hủy bỏ
               </button>
@@ -741,24 +794,24 @@ export default function RoomGridManagementDashboard() {
           onClick={() => setActiveEditingRoom(null)}
         >
           <div 
-            className="bg-white w-full max-w-3xl rounded-3xl p-7 md:p-9 overflow-y-auto shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-6 text-zinc-800 dark:text-zinc-200 max-h-[90vh]"
+            className="bg-white w-full max-w-3xl rounded-3xl p-7 md:p-9 overflow-y-auto shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-6 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút đóng */}
             <button
               onClick={() => setActiveEditingRoom(null)}
-              className="absolute top-5 right-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-8 h-8 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
+              className="absolute top-5 right-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-8 h-8 rounded-full flex items-center justify-center transition font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Tiêu đề Modal */}
-            <div className="border-b border-zinc-150 dark:border-zinc-850 pb-4 flex items-center gap-3.5">
+            <div className="border-b border-zinc-150 dark:border-zinc-800 pb-4 flex items-center gap-3.5">
               <div className="w-11 h-11 bg-emerald-50 text-emerald-800 rounded-2xl flex items-center justify-center shadow-inner">
                 <CheckCircle2 size={20} />
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-black text-zinc-800 dark:text-zinc-200 uppercase leading-none">Cập Nhật Phòng Sandbox</h3>
+                <h3 className="text-base md:text-lg font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase leading-none">Cập Nhật Phòng Sandbox</h3>
                 <span className="text-[10px] md:text-xs text-zinc-400 dark:text-zinc-500 font-mono tracking-wider block mt-1.5">Phòng: {activeEditingRoom.id} • {activeEditingRoom.name}</span>
               </div>
             </div>
@@ -768,7 +821,7 @@ export default function RoomGridManagementDashboard() {
               
               {/* CỘT TRÁI: Cập nhật Trạng thái nhanh của hệ thống */}
               <div className="flex flex-col gap-4 text-xs pb-5 md:pb-0">
-                <h4 className="font-extrabold text-zinc-800 dark:text-zinc-200 text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-1.5 text-zinc-900 dark:text-zinc-100">
+                <h4 className="font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 text-[11.5px] uppercase tracking-wider flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-1.5 text-zinc-900 dark:text-zinc-100">
                   🛠️ Trạng thái cơ bản
                 </h4>
 
@@ -778,7 +831,7 @@ export default function RoomGridManagementDashboard() {
                   <select
                     value={tempStatus}
                     onChange={(e) => setTempStatus(e.target.value as any)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer"
                   >
                     <option value="available">🟢 Trống / Available</option>
                     <option value="booked_not_checked_in">🟠 Đã Đặt Chưa Đến (Sunset Orange)</option>
@@ -798,7 +851,7 @@ export default function RoomGridManagementDashboard() {
                       value={tempGuest}
                       onChange={(e) => setTempGuest(e.target.value)}
                       placeholder="Tên khách đang ở..."
-                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                     />
                   </div>
                 )}
@@ -821,7 +874,7 @@ export default function RoomGridManagementDashboard() {
                       tempStatus === 'checked_in' || tempStatus === 'checkout_imminent' ? 'Ví dụ: Hôm nay, 12:00...' :
                       tempStatus === 'maintenance' ? 'Ví dụ: Sửa bồn Hinoki rò nước...' : 'Ví dụ: 14:30...'
                     }
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                   />
                 </div>
 
@@ -829,7 +882,7 @@ export default function RoomGridManagementDashboard() {
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleSaveStatus}
-                    className="flex-grow py-3 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
+                    className="flex-grow py-3 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:bg-zinc-200 text-white rounded-xl font-bold text-xs shadow-md transition border-none cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
                   >
                     <Check size={14} className="stroke-[3]" /> Lưu Thay Đổi
                   </button>
@@ -924,7 +977,7 @@ export default function RoomGridManagementDashboard() {
               
               <button
                 onClick={() => setActiveEditingRoom(null)}
-                className="px-6 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-black text-xs transition border-none cursor-pointer"
+                className="px-6 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 rounded-xl font-black text-xs transition border-none cursor-pointer"
               >
                 Đóng lại
               </button>

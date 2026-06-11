@@ -186,7 +186,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
               Bliss Copilot <span className="text-[8px] bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">INTERNAL AI</span>
             </h3>
             <span className="text-[9px] text-zinc-500 dark:text-zinc-400 block -mt-0.5 font-mono flex items-center gap-1">
-              <Terminal size={8} className="text-zinc-650 dark:text-zinc-450" /> Hệ thống sẵn sàng vận hành RAG & Actionable
+              <Terminal size={8} className="text-zinc-600 dark:text-zinc-400" /> Hệ thống sẵn sàng vận hành RAG & Actionable
             </span>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
                   ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 rounded-tr-none border border-zinc-900 dark:border-zinc-100'
                   : msg.sender === 'system'
                   ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 rounded-tl-none font-mono'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 rounded-tl-none'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 rounded-tl-none'
               }`}
             >
               {/* Parse in đậm markdown giả lập */}
@@ -245,13 +245,13 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
                   <Zap size={14} className="text-zinc-900 dark:text-zinc-100 animate-pulse mt-0.5 flex-shrink-0" />
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider">Hành Động Khuyên Dùng</span>
-                    <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">{msg.action.description}</span>
+                    <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{msg.action.description}</span>
                   </div>
                 </div>
                 <div className="flex gap-2 justify-end items-center">
                   <button
                     onClick={() => handleIgnoreAction(msg.id)}
-                    className="px-2.5 py-1.5 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-850 dark:hover:bg-zinc-800 text-zinc-650 dark:text-zinc-400 rounded-lg text-[10px] font-bold transition border-none cursor-pointer"
+                    className="px-2.5 py-1.5 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded-lg text-[10px] font-bold transition border-none cursor-pointer"
                   >
                     Bỏ qua
                   </button>
@@ -303,7 +303,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
           placeholder="Hỏi về doanh thu, phòng trống, vouchers..."
-          className="flex-grow border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 rounded-xl px-3 py-2.5 text-xs text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 font-sans"
+          className="flex-grow border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 rounded-xl px-3 py-2.5 text-xs text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 font-sans"
         />
         <button
           onClick={handleSendMessage}

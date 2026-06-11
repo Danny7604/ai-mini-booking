@@ -503,7 +503,7 @@ export default function AutomationPage() {
       {/* =========================================================================
          HEADER CONTROLLER (Premium Light Theme)
          ========================================================================= */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-card border-2 border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl shadow-xs gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-card border border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl shadow-xs gap-4">
         <div className="flex-grow min-w-0">
           <div className="flex items-center gap-2">
             <span className="bg-indigo-50 text-indigo-600 border border-indigo-200 text-[9px] uppercase tracking-widest font-black px-2 py-0.5 rounded-full">
@@ -559,7 +559,7 @@ export default function AutomationPage() {
       <div className="flex-grow flex flex-col lg:flex-row gap-6 h-[640px]">
         
         {/* React Flow drawing zone */}
-        <div className="flex-grow bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden relative shadow-sm h-full">
+        <div className="flex-grow bg-card border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden relative shadow-sm h-full">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -571,18 +571,18 @@ export default function AutomationPage() {
             onPaneClick={() => setSelectedNodeId(null)}
             fitView
           >
-            <Controls className="!bg-card !border-zinc-200 dark:border-zinc-800 !shadow-md" />
+            <Controls className="!bg-card !border-zinc-200 dark:border-zinc-800 !shadow-xs" />
             <MiniMap 
               nodeColor={(node) => {
                 if (node.type === 'trigger') return '#10b981'
                 return '#6366f1'
               }}
-              className="!bg-zinc-50 dark:bg-zinc-950 !border-2 !border-zinc-300 dark:border-zinc-700 !rounded-2xl"
+              className="!bg-zinc-50 dark:bg-zinc-950 !border !border-zinc-300 dark:border-zinc-700 !rounded-2xl"
             />
             <Background color="#cbd5e1" gap={16} size={1.2} />
 
             {/* Quick adding triggers/actions float menu */}
-            <Panel position="top-left" className="bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-2.5 shadow-md flex flex-col gap-1.5 max-w-[200px]">
+            <Panel position="top-left" className="bg-card border border-zinc-200 dark:border-zinc-800 rounded-2xl p-2.5 shadow-md flex flex-col gap-1.5 max-w-[200px]">
               <span className="text-[9px] uppercase tracking-widest font-black text-zinc-400 dark:text-zinc-500 block mb-1">
                 + Thêm Module
               </span>
@@ -637,7 +637,7 @@ export default function AutomationPage() {
         </div>
 
         {/* Right configuration side drawer */}
-        <div className="w-full lg:w-80 bg-card border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 shadow-sm flex flex-col gap-4 h-full overflow-y-auto">
+        <div className="w-full lg:w-80 bg-card border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 shadow-sm flex flex-col gap-4 h-full overflow-y-auto">
           {selectedNode ? (
             <div className="flex flex-col gap-4 text-left">
               <div className="flex justify-between items-start border-b border-slate-100 pb-3">

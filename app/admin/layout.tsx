@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { AdminDataProvider, useAdminData } from './AdminDataContext'
 import { 
   LayoutDashboard, 
   CalendarRange, 
@@ -29,38 +31,26 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
+  return (
+    <AdminDataProvider>
+      <AdminLayoutContent>{children}</AdminLayoutContent>
+    </AdminDataProvider>
+  )
+}
+
+function AdminLayoutContent({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const [isAIOpen, setIsAIOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const [isAuthChecking, setIsAuthChecking] = useState(true)
   const [adminName, setAdminName] = useState('Admin CS')
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-
-  // Đọc theme từ localStorage
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('bliss_admin_theme') || 'light'
-      setTheme(savedTheme as 'light' | 'dark')
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(nextTheme)
-    localStorage.setItem('bliss_admin_theme', nextTheme)
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
+  const { theme, toggleTheme } = useAdminData()
 
   const isLoginPage = pathname === '/admin/login'
 
@@ -136,21 +126,23 @@ export default function AdminLayout({
     },
   ]
 
-  /**
-   * Bắt lỗi an toàn khi render Children
-   * Để đảm bảo bất kỳ trang con nào có lỗi logic cũng không làm sập toàn bộ khung hệ thống
-   */
   const renderChildrenSafely = () => {
     try {
       return children
     } catch (error) {
       console.error('Lỗi nghiêm trọng khi hiển thị trang con Admin:', error)
       return (
-        <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-8 text-center flex flex-col items-center gap-3 my-6 mx-4">
-          <div className="w-12 h-12 bg-rose-500/10 rounded-full flex items-center justify-center text-rose-600 dark:text-rose-400">
+        <div className={`border rounded-2xl p-8 text-center flex flex-col items-center gap-3 my-6 mx-4 ${
+          theme === 'dark'
+            ? 'bg-rose-950/20 border-rose-950/40 text-zinc-100'
+            : 'bg-rose-50/50 border-rose-100 text-zinc-900'
+        }`}>
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+            theme === 'dark' ? 'bg-rose-950/40 text-rose-400' : 'bg-rose-100 text-rose-600'
+          }`}>
             <ShieldAlert size={24} />
           </div>
-          <h3 className="font-extrabold text-zinc-900 dark:text-zinc-50 text-base">Hệ thống ghi nhận lỗi hiển thị</h3>
+          <h3 className="font-extrabold text-base">Hệ thống ghi nhận lỗi hiển thị</h3>
           <p className="text-xs text-muted-foreground max-w-sm leading-relaxed">
             Dữ liệu trang con quản trị đang gặp sự cố khi xử lý dữ liệu. Vui lòng liên hệ nhóm Dancin Builder hoặc kỹ thuật viên hệ thống để kiểm tra chi tiết.
           </p>
@@ -177,25 +169,33 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="h-screen max-h-screen bg-zinc-50 dark:bg-zinc-950 flex font-sans antialiased text-zinc-800 dark:text-zinc-200 relative overflow-hidden">
-      
+    <div className={`h-screen max-h-screen flex font-sans antialiased relative overflow-hidden transition-colors duration-200 ${
+      theme === 'dark' ? 'bg-zinc-950 text-zinc-600 dark:text-zinc-200' : 'bg-zinc-50 text-zinc-800'
+    }`}>
+    
       {/* 1. SIDEBAR CO-EX FIXED/STICKY & SCROLLABLE */}
-      <aside className={`hidden md:flex bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex-col flex-shrink-0 border-r border-zinc-200 dark:border-zinc-850 shadow-xs z-20 transition-all duration-300 h-screen overflow-hidden ${
-        isCollapsed ? 'w-20' : 'w-64'
-      }`}>
+      <aside className={`hidden md:flex flex-col flex-shrink-0 border-r shadow-xs z-20 transition-all duration-300 h-screen overflow-hidden ${
+        theme === 'dark' ? 'bg-zinc-950 text-zinc-600 dark:text-zinc-200 border-zinc-800' : 'bg-white text-zinc-800 border-zinc-200'
+      } ${isCollapsed ? 'w-20' : 'w-64'}`}>
         
         {/* Logo & Brand Title (Collapsible Header Layout) */}
-        <div className={`border-b border-zinc-200 dark:border-zinc-850 flex items-center justify-between bg-zinc-100/30 dark:bg-zinc-900/20 transition-all duration-300 flex-shrink-0 ${
-          isCollapsed ? 'flex-col gap-3.5 px-3 py-5' : 'pl-6 pr-3 py-5'
-        }`}>
+        <div className={`border-b flex items-center justify-between transition-all duration-300 flex-shrink-0 ${
+          theme === 'dark' ? 'border-zinc-800 bg-zinc-900/20' : 'border-zinc-200 bg-zinc-100/30'
+        } ${isCollapsed ? 'flex-col gap-3.5 px-3 py-5' : 'pl-6 pr-3 py-5'}`}>
           {isCollapsed ? (
             <>
-              <div className="w-9 h-9 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner">
+              <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner ${
+                theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-zinc-100 border-zinc-200'
+              }`}>
                 <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
               </div>
               <button 
                 onClick={toggleSidebar} 
-                className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition active:scale-90 cursor-pointer shadow-xs"
+                className={`w-9 h-9 rounded-xl border flex items-center justify-center transition active:scale-90 cursor-pointer shadow-xs ${
+                  theme === 'dark'
+                    ? 'border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900/50'
+                    : 'border-zinc-200 bg-white text-zinc-500 hover:text-zinc-955 hover:bg-zinc-100/50'
+                }`}
                 title="Mở rộng menu"
               >
                 <ChevronRight size={20} />
@@ -208,13 +208,21 @@ export default function AdminLayout({
                   <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h1 className="text-base font-black tracking-tight leading-none uppercase text-zinc-900 dark:text-zinc-50">Bliss Home</h1>
-                  <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mt-0.5 font-bold">Admin Portal</span>
+                  <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
+                    theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
+                  }`}>Bliss Home</h1>
+                  <span className={`text-[9px] tracking-widest uppercase block mt-0.5 font-bold ${
+                    theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
+                  }`}>Admin Portal</span>
                 </div>
               </div>
               <button 
                 onClick={toggleSidebar} 
-                className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition active:scale-90 cursor-pointer shadow-xs translate-x-1"
+                className={`w-9 h-9 rounded-xl border flex items-center justify-center transition active:scale-90 cursor-pointer shadow-xs translate-x-1 ${
+                  theme === 'dark'
+                    ? 'border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900/50'
+                    : 'border-zinc-200 bg-white text-zinc-500 hover:text-zinc-955 hover:bg-zinc-100/50'
+                }`}
                 title="Thu gọn menu"
               >
                 <ChevronLeft size={20} />
@@ -236,40 +244,60 @@ export default function AdminLayout({
             const isChildActive = (childPath: string) => pathname === childPath
 
             return (
-              <div key={item.id} className="flex flex-col gap-1 w-full">
-                <button
-                  onClick={() => router.push(item.path)}
+              <div key={item.id} className="flex flex-col gap-1.5 w-full">
+                <Link
+                  href={item.path}
                   className={
                     isCollapsed
                       ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
-                          isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'text-zinc-650 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-900 dark:hover:text-zinc-100'
+                          isActive 
+                            ? theme === 'dark'
+                              ? 'bg-zinc-100 text-zinc-950 border-zinc-100 shadow-xs'
+                              : 'bg-zinc-900 text-white border-zinc-900 shadow-xs' 
+                            : theme === 'dark'
+                              ? 'text-zinc-400 border-zinc-800 hover:bg-zinc-900/50 hover:text-zinc-100'
+                              : 'text-zinc-600 border-zinc-200 hover:bg-zinc-100/50 hover:text-zinc-900'
                         }`
                       : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-                          isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+                          isActive 
+                            ? theme === 'dark'
+                              ? 'bg-zinc-100 text-zinc-950 shadow-xs'
+                              : 'bg-zinc-900 text-white shadow-xs' 
+                            : theme === 'dark'
+                              ? 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-100'
+                              : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-950'
                         }`
                   }
                   title={isCollapsed ? item.label : undefined}
                 >
-                  <Icon size={isCollapsed ? 20 : 16} className={isActive ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+                  <Icon size={isCollapsed ? 20 : 16} className={isActive ? (theme === 'dark' ? 'text-zinc-950' : 'text-white') : (theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500')} />
                   {!isCollapsed && <span>{item.label}</span>}
-                </button>
+                </Link>
                 
                 {/* Render children submenus if not collapsed and main item has children and is active */}
                 {!isCollapsed && 'children' in item && item.children && isActive && (
-                  <div className="flex flex-col gap-1 pl-7 pr-1 py-1 border-l border-zinc-200 dark:border-zinc-800 ml-6 animate-in slide-in-from-top-1 duration-200">
+                  <div className={`flex flex-col gap-1 pl-7 pr-1 py-1 border-l ml-6 animate-in slide-in-from-top-1 duration-200 ${
+                    theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
+                  }`}>
                     {item.children.map((child) => {
                       const isSubActive = isChildActive(child.path)
                       return (
-                        <button
+                        <Link
                           key={child.id}
-                          onClick={() => router.push(child.path)}
+                          href={child.path}
                           className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11.5px] font-semibold transition-all border-none text-left cursor-pointer ${
-                            isSubActive ? 'bg-zinc-200/50 dark:bg-zinc-900/60 text-zinc-950 dark:text-zinc-50 font-bold' : 'text-zinc-500 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30'
+                            isSubActive 
+                              ? theme === 'dark'
+                                ? 'bg-zinc-900/60 text-zinc-50 font-bold'
+                                : 'bg-zinc-200/50 text-zinc-950 font-bold' 
+                              : theme === 'dark'
+                                ? 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/30'
+                                : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100/30'
                           }`}
                         >
                           <div className={`w-1.5 h-1.5 rounded-full ${isSubActive ? 'bg-emerald-400 scale-110 shadow-xs' : 'bg-stone-500'}`} />
                           <span>{child.label}</span>
-                        </button>
+                        </Link>
                       )
                     })}
                   </div>
@@ -280,32 +308,54 @@ export default function AdminLayout({
         </nav>
 
         {/* Thin Bottom Config / Aligned Settings & Logout at the very bottom of the screen */}
-        <div className="p-4 border-t border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/10 flex flex-col gap-2.5 flex-shrink-0">
+        <div className={`p-4 border-t flex flex-col gap-2.5 flex-shrink-0 ${
+          theme === 'dark' ? 'border-zinc-800 bg-zinc-900/10' : 'border-zinc-200 bg-zinc-100/30'
+        }`}>
           {/* Cài đặt (Linked to integrations path) */}
-          <button
-            onClick={() => router.push('/admin/integrations')}
+          <Link
+            href="/admin/integrations"
             className={
               isCollapsed
                 ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
-                    pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'text-zinc-650 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-900 dark:hover:text-zinc-100'
+                    pathname === '/admin/integrations' 
+                      ? theme === 'dark'
+                        ? 'bg-zinc-100 text-zinc-950 border-zinc-100 shadow-xs'
+                        : 'bg-zinc-900 text-white border-zinc-900 shadow-xs'
+                      : theme === 'dark'
+                        ? 'text-zinc-400 border-zinc-800 hover:bg-zinc-900/50 hover:text-zinc-100'
+                        : 'text-zinc-600 border-zinc-200 hover:bg-zinc-100/50 hover:text-zinc-900'
                   }`
                 : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-                    pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+                    pathname === '/admin/integrations' 
+                      ? theme === 'dark'
+                        ? 'bg-zinc-100 text-zinc-950 shadow-xs'
+                        : 'bg-zinc-900 text-white shadow-xs'
+                      : theme === 'dark'
+                        ? 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-100'
+                        : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-955'
                   }`
             }
             title={isCollapsed ? "Cài đặt" : undefined}
           >
-            <Settings size={isCollapsed ? 20 : 16} className={pathname === '/admin/integrations' ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+            <Settings size={isCollapsed ? 20 : 16} className={pathname === '/admin/integrations' ? (theme === 'dark' ? 'text-zinc-950' : 'text-white') : (theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500')} />
             {!isCollapsed && <span>Cài đặt</span>}
-          </button>
+          </Link>
 
           {/* Đăng xuất */}
           <button
             onClick={handleLogout}
             className={
               isCollapsed
-                ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer text-red-350 hover:text-white border-red-950/30 hover:border-red-500/30 hover:bg-red-950/20 bg-transparent`
-                : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer text-red-350 hover:bg-red-950/25 hover:text-white bg-transparent`
+                ? `w-12 h-12 mx-auto rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
+                    theme === 'dark'
+                      ? 'text-red-400 border-red-950/30 hover:border-red-500/30 hover:bg-red-950/20 bg-transparent'
+                      : 'text-red-655 border-red-200 hover:border-red-500/20 hover:bg-red-50 bg-transparent'
+                  }`
+                : `w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
+                    theme === 'dark'
+                      ? 'text-red-400 hover:bg-red-950/25 hover:text-white border-transparent bg-transparent'
+                      : 'text-red-655 hover:bg-red-50 hover:text-red-700 border-transparent bg-transparent'
+                  }`
             }
             title={isCollapsed ? "Đăng xuất" : undefined}
           >
@@ -313,7 +363,9 @@ export default function AdminLayout({
             {!isCollapsed && <span>Đăng xuất</span>}
           </button>
 
-          <span className="text-[9px] text-zinc-450 dark:text-zinc-500 font-mono block text-center select-none mt-1">
+          <span className={`text-[9px] font-mono block text-center select-none mt-1 ${
+            theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
+          }`}>
             {isCollapsed ? 'v2.4' : 'Version 2.4.0 • Dancin Builder'}
           </span>
         </div>
@@ -328,22 +380,32 @@ export default function AdminLayout({
       )}
 
       {/* Mobile Sidebar drawer */}
-      <aside className={`fixed inset-y-0 left-0 bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 flex flex-col w-64 border-r border-zinc-200 dark:border-zinc-850 shadow-xl z-50 transition-transform duration-300 md:hidden ${
-        isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
-        <div className="flex items-center justify-between pl-6 pr-3 py-5 border-b border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/20">
+      <aside className={`fixed inset-y-0 left-0 flex flex-col w-64 border-r shadow-xl z-50 transition-transform duration-300 md:hidden ${
+        theme === 'dark' ? 'bg-zinc-950 text-zinc-600 dark:text-zinc-200 border-zinc-800' : 'bg-white text-zinc-800 border-zinc-200'
+      } ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`flex items-center justify-between pl-6 pr-3 py-5 border-b ${
+          theme === 'dark' ? 'border-zinc-800 bg-zinc-900/20' : 'border-zinc-200 bg-zinc-100/30'
+        }`}>
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner">
               <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h1 className="text-base font-black tracking-tight leading-none uppercase text-zinc-900 dark:text-zinc-50">Bliss Home</h1>
-              <span className="text-[9px] text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mt-0.5 font-bold">Admin Portal</span>
+              <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
+                theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
+              }`}>Bliss Home</h1>
+              <span className={`text-[9px] tracking-widest uppercase block mt-0.5 font-bold ${
+                theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
+              }`}>Admin Portal</span>
             </div>
           </div>
           <button 
             onClick={() => setIsMobileOpen(false)}
-            className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition cursor-pointer"
+            className={`w-9 h-9 rounded-xl border flex items-center justify-center transition cursor-pointer ${
+              theme === 'dark'
+                ? 'border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900/50'
+                : 'border-zinc-200 bg-white text-zinc-500 hover:text-zinc-955 hover:bg-zinc-100/50'
+            }`}
           >
             <X size={20} />
           </button>
@@ -360,37 +422,47 @@ export default function AdminLayout({
 
             return (
               <div key={item.id} className="flex flex-col gap-1 w-full">
-                <button
-                  onClick={() => {
-                    router.push(item.path)
-                    setIsMobileOpen(false)
-                  }}
+                <Link
+                  href={item.path}
+                  onClick={() => setIsMobileOpen(false)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-                    isActive ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-450 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+                    isActive 
+                      ? theme === 'dark'
+                        ? 'bg-zinc-100 text-zinc-955 shadow-xs'
+                        : 'bg-zinc-900 text-white shadow-xs' 
+                      : theme === 'dark'
+                        ? 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-100'
+                        : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-950'
                   }`}
                 >
-                  <Icon size={16} className={isActive ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+                  <Icon size={16} className={isActive ? (theme === 'dark' ? 'text-zinc-950' : 'text-white') : (theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500')} />
                   <span>{item.label}</span>
-                </button>
+                </Link>
 
-                {!isActive && item.children && (
-                  <div className="border-l border-zinc-200 dark:border-zinc-800 ml-6 animate-in slide-in-from-top-1 duration-200">
+                {isActive && item.children && (
+                  <div className={`border-l ml-6 animate-in slide-in-from-top-1 duration-200 ${
+                    theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
+                  }`}>
                     {item.children.map((child) => {
                       const isSubActive = isChildActive(child.path)
                       return (
-                        <button
+                        <Link
                           key={child.id}
-                          onClick={() => {
-                            router.push(child.path)
-                            setIsMobileOpen(false)
-                          }}
+                          href={child.path}
+                          onClick={() => setIsMobileOpen(false)}
                           className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11.5px] font-semibold transition-all border-none text-left cursor-pointer ${
-                            isSubActive ? 'bg-zinc-200/50 dark:bg-zinc-900/60 text-zinc-950 dark:text-zinc-50 font-bold' : 'text-zinc-500 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30'
+                            isSubActive 
+                              ? theme === 'dark'
+                                ? 'bg-zinc-900/60 text-zinc-50 font-bold'
+                                : 'bg-zinc-200/50 text-zinc-950 font-bold' 
+                              : theme === 'dark'
+                                ? 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/30'
+                                : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100/30'
                           }`}
                         >
                           <div className={`w-1.5 h-1.5 rounded-full ${isSubActive ? 'bg-emerald-400 scale-110 shadow-xs' : 'bg-stone-500'}`} />
                           <span>{child.label}</span>
-                        </button>
+                        </Link>
                       )
                     })}
                   </div>
@@ -400,49 +472,70 @@ export default function AdminLayout({
           })}
         </nav>
 
-        <div className="p-4 border-t border-zinc-200 dark:border-zinc-850 bg-zinc-100/30 dark:bg-zinc-900/10 flex flex-col gap-2.5 flex-shrink-0">
-          <button
-            onClick={() => {
-              router.push('/admin/integrations')
-              setIsMobileOpen(false)
-            }}
+        <div className={`p-4 border-t flex flex-col gap-2.5 flex-shrink-0 ${
+          theme === 'dark' ? 'border-zinc-800 bg-zinc-900/10' : 'border-zinc-200 bg-zinc-100/30'
+        }`}>
+          <Link
+            href="/admin/integrations"
+            onClick={() => setIsMobileOpen(false)}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition-all border-none text-left cursor-pointer ${
-              pathname === '/admin/integrations' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 shadow-xs' : 'text-zinc-650 dark:text-zinc-455 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 hover:text-zinc-950 dark:hover:text-zinc-100'
+              pathname === '/admin/integrations' 
+                ? theme === 'dark'
+                  ? 'bg-zinc-100 text-zinc-950 shadow-xs'
+                  : 'bg-zinc-900 text-white shadow-xs'
+                : theme === 'dark'
+                  ? 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-100'
+                  : 'text-zinc-600 hover:bg-zinc-100/50 hover:text-zinc-955'
             }`}
           >
-            <Settings size={16} className={pathname === '/admin/integrations' ? 'text-white dark:text-zinc-950' : 'text-zinc-500 dark:text-zinc-450'} />
+            <Settings size={16} className={pathname === '/admin/integrations' ? (theme === 'dark' ? 'text-zinc-950' : 'text-white') : (theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500')} />
             <span>Cài đặt</span>
-          </button>
+          </Link>
 
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold text-rose-600 hover:bg-rose-500/10 transition border-none text-left cursor-pointer"
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs md:text-sm font-bold transition border-none text-left cursor-pointer ${
+              theme === 'dark'
+                ? 'text-red-400 hover:bg-red-950/20'
+                : 'text-red-655 hover:bg-red-50'
+            }`}
           >
             <UserCircle2 size={16} />
             <span>Đăng xuất</span>
           </button>
 
-          <span className="text-[9px] text-zinc-455 dark:text-zinc-500 font-mono block text-center select-none mt-1">
+          <span className={`text-[9px] font-mono block text-center select-none mt-1 ${
+            theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
+          }`}>
             Version 2.4.0 • Dancin Builder
           </span>
         </div>
+
       </aside>
 
       {/* 2. MAIN CONTAINER AREA (Header stays frozen, Content scrolls) */}
       <div className="flex-grow flex flex-col h-screen max-h-screen relative overflow-hidden">
         
         {/* TOP HEADER CONTROLS (Always fixed at the top) */}
-        <header className="bg-card border-b border-zinc-200 dark:border-zinc-850 h-16 px-6 md:px-8 flex items-center justify-between flex-shrink-0 shadow-xs select-none">
+        <header className={`border-b h-16 px-6 md:px-8 flex items-center justify-between flex-shrink-0 shadow-xs select-none ${
+          theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
+        }`}>
           <div className="flex items-center gap-3">
             {/* Hamburger button on mobile */}
             <button
               onClick={() => setIsMobileOpen(true)}
-              className="md:hidden w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card flex items-center justify-center text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/50 transition cursor-pointer shadow-xs"
+              className={`md:hidden w-9 h-9 rounded-xl border flex items-center justify-center transition cursor-pointer shadow-xs ${
+                theme === 'dark'
+                  ? 'border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900/50'
+                  : 'border-zinc-200 bg-white text-zinc-500 hover:text-zinc-955 hover:bg-zinc-100/50'
+              }`}
               title="Mở menu"
             >
               <Menu size={18} />
             </button>
-            <h2 className="text-sm md:text-base font-extrabold text-zinc-900 dark:text-zinc-50 uppercase tracking-wider">
+            <h2 className={`text-sm md:text-base font-extrabold uppercase tracking-wider ${
+              theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
+            }`}>
               Hệ Thống Quản Trị Bliss Home
             </h2>
           </div>
@@ -452,7 +545,13 @@ export default function AdminLayout({
             <button
               onClick={() => setIsAIOpen(!isAIOpen)}
               className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all duration-300 shadow-sm border cursor-pointer flex items-center gap-1.5 ${
-                isAIOpen ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 border-zinc-900 dark:border-zinc-100 shadow-xs' : 'bg-card border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 text-zinc-700 dark:text-zinc-350'
+                isAIOpen 
+                  ? theme === 'dark'
+                    ? 'bg-zinc-100 text-zinc-955 border-zinc-100 shadow-xs'
+                    : 'bg-zinc-900 text-white border-zinc-900 shadow-xs' 
+                  : theme === 'dark'
+                    ? 'bg-zinc-900 border-zinc-800 hover:bg-zinc-900/50 text-zinc-350'
+                    : 'bg-white border-zinc-200 hover:bg-zinc-50 text-zinc-700'
               }`}
             >
               <Sparkles size={13} className={isAIOpen ? 'text-white animate-spin' : 'text-emerald-500'} />
@@ -462,24 +561,36 @@ export default function AdminLayout({
             {/* NÚT CHUYỂN ĐỔI LIGHT/DARK MODE */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-card hover:bg-zinc-50 dark:hover:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 flex items-center justify-center transition-all duration-300 shadow-xs cursor-pointer"
+              className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-300 shadow-xs cursor-pointer ${
+                theme === 'dark'
+                  ? 'border-zinc-800 bg-zinc-900 hover:bg-zinc-900/50 text-zinc-300'
+                  : 'border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-700'
+              }`}
               title={theme === 'light' ? "Chuyển sang Chế độ tối" : "Chuyển sang Chế độ sáng"}
             >
               {theme === 'light' ? <Moon size={15} /> : <Sun size={15} className="text-amber-400" />}
             </button>
 
             {/* Profile Avatar */}
-            <div className="flex items-center gap-2.5 pl-3 border-l border-zinc-200 dark:border-zinc-800">
-              <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 shadow-inner overflow-hidden">
+            <div className={`flex items-center gap-2.5 pl-3 border-l ${
+              theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
+            }`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center border shadow-inner overflow-hidden ${
+                theme === 'dark' ? 'bg-zinc-900 border-zinc-800 text-zinc-400' : 'bg-zinc-100 border-zinc-200 text-zinc-600'
+              }`}>
                 <UserCircle2 size={20} />
               </div>
-              <span className="hidden sm:inline text-xs font-extrabold text-zinc-900 dark:text-zinc-50 uppercase">{adminName}</span>
+              <span className={`hidden sm:inline text-xs font-extrabold uppercase ${
+                theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
+              }`}>{adminName}</span>
             </div>
           </div>
         </header>
 
         {/* SCROLLABLE MAIN CONTENT WRAPPER */}
-        <div className="flex-grow p-6 md:p-8 bg-zinc-50/50 dark:bg-zinc-950/20 overflow-y-auto">
+        <div className={`flex-grow p-6 md:p-8 overflow-y-auto ${
+          theme === 'dark' ? 'bg-zinc-950 text-zinc-600 dark:text-zinc-200' : 'bg-zinc-50 text-zinc-800'
+        }`}>
           {renderChildrenSafely()}
         </div>
       </div>

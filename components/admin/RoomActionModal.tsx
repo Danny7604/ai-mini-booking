@@ -390,7 +390,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'available':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <BookmarkPlus size={16} className="stroke-[2.5]" />
               </div>
@@ -402,7 +402,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Ô nhập Số điện thoại */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-wider flex items-center gap-1">
+              <label className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider flex items-center gap-1">
                 <Phone size={11} className="text-zinc-400 dark:text-zinc-500" /> Số Điện Thoại Khách Hàng:
               </label>
               <div className="relative">
@@ -411,7 +411,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                   value={phoneInput}
                   onChange={(e) => setPhoneInput(e.target.value.replace(/[^0-9]/g, ''))}
                   placeholder="Ví dụ: 0901234567..."
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 text-zinc-800 dark:text-zinc-205"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                 />
                 <Search size={13} className="absolute left-3.5 top-3.5 text-zinc-400 dark:text-zinc-500" />
                 {isSearching && (
@@ -447,7 +447,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Ô nhập Họ Tên Khách Hàng */}
             <div className="flex flex-col gap-1.5 animate-in slide-in-from-top duration-150">
-              <label className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-wider flex items-center gap-1">
+              <label className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider flex items-center gap-1">
                 <User size={11} className="text-zinc-400 dark:text-zinc-500" /> Họ và Tên Khách Hàng:
               </label>
               <input
@@ -459,14 +459,14 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                 className={`w-full border rounded-xl px-4 py-2.5 text-xs font-extrabold focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-100 ${
                   customerFound === true 
                     ? 'bg-emerald-50/30 border-emerald-200 text-zinc-900 dark:text-zinc-100 font-black' 
-                    : 'bg-zinc-50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-205'
+                    : 'bg-zinc-50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200'
                 }`}
               />
             </div>
 
             {/* Biểu mẫu chọn thời gian lưu trú nhanh */}
-            <div className="bg-zinc-50/50 dark:bg-zinc-900/50 p-3.5 rounded-2xl border border-zinc-250 dark:border-zinc-800/50 flex flex-col gap-3">
-              <span className="text-[9.5px] font-black text-zinc-450 dark:text-zinc-500 uppercase tracking-widest block border-b border-zinc-100 dark:border-zinc-850 pb-1.5">
+            <div className="bg-zinc-50/50 dark:bg-zinc-900/50 p-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800/50 flex flex-col gap-3">
+              <span className="text-[9.5px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest block border-b border-zinc-100 dark:border-zinc-800 pb-1.5">
                 📅 Lịch trình đặt chỗ dự kiến:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -475,7 +475,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                   <select
                     value={tempCheckinDay}
                     onChange={(e) => setTempCheckinDay(e.target.value)}
-                    className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none"
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none"
                   >
                     <option value="Hôm nay">Hôm nay</option>
                     <option value="Ngày mai">Ngày mai</option>
@@ -487,7 +487,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                   <select
                     value={tempCheckinTime}
                     onChange={(e) => setTempCheckinTime(e.target.value)}
-                    className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none"
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none"
                   >
                     <option value="12:00">12:00</option>
                     <option value="14:00">14:00</option>
@@ -516,7 +516,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'booked_not_checked_in':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center">
                 <Clock size={16} className="stroke-[2.5]" />
               </div>
@@ -533,7 +533,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                   {tempGuest ? tempGuest[0].toUpperCase() : 'K'}
                 </div>
                 <div>
-                  <h5 className="font-extrabold text-xs text-zinc-800 dark:text-zinc-205">{tempGuest || room.guest || 'Khách chưa cập nhật tên'}</h5>
+                  <h5 className="font-extrabold text-xs text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{tempGuest || room.guest || 'Khách chưa cập nhật tên'}</h5>
                   <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5">🏷️ Mã đơn: MOCK-BKG-992</span>
                 </div>
               </div>
@@ -545,9 +545,9 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                     <Clock size={12} /> {tempCheckinDay}, {tempCheckinTime}
                   </strong>
                 </div>
-                <div>
+                 <div>
                   <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider block">Trạng thái đặt cọc:</span>
-                  <span className="inline-flex items-center gap-1 mt-1 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[8.5px] font-black uppercase px-2 py-0.5 rounded-md">
+                  <span className="inline-flex items-center gap-1 mt-1 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 text-emerald-800 dark:text-emerald-300 text-[8.5px] font-black uppercase px-2 py-0.5 rounded-md">
                     ✓ Đã chuyển cọc 50%
                   </span>
                 </div>
@@ -566,7 +566,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
               <button
                 onClick={handleCancelBookingFlow}
-                className="w-full py-3 bg-red-50 hover:bg-red-100 text-rose-600 dark:text-rose-400 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 border border-rose-500/20 cursor-pointer active:scale-95 duration-200"
+                className="w-full py-3 bg-red-50 dark:bg-rose-950/20 hover:bg-red-100 dark:hover:bg-rose-900/30 text-rose-600 dark:text-rose-400 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 border border-rose-500/20 dark:border-rose-800/30 cursor-pointer active:scale-95 duration-200"
               >
                 <Trash2 size={13} />
                 <span>Hủy Đơn Đặt Phòng này</span>
@@ -579,7 +579,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'checked_in':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
                 <User size={16} className="stroke-[2.5]" />
               </div>
@@ -596,10 +596,10 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* BẢNG TÍCH CHỌN DỊCH VỤ MINI-BAR & GIẶT ỦI */}
             <div className="flex flex-col gap-2.5">
-              <span className="text-[9.5px] font-black text-zinc-450 dark:text-zinc-500 uppercase tracking-widest block flex items-center gap-1">
+              <span className="text-[9.5px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest block flex items-center gap-1">
                 <ClipboardList size={12} /> Bảng kê dịch vụ tiêu dùng (Mini-Bar / Tiện ích):
               </span>
-              <div className="border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden max-h-[180px] overflow-y-auto bg-white">
+              <div className="border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden max-h-[180px] overflow-y-auto bg-white dark:bg-zinc-950">
                 <table className="w-full border-collapse text-left text-[11px]">
                   <thead>
                     <tr className="bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-200 dark:border-zinc-800 text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase">
@@ -618,7 +618,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                             <button
                               type="button"
                               onClick={() => handleUpdateServiceQuantity(s.id, -1)}
-                              className="w-5 h-5 bg-white border border-stone-250 hover:bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 rounded-md flex items-center justify-center cursor-pointer text-xs"
+                              className="w-5 h-5 bg-white dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-750 text-zinc-600 dark:text-zinc-300 rounded-md flex items-center justify-center cursor-pointer text-xs"
                             >
                               -
                             </button>
@@ -626,7 +626,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                             <button
                               type="button"
                               onClick={() => handleUpdateServiceQuantity(s.id, 1)}
-                              className="w-5 h-5 bg-white border border-stone-250 hover:bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 rounded-md flex items-center justify-center cursor-pointer text-xs"
+                              className="w-5 h-5 bg-white dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-750 text-zinc-600 dark:text-zinc-300 rounded-md flex items-center justify-center cursor-pointer text-xs"
                             >
                               +
                             </button>
@@ -641,7 +641,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Phụ thu tạm tính */}
             <div className="flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs font-bold">
-              <span className="text-zinc-500 dark:text-zinc-450 uppercase tracking-wider text-[9px]">Tổng phụ thu dịch vụ:</span>
+              <span className="text-zinc-500 dark:text-zinc-400 uppercase tracking-wider text-[9px]">Tổng phụ thu dịch vụ:</span>
               <span className="text-zinc-900 dark:text-zinc-50 font-black font-mono text-[13px]">+{getServicesTotal().toLocaleString('vi-VN')} VND</span>
             </div>
 
@@ -660,7 +660,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'checkout_imminent':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
                 <Coins size={16} className="stroke-[2.5]" />
               </div>
@@ -671,8 +671,8 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
             </div>
 
             {/* BẢNG TÓM TẮT BILL MINI */}
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white overflow-hidden shadow-xs">
-              <div className="bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-200 dark:border-zinc-800 px-4 py-2.5 flex items-center justify-between text-[9.5px] font-black uppercase text-zinc-450 dark:text-zinc-500">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-950 overflow-hidden shadow-xs">
+              <div className="bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-200 dark:border-zinc-800 px-4 py-2.5 flex items-center justify-between text-[9.5px] font-black uppercase text-zinc-400 dark:text-zinc-500">
                 <span>Diễn giải hóa đơn</span>
                 <span>Thành tiền</span>
               </div>
@@ -684,12 +684,12 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                     <span className="font-black text-zinc-900 dark:text-zinc-100">🏡 Giá phòng cơ bản</span>
                     <span className="block text-[9.5px] text-zinc-400 dark:text-zinc-500 mt-0.5">{room.name} ({room.type})</span>
                   </div>
-                  <span className="font-mono text-zinc-800 dark:text-zinc-205 font-bold">{room.price.toLocaleString('vi-VN')}đ</span>
+                  <span className="font-mono text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-bold">{room.price.toLocaleString('vi-VN')}đ</span>
                 </div>
 
                 {/* 2. Tiền các dịch vụ phát sinh */}
                 {activeServices.filter(s => s.quantity > 0).length > 0 ? (
-                  <div className="border-t border-zinc-100 dark:border-zinc-850 pt-3 flex flex-col gap-2.5">
+                  <div className="border-t border-zinc-100 dark:border-zinc-800 pt-3 flex flex-col gap-2.5">
                     <span className="text-[9px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider block">🛵 Phụ thu tiện ích phát sinh:</span>
                     {activeServices.filter(s => s.quantity > 0).map(s => (
                       <div key={s.id} className="flex items-center justify-between text-[11px] font-semibold text-zinc-600 dark:text-zinc-400 pl-2">
@@ -699,7 +699,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                     ))}
                   </div>
                 ) : (
-                  <div className="border-t border-zinc-100 dark:border-zinc-850 pt-3 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 italic">
+                  <div className="border-t border-zinc-100 dark:border-zinc-800 pt-3 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 italic">
                     Không có phụ thu dịch vụ phát sinh.
                   </div>
                 )}
@@ -707,7 +707,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                 {/* 3. Tổng kết hóa đơn */}
                 <div className="border-t-2 border-double border-zinc-200 dark:border-zinc-800 pt-3.5 mt-1.5 flex items-center justify-between">
                   <span className="text-[11px] font-black text-zinc-900 dark:text-zinc-50 uppercase tracking-wider">Tổng cộng cần thanh toán:</span>
-                  <span className="text-rose-700 font-black font-mono text-[16px] underline decoration-double decoration-rose-300">
+                  <span className="text-rose-700 dark:text-rose-400 font-black font-mono text-[16px] underline decoration-double decoration-rose-300 dark:decoration-rose-900/50">
                     {getGrandTotal().toLocaleString('vi-VN')} VND
                   </span>
                 </div>
@@ -729,7 +729,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'cleaning':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 flex items-center justify-center">
                 <Sparkles size={16} className="stroke-[2.5]" />
               </div>
@@ -741,7 +741,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Textarea nhập ghi chú dọn dẹp */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-wider flex items-center gap-1">
+              <label className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider flex items-center gap-1">
                 <ClipboardList size={11} className="text-zinc-400 dark:text-zinc-500" /> Chỉ dẫn dọn phòng chi tiết:
               </label>
               <textarea
@@ -773,7 +773,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       case 'maintenance':
         return (
           <div className="flex flex-col gap-4.5 animate-in fade-in slide-in-from-right duration-300">
-            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-850 pb-2.5">
+            <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2.5">
               <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                 <Wrench size={16} className="stroke-[2.5]" />
               </div>
@@ -785,7 +785,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Ô nhập Lý do bảo trì */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-wider">
+              <label className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider">
                 🛠️ Lý do sự cố cần bảo trì:
               </label>
               <input
@@ -799,7 +799,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Ô nhập Người phụ trách */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-wider">
+              <label className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-wider">
                 👤 Kỹ thuật viên / Người phụ trách:
               </label>
               <input
@@ -813,7 +813,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
 
             {/* Cho phép chọn trạng thái đích sau khi sửa xong */}
             <div className="bg-zinc-50/40 dark:bg-zinc-900/40 p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col gap-2">
-              <span className="text-[9px] font-black text-zinc-450 dark:text-zinc-500 uppercase tracking-wider block">🎯 Sau khi sửa đổi xong, chuyển phòng sang:</span>
+              <span className="text-[9px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider block">🎯 Sau khi sửa đổi xong, chuyển phòng sang:</span>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 cursor-pointer">
                   <input
@@ -865,7 +865,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
       onClick={onClose}
     >
       <div 
-        className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-y-auto max-h-[90vh] shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-900 dark:text-zinc-100"
+        className="bg-white dark:bg-zinc-900 border dark:border-zinc-800 w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-y-auto max-h-[90vh] shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-900 dark:text-zinc-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Nút đóng chéo ở góc */}
@@ -877,7 +877,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
         </button>
 
         {/* TIÊU ĐỀ POPUP THƯỢNG HẠNG */}
-        <div className="border-b border-zinc-100 dark:border-zinc-850 pb-3 flex items-center gap-3">
+        <div className="border-b border-zinc-100 dark:border-zinc-800 pb-3 flex items-center gap-3">
           <div className="w-10 h-10 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center shadow-inner">
             <CheckCircle2 size={18} className="stroke-[3]" />
           </div>
@@ -894,7 +894,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
           
           {/* CỘT TRÁI (TĨNH - 40%): CÀI ĐẶT THUỘC TÍNH CƠ BẢN */}
           <div className="flex flex-col gap-4 text-xs pb-5 md:pb-0 md:col-span-4">
-            <h4 className="font-extrabold text-zinc-800 dark:text-zinc-205 text-[11px] uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-50 pb-1.5 text-zinc-900 dark:text-zinc-50">
+            <h4 className="font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 text-[11px] uppercase tracking-wider flex items-center gap-1.5 border-b border-zinc-100 dark:border-zinc-800 pb-1.5 text-zinc-900 dark:text-zinc-50">
               🛠️ Trạng thái & Quảng bá
             </h4>
 
@@ -927,7 +927,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
               
               {/* Nếu là các trạng thái lưu trú, hiện dropdown để chỉnh thời gian cho chuyên nghiệp */}
               {(localStatus === 'booked_not_checked_in' || localStatus === 'checked_in' || localStatus === 'checkout_imminent') ? (
-                <div className="bg-zinc-50 dark:bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-250 dark:border-zinc-800/80 flex flex-col gap-2 font-semibold">
+                <div className="bg-zinc-50 dark:bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex flex-col gap-2 font-semibold">
                   <div className="flex items-center justify-between text-[10px]">
                     <span className="text-zinc-400 dark:text-zinc-500">🛫 Ngày & Giờ In:</span>
                     <span className="text-zinc-900 dark:text-zinc-100 font-bold">{tempCheckinDay}, {tempCheckinTime}</span>
@@ -954,7 +954,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
             {/* Checkbox Hiển thị & Quảng bá trên Booking công cộng */}
             <div className="flex flex-col gap-1.5">
               <label className="text-[9.5px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider">Hiển thị & Quảng bá:</label>
-              <div className="flex flex-col gap-2.5 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-250 dark:border-zinc-800/50">
+              <div className="flex flex-col gap-2.5 bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-2xl border border-zinc-200 dark:border-zinc-800/50">
                 <label className="flex items-center gap-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 cursor-pointer">
                   <input
                     type="checkbox"
@@ -992,7 +992,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
                   value={stateChangeNote}
                   onChange={(e) => setStateChangeNote(e.target.value)}
                   placeholder="Ví dụ: Đổi phòng từ P-102 sang vì hỏng điều hòa, nâng cấp cho khách VIP..."
-                  className="w-full bg-orange-50/20 border border-orange-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-orange-500 text-zinc-700 dark:text-zinc-300 resize-none"
+                  className="w-full bg-orange-50/20 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-900/50 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-orange-500 text-zinc-700 dark:text-zinc-300 resize-none"
                 />
               </div>
             )}

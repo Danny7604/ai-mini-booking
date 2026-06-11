@@ -175,8 +175,8 @@ export function SmartVariableInput({
   })
 
   return (
-    <div className="relative w-full flex flex-col gap-1 text-xs text-zinc-800 dark:text-zinc-200">
-      {label && <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px] tracking-wider">{label}</label>}
+    <div className="relative w-full flex flex-col gap-1 text-xs text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
+      {label && <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px] tracking-wider">{label}</label>}
       <div className="relative w-full flex items-stretch">
         {isTextarea ? (
           <textarea
@@ -185,7 +185,7 @@ export function SmartVariableInput({
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             rows={rows}
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl p-2.5 pr-10 font-bold focus:ring-2 focus:ring-black focus:border-black outline-none transition-all duration-200 shadow-sm resize-none"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-xl p-2.5 pr-10 font-bold focus:ring-2 focus:ring-black focus:border-black outline-none transition-all duration-200 shadow-sm resize-none"
           />
         ) : (
           <input
@@ -194,15 +194,15 @@ export function SmartVariableInput({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl p-2.5 pr-10 font-bold focus:ring-2 focus:ring-black focus:border-black outline-none transition-all duration-200 shadow-sm"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-xl p-2.5 pr-10 font-bold focus:ring-2 focus:ring-black focus:border-black outline-none transition-all duration-200 shadow-sm"
           />
         )}
         
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`absolute right-2 top-2.5 w-7 h-7 flex items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-700 text-slate-600 hover:text-zinc-800 dark:text-zinc-200 hover:bg-slate-100 transition active:scale-95 cursor-pointer ${
-            isOpen ? 'bg-slate-100 border-black text-zinc-800 dark:text-zinc-200' : 'bg-card'
+          className={`absolute right-2 top-2.5 w-7 h-7 flex items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-700 text-slate-600 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 hover:bg-slate-100 transition active:scale-95 cursor-pointer ${
+            isOpen ? 'bg-slate-100 border-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200' : 'bg-card'
           }`}
           title="Bấm để mở danh sách biến thông minh"
         >
@@ -220,7 +220,7 @@ export function SmartVariableInput({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Tìm kiếm biến (gõ 'tên', 'voucher',...)"
-            className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg px-2.5 py-1.5 font-bold outline-none text-[11px] focus:border-black transition"
+            className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-lg px-2.5 py-1.5 font-bold outline-none text-[11px] focus:border-black transition"
             autoFocus
           />
 
@@ -252,9 +252,9 @@ export function SmartVariableInput({
 export default function AutomationFlowPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col items-center justify-center gap-4 text-zinc-800 dark:text-zinc-200 font-sans">
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col items-center justify-center gap-4 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-sans">
         <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-        <span className="text-[10px] text-zinc-500 dark:text-zinc-450 font-black uppercase tracking-widest animate-pulse">
+        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-black uppercase tracking-widest animate-pulse">
           Đang chuẩn bị Trình vẽ kịch bản...
         </span>
       </div>
@@ -2186,16 +2186,16 @@ function AutomationFlowEditor() {
       )
 
       return (
-        <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-200">
+        <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
           {/* Header */}
           <div className="flex justify-between items-center border-b border-slate-100 pb-2">
-            <span className="text-[11.5px] font-black uppercase text-zinc-800 dark:text-zinc-200 tracking-widest flex items-center gap-1.5">
-              <LayoutGrid size={13} className="text-zinc-800 dark:text-zinc-200" />
+            <span className="text-[11.5px] font-black uppercase text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 tracking-widest flex items-center gap-1.5">
+              <LayoutGrid size={13} className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200" />
               Chọn ứng dụng liên kết
             </span>
             <button 
               onClick={() => { setIsPaletteOpen(false); setConnectingSourceId(null); setPaletteSearchQuery(''); }}
-              className="text-zinc-500 dark:text-zinc-450 hover:text-zinc-800 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
+              className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
             >
               <X size={15} />
             </button>
@@ -2208,7 +2208,7 @@ function AutomationFlowEditor() {
               value={paletteSearchQuery}
               onChange={(e) => setPaletteSearchQuery(e.target.value)}
               placeholder="Search apps..."
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-200 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
             />
             <span className="absolute left-2.5 top-2.5 text-zinc-400 dark:text-zinc-500">🔍</span>
           </div>
@@ -2294,7 +2294,7 @@ function AutomationFlowEditor() {
       )
 
       return (
-        <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-200">
+        <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
           {/* Header row with back purple text and close */}
           <div className="flex justify-between items-center">
             <button
@@ -2305,7 +2305,7 @@ function AutomationFlowEditor() {
             </button>
             <button 
               onClick={() => { setIsPaletteOpen(false); setConnectingSourceId(null); setPaletteSearchQuery(''); setPaletteSelectedApp(null); }}
-              className="text-zinc-500 dark:text-zinc-450 hover:text-zinc-800 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
+              className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
             >
               <X size={15} />
             </button>
@@ -2329,7 +2329,7 @@ function AutomationFlowEditor() {
               value={paletteSearchQuery}
               onChange={(e) => setPaletteSearchQuery(e.target.value)}
               placeholder="Search modules..."
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-indigo-500 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-200 outline-none focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-indigo-500 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
               autoFocus
             />
             <span className="absolute left-2.5 top-2.5 text-zinc-400 dark:text-zinc-500">🔍</span>
@@ -2342,7 +2342,7 @@ function AutomationFlowEditor() {
               if (groupActions.length === 0) return null
               return (
                 <div key={group} className="flex flex-col gap-1.5">
-                  <span className="text-[10px] uppercase font-black text-zinc-500 dark:text-zinc-450 tracking-wider block border-b border-slate-100 pb-0.5 text-left">{group}</span>
+                  <span className="text-[10px] uppercase font-black text-zinc-500 dark:text-zinc-400 tracking-wider block border-b border-slate-100 pb-0.5 text-left">{group}</span>
                   <div className="flex flex-col gap-1.5">
                     {groupActions.map(act => (
                       <div
@@ -2373,7 +2373,7 @@ function AutomationFlowEditor() {
                               </span>
                             )}
                           </div>
-                          <span className="text-[9px] text-zinc-500 dark:text-zinc-450 font-bold leading-normal mt-0.5">
+                          <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold leading-normal mt-0.5">
                             {act.description}
                           </span>
                         </div>
@@ -2472,7 +2472,7 @@ function AutomationFlowEditor() {
     )
 
     return (
-      <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-200">
+      <div className="flex flex-col gap-3.5 w-full text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
         {/* Header bar */}
         <div className="flex justify-between items-center">
           <button
@@ -2483,7 +2483,7 @@ function AutomationFlowEditor() {
           </button>
           <button 
             onClick={() => { setIsPaletteOpen(false); setConnectingSourceId(null); setPaletteSearchQuery(''); setPaletteSelectedApp(null); }}
-            className="text-zinc-500 dark:text-zinc-450 hover:text-zinc-800 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
+            className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5 rounded transition hover:bg-slate-100"
           >
             <X size={15} />
           </button>
@@ -2507,7 +2507,7 @@ function AutomationFlowEditor() {
             value={paletteSearchQuery}
             onChange={(e) => setPaletteSearchQuery(e.target.value)}
             placeholder="Search modules..."
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-indigo-500 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-200 outline-none focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-indigo-500 rounded-xl py-2 px-3 pl-8 text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none focus:ring-2 focus:ring-indigo-100 transition-all shadow-inner"
             autoFocus
           />
           <span className="absolute left-2.5 top-2.5 text-zinc-400 dark:text-zinc-500">🔍</span>
@@ -2539,7 +2539,7 @@ function AutomationFlowEditor() {
                     </span>
                   )}
                 </div>
-                <span className="text-[9px] text-zinc-500 dark:text-zinc-450 font-bold leading-normal mt-0.5">
+                <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold leading-normal mt-0.5">
                   {act.description}
                 </span>
               </div>
@@ -2740,7 +2740,7 @@ function AutomationFlowEditor() {
   const countExpired = scenarios.filter(s => s.status === 'expired').length
 
   return (
-    <div className="w-full h-full select-none font-sans text-zinc-800 dark:text-zinc-200 bg-card p-6 rounded-3xl min-h-screen">
+    <div className="w-full h-full select-none font-sans text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card p-6 rounded-3xl min-h-screen">
       
       {/* =========================================================================
          VIEW 1: DASHBOARD KỊCH BẢN AUTOMATION
@@ -2749,9 +2749,9 @@ function AutomationFlowEditor() {
         <div className="flex flex-col gap-8 animate-in fade-in duration-300">
           
           {/* HEADER DASHBOARD (Màu be chữ đen sang trọng) */}
-          <div className="flex justify-between items-center bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-6 rounded-3xl shadow-sm">
+          <div className="flex justify-between items-center bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-3xl shadow-sm">
             <div>
-              <h1 className="text-base md:text-lg font-black tracking-tight text-zinc-800 dark:text-zinc-200 uppercase">
+              <h1 className="text-base md:text-lg font-black tracking-tight text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase">
                 Bliss home Automation AI
               </h1>
               <span className="text-[10px] text-slate-600 block mt-1 font-bold">Quản lý các kịch bản chạy tự động hóa & tích hợp Make/n8n</span>
@@ -2768,43 +2768,43 @@ function AutomationFlowEditor() {
           {/* CHỈ SỐ THỐNG KÊ (STATS GRID - Nền Be Nhãn Đen Cao Cấp) */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-5 rounded-3xl flex items-center gap-4 shadow-sm hover:border-black transition-all duration-300">
-              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
+            <div className="bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl flex items-center gap-4 shadow-xs hover:border-zinc-400 dark:hover:border-zinc-700 transition-all duration-300">
+              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
                 <Activity size={18} />
               </div>
               <div>
                 <span className="text-[10px] uppercase font-black tracking-widest text-slate-600 block">Hoạt động</span>
-                <span className="text-xl font-black text-zinc-800 dark:text-zinc-200">{countActive}</span>
+                <span className="text-xl font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{countActive}</span>
               </div>
             </div>
 
-            <div className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-5 rounded-3xl flex items-center gap-4 shadow-sm hover:border-black transition-all duration-300">
-              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
+            <div className="bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl flex items-center gap-4 shadow-xs hover:border-zinc-400 dark:hover:border-zinc-700 transition-all duration-300">
+              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
                 <Layers size={18} />
               </div>
               <div>
                 <span className="text-[10px] uppercase font-black tracking-widest text-slate-600 block">Nháp</span>
-                <span className="text-xl font-black text-zinc-800 dark:text-zinc-200">{countDraft}</span>
+                <span className="text-xl font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{countDraft}</span>
               </div>
             </div>
 
-            <div className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-5 rounded-3xl flex items-center gap-4 shadow-sm hover:border-black transition-all duration-300">
-              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
+            <div className="bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl flex items-center gap-4 shadow-xs hover:border-zinc-400 dark:hover:border-zinc-700 transition-all duration-300">
+              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
                 <Clock size={18} />
               </div>
               <div>
                 <span className="text-[10px] uppercase font-black tracking-widest text-slate-600 block">Tạm ngưng</span>
-                <span className="text-xl font-black text-zinc-800 dark:text-zinc-200">{countPaused}</span>
+                <span className="text-xl font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{countPaused}</span>
               </div>
             </div>
 
-            <div className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-5 rounded-3xl flex items-center gap-4 shadow-sm hover:border-black transition-all duration-300">
-              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
+            <div className="bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 rounded-3xl flex items-center gap-4 shadow-xs hover:border-zinc-400 dark:hover:border-zinc-700 transition-all duration-300">
+              <div className="w-10 h-10 bg-card border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-2xl flex items-center justify-center font-bold flex-shrink-0">
                 <AlertCircle size={18} />
               </div>
               <div>
                 <span className="text-[10px] uppercase font-black tracking-widest text-slate-600 block">Hết hạn</span>
-                <span className="text-xl font-black text-zinc-800 dark:text-zinc-200">{countExpired}</span>
+                <span className="text-xl font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">{countExpired}</span>
               </div>
             </div>
 
@@ -2812,7 +2812,7 @@ function AutomationFlowEditor() {
 
           {/* DANH SÁCH KỊCH BẢN (VERTICAL BAR LIST) */}
           <div className="flex flex-col gap-4">
-            <h2 className="text-xs font-black uppercase text-zinc-800 dark:text-zinc-200 tracking-widest leading-none">
+            <h2 className="text-xs font-black uppercase text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 tracking-widest leading-none">
               Danh sách kịch bản
             </h2>
             
@@ -2833,7 +2833,7 @@ function AutomationFlowEditor() {
                 return (
                   <div
                     key={scen.id}
-                    className="bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 shadow-sm hover:shadow-md hover:border-black transition-all duration-300 rounded-3xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group"
+                    className="bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs hover:shadow-md hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 rounded-3xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group"
                   >
                     {/* Info */}
                     <div className="flex-grow flex flex-col gap-1.5 max-w-3xl">
@@ -2868,7 +2868,7 @@ function AutomationFlowEditor() {
                         </div>
                       </div>
 
-                      <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-200 group-hover:text-slate-800 transition duration-200">
+                      <h3 className="text-sm font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 group-hover:text-slate-800 transition duration-200">
                         {scen.name}
                       </h3>
                       <p className="text-[11px] text-slate-700 leading-relaxed">
@@ -2878,8 +2878,8 @@ function AutomationFlowEditor() {
 
                     {/* Run Count */}
                     <div className="flex flex-col gap-0.5 min-w-[90px] text-left md:text-center flex-shrink-0">
-                      <span className="text-[9px] uppercase tracking-wider text-zinc-500 dark:text-zinc-450 block font-extrabold">Số lượt chạy</span>
-                      <span className="text-xs font-black text-zinc-800 dark:text-zinc-200 font-mono bg-card px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-800 shadow-2xs">
+                      <span className="text-[9px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block font-extrabold">Số lượt chạy</span>
+                      <span className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-mono bg-card px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-800 shadow-2xs">
                         {scen.runCount.toLocaleString()}
                       </span>
                     </div>
@@ -2888,7 +2888,7 @@ function AutomationFlowEditor() {
                     <div className="flex items-center gap-2 w-full md:w-auto flex-shrink-0 justify-end border-t border-zinc-200 dark:border-zinc-800 md:border-t-0 pt-3 md:pt-0">
                       <button
                         onClick={() => handleEditScenario(scen)}
-                        className="px-4 py-2 bg-card border-2 border-zinc-300 dark:border-zinc-700 hover:bg-black hover:text-white hover:border-black text-zinc-800 dark:text-zinc-200 rounded-xl font-black text-[10.5px] transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+                        className="px-4 py-2 bg-card border-2 border-zinc-300 dark:border-zinc-700 hover:bg-black hover:text-white hover:border-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-xl font-black text-[10.5px] transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
                       >
                         <Settings2 size={12} />
                         Chỉnh sửa luồng
@@ -2918,11 +2918,11 @@ function AutomationFlowEditor() {
           
           {/* PERSISTENCE WARNING BANNER (BẢNG THÔNG BÁO DI TRÚ SQL MÔ HÌNH DÂN CHƠI) */}
           {!usingDbMode && isMigrationBannerOpen && (
-            <div className="bg-zinc-50 dark:bg-zinc-950 border-2 border-amber-300 p-4 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-md text-xs">
+            <div className="bg-amber-50/70 dark:bg-zinc-950 border border-amber-300/80 p-4 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-md text-xs">
               <div className="flex gap-2.5 items-start">
                 <AlertCircle className="text-amber-600 flex-shrink-0 mt-0.5 animate-bounce" size={16} />
                 <div>
-                  <span className="font-black text-zinc-800 dark:text-zinc-200 block text-[12.5px] uppercase tracking-wide">⚠️ Chưa cấu hình bảng automations trong Supabase (Chạy ở chế độ LocalStorage)</span>
+                  <span className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 block text-[12.5px] uppercase tracking-wide">⚠️ Chưa cấu hình bảng automations trong Supabase (Chạy ở chế độ LocalStorage)</span>
                   <p className="text-slate-700 leading-relaxed mt-0.5">
                     Để kích hoạt tính năng chạy ngầm 100% tự động trên server và lưu trữ vĩnh viễn trên đám mây, vui lòng copy mã lệnh SQL bên dưới và dán vào mục **SQL Editor** trong trang quản trị Supabase của bạn.
                   </p>
@@ -2938,7 +2938,7 @@ function AutomationFlowEditor() {
                 </button>
                 <button 
                   onClick={() => setIsMigrationBannerOpen(false)}
-                  className="px-3 py-2 bg-card hover:bg-zinc-50/50 dark:bg-zinc-900/40 text-zinc-800 dark:text-zinc-200 border border-zinc-300 dark:border-zinc-700 rounded-xl font-bold transition cursor-pointer"
+                  className="px-3 py-2 bg-card hover:bg-zinc-50/50 dark:bg-zinc-900/40 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border border-zinc-300 dark:border-zinc-700 rounded-xl font-bold transition cursor-pointer"
                 >
                   Đóng
                 </button>
@@ -2947,7 +2947,7 @@ function AutomationFlowEditor() {
           )}
 
           {/* HEADER EDITOR SIÊU COMPACT CẢI TIẾN MỚI (Màu Be, chữ Đen) */}
-          <div className="flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-3 bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 p-2.5 px-4 rounded-2xl shadow-xs flex-shrink-0">
+          <div className="flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-3 bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-2.5 px-4 rounded-2xl shadow-xs flex-shrink-0">
             
             {/* Cột 1: Nút Quay Lại & Tên Mạch */}
             <div className="flex items-center gap-3 flex-shrink-0">
@@ -2962,7 +2962,7 @@ function AutomationFlowEditor() {
                     }
                   })
                 }}
-                className="w-8 h-8 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 bg-card hover:border-black hover:text-zinc-800 dark:text-zinc-200 rounded-xl flex items-center justify-center cursor-pointer transition flex-shrink-0 shadow-2xs"
+                className="w-8 h-8 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card hover:border-black hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-xl flex items-center justify-center cursor-pointer transition flex-shrink-0 shadow-2xs"
                 title="Quay lại Dashboard"
               >
                 <ArrowLeft size={14} />
@@ -2974,7 +2974,7 @@ function AutomationFlowEditor() {
                   value={editorTitle}
                   onChange={(e) => setEditorTitle(e.target.value)}
                   placeholder="Nhập tên mạch..."
-                  className="bg-transparent border-b border-transparent hover:border-slate-400 focus:border-black text-[13px] font-black font-sans text-zinc-800 dark:text-zinc-200 outline-none pb-0.5 w-44 md:w-56 transition"
+                  className="bg-transparent border-b border-transparent hover:border-slate-400 focus:border-black text-[13px] font-black font-sans text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none pb-0.5 w-44 md:w-56 transition"
                 />
               </div>
             </div>
@@ -2987,7 +2987,7 @@ function AutomationFlowEditor() {
                 value={aiPrompt}
                 onChange={(e) => setAiPrompt(e.target.value)}
                 placeholder="✨ AI dựng luồng nhanh: Nhập yêu cầu..."
-                className="flex-grow bg-transparent border-none text-[11px] text-zinc-800 dark:text-zinc-200 focus:outline-none font-bold placeholder-slate-400 p-0"
+                className="flex-grow bg-transparent border-none text-[11px] text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none font-bold placeholder-slate-400 p-0"
               />
               <button
                 onClick={handleAIGenerateFlow}
@@ -3009,15 +3009,15 @@ function AutomationFlowEditor() {
             <div className="flex items-center gap-2 flex-shrink-0 justify-end">
               {/* Scheduling type (Make clock icon) */}
               <div className="flex items-center gap-1.5 bg-card px-2.5 py-1 rounded-xl border border-zinc-300 dark:border-zinc-700 shadow-2xs">
-                <Clock size={11} className="text-zinc-800 dark:text-zinc-200" />
+                <Clock size={11} className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200" />
                 <select
                   value={schedulingType}
                   onChange={(e: any) => setSchedulingType(e.target.value)}
-                  className="bg-transparent border-none text-[10px] font-black uppercase text-zinc-800 dark:text-zinc-200 outline-none cursor-pointer p-0"
+                  className="bg-transparent border-none text-[10px] font-black uppercase text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none cursor-pointer p-0"
                 >
-                  <option value="none" className="text-zinc-800 dark:text-zinc-200 bg-card">Mặc định (Chạy tay)</option>
-                  <option value="15m" className="text-zinc-800 dark:text-zinc-200 bg-card">Mỗi 15 phút ⏰</option>
-                  <option value="immediate" className="text-zinc-800 dark:text-zinc-200 bg-card">Ngay lập tức ⚡</option>
+                  <option value="none" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Mặc định (Chạy tay)</option>
+                  <option value="15m" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Mỗi 15 phút ⏰</option>
+                  <option value="immediate" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Ngay lập tức ⚡</option>
                 </select>
               </div>
 
@@ -3031,12 +3031,12 @@ function AutomationFlowEditor() {
                 <select
                   value={editorStatus}
                   onChange={(e: any) => setEditorStatus(e.target.value)}
-                  className="bg-transparent border-none text-[10px] font-black uppercase text-zinc-800 dark:text-zinc-200 outline-none cursor-pointer p-0"
+                  className="bg-transparent border-none text-[10px] font-black uppercase text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 outline-none cursor-pointer p-0"
                 >
-                  <option value="active" className="text-zinc-800 dark:text-zinc-200 bg-card">Đang hoạt động</option>
-                  <option value="draft" className="text-zinc-800 dark:text-zinc-200 bg-card">Bản nháp</option>
-                  <option value="paused" className="text-zinc-800 dark:text-zinc-200 bg-card">Tạm ngưng</option>
-                  <option value="expired" className="text-zinc-800 dark:text-zinc-200 bg-card">Hết hạn</option>
+                  <option value="active" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Đang hoạt động</option>
+                  <option value="draft" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Bản nháp</option>
+                  <option value="paused" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Tạm ngưng</option>
+                  <option value="expired" className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-card">Hết hạn</option>
                 </select>
               </div>
             </div>
@@ -3045,7 +3045,7 @@ function AutomationFlowEditor() {
           {/* VÙNG VẼ SƠ ĐỒ CHÍNH (FULL SCREEN CANVAS WORKSPACE) */}
           <div 
             id="automation-canvas-container"
-            className="relative w-full h-[750px] bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between"
+            className="relative w-full h-[750px] bg-card border border-zinc-250 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between"
             style={{ 
               cursor: isSpacePressed ? (isPanning ? 'grabbing' : 'grab') : 'default',
               overscrollBehavior: 'none'
@@ -3186,7 +3186,7 @@ function AutomationFlowEditor() {
                         </div>
                         
                         <div className="flex-grow flex flex-col gap-0.5 overflow-hidden text-left">
-                          <span className="text-[11px] font-black text-zinc-800 dark:text-zinc-200 tracking-tight leading-tight truncate">
+                          <span className="text-[11px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 tracking-tight leading-tight truncate">
                             {node.label}
                           </span>
                           <span className={`text-[8px] font-extrabold tracking-widest uppercase ${
@@ -3279,8 +3279,8 @@ function AutomationFlowEditor() {
             )}
 
             {/* ZOOM INDICATOR & PANEL (GÓC DƯỚI BÊN TRÁI CANVAS) */}
-            <div className="absolute bottom-6 left-6 z-30 bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-2xl p-2.5 flex items-center gap-2.5 shadow-md">
-              <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-200 font-mono">Zoom: {Math.round(zoom * 100)}%</span>
+            <div className="absolute bottom-6 left-6 z-30 bg-card border border-zinc-200 dark:border-zinc-800 rounded-2xl p-2.5 flex items-center gap-2.5 shadow-md">
+              <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-mono">Zoom: {Math.round(zoom * 100)}%</span>
               <div className="flex gap-1">
                 <button
                   onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}
@@ -3311,36 +3311,36 @@ function AutomationFlowEditor() {
                ========================================================================= */}
             {selectedNode && (
               <div className="absolute inset-0 bg-black/10 backdrop-blur-2xs flex items-center justify-center z-40 animate-in fade-in duration-200" onWheel={(e) => e.stopPropagation()}>
-                <div className="bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-3xl p-6 shadow-2xl max-w-md w-full text-zinc-800 dark:text-zinc-200 flex flex-col gap-4 relative animate-in zoom-in-95 duration-200 max-h-[90%] overflow-y-auto" onWheel={(e) => e.stopPropagation()}>
+                <div className="bg-card border border-zinc-250 dark:border-zinc-805 rounded-3xl p-6 shadow-2xl max-w-md w-full text-zinc-800 dark:text-zinc-650 dark:text-zinc-200 flex flex-col gap-4 relative animate-in zoom-in-95 duration-200 max-h-[90%] overflow-y-auto" onWheel={(e) => e.stopPropagation()}>
                   
                   {/* Close icon */}
                   <button 
                     onClick={() => setSelectedNode(null)}
-                    className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-450 hover:text-zinc-800 dark:text-zinc-200 hover:bg-slate-100 p-1.5 rounded-lg border-none cursor-pointer transition"
+                    className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 hover:bg-slate-100 p-1.5 rounded-lg border-none cursor-pointer transition"
                   >
                     <X size={16} />
                   </button>
 
                   {/* Header popup */}
                   <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
-                    <h3 className="text-xs font-black uppercase text-zinc-800 dark:text-zinc-200 tracking-widest leading-none">
+                    <h3 className="text-xs font-black uppercase text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 tracking-widest leading-none">
                       Tùy chỉnh thông số Node
                     </h3>
-                    <span className="text-[8.5px] font-mono text-zinc-500 dark:text-zinc-450 block mt-1">Loại: {selectedNode.type.toUpperCase()} | ID: {selectedNode.id}</span>
+                    <span className="text-[8.5px] font-mono text-zinc-500 dark:text-zinc-400 block mt-1">Loại: {selectedNode.type.toUpperCase()} | ID: {selectedNode.id}</span>
                   </div>
 
                   {/* Form fields */}
                   <div className="flex flex-col gap-3 text-xs">
                     
                     {/* TÊN THẺ HIỂN THỊ (Giữ mặc định, không điều chỉnh) */}
-                    <div className="flex flex-col gap-1.5 text-xs text-zinc-800 dark:text-zinc-200">
-                      <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[10px] tracking-wider">TÊN THẺ HIỂN THỊ</label>
+                    <div className="flex flex-col gap-1.5 text-xs text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
+                      <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[10px] tracking-wider">TÊN THẺ HIỂN THỊ</label>
                       <input
                         type="text"
                         value={selectedNode.label}
                         readOnly
                         disabled
-                        className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 rounded-2xl p-3 font-bold select-none cursor-not-allowed shadow-inner"
+                        className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-2xl p-3 font-bold select-none cursor-not-allowed shadow-inner"
                       />
                     </div>
 
@@ -3348,7 +3348,7 @@ function AutomationFlowEditor() {
                     {selectedNode.type === 'webhook' && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
                           <select
                             value={nodeActionType}
                             onChange={(e) => setNodeActionType(e.target.value)}
@@ -3371,7 +3371,7 @@ function AutomationFlowEditor() {
 
                         <div className="flex gap-2">
                           <div className="flex-1 flex flex-col gap-1">
-                            <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[8.5px]">Phương thức HTTP</label>
+                            <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[8.5px]">Phương thức HTTP</label>
                             <select
                               value={webhookMethod}
                               onChange={(e) => setWebhookMethod(e.target.value)}
@@ -3383,7 +3383,7 @@ function AutomationFlowEditor() {
                             </select>
                           </div>
                           <div className="flex-1 flex flex-col gap-1">
-                            <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[8.5px]">Ứng dụng liên kết</label>
+                            <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[8.5px]">Ứng dụng liên kết</label>
                             <select
                               value={sourceApp}
                               onChange={(e) => setSourceApp(e.target.value)}
@@ -3403,7 +3403,7 @@ function AutomationFlowEditor() {
                     {selectedNode.type === 'action' && selectedNode.label.toLowerCase().includes('zalo') && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
                           <select
                             value={nodeActionType}
                             onChange={(e) => setNodeActionType(e.target.value)}
@@ -3418,7 +3418,7 @@ function AutomationFlowEditor() {
                         </div>
 
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Mẫu Zalo ZNS Template</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Mẫu Zalo ZNS Template</label>
                           <select
                             value={nodeTemplate}
                             onChange={(e) => setNodeTemplate(e.target.value)}
@@ -3469,7 +3469,7 @@ function AutomationFlowEditor() {
                                 setGoogleLinkedEmail('')
                               }
                             }}
-                            className="w-full bg-card border border-zinc-300 dark:border-zinc-700 rounded-lg px-2.5 py-2 font-bold outline-none cursor-pointer text-xs focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 text-zinc-800 dark:text-zinc-200"
+                            className="w-full bg-card border border-zinc-300 dark:border-zinc-700 rounded-lg px-2.5 py-2 font-bold outline-none cursor-pointer text-xs focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                           >
                             <option value="none">-- Chọn tài khoản Google Sheets --</option>
                             {googleLinkedEmail ? (
@@ -3484,11 +3484,11 @@ function AutomationFlowEditor() {
                             onClick={handleConnectGoogleAccount}
                             disabled={isConnectingGoogle}
                             className={`w-full py-2 text-xs font-black rounded-lg flex items-center justify-center gap-1 border shadow-xs transition-all duration-200 active:scale-95 cursor-pointer ${
-                              isConnectingGoogle 
-                                ? 'bg-slate-100 text-zinc-400 dark:text-zinc-500 border-zinc-200 dark:border-zinc-800 cursor-not-allowed'
-                                : googleConnection !== 'none' && googleConnection !== 'bliss_cskh'
-                                  ? 'bg-card hover:bg-emerald-50 text-emerald-600 border-emerald-200 hover:border-emerald-350'
-                                  : 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600'
+                                  isConnectingGoogle 
+                                    ? 'bg-slate-100 text-zinc-400 dark:text-zinc-500 border-zinc-200 dark:border-zinc-800 cursor-not-allowed'
+                                    : googleConnection !== 'none' && googleConnection !== 'bliss_cskh'
+                                      ? 'bg-card hover:bg-emerald-50 text-emerald-600 border-emerald-200 hover:border-emerald-300'
+                                      : 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600'
                             }`}
                           >
                             {isConnectingGoogle ? (
@@ -3533,7 +3533,7 @@ function AutomationFlowEditor() {
                                     }))
                                   }}
                                   placeholder="Nhập Client ID..."
-                                  className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 rounded px-2 py-1.5 font-mono text-[9px] focus:border-indigo-500 outline-none text-zinc-800 dark:text-zinc-200"
+                                  className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 rounded px-2 py-1.5 font-mono text-[9px] focus:border-indigo-500 outline-none text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                                 />
                               </div>
                               <div className="flex flex-col gap-0.5">
@@ -3549,12 +3549,12 @@ function AutomationFlowEditor() {
                                     }))
                                   }}
                                   placeholder="Nhập Client Secret..."
-                                  className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 rounded px-2 py-1.5 font-mono text-[9px] focus:border-indigo-500 outline-none text-zinc-800 dark:text-zinc-200"
+                                  className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-300 dark:border-zinc-700 rounded px-2 py-1.5 font-mono text-[9px] focus:border-indigo-500 outline-none text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                                 />
                               </div>
-                              <p className="text-[8.5px] text-zinc-500 dark:text-zinc-450 font-semibold leading-snug">
+                              <p className="text-[8.5px] text-zinc-500 dark:text-zinc-400 font-semibold leading-snug">
                                 💡 Redirect URI cấu hình tại Google Cloud Console: <br />
-                                <span className="font-mono text-[8px] select-all bg-slate-100 p-0.5 rounded text-zinc-800 dark:text-zinc-200 block mt-0.5">
+                                <span className="font-mono text-[8px] select-all bg-slate-100 p-0.5 rounded text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 block mt-0.5">
                                   {typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'http://localhost:3000/admin/automation/flow'}
                                 </span>
                               </p>
@@ -3569,7 +3569,7 @@ function AutomationFlowEditor() {
                         </div>
 
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
                           <select
                             value={nodeActionType}
                             onChange={(e) => setNodeActionType(e.target.value)}
@@ -3623,7 +3623,7 @@ function AutomationFlowEditor() {
                           placeholder="Ví dụ: Bliss Bookings 2026"
                         />
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Danh sách tiêu đề cột (Phân tách bằng dấu phẩy)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Danh sách tiêu đề cột (Phân tách bằng dấu phẩy)</label>
                           <input
                             type="text"
                             value={sheetHeaders}
@@ -3639,7 +3639,7 @@ function AutomationFlowEditor() {
                     {selectedNode.label.toLowerCase().includes('telegram') && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Telegram Chat ID (ID phòng chat)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Telegram Chat ID (ID phòng chat)</label>
                           <input
                             type="text"
                             value={telegramChatId}
@@ -3649,7 +3649,7 @@ function AutomationFlowEditor() {
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Telegram Bot Token (API Token thật)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Telegram Bot Token (API Token thật)</label>
                           <input
                             type="text"
                             value={telegramToken}
@@ -3673,7 +3673,7 @@ function AutomationFlowEditor() {
                     {selectedNode.label.toLowerCase().includes('voucher') && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Tỷ lệ chiết khấu ưu đãi</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Tỷ lệ chiết khấu ưu đãi</label>
                           <select
                             value={voucherDiscount}
                             onChange={(e) => setVoucherDiscount(e.target.value)}
@@ -3686,7 +3686,7 @@ function AutomationFlowEditor() {
                           </select>
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Mã Voucher cấu hình mẫu</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Mã Voucher cấu hình mẫu</label>
                           <select
                             value={nodeVoucher}
                             onChange={(e) => setNodeVoucher(e.target.value)}
@@ -3704,7 +3704,7 @@ function AutomationFlowEditor() {
                     {selectedNode.type === 'crm' && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex flex-col gap-1">
-                          <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
+                          <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9px] tracking-wider">Hành động thực thi (Action)</label>
                           <select
                             value={nodeActionType}
                             onChange={(e) => setNodeActionType(e.target.value)}
@@ -3731,7 +3731,7 @@ function AutomationFlowEditor() {
                     {selectedNode.type === 'logic' && (
                       <div className="flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3">
                         <div className="flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
-                          <span className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Cấu hình bộ lọc (AND/OR)</span>
+                          <span className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Cấu hình bộ lọc (AND/OR)</span>
                           <select
                             value={logicRelation}
                             onChange={(e: any) => setLogicRelation(e.target.value)}
@@ -3758,7 +3758,7 @@ function AutomationFlowEditor() {
                                       next[index].field = e.target.value
                                       setLogicConditions(next)
                                     }}
-                                    className="bg-zinc-50/50 dark:bg-zinc-900/40 border border-slate-305 rounded-xl p-1.5 text-[9.5px] font-bold text-zinc-800 dark:text-zinc-200"
+                                    className="bg-zinc-50/50 dark:bg-zinc-900/40 border border-slate-305 rounded-xl p-1.5 text-[9.5px] font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                                   >
                                     <option value="booking.total_price">Giá Đơn Phòng (booking.total_price)</option>
                                     <option value="customer.total_spent">Tổng Chi Tiêu (customer.total_spent)</option>
@@ -3797,7 +3797,7 @@ function AutomationFlowEditor() {
                                         setLogicConditions(next)
                                       }}
                                       placeholder="Giá trị..."
-                                      className="bg-zinc-50/50 dark:bg-zinc-900/40 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl p-1.5 text-[10px] font-black text-zinc-800 dark:text-zinc-200 w-24 outline-none focus:border-black transition-all"
+                                      className="bg-zinc-50/50 dark:bg-zinc-900/40 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl p-1.5 text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 w-24 outline-none focus:border-black transition-all"
                                     />
                                   </div>
                                 </div>
@@ -3818,7 +3818,7 @@ function AutomationFlowEditor() {
                         <button
                           type="button"
                           onClick={() => setLogicConditions(prev => [...prev, { field: 'booking.total_price', operator: 'equals', value: '1200000' }])}
-                          className="w-full py-1.5 bg-slate-100 hover:bg-slate-200 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg font-bold flex items-center justify-center gap-1 transition cursor-pointer"
+                          className="w-full py-1.5 bg-slate-100 hover:bg-slate-200 border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-lg font-bold flex items-center justify-center gap-1 transition cursor-pointer"
                         >
                           <Plus size={11} />
                           Thêm điều kiện so khớp
@@ -3829,7 +3829,7 @@ function AutomationFlowEditor() {
                     {/* Delay Logic config */}
                     {selectedNode.type === 'logic' && selectedNode.label.toLowerCase().includes('đợi') && (
                       <div className="flex flex-col gap-1">
-                        <label className="font-black text-zinc-800 dark:text-zinc-200 uppercase text-[9.5px]">Thời gian trễ (Phút)</label>
+                        <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Thời gian trễ (Phút)</label>
                         <input
                           type="number"
                           value={nodeDelay}
@@ -3885,7 +3885,7 @@ function AutomationFlowEditor() {
                 onWheel={(e) => e.stopPropagation()}
               >
                 <div 
-                  className="bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-3xl p-5 shadow-2xl max-w-sm w-72 z-40 flex flex-col gap-3.5 animate-in zoom-in-95 duration-200"
+                  className="bg-card border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 shadow-2xl max-w-sm w-72 z-40 flex flex-col gap-3.5 animate-in zoom-in-95 duration-200"
                   onClick={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
                   onWheel={(e) => e.stopPropagation()}
@@ -3905,7 +3905,7 @@ function AutomationFlowEditor() {
               >
                 <div className="flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800 pb-1.5">
                   <span className="text-[9.5px] font-black uppercase tracking-widest text-slate-800 flex items-center gap-1.5">
-                    <Activity size={13} className="text-zinc-800 dark:text-zinc-200" />
+                    <Activity size={13} className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200" />
                     Cửa sổ Giám sát tiến trình và Dòng chảy dữ liệu (Real-time Logs)
                   </span>
                   <div className="flex items-center gap-2">
@@ -3917,7 +3917,7 @@ function AutomationFlowEditor() {
                     </button>
                     <button 
                       onClick={() => setIsLogsDrawerOpen(false)}
-                      className="text-slate-600 hover:text-zinc-800 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5"
+                      className="text-slate-600 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 border-none bg-transparent cursor-pointer p-0.5"
                     >
                       <X size={15} />
                     </button>
@@ -3949,7 +3949,7 @@ function AutomationFlowEditor() {
             {/* =========================================================================
                FLOATING FIGMA/MIRO-STYLE VERTICAL RIGHT TOOLBAR DOCK (📟)
                ========================================================================= */}
-            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-3xl py-5 px-2.5 flex flex-col items-center gap-4 shadow-xl z-30 animate-in slide-in-from-right duration-300">
+            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-card border border-zinc-200 dark:border-zinc-800 rounded-3xl py-5 px-2.5 flex flex-col items-center gap-4 shadow-xl z-30 animate-in slide-in-from-right duration-300">
               
               {/* Play / Run Once circular button */}
               <button
@@ -3976,7 +3976,7 @@ function AutomationFlowEditor() {
                     setConnectingSourceId(null)
                   }}
                   className={`w-9 h-9 rounded-full border flex items-center justify-center cursor-pointer transition active:scale-90 shadow-2xs ${
-                    isPaletteOpen ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-zinc-50/50 dark:bg-zinc-900/40 border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-200'
+                    isPaletteOpen ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-zinc-50/50 dark:bg-zinc-900/40 border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200'
                   }`}
                   title="Thêm thẻ Node vào mạch"
                 >
@@ -3986,7 +3986,7 @@ function AutomationFlowEditor() {
                 {/* Auto align */}
                 <button
                   onClick={handleAutoAlignNodes}
-                  className="w-9 h-9 bg-zinc-50/50 dark:bg-zinc-900/40 hover:bg-slate-100 border border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-200 rounded-full flex items-center justify-center cursor-pointer transition active:scale-90 shadow-2xs"
+                  className="w-9 h-9 bg-zinc-50/50 dark:bg-zinc-900/40 hover:bg-slate-100 border border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 rounded-full flex items-center justify-center cursor-pointer transition active:scale-90 shadow-2xs"
                   title="Tự động căn chỉnh Canvas"
                 >
                   <Sliders size={14} />
@@ -3996,7 +3996,7 @@ function AutomationFlowEditor() {
                 <button
                   onClick={() => setIsLogsDrawerOpen(!isLogsDrawerOpen)}
                   className={`w-9 h-9 rounded-full border flex items-center justify-center cursor-pointer transition active:scale-90 shadow-2xs ${
-                    isLogsDrawerOpen ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-zinc-50/50 dark:bg-zinc-900/40 border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-200'
+                    isLogsDrawerOpen ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-zinc-50/50 dark:bg-zinc-900/40 border-zinc-300 dark:border-zinc-700 hover:border-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200'
                   }`}
                   title="Bật/Tắt Cửa sổ Giám sát logs"
                 >
@@ -4037,7 +4037,7 @@ function AutomationFlowEditor() {
           onMouseDown={(e) => e.stopPropagation()}
         >
           <div 
-            className="bg-card border-2 border-zinc-300 dark:border-zinc-700 rounded-3xl p-6 shadow-2xl max-w-sm w-[340px] text-zinc-800 dark:text-zinc-200 flex flex-col gap-4 relative animate-in zoom-in-95 duration-200"
+            className="bg-card border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-2xl max-w-sm w-[340px] text-zinc-800 dark:text-zinc-650 dark:text-zinc-200 flex flex-col gap-4 relative animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}
           >
@@ -4045,7 +4045,7 @@ function AutomationFlowEditor() {
               <div className="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0">
                 <AlertCircle size={20} />
               </div>
-              <h3 className="text-sm font-black uppercase tracking-wider text-zinc-800 dark:text-zinc-200">
+              <h3 className="text-sm font-black uppercase tracking-wider text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
                 {confirmModal.title}
               </h3>
             </div>

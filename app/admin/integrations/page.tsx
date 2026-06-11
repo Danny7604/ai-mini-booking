@@ -202,25 +202,25 @@ export default function IntegrationsPage() {
     return (
       <div className="flex flex-col gap-2 font-sans text-xs">
         {/* Banner Zalo ZNS Header */}
-        <div className="flex items-center gap-1.5 border-b border-zinc-250 dark:border-zinc-800 pb-2 mb-1 select-none">
+        <div className="flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-2 mb-1 select-none">
           <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
             BH
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
             <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
           </div>
         </div>
 
         {/* Nội dung đã gán biến */}
-        <p className="text-[11px] text-zinc-800 dark:text-zinc-200 font-medium leading-relaxed whitespace-pre-wrap font-sans">
+        <p className="text-[11px] text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-medium leading-relaxed whitespace-pre-wrap font-sans">
           {evaluated}
         </p>
 
         {/* Khối Button Call To Action giả lập nếu có voucher */}
         {template.voucherCodeSample && (
           <div className="mt-2.5 pt-2 border-t border-dashed border-zinc-200 dark:border-zinc-800 flex flex-col gap-1.5 font-sans select-none">
-            <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-850 p-2 rounded-xl flex items-center justify-between text-[10px] font-bold">
+            <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-2 rounded-xl flex items-center justify-between text-[10px] font-bold">
               <span className="text-zinc-500 dark:text-zinc-400">Mã ưu đãi áp dụng:</span>
               <span className="text-blue-600 font-black font-mono bg-blue-50 px-1.5 py-0.5 border border-blue-105 rounded">
                 {template.voucherCodeSample}
@@ -249,7 +249,7 @@ export default function IntegrationsPage() {
       )}
 
       {/* HEADER SECTION */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-250 dark:border-zinc-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
         <div>
           <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Tích Hợp Hệ Thống
@@ -300,12 +300,12 @@ export default function IntegrationsPage() {
       </div>
 
       {/* TAB CONTENTS CONTENT */}
-      <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl p-6 md:p-8 shadow-xs">
+      <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-8 shadow-xs">
         
         {/* ================= TAB 1: KẾT NỐI ZALO OA ================= */}
         {activeTab === 'zalo' && (
           <div className="flex flex-col gap-6 max-w-3xl">
-            <div className="border-b border-zinc-150 dark:border-zinc-850 pb-3">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100">Kết nối Zalo Official Account (OA)</h3>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Kích hoạt phân hệ gửi tin chăm sóc khách hàng tự động và ZNS qua cổng xác thực Zalo Developers.
@@ -360,7 +360,7 @@ export default function IntegrationsPage() {
                     required
                     value={oaId}
                     onChange={(e) => setOaId(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
 
@@ -382,7 +382,7 @@ export default function IntegrationsPage() {
                     required
                     value={secretKey}
                     onChange={(e) => setSecretKey(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 font-mono"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 font-mono"
                   />
                 </div>
               </div>
@@ -395,7 +395,7 @@ export default function IntegrationsPage() {
                   required
                   value={accessToken}
                   onChange={(e) => setAccessToken(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 font-mono"
                 />
               </div>
 
@@ -406,7 +406,7 @@ export default function IntegrationsPage() {
                   required
                   value={refreshToken}
                   onChange={(e) => setRefreshToken(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 font-mono"
                 />
               </div>
 
@@ -418,14 +418,14 @@ export default function IntegrationsPage() {
                 <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed">
                   Cung cấp URL này vào bảng cấu hình ứng dụng Zalo Developers của bạn để nhận sự kiện phản hồi trạng thái tin gửi và click.
                 </span>
-                <div className="flex items-center gap-2 bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl p-2 mt-1">
+                <div className="flex items-center gap-2 bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl p-2 mt-1">
                   <span className="text-[10px] font-mono font-bold text-zinc-700 dark:text-zinc-300 flex-grow select-all overflow-x-auto whitespace-nowrap pr-2">
                     https://blisshome.vn/api/webhooks/zalo
                   </span>
                   <button
                     type="button"
                     onClick={copyWebhookUrl}
-                    className="p-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 rounded-lg border-none text-zinc-650 dark:text-zinc-350 cursor-pointer transition active:scale-95"
+                    className="p-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 rounded-lg border-none text-zinc-600 dark:text-zinc-400 cursor-pointer transition active:scale-95"
                     title="Sao chép liên kết"
                   >
                     <Copy size={11} />
@@ -461,7 +461,7 @@ export default function IntegrationsPage() {
         {/* ================= TAB 2: MẪU TIN ZNS (TEMPLATES) ================= */}
         {activeTab === 'zns' && (
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-150 dark:border-zinc-850 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <div>
                 <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100">Quản lý Mẫu Tin Zalo ZNS</h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
@@ -480,11 +480,11 @@ export default function IntegrationsPage() {
             </div>
 
             {/* Bảng danh sách templates */}
-            <div className="border border-zinc-200 dark:border-zinc-850 rounded-2xl overflow-hidden shadow-2xs">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-2xs">
               <div className="overflow-x-auto w-full">
                 <table className="w-full text-left border-collapse text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   <thead>
-                    <tr className="bg-zinc-50 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                    <tr className="bg-zinc-100/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800/80 text-[10px] font-black text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
                       <th className="py-3 px-5">Template ID</th>
                       <th className="py-3 px-5">Tên Mẫu Tin</th>
                       <th className="py-3 px-4">Tham Số Động (Variables)</th>
@@ -492,13 +492,13 @@ export default function IntegrationsPage() {
                       <th className="py-3 px-5 text-center">Xem Trước</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60">
+                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60">
                     {templates.map((temp) => (
                       <tr key={temp.id} className="hover:bg-zinc-50/40 dark:bg-zinc-900/30 transition">
                         {/* ID */}
                         <td className="py-3.5 px-5 font-mono font-bold text-zinc-500 dark:text-zinc-400">{temp.id}</td>
                         {/* Tên mẫu */}
-                        <td className="py-3.5 px-5 text-zinc-800 dark:text-zinc-200 font-extrabold">{temp.name}</td>
+                        <td className="py-3.5 px-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-extrabold">{temp.name}</td>
                         {/* Biến */}
                         <td className="py-3.5 px-4">
                           <div className="flex flex-wrap gap-1">
@@ -525,7 +525,7 @@ export default function IntegrationsPage() {
                         <td className="py-3.5 px-5 text-center">
                           <button
                             onClick={() => setPreviewTemplate(temp)}
-                            className="w-7 h-7 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:text-white rounded-lg flex items-center justify-center border-none text-zinc-650 dark:text-zinc-350 cursor-pointer transition shadow-3xs"
+                            className="w-7 h-7 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:text-white rounded-lg flex items-center justify-center border-none text-zinc-600 dark:text-zinc-400 cursor-pointer transition shadow-3xs"
                             title="Xem trước cấu trúc tin nhắn"
                           >
                             <Eye size={12} />
@@ -545,19 +545,19 @@ export default function IntegrationsPage() {
                 onClick={() => setPreviewTemplate(null)}
               >
                 <div 
-                  className="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-zinc-800 dark:text-zinc-200"
+                  className="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-4 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     onClick={() => setPreviewTemplate(null)}
-                    className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-6 h-6 rounded-full flex items-center justify-center cursor-pointer transition shadow-2xs font-bold text-xs"
+                    className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-6 h-6 rounded-full flex items-center justify-center cursor-pointer transition shadow-2xs font-bold text-xs"
                   >
                     ✕
                   </button>
 
-                  <div className="flex flex-col border-b border-zinc-150 dark:border-zinc-850 pb-2">
+                  <div className="flex flex-col border-b border-zinc-200 dark:border-zinc-800 pb-2">
                     <span className="text-[9px] text-zinc-900 dark:text-zinc-100 font-black uppercase tracking-wider">{previewTemplate.id}</span>
-                    <h4 className="text-xs font-black text-zinc-800 dark:text-zinc-200 leading-tight mt-0.5">{previewTemplate.name}</h4>
+                    <h4 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight mt-0.5">{previewTemplate.name}</h4>
                   </div>
 
                   {/* Bong bóng chat giả lập điện thoại */}
@@ -587,7 +587,7 @@ export default function IntegrationsPage() {
             
             {/* Cột trái: Cấu hình cổng gửi */}
             <div className="lg:col-span-2 flex flex-col gap-6 max-w-2xl">
-              <div className="border-b border-zinc-150 dark:border-zinc-850 pb-3">
+              <div className="border-b border-zinc-200 dark:border-zinc-800 pb-3">
                 <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100">Cổng Gửi Email Marketing & Giao Dịch</h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                   Kết nối hạ tầng qua nhà cung cấp SMTP / Cloud ESP để tối đa hóa hiệu suất hộp thư đến của khách đặt phòng.
@@ -605,7 +605,7 @@ export default function IntegrationsPage() {
                     <select
                       value={emailProvider}
                       onChange={(e) => setEmailProvider(e.target.value as any)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer"
                     >
                       <option value="resend">Resend (Gợi ý tối giản Next.js)</option>
                       <option value="sendgrid">SendGrid (Phổ thông)</option>
@@ -622,7 +622,7 @@ export default function IntegrationsPage() {
                       required
                       value={senderEmail}
                       onChange={(e) => setSenderEmail(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                      className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                     />
                   </div>
                 </div>
@@ -635,7 +635,7 @@ export default function IntegrationsPage() {
                     required
                     value={emailApiKey}
                     onChange={(e) => setEmailApiKey(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 font-mono"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 font-mono"
                   />
                 </div>
 
@@ -647,7 +647,7 @@ export default function IntegrationsPage() {
                     required
                     value={senderName}
                     onChange={(e) => setSenderName(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
 
@@ -678,7 +678,7 @@ export default function IntegrationsPage() {
                     value={testEmailAddress}
                     onChange={(e) => setTestEmailAddress(e.target.value)}
                     placeholder="ví dụ: admin.test@gmail.com"
-                    className="bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 flex-grow shadow-3xs"
+                    className="bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 flex-grow shadow-3xs"
                   />
                   <button
                     type="submit"
@@ -692,16 +692,16 @@ export default function IntegrationsPage() {
             </div>
 
             {/* Cột phải: Trạng thái tên miền */}
-            <div className="flex flex-col gap-5 bg-zinc-50 dark:bg-zinc-900/60/50 p-6 rounded-3xl border border-zinc-250 dark:border-zinc-800">
+            <div className="flex flex-col gap-5 bg-zinc-50 dark:bg-zinc-900/50 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
               <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
                 <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider block">BẢO MẬT & XÁC THỰC</span>
                 <h4 className="text-xs font-extrabold text-zinc-900 dark:text-zinc-100 mt-0.5">Xác thực tên miền: blisshome.vn</h4>
               </div>
 
               {/* Bản ghi SPF */}
-              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-850 p-3 rounded-2xl shadow-3xs">
+              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-800 p-3 rounded-2xl shadow-3xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase text-zinc-650 dark:text-zinc-350">SPF Record (Sender Policy Framework)</span>
+                  <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">SPF Record (Sender Policy Framework)</span>
                   <span className="px-1.5 py-0.2 rounded text-[8px] font-black uppercase bg-green-50 text-green-700 border border-green-200">
                     Khớp 🟢
                   </span>
@@ -712,9 +712,9 @@ export default function IntegrationsPage() {
               </div>
 
               {/* Bản ghi DKIM */}
-              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-850 p-3 rounded-2xl shadow-3xs">
+              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-800 p-3 rounded-2xl shadow-3xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase text-zinc-650 dark:text-zinc-350">DKIM Key (DomainKeys Identified Mail)</span>
+                  <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">DKIM Key (DomainKeys Identified Mail)</span>
                   <span className="px-1.5 py-0.2 rounded text-[8px] font-black uppercase bg-green-50 text-green-700 border border-green-200">
                     Khớp 🟢
                   </span>
@@ -725,9 +725,9 @@ export default function IntegrationsPage() {
               </div>
 
               {/* Bản ghi DMARC */}
-              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-850 p-3 rounded-2xl shadow-3xs">
+              <div className="flex flex-col gap-2 bg-white border border-zinc-200 dark:border-zinc-800 p-3 rounded-2xl shadow-3xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase text-zinc-650 dark:text-zinc-350">DMARC Policy (Domain-based Auth)</span>
+                  <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">DMARC Policy (Domain-based Auth)</span>
                   <span className="px-1.5 py-0.2 rounded text-[8px] font-black uppercase bg-green-50 text-green-700 border border-green-200">
                     Kích hoạt 🟢
                   </span>

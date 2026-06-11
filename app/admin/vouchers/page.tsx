@@ -363,7 +363,7 @@ export default function VouchersManagementPage() {
   const getTargetBadgeStyle = (targetType: Voucher['targetType']) => {
     switch (targetType) {
       case 'all':
-        return 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-350 border-zinc-200 dark:border-zinc-800'
+        return 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'
       case 'tier':
         return 'bg-amber-50 text-amber-700 border-amber-200'
       case 'group':
@@ -387,7 +387,7 @@ export default function VouchersManagementPage() {
 
       {/* 🔮 CUSTOM TOAST SYSTEM */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-zinc-900 dark:bg-zinc-100 border border-zinc-250 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
+        <div className="fixed top-20 right-6 z-50 bg-zinc-900 dark:bg-zinc-100 border border-zinc-200 dark:border-zinc-800 text-white dark:text-zinc-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in slide-in-from-top duration-300">
           <div className="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center text-white">
             <Check size={11} className="stroke-[3]" />
           </div>
@@ -396,7 +396,7 @@ export default function VouchersManagementPage() {
       )}
 
       {/* HEADER AREA */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-250 dark:border-zinc-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
         <div>
           <h2 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight font-sans">
             Quản Lý Khuyến Mãi (Vouchers)
@@ -409,7 +409,7 @@ export default function VouchersManagementPage() {
         {/* Nút Tạo Voucher */}
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition"
+          className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:bg-zinc-200 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl border-none cursor-pointer flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition"
         >
           <Plus size={14} className="stroke-[3]" />
           <span>Tạo Voucher Đa Tầng</span>
@@ -426,7 +426,7 @@ export default function VouchersManagementPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Tìm theo mã voucher hoặc đối tượng..."
-            className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-700 dark:text-zinc-300 focus:bg-white transition"
+            className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300 focus:bg-white transition"
           />
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
         </div>
@@ -440,7 +440,7 @@ export default function VouchersManagementPage() {
             <select
               value={targetFilter}
               onChange={(e) => setTargetFilter(e.target.value as any)}
-              className={`bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer transition ${
+              className={`bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer transition ${
                 highlightedFilter?.startsWith('target-') ? 'ring-4 ring-emerald-500/80 scale-[1.05] animate-pulse duration-150' : ''
               }`}
             >
@@ -458,7 +458,7 @@ export default function VouchersManagementPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as any)}
-              className={`bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 cursor-pointer transition ${
+              className={`bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer transition ${
                 highlightedFilter?.startsWith('status-') ? 'ring-4 ring-emerald-500/80 scale-[1.05] animate-pulse duration-150' : ''
               }`}
             >
@@ -482,11 +482,11 @@ export default function VouchersManagementPage() {
         </div>
       ) : (
         /* DANH SÁCH VOUCHERS TABLE */
-        <div className="bg-white border border-zinc-200 dark:border-zinc-850 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+        <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-sm overflow-hidden flex flex-col">
           <div className="overflow-x-auto w-full">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-zinc-50 dark:bg-zinc-900/60/80 border-b border-zinc-150 dark:border-zinc-850 text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                <tr className="bg-zinc-100/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 text-[10px] font-black text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
                   <th className="py-4 px-6">Mã Voucher</th>
                   <th className="py-4 px-5 text-center">Mức Giảm</th>
                   <th className="py-4 px-5">Phân Loại / Đối Tượng</th>
@@ -496,7 +496,7 @@ export default function VouchersManagementPage() {
                   <th className="py-4 px-6 text-center">Thao Tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                 {filteredVouchers.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="py-12 text-center text-zinc-400 dark:text-zinc-500">
@@ -528,7 +528,7 @@ export default function VouchersManagementPage() {
                             <span>{vouch.code}</span>
                             <button
                               onClick={() => handleCopyCode(vouch.code)}
-                              className="p-1 hover:bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 rounded-md border-none transition cursor-pointer"
+                              className="p-1 hover:bg-zinc-100 dark:bg-zinc-800 text-zinc-450 dark:text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 rounded-md border-none transition cursor-pointer"
                               title="Sao chép mã"
                             >
                               <Copy size={11} />
@@ -560,9 +560,9 @@ export default function VouchersManagementPage() {
                         </td>
 
                         {/* Hạn sử dụng */}
-                        <td className="py-4 px-5 text-center text-zinc-500 dark:text-zinc-400 font-mono font-bold">
+                        <td className="py-4 px-5 text-center text-zinc-650 dark:text-zinc-400 font-mono font-bold">
                           <span className="inline-flex items-center gap-1">
-                            <Calendar size={11} className="text-zinc-400 dark:text-zinc-500" />
+                            <Calendar size={11} className="text-zinc-500 dark:text-zinc-400" />
                             {vouch.expiryDate.split('-').reverse().join('/')}
                           </span>
                         </td>
@@ -570,11 +570,11 @@ export default function VouchersManagementPage() {
                         {/* Tiến độ sử dụng */}
                         <td className="py-4 px-5">
                           <div className="flex flex-col gap-1.5 w-40">
-                            <div className="flex items-center justify-between text-[10px] font-bold text-zinc-500 dark:text-zinc-400">
+                            <div className="flex items-center justify-between text-[10px] font-bold text-zinc-600 dark:text-zinc-400">
                               <span>Tiến độ: {progressPercent}%</span>
                               <span>{vouch.usageCount}/{vouch.maxUsage} đơn</span>
                             </div>
-                            <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden border border-zinc-250 dark:border-zinc-800 shadow-inner">
+                            <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-inner">
                               <div 
                                 className={`h-full rounded-full transition-all duration-500 ${
                                   progressPercent >= 90 
@@ -595,7 +595,7 @@ export default function VouchersManagementPage() {
                             vouch.status === 'active'
                               ? 'bg-green-50 text-green-700 border-green-200 animate-pulse'
                               : vouch.status === 'paused'
-                              ? 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-500 dark:text-zinc-400 border-zinc-250 dark:border-zinc-700'
+                              ? 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-250 dark:border-zinc-700'
                               : 'bg-red-50 text-red-700 border-red-200 font-mono'
                           }`}>
                             {vouch.status === 'active' ? 'Đang chạy' :
@@ -607,12 +607,12 @@ export default function VouchersManagementPage() {
                         <td className="py-4 px-6 text-center">
                           <div className="flex items-center justify-center">
                             {vouch.status === 'expired' ? (
-                              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold italic select-none">Vô hiệu</span>
+                              <span className="text-[10px] text-zinc-500 dark:text-zinc-500 font-bold italic select-none">Vô hiệu</span>
                             ) : (
                               <button
                                 onClick={() => handleToggleStatus(vouch.id)}
                                 className={`p-1 bg-transparent border-none cursor-pointer transition active:scale-90 ${
-                                  vouch.status === 'active' ? 'text-emerald-600' : 'text-zinc-400 dark:text-zinc-500'
+                                  vouch.status === 'active' ? 'text-emerald-600' : 'text-zinc-500 dark:text-zinc-500'
                                 }`}
                                 title={vouch.status === 'active' ? 'Tạm dừng hoạt động' : 'Bật hoạt động trở lại'}
                               >
@@ -643,24 +643,24 @@ export default function VouchersManagementPage() {
           onClick={() => setIsModalOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-200"
+            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
             >
               ✕
             </button>
 
             {/* Title */}
-            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <div className="w-10 h-10 bg-purple-50 text-purple-700 rounded-2xl flex items-center justify-center shadow-inner">
                 <Ticket size={18} />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-200 uppercase leading-none">Tạo Voucher Mới</h3>
+                <h3 className="text-base font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase leading-none">Tạo Voucher Mới</h3>
                 <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold block mt-1 tracking-wider">PHÁT HÀNH CHIẾN DỊCH KHUYẾN MÃI ĐA TẦNG</span>
               </div>
             </div>
@@ -677,7 +677,7 @@ export default function VouchersManagementPage() {
                   value={newCode}
                   onChange={(e) => setNewCode(e.target.value.toUpperCase())}
                   placeholder="Ví dụ: EASTER2026"
-                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 placeholder:font-normal uppercase"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-black tracking-wider focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 placeholder:font-normal uppercase"
                 />
               </div>
 
@@ -692,7 +692,7 @@ export default function VouchersManagementPage() {
                       setNewType(t)
                       setNewValue(t === 'percent' ? 10 : 100000)
                     }}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   >
                     <option value="percent">Phần trăm (%)</option>
                     <option value="fixed">Số tiền cố định (đ)</option>
@@ -706,7 +706,7 @@ export default function VouchersManagementPage() {
                     min={1}
                     value={newValue}
                     onChange={(e) => setNewValue(parseInt(e.target.value) || 0)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
               </div>
@@ -721,7 +721,7 @@ export default function VouchersManagementPage() {
                     min={1}
                     value={newMaxUsage}
                     onChange={(e) => setNewMaxUsage(parseInt(e.target.value) || 1)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -731,13 +731,13 @@ export default function VouchersManagementPage() {
                     required
                     value={newExpiryDate}
                     onChange={(e) => setNewExpiryDate(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650"
+                    className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600"
                   />
                 </div>
               </div>
 
               {/* ================= PHẦN DYNAMIC THAY ĐỔI THEO LOẠI ĐỐI TƯỢNG (targetType) ================= */}
-              <div className="flex flex-col gap-3 bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-250 dark:border-zinc-800 p-4 rounded-2xl">
+              <div className="flex flex-col gap-3 bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl">
                 
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] text-purple-700 font-black uppercase tracking-wider">Loại Đối Tượng Áp Dụng *</label>
@@ -760,7 +760,7 @@ export default function VouchersManagementPage() {
                     <select
                       value={selectedTier}
                       onChange={(e) => setSelectedTier(e.target.value)}
-                      className="w-full bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-amber-600 text-zinc-700 dark:text-zinc-300"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-amber-600 text-zinc-700 dark:text-zinc-300"
                     >
                       <option value="Đồng">Đồng (Bronze)</option>
                       <option value="Bạc">Bạc (Silver)</option>
@@ -777,7 +777,7 @@ export default function VouchersManagementPage() {
                     <select
                       value={selectedGroupTag}
                       onChange={(e) => setSelectedGroupTag(e.target.value)}
-                      className="w-full bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-purple-600 text-zinc-700 dark:text-zinc-300"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-purple-600 text-zinc-700 dark:text-zinc-300"
                     >
                       <option value="Thích yên tĩnh">Thích yên tĩnh 🤫</option>
                       <option value="Đi gia đình">Đi gia đình / Nghỉ mát 🏡</option>
@@ -797,7 +797,7 @@ export default function VouchersManagementPage() {
                       value={typedEventName}
                       onChange={(e) => setTypedEventName(e.target.value)}
                       placeholder="Ví dụ: Đại lễ Quốc Khánh 2/9"
-                      className="w-full bg-white border border-zinc-250 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-rose-600"
+                      className="w-full bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-rose-600"
                     />
                   </div>
                 )}
@@ -809,13 +809,13 @@ export default function VouchersManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-650 dark:text-zinc-350 rounded-xl font-bold text-xs transition border-none shadow-2xs cursor-pointer"
+                  className="flex-grow py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 rounded-xl font-bold text-xs transition border-none shadow-2xs cursor-pointer"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
-                  className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-850 dark:bg-zinc-200 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-grow py-2.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-950 hover:bg-zinc-800 dark:bg-zinc-200 text-white rounded-xl font-black text-xs transition border-none shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Check size={12} className="stroke-[3]" /> Phát Hành Voucher
                 </button>

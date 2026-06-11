@@ -499,7 +499,7 @@ export default function AnalyticsDashboardPage() {
             <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4 relative">
               <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">📈 Xu hướng Booking & Loại Khách</h3>
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">📈 Xu hướng Booking & Loại Khách</h3>
                   <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Biểu đồ biểu diễn tăng trưởng tệp khách hàng theo thời gian</span>
                 </div>
                 {/* Legends */}
@@ -618,7 +618,7 @@ export default function AnalyticsDashboardPage() {
                   })()}
 
                   {/* Y-Axis Line */}
-                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-600 dark:text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
                 </svg>
 
                 {/* Shared Interactive Tooltip Card Overlay */}
@@ -640,7 +640,7 @@ export default function AnalyticsDashboardPage() {
             <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4 relative">
               <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🎟️ Thống kê phát hành & Sử dụng Voucher</h3>
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">🎟️ Thống kê phát hành & Sử dụng Voucher</h3>
                   <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Tỷ lệ tương quan phát hành so với mức tiêu dùng khuyến mãi thực tế</span>
                 </div>
                 {/* Legends */}
@@ -743,7 +743,7 @@ export default function AnalyticsDashboardPage() {
                   })()}
 
                   {/* Y Axis Line */}
-                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
+                  <line x1="40" y1="30" x2="40" y2="180" stroke="currentColor" className="text-zinc-600 dark:text-zinc-200 dark:text-zinc-800" strokeWidth="1.5" />
                 </svg>
 
                 {/* Shared Interactive Tooltip Card Overlay for Chart B */}
@@ -752,8 +752,8 @@ export default function AnalyticsDashboardPage() {
                     className="absolute bg-zinc-950 border border-zinc-800 text-white rounded-2xl p-3 shadow-xl z-30 animate-in fade-in duration-100 flex flex-col gap-1 w-44 pointer-events-none text-xs font-semibold"
                     style={{ left: `${Math.min(activeTooltip.x - 30, 310)}px`, top: `${Math.max(activeTooltip.y - 80, 5)}px` }}
                   >
-                    <span className="text-[10px] font-black text-zinc-450 uppercase tracking-wider">{activeTooltip.label}</span>
-                    <div className="flex flex-col text-[10px] leading-relaxed font-bold mt-1 text-zinc-200 font-sans gap-0.5">
+                    <span className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{activeTooltip.label}</span>
+                    <div className="flex flex-col text-[10px] leading-relaxed font-bold mt-1 text-zinc-600 dark:text-zinc-200 font-sans gap-0.5">
                       {activeTooltip.values.map((v, index) => <span key={index}>{v}</span>)}
                     </div>
                   </div>
@@ -770,7 +770,7 @@ export default function AnalyticsDashboardPage() {
             <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
               <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🎯 Phân Bổ Doanh Thu CRM</h3>
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">🎯 Phân Bổ Doanh Thu CRM</h3>
                   <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Thống kê doanh số theo nhóm đối tượng khách hàng</span>
                 </div>
               </div>
@@ -824,13 +824,13 @@ export default function AnalyticsDashboardPage() {
                 {/* Custom Cohort list legends */}
                 <div className="flex flex-col gap-1.5 w-full">
                   {revenueDist.map((item, i) => (
-                    <div key={i} className="flex justify-between items-center text-[10px] font-bold border-b border-zinc-100 dark:border-zinc-850 pb-1">
-                      <span className="flex items-center gap-1.5 text-zinc-650 dark:text-zinc-400">
+                    <div key={i} className="flex justify-between items-center text-[10px] font-bold border-b border-zinc-100 dark:border-zinc-800 pb-1">
+                      <span className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
                         <span className="w-2.5 h-2.5 rounded-xs" style={{ backgroundColor: item.color }} />
                         {item.groupName}
                       </span>
                       <div className="flex gap-2 font-mono">
-                        <span className="text-zinc-800 dark:text-zinc-200 font-black">{formatVND(item.revenue)}</span>
+                        <span className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-black">{formatVND(item.revenue)}</span>
                         <span className="text-muted-foreground font-extrabold">({item.percentage}%)</span>
                       </div>
                     </div>
@@ -843,7 +843,7 @@ export default function AnalyticsDashboardPage() {
             <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
               <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">🏢 Hiệu Suất Buồng Phòng</h3>
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">🏢 Hiệu Suất Buồng Phòng</h3>
                   <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Xếp hạng doanh thu và công suất chi nhánh</span>
                 </div>
               </div>
@@ -857,7 +857,7 @@ export default function AnalyticsDashboardPage() {
                       perf.status === 'excellent' 
                         ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-400' 
                         : perf.status === 'good'
-                        ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200'
+                        ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200'
                         : 'bg-rose-500/10 border-rose-500/20 text-rose-700 dark:text-rose-450'
                     }`}
                   >
@@ -886,7 +886,7 @@ export default function AnalyticsDashboardPage() {
             <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
               <div className="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800/60 pb-3">
                 <div>
-                  <h3 className="text-xs font-black text-zinc-850 dark:text-zinc-200 uppercase tracking-wider">📢 Phân Tích Chiến Dịch Marketing</h3>
+                  <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">📢 Phân Tích Chiến Dịch Marketing</h3>
                   <span className="text-[9.5px] text-muted-foreground font-semibold block mt-0.5">Bảng đo hiệu suất chuyển đổi tin nhắn (CTR)</span>
                 </div>
               </div>
@@ -897,7 +897,7 @@ export default function AnalyticsDashboardPage() {
                   <div key={i} className="flex flex-col gap-2 bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 p-3 rounded-xl transition hover:shadow-2xs">
                     <div className="flex justify-between items-start">
                       <div className="flex flex-col gap-1 max-w-[70%]">
-                        <strong className="text-[10.5px] font-bold text-zinc-850 dark:text-zinc-200 truncate block" title={camp.name}>
+                        <strong className="text-[10.5px] font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 truncate block" title={camp.name}>
                           {camp.name}
                         </strong>
                         <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide leading-none">
@@ -908,7 +908,7 @@ export default function AnalyticsDashboardPage() {
                       {/* Success / Conversion Status tag */}
                       <span className={`px-2 py-0.5 border rounded-md text-[8.5px] font-black uppercase tracking-wider ${
                         camp.status === 'excellent' ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-450 border-emerald-500/20' :
-                        camp.status === 'normal' ? 'bg-zinc-100 dark:bg-zinc-850 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700' :
+                        camp.status === 'normal' ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700' :
                         'bg-rose-500/10 text-rose-700 dark:text-rose-455 border-rose-500/20'
                       }`}>
                         {camp.status === 'excellent' ? 'Thành công 🚀' :
@@ -995,7 +995,7 @@ export default function AnalyticsDashboardPage() {
             {!isAnalyzing && aiAnalysis && (
               <div className="bg-white/5 border border-white/10 p-5 md:p-6 rounded-2xl leading-relaxed animate-in slide-in-from-bottom duration-300 max-h-[480px] overflow-y-auto pr-1">
                 {/* Structured reports inside custom Markdown view */}
-                <div className="prose prose-invert prose-xs text-xs text-zinc-200 select-text selection:bg-emerald-600 font-sans">
+                <div className="prose prose-invert prose-xs text-xs text-zinc-600 dark:text-zinc-200 select-text selection:bg-emerald-600 font-sans">
                   
                   {/* Executive Summary */}
                   <div className="mb-5 border-b border-white/5 pb-4">

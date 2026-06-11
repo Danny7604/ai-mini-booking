@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { getSupabase } from '@/lib/supabase'
+import { useAdminData } from '../AdminDataContext'
 import { 
   Search, 
   Check, 
@@ -98,8 +99,8 @@ const MOCK_BOOKINGS: Booking[] = [
 ]
 
 export default function BookingsManagementPage() {
-  const [bookings, setBookings] = useState<Booking[]>([])
-  const [loading, setLoading] = useState(true)
+  const { bookings, setBookings, isLoadingBookings } = useAdminData()
+  const loading = isLoadingBookings
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled' | 'completed'>('all')
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null) // State phục vụ xem chi tiết đơn hàng
@@ -119,49 +120,6 @@ export default function BookingsManagementPage() {
   const [highlightedBookingId, setHighlightedBookingId] = useState<string | null>(null)
   const [highlightedTab, setHighlightedTab] = useState<string | null>(null)
 
-  // Nạp dữ liệu thực tế từ Supabase
-  useEffect(() => {
-    const loadBookings = async () => {
-      try {
-        setLoading(true)
-        const supabase = getSupabase()
-        const { data: dbBookings, error } = await supabase
-          .from('bookings')
-          .select('*, customers(*), rooms(*)')
-          .order('created_at', { ascending: false })
-
-        if (error) throw error
-
-        if (dbBookings && dbBookings.length > 0) {
-          const mappedBookings: Booking[] = dbBookings.map((b: any) => ({
-            id: b.id, // giữ UUID làm ID chính xác
-            customerName: b.customers?.name || 'Khách vãng lai',
-            phone: b.customers?.phone || 'Chưa cập nhật',
-            branch: b.rooms?.branch || 'Chi nhánh Sài Gòn 🏡',
-            roomName: b.rooms?.name || 'Phòng nghỉ Bliss Home',
-            checkIn: new Date(b.checkin_date).toLocaleDateString('vi-VN') + ' 14:00',
-            checkOut: new Date(b.checkout_date).toLocaleDateString('vi-VN') + ' 12:00',
-            totalAmount: Number(b.total_price),
-            status: b.status === 'checked_out' || b.status === 'completed' ? 'completed' 
-                  : b.status === 'confirmed' ? 'confirmed' 
-                  : b.status === 'cancelled' ? 'cancelled' 
-                  : 'pending',
-            createdAt: new Date(b.created_at).toLocaleDateString('vi-VN') + ' ' + new Date(b.created_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
-            notes: b.special_notes || ''
-          }))
-          setBookings(mappedBookings)
-        } else {
-          setBookings(MOCK_BOOKINGS)
-        }
-      } catch (err) {
-        console.warn('[Supabase Bookings Fetch] Fallback active:', err)
-        setBookings(MOCK_BOOKINGS)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadBookings()
-  }, [])
 
   // LẮNG NGHE SỰ KIỆN TỪ BLISS COPILOT AI (CHAT-TO-ACTION)
   useEffect(() => {
@@ -283,7 +241,7 @@ export default function BookingsManagementPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Tìm theo tên, SĐT, mã đơn..."
-            className="w-full bg-card border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 text-zinc-800 dark:text-zinc-200 transition"
+            className="w-full bg-card border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 transition"
           />
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
         </div>
@@ -315,7 +273,7 @@ export default function BookingsManagementPage() {
               <span className={`px-2 py-0.5 rounded-full text-[9px] ${
                 isSelected 
                   ? 'bg-emerald-600 text-white font-extrabold dark:bg-emerald-500/20 dark:text-emerald-450' 
-                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 font-bold'
+                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 font-bold'
               }`}>
                 {getCount(tab.value as any)}
               </span>
@@ -334,11 +292,11 @@ export default function BookingsManagementPage() {
         </div>
       ) : (
         /* DATA TABLE (BẢNG HIỂN THỊ ĐƠN ĐẶT PHÒNG) */
-        <div className="bg-card border border-zinc-200 dark:border-zinc-850 rounded-2xl shadow-xs overflow-hidden flex flex-col">
+        <div className="bg-card border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xs overflow-hidden flex flex-col">
           <div className="overflow-x-auto w-full">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-zinc-50/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 text-[10px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                <tr className="bg-zinc-100/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 text-[10px] font-black text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
                   <th className="py-4 px-6">Mã Đơn</th>
                   <th className="py-4 px-5">Khách Hàng</th>
                   <th className="py-4 px-5">Phòng & Chi Nhánh</th>
@@ -348,7 +306,7 @@ export default function BookingsManagementPage() {
                   <th className="py-4 px-6 text-center">Thao Tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                 {filteredBookings.length === 0 ? (
                   <tr>
                     <td colSpan={7} className="py-12 text-center text-zinc-400">
@@ -368,7 +326,7 @@ export default function BookingsManagementPage() {
                         className={`transition-all duration-500 ${
                           isRowHighlighted 
                             ? 'bg-emerald-500/10 dark:bg-emerald-500/5 border-y-2 border-emerald-500 animate-pulse relative z-10' 
-                            : 'hover:bg-zinc-50/50 dark:hover:bg-zinc-900/40 border-b border-zinc-100 dark:border-zinc-850/60'
+                            : 'hover:bg-zinc-50/50 dark:hover:bg-zinc-900/40 border-b border-zinc-100 dark:border-zinc-800/60'
                         }`}
                       >
                         
@@ -381,7 +339,7 @@ export default function BookingsManagementPage() {
                         <td className="py-4 px-5">
                           <div className="flex flex-col gap-0.5">
                             <span className="font-extrabold text-zinc-900 dark:text-zinc-50">{booking.customerName}</span>
-                            <span className="text-[10px] text-zinc-450 dark:text-zinc-500 font-semibold font-mono flex items-center gap-0.5">
+                            <span className="text-[10px] text-zinc-550 dark:text-zinc-450 font-bold font-mono flex items-center gap-0.5">
                               <Phone size={9} /> {booking.phone}
                             </span>
                           </div>
@@ -391,7 +349,7 @@ export default function BookingsManagementPage() {
                         <td className="py-4 px-5">
                           <div className="flex flex-col gap-0.5">
                             <span className="text-zinc-800 dark:text-zinc-200 font-bold leading-tight">{booking.roomName.split('(')[0]}</span>
-                            <span className="text-[10px] text-zinc-450 dark:text-zinc-500 font-medium">{booking.branch.replace(' 🏡', '').replace(' 🏙️', '').replace(' 🪟', '').replace(' 🌸', '')}</span>
+                            <span className="text-[10px] text-zinc-550 dark:text-zinc-450 font-bold">{booking.branch.replace(' 🏡', '').replace(' 🏙️', '').replace(' 🪟', '').replace(' 🌸', '')}</span>
                           </div>
                         </td>
   
@@ -399,7 +357,7 @@ export default function BookingsManagementPage() {
                         <td className="py-4 px-4 text-center">
                           <div className="flex flex-col justify-center gap-0.5">
                             <span className="font-bold text-zinc-800 dark:text-zinc-200">{booking.checkIn.split(' ')[0]}</span>
-                            <span className="text-[9.5px] text-zinc-450 dark:text-zinc-500 font-semibold font-mono">
+                            <span className="text-[9.5px] text-zinc-550 dark:text-zinc-450 font-bold font-mono">
                               {booking.checkIn.split(' ')[1]} - {booking.checkOut.split(' ')[1]}
                             </span>
                           </div>
@@ -419,7 +377,7 @@ export default function BookingsManagementPage() {
                               ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20'
                               : booking.status === 'completed'
                               ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20'
-                              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 border border-zinc-200 dark:border-zinc-700'
+                              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700'
                           }`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${
                               booking.status === 'pending'
@@ -443,7 +401,7 @@ export default function BookingsManagementPage() {
                             {/* Nút Xem chi tiết (Cho mọi trạng thái) */}
                             <button
                               onClick={() => setSelectedBooking(booking)}
-                              className="w-9 h-9 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-650 hover:text-zinc-900 dark:text-zinc-350 dark:hover:text-zinc-100 flex items-center justify-center border border-zinc-200/60 dark:border-zinc-700 transition cursor-pointer shadow-xs"
+                              className="w-9 h-9 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 flex items-center justify-center border border-zinc-200/60 dark:border-zinc-700 transition cursor-pointer shadow-xs"
                               title="Xem chi tiết đơn"
                             >
                               <Eye size={15} />
@@ -454,14 +412,14 @@ export default function BookingsManagementPage() {
                               <>
                                 <button
                                   onClick={() => handleUpdateStatus(booking.id, 'confirmed')}
-                                  className="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-600 dark:bg-emerald-550/15 dark:hover:bg-emerald-600 text-emerald-600 hover:text-white dark:text-emerald-400 dark:hover:text-white flex items-center justify-center border border-emerald-250 dark:border-emerald-500/30 transition cursor-pointer shadow-xs"
+                                  className="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-600 dark:bg-emerald-500/15 dark:hover:bg-emerald-600 text-emerald-600 hover:text-white dark:text-emerald-400 dark:hover:text-white flex items-center justify-center border border-emerald-200 dark:border-emerald-500/30 transition cursor-pointer shadow-xs"
                                   title="Xác nhận lịch đặt"
                                 >
                                   <Check size={15} />
                                 </button>
                                 <button
                                   onClick={() => handleUpdateStatus(booking.id, 'cancelled')}
-                                  className="w-9 h-9 rounded-xl bg-rose-50 hover:bg-rose-650 dark:bg-rose-550/15 dark:hover:bg-rose-600 text-rose-600 hover:text-white dark:text-rose-400 dark:hover:text-white flex items-center justify-center border border-rose-250 dark:border-rose-500/30 transition cursor-pointer shadow-xs"
+                                  className="w-9 h-9 rounded-xl bg-rose-50 hover:bg-rose-600 dark:bg-rose-500/15 dark:hover:bg-rose-600 text-rose-600 hover:text-white dark:text-rose-400 dark:hover:text-white flex items-center justify-center border border-rose-200 dark:border-rose-500/30 transition cursor-pointer shadow-xs"
                                   title="Hủy đơn booking"
                                 >
                                   <X size={15} />
@@ -494,14 +452,14 @@ export default function BookingsManagementPage() {
             {/* Nút Đóng Modal */}
             <button
               onClick={() => setSelectedBooking(null)}
-              className="absolute top-4 right-4 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-600 dark:text-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 border-none w-7 h-7 rounded-full flex items-center justify-center transition shadow-2xs font-bold cursor-pointer"
               title="Đóng"
             >
               ✕
             </button>
 
             {/* Icon & Title */}
-            <div className="flex items-center gap-3 border-b border-zinc-150 dark:border-zinc-850 pb-3">
+            <div className="flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl flex items-center justify-center shadow-inner">
                 <FileText size={18} />
               </div>
@@ -514,51 +472,51 @@ export default function BookingsManagementPage() {
             {/* Thông tin chi tiết */}
             <div className="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/60 dark:border-zinc-800 rounded-xl p-4 flex flex-col gap-3 text-xs leading-relaxed">
               <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">👤 Khách hàng đặt:</span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-bold">{selectedBooking.customerName}</strong>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">👤 Khách hàng đặt:</span>
+                <strong className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-bold">{selectedBooking.customerName}</strong>
               </div>
 
               <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📞 Số điện thoại:</span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-mono">{selectedBooking.phone}</strong>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📞 Số điện thoại:</span>
+                <strong className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-mono">{selectedBooking.phone}</strong>
               </div>
 
               <div className="flex justify-between items-start border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🏢 Chi nhánh lưu trú:</span>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🏢 Chi nhánh lưu trú:</span>
                 <span className="text-zinc-700 dark:text-zinc-300 font-semibold text-right max-w-[200px]">{selectedBooking.branch}</span>
               </div>
 
               <div className="flex justify-between items-start border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🚪 Phòng nghỉ:</span>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">🚪 Phòng nghỉ:</span>
                 <span className="text-zinc-700 dark:text-zinc-300 font-semibold text-right max-w-[200px]">{selectedBooking.roomName}</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-in:</span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-semibold">{selectedBooking.checkIn}</strong>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-in:</span>
+                <strong className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-semibold">{selectedBooking.checkIn}</strong>
               </div>
 
               <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-out:</span>
-                <strong className="text-zinc-800 dark:text-zinc-200 font-semibold">{selectedBooking.checkOut}</strong>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📅 Lịch check-out:</span>
+                <strong className="text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-semibold">{selectedBooking.checkOut}</strong>
               </div>
 
               <div className="flex justify-between items-center border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">⏱️ Ngày lập hóa đơn:</span>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">⏱️ Ngày lập hóa đơn:</span>
                 <span className="text-zinc-700 dark:text-zinc-300 font-mono">{selectedBooking.createdAt}</span>
               </div>
 
               {selectedBooking.notes && (
                 <div className="flex flex-col gap-1.5 border-b border-zinc-200/30 dark:border-zinc-800/40 pb-2.5">
-                  <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📝 Ghi chú yêu cầu của khách:</span>
-                  <p className="bg-white dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-800 p-2.5 rounded-xl text-zinc-650 dark:text-zinc-300 font-medium leading-relaxed italic">
+                  <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">📝 Ghi chú yêu cầu của khách:</span>
+                  <p className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-2.5 rounded-xl text-zinc-600 dark:text-zinc-300 font-medium leading-relaxed italic">
                     {selectedBooking.notes}
                   </p>
                 </div>
               )}
 
               <div className="flex justify-between items-center pt-1">
-                <span className="text-zinc-450 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">Trạng thái đơn:</span>
+                <span className="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest text-[9px] font-bold">Trạng thái đơn:</span>
                 <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${
                   selectedBooking.status === 'pending'
                     ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20'
@@ -566,7 +524,7 @@ export default function BookingsManagementPage() {
                     ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20'
                     : selectedBooking.status === 'completed'
                     ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20'
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-450 border border-zinc-200 dark:border-zinc-700'
+                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700'
                 }`}>
                   {selectedBooking.status === 'pending' ? 'Chờ duyệt' :
                    selectedBooking.status === 'confirmed' ? 'Đã xác nhận' :

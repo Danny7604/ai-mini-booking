@@ -131,8 +131,8 @@ export default function AdminLoginPage() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-150 dark:border-zinc-850 pt-5">
-          <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200 text-center tracking-wide">
+        <div className="border-t border-zinc-150 dark:border-zinc-800 pt-5">
+          <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 text-center tracking-wide">
             Đăng Nhập Quản Trị
           </h2>
           <p className="text-xs text-muted-foreground text-center mt-1.5 leading-relaxed">
@@ -164,7 +164,7 @@ export default function AdminLoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="ví dụ: admintest"
-                className="w-full bg-zinc-50 hover:bg-zinc-100/80 dark:bg-zinc-900 dark:hover:bg-zinc-900/80 focus:bg-background border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-3.5 text-xs font-bold text-zinc-900 dark:text-zinc-50 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 transition duration-200"
+                className="w-full bg-zinc-50 hover:bg-zinc-100/80 dark:bg-zinc-900 dark:hover:bg-zinc-900/80 focus:bg-background border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-3.5 text-xs font-bold text-zinc-900 dark:text-zinc-50 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition duration-200"
               />
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="ví dụ: admin123"
-                className="w-full bg-zinc-50 hover:bg-zinc-100/80 dark:bg-zinc-900 dark:hover:bg-zinc-900/80 focus:bg-background border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-3.5 text-xs font-bold text-zinc-900 dark:text-zinc-50 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-650 transition duration-200 font-mono"
+                className="w-full bg-zinc-50 hover:bg-zinc-100/80 dark:bg-zinc-900 dark:hover:bg-zinc-900/80 focus:bg-background border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-3.5 text-xs font-bold text-zinc-900 dark:text-zinc-50 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition duration-200 font-mono"
               />
               <button
                 type="button"
@@ -216,10 +216,10 @@ export default function AdminLoginPage() {
 
         {/* Demo Account Indicator */}
         <div className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-4.5 rounded-xl flex flex-col gap-2 mt-1 select-none">
-          <span className="text-[9.5px] text-zinc-550 dark:text-zinc-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
+          <span className="text-[9.5px] text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
             <Sparkles size={11} className="text-amber-500" /> Tài khoản kiểm thử
           </span>
-          <div className="flex flex-col gap-1.5 text-[10px] text-zinc-800 dark:text-zinc-200 font-semibold leading-relaxed">
+          <div className="flex flex-col gap-1.5 text-[10px] text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-semibold leading-relaxed">
             <div className="flex justify-between border-b border-zinc-200/40 dark:border-zinc-800/40 pb-1.5">
               <span className="text-muted-foreground">Tài khoản:</span>
               <span className="font-bold font-mono">admintest</span>
