@@ -51,6 +51,10 @@ const wittyScenarios = [
   }
 ];
 
+const sanitize = (str: string) => {
+  return ` ${str.toLowerCase().replace(/[\s,⚔️！？!?.,;:"'()\[\]{}_\-\/\\+]+/g, ' ').trim()} `
+}
+
 interface AIAssistantProps {
   currentFilter: string
   onFilterChange: (filter: string, label: string) => void
@@ -102,35 +106,36 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
 
   // Trích xuất chi nhánh và phòng từ tin nhắn để đồng bộ hóa lên Header Selects
   const parseAndSyncSearch = (text: string) => {
-    const cleanText = text.toLowerCase()
+    const sanitizedInput = sanitize(text)
+    const match = (...kws: string[]) => kws.some(kw => sanitizedInput.includes(sanitize(kw)))
     let detectedBranch = ''
     let detectedRoom = ''
 
     // 1. Phân tích Chi nhánh
-    if (cleanText.includes('tân bình') || cleanText.includes('cs1') || cleanText.includes('xuân hồng')) {
+    if (match('tân bình', 'cs1', 'xuân hồng')) {
       detectedBranch = 'Bliss Home - Tân Bình (CS1) 🏡'
-    } else if (cleanText.includes('quận 10') || cleanText.includes('cs2') || cleanText.includes('ba tháng hai') || cleanText.includes('3/2')) {
+    } else if (match('quận 10', 'cs2', 'ba tháng hai', '3/2')) {
       detectedBranch = 'Bliss Home - Quận 10 (CS2) 🏙️'
-    } else if (cleanText.includes('quận 5') || cleanText.includes('cs3') || cleanText.includes('phạm hữu chí')) {
+    } else if (match('quận 5', 'cs3', 'phạm hữu chí')) {
       detectedBranch = 'Bliss Home - Quận 5 (CS3) 🪟'
-    } else if (cleanText.includes('gò vấp') || cleanText.includes('cs4') || cleanText.includes('phan huy ích')) {
+    } else if (match('gò vấp', 'cs4', 'phan huy ích')) {
       detectedBranch = 'Bliss Home - Gò Vấp (CS4) 🌸'
-    } else if (cleanText.includes('bình thạnh') || cleanText.includes('cs5') || cleanText.includes('bùi đình túy')) {
+    } else if (match('bình thạnh', 'cs5', 'bùi đình túy')) {
       detectedBranch = 'Bliss Home - Bình Thạnh (CS5) 🌿'
     }
 
     // 2. Phân tích Phòng nghỉ
-    if (cleanText.includes('pine forest loft') || cleanText.includes('gác mái') || cleanText.includes('loft')) {
+    if (match('pine forest loft', 'gác mái', 'loft')) {
       detectedRoom = 'pine-forest-loft'
-    } else if (cleanText.includes('valley view suite') || cleanText.includes('valley view') || cleanText.includes('suite')) {
+    } else if (match('valley view suite', 'valley view', 'suite')) {
       detectedRoom = 'valley-view-suite'
-    } else if (cleanText.includes('cozy wooden cabin') || cleanText.includes('wooden cabin') || cleanText.includes('cabin')) {
+    } else if (match('cozy wooden cabin', 'wooden cabin', 'cabin')) {
       detectedRoom = 'cozy-wooden-cabin'
-    } else if (cleanText.includes('sunlit glass house') || cleanText.includes('glass house') || cleanText.includes('nhà kính')) {
+    } else if (match('sunlit glass house', 'glass house', 'nhà kính')) {
       detectedRoom = 'sunlit-glass-house'
-    } else if (cleanText.includes('riverside nest') || cleanText.includes('tổ chim') || cleanText.includes('riverside')) {
+    } else if (match('riverside nest', 'tổ chim', 'riverside')) {
       detectedRoom = 'riverside-nest'
-    } else if (cleanText.includes('sunset panorama') || cleanText.includes('panorama') || cleanText.includes('bể bơi') || cleanText.includes('vô cực')) {
+    } else if (match('sunset panorama', 'panorama', 'bể bơi', 'vô cực')) {
       detectedRoom = 'sunset-panorama'
     }
 
@@ -161,7 +166,8 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
     setTimeout(() => {
       setIsTyping(false)
       const botTime = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
-      const cleanText = text.toLowerCase()
+      const sanitizedInput = sanitize(text)
+      const match = (...kws: string[]) => kws.some(kw => sanitizedInput.includes(sanitize(kw)))
       let botResponse = ''
       let newFilter = 'all'
       let newLabel = 'Tất cả phòng nghỉ'
@@ -178,44 +184,44 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
         'ok', 'được', 'yes'
       ]
       
-      const isRelevant = relevantKeywords.some(kw => cleanText.includes(kw))
+      const isRelevant = relevantKeywords.some(kw => sanitizedInput.includes(sanitize(kw)))
 
-      const matchedScenario = wittyScenarios.find(sc => sc.keywords.some(kw => cleanText.includes(kw)));
+      const matchedScenario = wittyScenarios.find(sc => sc.keywords.some(kw => sanitizedInput.includes(sanitize(kw))));
 
       if (matchedScenario) {
         botResponse = matchedScenario.response;
       } else if (!isRelevant) {
         botResponse = 'Ui da, câu hỏi này của bạn làm Bé Bliss "đứng hình mất 2 giây" vì nằm ngoài vùng vũ trụ của mình rồi! 🛸 Chắc do bạn nói chuyện sâu sắc quá đó hihi. Để quay lại quỹ đạo đi trốn, bạn muốn Bé Bliss tìm phòng có bồn tắm chill ngâm mình hay phòng view thung lũng săn mây siêu thực đây? 👇';
       } else {
-        if (cleanText.includes('bồn tắm') || cleanText.includes('tắm') || cleanText.includes('bath') || cleanText.includes('jacuzzi')) {
+        if (match('bồn tắm', 'tắm', 'bath', 'jacuzzi')) {
           newFilter = 'bath'
           newLabel = 'Có bồn tắm chill'
           botResponse = 'Úi chà, gu ngâm mình thư giãn ngắm cảnh đúng không nè? 🛁 Bé Bliss đã lọc ngay các căn phòng có bồn tắm đắt giá nhất Bliss Home rồi đây. Đặc biệt căn **Pine Forest Loft** có bồn tắm Hinoki ngoài trời cho bạn tha hồ "sống ảo" xà phòng bay phấp phới luôn! Lướt xem liền nha!'
-        } else if (cleanText.includes('mây') || cleanText.includes('thung lũng') || cleanText.includes('săn mây') || cleanText.includes('view đồi') || cleanText.includes('panorama')) {
+        } else if (match('mây', 'thung lũng', 'săn mây', 'view đồi', 'panorama')) {
           newFilter = 'cloud'
           newLabel = 'View săn mây cực đỉnh'
           botResponse = 'Muốn làm "thần tiên tỉ tỉ" bay bổng giữa biển mây đúng không? ☁️ Đã lọc ngay các căn view đỉnh chóp rồi nè! Điển hình là căn **Valley View Suite** ngắm mây 180 độ. Sáng ngủ dậy kéo nhẹ rèm là mây ùa vào mát rượi, nằm lười ôm gối ngủ tiếp là hết sảy!'
-        } else if (cleanText.includes('cặp đôi') || cleanText.includes('2 người') || cleanText.includes('lãng mạn') || cleanText.includes('yêu') || cleanText.includes('vợ chồng') || cleanText.includes('hai người')) {
+        } else if (match('cặp đôi', '2 người', 'lãng mạn', 'yêu', 'vợ chồng', 'hai người')) {
           newFilter = 'couple'
           newLabel = 'Cho cặp đôi lãng mạn'
           botResponse = 'Hí hí, có mùi "cẩu lương" đâu đây nha! 👩‍❤️‍👨 Đã lọc ngay các căn phòng siêu lãng mạn, ấm cúng và kín đáo để hai bạn tha hồ sưởi ấm tình cảm nhé. Đề xuất nhiệt tình căn **Sunlit Glass House (Nhà kính ngập nắng)** giữa vườn hoa cực kỳ thơ mộng!'
-        } else if (cleanText.includes('gia đình') || cleanText.includes('4 người') || cleanText.includes('trẻ em') || cleanText.includes('nhóm') || cleanText.includes('đông người') || cleanText.includes('family')) {
+        } else if (match('gia đình', '4 người', 'trẻ em', 'nhóm', 'đông người', 'family')) {
           newFilter = 'family'
           newLabel = 'Thích hợp gia đình'
           botResponse = 'Chào cả nhà mình ạ! Biệt đội đi trốn thế giới tụ họp đông đủ chưa nè? 🏡 Bé Bliss đã lọc ngay các căn rộng rãi, đầy đủ bếp núc cho các chiến thần trổ tài nấu nướng. Căn cabin gỗ **Cozy Wooden Cabin** có lò sưởi ấm áp và hiên nướng BBQ sẽ là nơi lý tưởng để "tám" xuyên màn đêm đó!'
-        } else if (cleanText.includes('rẻ') || cleanText.includes('tiết kiệm') || cleanText.includes('giá tốt') || cleanText.includes('ít tiền') || cleanText.includes('budget') || cleanText.includes('dưới 1.5 triệu')) {
+        } else if (match('rẻ', 'tiết kiệm', 'giá tốt', 'ít tiền', 'budget', 'dưới 1.5 triệu')) {
           newFilter = 'budget'
           newLabel = 'Tiết kiệm (Dưới 1.5tr)'
           botResponse = 'Đang "xẹp ví" nhưng tâm hồn vẫn muốn bay bổng đi trốn? Bé Bliss hiểu mà! 💸 Đã gom ngay danh sách các phòng siêu hạt dẻ dưới 1.5 triệu/đêm. Cực kỳ đề xuất căn **Riverside Nest (Tổ chim ven suối)** chỉ 950k/đêm để bạn tha hồ chill mà không lo "cháy túi"!'
-        } else if (cleanText.includes('hồ bơi') || cleanText.includes('bể bơi') || cleanText.includes('pool') || cleanText.includes('bơi')) {
+        } else if (match('hồ bơi', 'bể bơi', 'pool', 'bơi')) {
           newFilter = 'pool'
           newLabel = 'Có hồ bơi vô cực'
           botResponse = 'Đắm mình giữa làn nước ấm ngắm hoàng hôn buông xuống rừng thông thì sang chảnh thôi rồi! 🏊‍♂️ Đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng. Chuẩn bị bikini để thả dáng sống ảo triệu like thôi bạn ơi!'
-        } else if (cleanText.includes('công') || cleanText.includes('địa chỉ') || cleanText.includes('chi nhánh') || cleanText.includes('ở đâu') || cleanText.includes('vị trí')) {
+        } else if (match('công', 'địa chỉ', 'chi nhánh', 'ở đâu', 'vị trí')) {
           botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Bliss Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Bliss dắt đi trốn nhé! 🏡'
-        } else if (cleanText.includes('chào') || cleanText.includes('hi') || cleanText.includes('hello') || cleanText.includes('helo') || cleanText.includes('alo')) {
+        } else if (match('chào', 'hi', 'hello', 'helo', 'alo')) {
           botResponse = 'Dạ lô bạn yêu! Rất vui được gặp bạn nè. 🌸 Bạn muốn tìm căn phòng nào để trốn deadline, trốn thế giới hay trốn... nợ? Hãy miêu tả căn phòng trong mơ hoặc chọn nhanh gợi ý phía dưới để Bé Bliss dẫn lối nha!'
-        } else if (cleanText.includes('cảm ơn') || cleanText.includes('thank') || cleanText.includes('tuyệt') || cleanText.includes('ok')) {
+        } else if (match('cảm ơn', 'thank', 'tuyệt', 'ok')) {
           botResponse = 'Hì hì, không có chi nè! Niềm vui của Bé Bliss là được hỗ trợ bạn tìm phòng đi trốn deadline. Chúc bạn tìm được căn phòng ưng ý tại Bliss Home nha! 🌸✨'
         } else {
           botResponse = `A ha! Nhận được tín hiệu vũ trụ từ bạn rồi nè: *" ${text} "*. ✨ Dựa trên tần số này, Bé Bliss đã lọc ra những phòng nghỉ chill nhất, gần gũi thiên nhiên nhất tại Bliss Home. Bạn xem chi tiết các phòng ở danh sách bên cạnh nha!`
