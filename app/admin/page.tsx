@@ -335,7 +335,7 @@ export default function AdminDashboardPage() {
           <strong className="text-xl md:text-2xl text-zinc-900 dark:text-zinc-50 font-black leading-none font-sans mt-1">
             {data.stats.vacantRooms} phòng
           </strong>
-          <span className="text-[10px] text-amber-750 dark:text-amber-500 font-bold">🔑 CS5 (Bình Thạnh) còn phòng</span>
+          <span className="text-[10px] text-amber-700 dark:text-amber-500 font-bold">🔑 CS5 (Bình Thạnh) còn phòng</span>
         </div>
 
         {/* Tỉ lệ lấp đầy */}

@@ -276,9 +276,9 @@ export default function RoomGridManagementDashboard() {
     switch (status) {
       case 'available':
         return {
-          bg: 'bg-emerald-50/80 hover:bg-emerald-50',
-          border: 'border-emerald-200 hover:border-emerald-400',
-          text: 'text-emerald-800',
+          bg: 'bg-emerald-50/80 dark:bg-emerald-950/20 hover:bg-emerald-100/80 dark:hover:bg-emerald-900/30',
+          border: 'border-emerald-200 dark:border-emerald-900/40 hover:border-emerald-400 dark:hover:border-emerald-800/60',
+          text: 'text-emerald-800 dark:text-emerald-300',
           badgeBg: 'bg-emerald-600 text-white',
           dot: 'bg-emerald-500',
           icon: <CheckCircle2 size={16} />,
@@ -286,9 +286,9 @@ export default function RoomGridManagementDashboard() {
         }
       case 'booked_not_checked_in':
         return {
-          bg: 'bg-orange-50/80 hover:bg-orange-50',
-          border: 'border-orange-200 hover:border-orange-400',
-          text: 'text-orange-800',
+          bg: 'bg-orange-50/80 dark:bg-orange-950/20 hover:bg-orange-100/80 dark:hover:bg-orange-900/30',
+          border: 'border-orange-200 dark:border-orange-900/40 hover:border-orange-400 dark:hover:border-orange-800/60',
+          text: 'text-orange-850 dark:text-orange-300',
           badgeBg: 'bg-orange-500 text-white',
           dot: 'bg-orange-500',
           icon: <Calendar size={16} />,
@@ -296,9 +296,9 @@ export default function RoomGridManagementDashboard() {
         }
       case 'checked_in':
         return {
-          bg: 'bg-pink-50/80 hover:bg-pink-50',
-          border: 'border-pink-200 hover:border-pink-400',
-          text: 'text-pink-850',
+          bg: 'bg-pink-50/80 dark:bg-pink-950/20 hover:bg-pink-100/80 dark:hover:bg-pink-900/30',
+          border: 'border-pink-200 dark:border-pink-900/40 hover:border-pink-400 dark:hover:border-pink-800/60',
+          text: 'text-pink-800 dark:text-pink-300',
           badgeBg: 'bg-pink-500 text-white',
           dot: 'bg-pink-500',
           icon: <User size={16} />,
@@ -306,9 +306,9 @@ export default function RoomGridManagementDashboard() {
         }
       case 'checkout_imminent':
         return {
-          bg: 'bg-rose-50/85 hover:bg-rose-50',
-          border: 'border-rose-250 hover:border-rose-450',
-          text: 'text-rose-800',
+          bg: 'bg-rose-50/85 dark:bg-rose-950/20 hover:bg-rose-100/85 dark:hover:bg-rose-900/30',
+          border: 'border-rose-250 dark:border-rose-900/40 hover:border-rose-350 dark:hover:border-rose-800/60',
+          text: 'text-rose-800 dark:text-rose-300',
           badgeBg: 'bg-rose-600 text-white',
           dot: 'bg-rose-600',
           icon: <Flame size={16} className="animate-pulse" />,
@@ -316,9 +316,9 @@ export default function RoomGridManagementDashboard() {
         }
       case 'maintenance':
         return {
-          bg: 'bg-blue-50/80 hover:bg-blue-50',
-          border: 'border-blue-200 hover:border-blue-400',
-          text: 'text-blue-800',
+          bg: 'bg-blue-50/80 dark:bg-blue-950/20 hover:bg-blue-100/80 dark:hover:bg-blue-900/30',
+          border: 'border-blue-200 dark:border-blue-900/40 hover:border-blue-400 dark:hover:border-blue-800/60',
+          text: 'text-blue-800 dark:text-blue-300',
           badgeBg: 'bg-blue-600 text-white',
           dot: 'bg-blue-500',
           icon: <Wrench size={16} />,
@@ -326,11 +326,11 @@ export default function RoomGridManagementDashboard() {
         }
       case 'cleaning':
         return {
-          bg: 'bg-zinc-50 dark:bg-zinc-900/60/90 hover:bg-zinc-100 dark:bg-zinc-800/50',
-          border: 'border-stone-250 hover:border-stone-350',
+          bg: 'bg-zinc-100/50 dark:bg-zinc-900/40 hover:bg-zinc-200/50 dark:hover:bg-zinc-850/60',
+          border: 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-350 dark:hover:border-zinc-700',
           text: 'text-zinc-700 dark:text-zinc-300',
-          badgeBg: 'bg-stone-400 text-white',
-          dot: 'bg-stone-400',
+          badgeBg: 'bg-zinc-500 text-white',
+          dot: 'bg-zinc-400',
           icon: <Sparkles size={16} />,
           label: 'Đang Dọn Dẹp'
         }
@@ -854,7 +854,7 @@ export default function RoomGridManagementDashboard() {
       </div>
 
       {/* THANH CÔNG CỤ ĐIỀU HƯỚNG & BỘ LỌC ĐA HƯỚNG */}
-      <div className="bg-white border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
         {/* Lưới phân chia đều 4 ô trong frame */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full items-center">
           
@@ -913,12 +913,12 @@ export default function RoomGridManagementDashboard() {
       {/* DYNAMIC STATS WIDGETS */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
         {[
-          { key: 'available', label: 'Trống / Available', color: 'bg-emerald-50 text-emerald-950 border-emerald-200/70', dot: 'bg-emerald-600' },
-          { key: 'booked_not_checked_in', label: 'Đã Đặt Chưa Đến', color: 'bg-orange-50 text-orange-950 border-orange-200/70', dot: 'bg-orange-500' },
-          { key: 'checked_in', label: 'Đã Check-In', color: 'bg-pink-50 text-pink-950 border-pink-200/70', dot: 'bg-pink-500' },
-          { key: 'checkout_imminent', label: 'Sắp Check-Out ⚠️', color: 'bg-rose-50 text-rose-950 border-rose-250/70', dot: 'bg-rose-600' },
-          { key: 'maintenance', label: 'Đang Bảo Trì', color: 'bg-blue-50 text-blue-950 border-blue-200/70', dot: 'bg-blue-600' },
-          { key: 'cleaning', label: 'Đang Dọn Dẹp', color: 'bg-zinc-50 dark:bg-zinc-900/60 text-stone-900 border-zinc-200 dark:border-zinc-800', dot: 'bg-zinc-50 dark:bg-zinc-900/600' }
+          { key: 'available', label: 'Trống / Available', color: 'bg-emerald-50 dark:bg-emerald-950/20 text-emerald-950 dark:text-emerald-300 border-emerald-200/70 dark:border-emerald-900/30', dot: 'bg-emerald-600' },
+          { key: 'booked_not_checked_in', label: 'Đã Đặt Chưa Đến', color: 'bg-orange-50 dark:bg-orange-950/20 text-orange-950 dark:text-orange-300 border-orange-200/70 dark:border-orange-900/30', dot: 'bg-orange-500' },
+          { key: 'checked_in', label: 'Đã Check-In', color: 'bg-pink-50 dark:bg-pink-950/20 text-pink-950 dark:text-pink-300 border-pink-200/70 dark:border-pink-900/30', dot: 'bg-pink-500' },
+          { key: 'checkout_imminent', label: 'Sắp Check-Out ⚠️', color: 'bg-rose-50 dark:bg-rose-950/20 text-rose-950 dark:text-rose-350 border-rose-200 dark:border-rose-900/30', dot: 'bg-rose-600' },
+          { key: 'maintenance', label: 'Đang Bảo Trì', color: 'bg-blue-50 dark:bg-blue-950/20 text-blue-950 dark:text-blue-300 border-blue-200/70 dark:border-blue-900/30', dot: 'bg-blue-600' },
+          { key: 'cleaning', label: 'Đang Dọn Dẹp', color: 'bg-zinc-50 dark:bg-zinc-900/40 text-zinc-900 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800', dot: 'bg-zinc-500' }
         ].map(stat => {
           const count = getStatusCount(stat.key as any)
           return (
@@ -989,7 +989,7 @@ export default function RoomGridManagementDashboard() {
                     {room.status === 'available' && (
                       <div className="flex justify-between items-center">
                         <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">Giá cơ bản:</span>
-                        <strong className="text-emerald-700 text-sm font-black font-mono">{formatVND(room.price)}</strong>
+                        <strong className="text-emerald-700 dark:text-emerald-400 text-sm font-black font-mono">{formatVND(room.price)}</strong>
                       </div>
                     )}
 
@@ -997,7 +997,7 @@ export default function RoomGridManagementDashboard() {
                     {room.status === 'booked_not_checked_in' && (
                       <div className="flex flex-col gap-0.5">
                         <div className="text-xs font-extrabold text-zinc-800 dark:text-zinc-200 truncate">Khách: {room.guest}</div>
-                        <div className="text-[10px] text-orange-700 font-bold flex items-center gap-1 mt-1 font-mono">
+                        <div className="text-[10px] text-orange-700 dark:text-orange-400 flex items-center gap-1 mt-1 font-mono">
                           <Clock size={11} /> {room.timeInfo || 'Đợi Check-in'}
                         </div>
                       </div>
@@ -1006,8 +1006,8 @@ export default function RoomGridManagementDashboard() {
                     {/* TRẠNG THÁI 3: Đã Check-In (Hồng) */}
                     {room.status === 'checked_in' && (
                       <div className="flex flex-col gap-0.5">
-                        <div className="text-xs font-extrabold text-stone-900 truncate">Đang ở: {room.guest || 'Khách lưu trú'}</div>
-                        <div className="text-[10px] text-pink-700 font-bold flex items-center gap-1 mt-1 font-mono">
+                        <div className="text-xs font-extrabold text-zinc-800 dark:text-zinc-200 truncate">Đang ở: {room.guest || 'Khách lưu trú'}</div>
+                        <div className="text-[10px] text-pink-700 dark:text-pink-400 flex items-center gap-1 mt-1 font-mono">
                           <Clock size={11} /> Hạn trả: {room.timeInfo || 'Chưa định hạn'}
                         </div>
                       </div>
@@ -1016,8 +1016,8 @@ export default function RoomGridManagementDashboard() {
                     {/* TRẠNG THÁI 4: Sắp Check-Out ⚠️ (Đỏ) */}
                     {room.status === 'checkout_imminent' && (
                       <div className="flex flex-col gap-0.5">
-                        <div className="text-xs font-black text-rose-950 truncate">Đang ở: {room.guest}</div>
-                        <div className="text-[10px] text-rose-700 font-black flex items-center gap-1 mt-1 font-mono animate-pulse">
+                        <div className="text-xs font-black text-rose-950 dark:text-rose-100 truncate">Đang ở: {room.guest}</div>
+                        <div className="text-[10px] text-rose-700 dark:text-rose-455 font-black flex items-center gap-1 mt-1 font-mono animate-pulse">
                           <Flame size={11} className="stroke-[2.5]" /> HẠN OUT: {room.timeInfo || '12:00 Hôm nay'}
                         </div>
                       </div>
@@ -1027,7 +1027,7 @@ export default function RoomGridManagementDashboard() {
                     {room.status === 'maintenance' && (
                       <div className="flex flex-col gap-0.5">
                         <div className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Đang bảo trì</div>
-                        <div className="text-[10px] text-blue-700 font-bold flex items-center gap-1 mt-1 font-mono">
+                        <div className="text-[10px] text-blue-700 dark:text-blue-400 flex items-center gap-1 mt-1 font-mono">
                           <Wrench size={11} /> {room.timeInfo || 'Bảo dưỡng định kỳ'}
                         </div>
                       </div>
