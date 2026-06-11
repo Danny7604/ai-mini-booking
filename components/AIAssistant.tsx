@@ -182,6 +182,8 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
           botResponse = 'Đắm mình giữa làn nước ấm ngắm hoàng hôn buông xuống rừng thông thì sang chảnh thôi rồi! 🏊‍♂️ Đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng. Chuẩn bị bikini để thả dáng sống ảo triệu like thôi bạn ơi!'
         } else if (cleanText.includes('công') || cleanText.includes('địa chỉ') || cleanText.includes('chi nhánh') || cleanText.includes('ở đâu') || cleanText.includes('vị trí')) {
           botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Bliss Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Bliss dắt đi trốn nhé! 🏡'
+        } else if (cleanText.includes('chào') || cleanText.includes('hi') || cleanText.includes('hello') || cleanText.includes('helo') || cleanText.includes('alo')) {
+          botResponse = 'Dạ lô bạn yêu! Rất vui được gặp bạn nè. 🌸 Bạn muốn tìm căn phòng nào để trốn deadline, trốn thế giới hay trốn... nợ? Hãy miêu tả căn phòng trong mơ hoặc chọn nhanh gợi ý phía dưới để Bé Bliss dẫn lối nha!'
         } else if (cleanText.includes('cảm ơn') || cleanText.includes('thank') || cleanText.includes('tuyệt') || cleanText.includes('ok')) {
           botResponse = 'Hì hì, không có chi nè! Niềm vui của Bé Bliss là được hỗ trợ bạn tìm phòng đi trốn deadline. Chúc bạn tìm được căn phòng ưng ý tại Bliss Home nha! 🌸✨'
         } else {
