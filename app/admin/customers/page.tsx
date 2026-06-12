@@ -1796,15 +1796,15 @@ export default function CRMManagementPage() {
                     <div className="overflow-x-auto">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="border-b border-zinc-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 text-[10px] font-black uppercase tracking-wider">
-                            <th className="pb-3 pl-2 w-[40px]"></th>
-                            <th className="pb-3">Khách hàng</th>
-                            <th className="pb-3 hidden sm:table-cell">Lượt đặt phòng</th>
-                            <th className="pb-3 text-right">Chi tiêu tích lũy</th>
-                            <th className="pb-3 text-center w-[120px]">Hạng thành viên</th>
-                            <th className="pb-3 text-center w-[100px]">Phân lớp</th>
-                            <th className="pb-3 text-center w-[160px]">Chuyển nhóm</th>
-                            <th className="pb-3 pr-2 text-right w-[60px]">Thao tác</th>
+                          <tr className="bg-zinc-100/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-800 text-[10px] font-black text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
+                            <th className="py-3 pl-4 w-[40px]"></th>
+                            <th className="py-3 px-3">Khách hàng</th>
+                            <th className="py-3 px-3 hidden sm:table-cell">Lượt đặt phòng</th>
+                            <th className="py-3 px-3 text-right">Chi tiêu tích lũy</th>
+                            <th className="py-3 px-3 text-center w-[120px]">Hạng thành viên</th>
+                            <th className="py-3 px-3 text-center w-[100px]">Phân lớp</th>
+                            <th className="py-3 px-3 text-center w-[160px]">Chuyển nhóm</th>
+                            <th className="py-3 pr-4 text-right w-[60px]">Thao tác</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60 text-xs font-semibold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200">
@@ -1821,11 +1821,11 @@ export default function CRMManagementPage() {
                                 onMouseLeave={() => setHoveredCustomerId(null)}
                               >
                                 {/* Avatar */}
-                                <td className="py-3.5 pl-2">
+                                <td className="py-3.5 pl-4">
                                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-black shadow-inner uppercase ${
-                                    tierInfo.colorTheme === 'violet' ? 'bg-purple-100 text-purple-700' :
-                                    tierInfo.colorTheme === 'amber' ? 'bg-amber-100 text-amber-700' :
-                                    tierInfo.colorTheme === 'slate' ? 'bg-slate-100 text-slate-700' :
+                                    tierInfo.colorTheme === 'violet' ? 'bg-purple-100 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300' :
+                                    tierInfo.colorTheme === 'amber' ? 'bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300' :
+                                    tierInfo.colorTheme === 'slate' ? 'bg-slate-100 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300' :
                                     'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
                                   }`}>
                                     {member.name.charAt(0)}
@@ -1833,11 +1833,11 @@ export default function CRMManagementPage() {
                                 </td>
 
                                 {/* Member details */}
-                                <td className="py-3.5 relative">
+                                <td className="py-3.5 px-3 relative">
                                   <div className="flex flex-col">
                                     <button
                                       onClick={() => openHistoryModal(member)}
-                                      className="font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 text-sm hover:text-zinc-900 dark:text-zinc-100 hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block leading-tight font-sans"
+                                      className="font-extrabold text-zinc-800 dark:text-zinc-200 text-sm hover:text-zinc-900 dark:text-zinc-100 hover:underline text-left cursor-pointer transition border-none bg-transparent p-0 block leading-tight font-sans"
                                       title="Xem hồ sơ chi tiết khách hàng"
                                     >
                                       {member.name}
@@ -1864,22 +1864,22 @@ export default function CRMManagementPage() {
                                 </td>
 
                                 {/* Bookings count */}
-                                <td className="py-3.5 hidden sm:table-cell font-bold font-mono">
+                                <td className="py-3.5 px-3 hidden sm:table-cell font-bold font-mono">
                                   {member.totalBookings}
                                 </td>
 
                                 {/* Spent amount */}
-                                <td className="py-3.5 text-right font-black font-mono">
+                                <td className="py-3.5 px-3 text-right font-black font-mono">
                                   {formatVND(member.totalSpent)}
                                 </td>
 
                                 {/* Tier badge */}
-                                <td className="py-3.5 text-center">
+                                <td className="py-3.5 px-3 text-center">
                                   <div className="flex justify-center">
                                     <span className={`px-2.5 py-0.5 border rounded-full text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs whitespace-nowrap ${
-                                      tierInfo.colorTheme === 'violet' ? 'bg-purple-50 text-purple-700 border-purple-200' :
-                                      tierInfo.colorTheme === 'amber' ? 'bg-amber-50 text-amber-700 border-amber-200' :
-                                      tierInfo.colorTheme === 'slate' ? 'bg-slate-50 text-slate-700 border-slate-200' :
+                                      tierInfo.colorTheme === 'violet' ? 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-900/40' :
+                                      tierInfo.colorTheme === 'amber' ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-900/40' :
+                                      tierInfo.colorTheme === 'slate' ? 'bg-slate-50 dark:bg-slate-900/40 text-slate-700 dark:text-zinc-350 border-slate-200 dark:border-zinc-800' :
                                       'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'
                                     }`}>
                                       {renderTierIcon(tierInfo.colorTheme, 9)}
@@ -1889,14 +1889,14 @@ export default function CRMManagementPage() {
                                 </td>
 
                                 {/* Source classification badge */}
-                                <td className="py-3.5 text-center">
+                                <td className="py-3.5 px-3 text-center">
                                   <div className="flex justify-center">
                                     {isMemberAI ? (
-                                      <span className="px-2 py-0.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-lg text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default">
+                                      <span className="px-2 py-0.5 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-900/40 rounded-lg text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default">
                                         <Bot size={8} /> AI Phân
                                       </span>
                                     ) : (
-                                      <span className="px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-lg text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default">
+                                      <span className="px-2 py-0.5 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/40 rounded-lg text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default">
                                         <Users size={8} /> Thủ công
                                       </span>
                                     )}
@@ -1904,7 +1904,7 @@ export default function CRMManagementPage() {
                                 </td>
 
                                 {/* Group Transfer selector */}
-                                <td className="py-3.5 text-center">
+                                <td className="py-3.5 px-3 text-center">
                                   <div className="flex justify-center">
                                     <select
                                       value={activeGroup.id}
@@ -1925,10 +1925,10 @@ export default function CRMManagementPage() {
                                 </td>
 
                                 {/* Actions (Delete/Remove) */}
-                                <td className="py-3.5 pr-2 text-right">
+                                <td className="py-3.5 pr-4 text-right">
                                   <button
                                     onClick={() => handleRemoveCustomerFromGroup(member.id, activeGroup.id)}
-                                    className="px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-red-600 bg-red-50 hover:bg-red-100 hover:text-red-700 border border-red-200/50 rounded-xl transition cursor-pointer"
+                                    className="px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-red-650 dark:text-red-450 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/50 hover:text-red-700 border border-red-200/50 dark:border-red-900/40 rounded-xl transition cursor-pointer"
                                     title="Gỡ khỏi nhóm hiện tại"
                                   >
                                     Gỡ

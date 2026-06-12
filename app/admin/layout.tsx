@@ -187,7 +187,7 @@ function AdminLayoutContent({
               <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner ${
                 theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-zinc-100 border-zinc-200'
               }`}>
-                <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+                <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
               </div>
               <button 
                 onClick={toggleSidebar} 
@@ -204,8 +204,10 @@ function AdminLayoutContent({
           ) : (
             <>
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner">
-                  <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+                <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
+                  theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
+                }`}>
+                  <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
                 </div>
                 <div>
                   <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
@@ -387,8 +389,10 @@ function AdminLayoutContent({
           theme === 'dark' ? 'border-zinc-800 bg-zinc-900/20' : 'border-zinc-200 bg-zinc-100/30'
         }`}>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner">
-              <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+            <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
+              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
+            }`}>
+              <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
             </div>
             <div>
               <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
