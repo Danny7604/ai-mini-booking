@@ -1497,13 +1497,9 @@ export default function CRMManagementPage() {
                                     return (
                                       <span 
                                         key={gId} 
-                                        className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 ${
-                                          g.type === 'ai' 
-                                            ? 'bg-purple-50 text-purple-750 border-purple-200' 
-                                            : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-650 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'
-                                        }`}
+                                        className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 shadow-3xs bg-zinc-100 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 border-zinc-300 dark:border-zinc-700"
                                       >
-                                        {g.type === 'ai' && <Bot size={9} className="text-purple-600" />}
+                                        {g.type === 'ai' && <Bot size={9} className="text-zinc-500 dark:text-zinc-400" />}
                                         {cleanGroupName(g.name)}
                                       </span>
                                     )
@@ -2241,13 +2237,9 @@ export default function CRMManagementPage() {
                     return (
                       <span 
                         key={gId} 
-                        className={`px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 ${
-                          g.type === 'ai' 
-                            ? 'bg-purple-50 text-purple-700 border-purple-200' 
-                            : 'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'
-                        }`}
+                        className="px-2.5 py-1 rounded-md text-[9px] font-black uppercase tracking-wider border flex items-center gap-0.5 shadow-3xs bg-zinc-100 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 border-zinc-300 dark:border-zinc-700"
                       >
-                        {g.type === 'ai' && <Bot size={10} className="text-purple-600" />}
+                        {g.type === 'ai' && <Bot size={10} className="text-zinc-500 dark:text-zinc-400" />}
                         {cleanGroupName(g.name)}
                       </span>
                     )
