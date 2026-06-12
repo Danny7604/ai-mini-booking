@@ -36,6 +36,177 @@ export interface Booking {
   notes?: string
 }
 
+export interface Voucher {
+  id: string
+  code: string
+  type: 'percent' | 'fixed'
+  value: number
+  usageCount: number
+  maxUsage: number
+  expiryDate: string
+  status: 'active' | 'paused' | 'expired'
+  targetType: 'all' | 'group' | 'tier' | 'event'
+  targetValue: string
+}
+
+export interface Customer {
+  id: string
+  name: string
+  phone: string
+  totalBookings: number
+  totalSpent: number
+  lastActive: string
+  notes: string[]
+  groupIds: string[]
+}
+
+export interface CustomerGroup {
+  id: string
+  name: string
+  description: string
+  type: 'ai' | 'manual'
+}
+
+// Mock Voucher Data
+const INITIAL_VOUCHERS: Voucher[] = [
+  {
+    id: 'VOUCH-01',
+    code: 'BLISSALL10',
+    type: 'percent',
+    value: 10,
+    usageCount: 45,
+    maxUsage: 100,
+    expiryDate: '2026-07-31',
+    status: 'active',
+    targetType: 'all',
+    targetValue: 'Tất cả khách hàng'
+  },
+  {
+    id: 'VOUCH-02',
+    code: 'GOLDENROOM',
+    type: 'fixed',
+    value: 300000,
+    usageCount: 18,
+    maxUsage: 20,
+    expiryDate: '2026-06-15',
+    status: 'active',
+    targetType: 'tier',
+    targetValue: 'Thành viên Vàng'
+  },
+  {
+    id: 'VOUCH-03',
+    code: 'FAMILYCOZY',
+    type: 'percent',
+    value: 15,
+    usageCount: 8,
+    maxUsage: 50,
+    expiryDate: '2026-08-30',
+    status: 'active',
+    targetType: 'group',
+    targetValue: 'Nhóm đi gia đình'
+  },
+  {
+    id: 'VOUCH-04',
+    code: 'SUMMER304',
+    type: 'fixed',
+    value: 200000,
+    usageCount: 10,
+    maxUsage: 10,
+    expiryDate: '2026-05-10',
+    status: 'expired',
+    targetType: 'event',
+    targetValue: 'Đại lễ 30/4 - 1/5'
+  }
+]
+
+// Mock Customer Group Data
+const INITIAL_GROUPS: CustomerGroup[] = [
+  {
+    id: 'group-01',
+    name: 'Đi gia đình 🏡',
+    description: 'Khách đi cùng gia đình lớn, yêu cầu bồn tắm gỗ Hinoki ban công rộng, bếp BBQ ngoài trời hoặc phòng ngủ diện tích lớn.',
+    type: 'ai'
+  },
+  {
+    id: 'group-02',
+    name: 'Thích yên tĩnh 🤫',
+    description: 'Khách đi lẻ hoặc cặp đôi, thích không gian biệt lập, yên tĩnh, cách âm tốt, ngắm cảnh hoàng hôn bình lặng.',
+    type: 'ai'
+  },
+  {
+    id: 'group-03',
+    name: 'Thuê ngắn giờ ⏰',
+    description: 'Khách thuê theo giờ ngắn hạn, yêu cầu setup máy chiếu phim HD và tài khoản Netflix sẵn sàng phục vụ nghỉ ngơi.',
+    type: 'ai'
+  },
+  {
+    id: 'group-04',
+    name: 'Thân thiết VIP 💎',
+    description: 'Danh mục do Admin gán thủ công cho hội viên chi tiêu tích lũy lớn hơn 10 triệu đồng tại Bliss Home.',
+    type: 'manual'
+  },
+  {
+    id: 'group-05',
+    name: 'Cần chăm sóc đặc biệt ⚠️',
+    description: 'Admin chỉ định thủ công cho khách hàng có lưu ý dịch vụ đặc biệt hoặc lâu chưa đặt lại phòng cần gửi ưu đãi.',
+    type: 'manual'
+  }
+]
+
+// Mock Customer Data
+const INITIAL_CUSTOMERS: Customer[] = [
+  {
+    id: 'CUST-01',
+    name: 'Nguyễn Văn Hùng',
+    phone: '0901234567',
+    totalBookings: 12,
+    totalSpent: 18450000,
+    lastActive: '30/05/2026',
+    notes: ['Khách thường dắt gia đình lớn đi nghỉ mát. Thích nướng BBQ ngoài ban công và bồn tắm gỗ Hinoki.'],
+    groupIds: ['group-01', 'group-04']
+  },
+  {
+    id: 'CUST-02',
+    name: 'Trần Thị Mai',
+    phone: '0987654321',
+    totalBookings: 4,
+    totalSpent: 2160000,
+    lastActive: '30/05/2026',
+    notes: ['Thuê theo giờ ngắn hạn 3 tiếng. Yêu cầu setup máy chiếu và Netflix sẵn sàng trong phòng.'],
+    groupIds: ['group-03']
+  },
+  {
+    id: 'CUST-03',
+    name: 'Phan Minh Anh',
+    phone: '0912345678',
+    totalBookings: 8,
+    totalSpent: 15840000,
+    lastActive: '28/05/2026',
+    notes: ['Gia đình đi nghỉ hè. Cần chuẩn bị bếp nướng BBQ và khu trò chơi trẻ em.'],
+    groupIds: ['group-01', 'group-04']
+  },
+  {
+    id: 'CUST-04',
+    name: 'Lê Hoàng Hải',
+    phone: '0933445566',
+    totalBookings: 5,
+    totalSpent: 8700000,
+    lastActive: '29/05/2026',
+    notes: ['Khách đi cặp đôi hưởng tuần trăng mật. Thích phòng biệt lập, hoàn toàn yên tĩnh để ngắm hoàng hôn.'],
+    groupIds: ['group-02', 'group-05']
+  },
+  {
+    id: 'CUST-05',
+    name: 'Phạm Quỳnh Chi',
+    phone: '0999887766',
+    totalBookings: 2,
+    totalSpent: 600000,
+    lastActive: '25/05/2026',
+    notes: ['Thuê phòng ngắn ngày để làm việc tập trung, cần không gian cách âm tốt và yên tĩnh.'],
+    groupIds: ['group-02']
+  }
+]
+
 // Mock Room Data
 const INITIAL_ROOMS: Room[] = [
   { id: 'P-101', name: 'Bungalow Hương Thơm', type: 'View Vườn Cà Phê', branchId: 'cs1', branchName: 'Tân Bình (CS1)', status: 'available', price: 850000, guest: null },
@@ -138,6 +309,18 @@ interface AdminDataContextProps {
   isLoadingBookings: boolean
   refreshRooms: () => Promise<void>
   refreshBookings: () => Promise<void>
+  vouchers: Voucher[]
+  setVouchers: React.Dispatch<React.SetStateAction<Voucher[]>>
+  isLoadingVouchers: boolean
+  refreshVouchers: () => Promise<void>
+  customers: Customer[]
+  setCustomers: React.Dispatch<React.SetStateAction<Customer[]>>
+  isLoadingCustomers: boolean
+  refreshCustomers: () => Promise<void>
+  groups: CustomerGroup[]
+  setGroups: React.Dispatch<React.SetStateAction<CustomerGroup[]>>
+  isLoadingGroups: boolean
+  refreshGroups: () => Promise<void>
   theme: 'light' | 'dark'
   toggleTheme: () => void
 }
@@ -147,8 +330,15 @@ const AdminDataContext = createContext<AdminDataContextProps | undefined>(undefi
 export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [rooms, setRooms] = useState<Room[]>(INITIAL_ROOMS)
   const [bookings, setBookings] = useState<Booking[]>(MOCK_BOOKINGS)
+  const [vouchers, setVouchers] = useState<Voucher[]>([])
+  const [customers, setCustomers] = useState<Customer[]>([])
+  const [groups, setGroups] = useState<CustomerGroup[]>([])
+  
   const [isLoadingRooms, setIsLoadingRooms] = useState(true)
   const [isLoadingBookings, setIsLoadingBookings] = useState(true)
+  const [isLoadingVouchers, setIsLoadingVouchers] = useState(true)
+  const [isLoadingCustomers, setIsLoadingCustomers] = useState(true)
+  const [isLoadingGroups, setIsLoadingGroups] = useState(true)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
@@ -290,10 +480,108 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   }
 
-  // Load both resources on mount
+  const loadVouchers = async () => {
+    try {
+      setIsLoadingVouchers(true)
+      const supabase = getSupabase()
+      const { data: dbVouchers, error } = await supabase
+        .from('vouchers')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+      if (error) throw error
+
+      if (dbVouchers && dbVouchers.length > 0) {
+        const mappedVouchers: Voucher[] = dbVouchers.map((v: any) => ({
+          id: v.code,
+          code: v.code,
+          type: v.type,
+          value: Number(v.value),
+          usageCount: v.usage_count || 0,
+          maxUsage: v.max_usage || 100,
+          expiryDate: v.expiry_date,
+          status: v.status === 'disabled' ? 'paused' : v.status === 'expired' ? 'expired' : 'active',
+          targetType: v.target_type,
+          targetValue: v.target_value || 'Tất cả'
+        }))
+        setVouchers(mappedVouchers)
+      } else {
+        setVouchers(INITIAL_VOUCHERS)
+      }
+    } catch (err) {
+      console.warn('[Supabase Vouchers Fetch] Fallback active:', err)
+      setVouchers(INITIAL_VOUCHERS)
+    } finally {
+      setIsLoadingVouchers(false)
+    }
+  }
+
+  const loadCRMData = async () => {
+    try {
+      setIsLoadingCustomers(true)
+      setIsLoadingGroups(true)
+      const supabase = getSupabase()
+      
+      const [grpRes, custRes, relRes] = await Promise.all([
+        supabase.from('customer_groups').select('*').order('name', { ascending: true }),
+        supabase.from('customers').select('*').order('created_at', { ascending: false }),
+        supabase.from('customer_group_relations').select('*')
+      ])
+
+      if (grpRes.error) throw grpRes.error
+      if (custRes.error) throw custRes.error
+      if (relRes.error) throw relRes.error
+
+      const dbGroups = grpRes.data
+      const dbCustomers = custRes.data
+      const dbRelations = relRes.data
+
+      const mappedGroups: CustomerGroup[] = (dbGroups || []).map((g: any) => ({
+        id: g.id,
+        name: g.name,
+        description: g.description || '',
+        type: g.type || 'manual'
+      }))
+
+      const mappedCustomers: Customer[] = (dbCustomers || []).map((c: any) => {
+        const groupIds = (dbRelations || [])
+          .filter((r: any) => r.customer_id === c.id)
+          .map((r: any) => r.group_id)
+
+        return {
+          id: c.id,
+          name: c.name,
+          phone: c.phone,
+          totalBookings: c.total_bookings || 0,
+          totalSpent: Number(c.total_spent || 0),
+          lastActive: c.last_active ? new Date(c.last_active).toLocaleDateString('vi-VN') : 'Chưa hoạt động',
+          notes: c.notes || [],
+          groupIds: groupIds
+        }
+      })
+
+      if (mappedGroups.length > 0) setGroups(mappedGroups)
+      else setGroups(INITIAL_GROUPS)
+
+      if (mappedCustomers.length > 0) setCustomers(mappedCustomers)
+      else setCustomers(INITIAL_CUSTOMERS)
+
+    } catch (err) {
+      console.warn('[Supabase CRM Fetch] Đang hoạt động chế độ Fallback Mock Offline...', err)
+      setGroups(INITIAL_GROUPS)
+      setCustomers(INITIAL_CUSTOMERS)
+    } finally {
+      setIsLoadingCustomers(false)
+      setIsLoadingGroups(false)
+    }
+  }
+
+  // Load resources on mount
   useEffect(() => {
     loadRooms()
     loadBookings()
+    loadVouchers()
+    loadCRMData()
   }, [])
 
   return (
@@ -307,6 +595,18 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         isLoadingBookings,
         refreshRooms: loadRooms,
         refreshBookings: loadBookings,
+        vouchers,
+        setVouchers,
+        isLoadingVouchers,
+        refreshVouchers: loadVouchers,
+        customers,
+        setCustomers,
+        isLoadingCustomers,
+        refreshCustomers: loadCRMData,
+        groups,
+        setGroups,
+        isLoadingGroups,
+        refreshGroups: loadCRMData,
         theme,
         toggleTheme
       }}

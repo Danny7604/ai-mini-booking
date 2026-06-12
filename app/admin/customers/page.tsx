@@ -337,103 +337,24 @@ const getMockBookings = (cust: Customer): MockBooking[] => {
   return generated
 }
 
-// 1. Khởi tạo mảng Nhóm Khách hàng CRM mẫu (Có nhóm AI và nhóm Thủ công)
-const INITIAL_GROUPS: CustomerGroup[] = [
-  {
-    id: 'group-01',
-    name: 'Đi gia đình 🏡',
-    description: 'Khách đi cùng gia đình lớn, yêu cầu bồn tắm gỗ Hinoki ban công rộng, bếp BBQ ngoài trời hoặc phòng ngủ diện tích lớn.',
-    type: 'ai'
-  },
-  {
-    id: 'group-02',
-    name: 'Thích yên tĩnh 🤫',
-    description: 'Khách đi lẻ hoặc cặp đôi, thích không gian biệt lập, yên tĩnh, cách âm tốt, ngắm cảnh hoàng hôn bình lặng.',
-    type: 'ai'
-  },
-  {
-    id: 'group-03',
-    name: 'Thuê ngắn giờ ⏰',
-    description: 'Khách thuê theo giờ ngắn hạn, yêu cầu setup máy chiếu phim HD và tài khoản Netflix sẵn sàng phục vụ nghỉ ngơi.',
-    type: 'ai'
-  },
-  {
-    id: 'group-04',
-    name: 'Thân thiết VIP 💎',
-    description: 'Danh mục do Admin gán thủ công cho hội viên chi tiêu tích lũy lớn hơn 10 triệu đồng tại Bliss Home.',
-    type: 'manual'
-  },
-  {
-    id: 'group-05',
-    name: 'Cần chăm sóc đặc biệt ⚠️',
-    description: 'Admin chỉ định thủ công cho khách hàng có lưu ý dịch vụ đặc biệt hoặc lâu chưa đặt lại phòng cần gửi ưu đãi.',
-    type: 'manual'
-  }
-]
-
-// 2. Khởi tạo danh sách Khách hàng mẫu kèm theo ghi chú hành vi thực tế
-const INITIAL_CUSTOMERS: Customer[] = [
-  {
-    id: 'CUST-01',
-    name: 'Nguyễn Văn Hùng',
-    phone: '0901234567',
-    totalBookings: 12,
-    totalSpent: 18450000,
-    lastActive: '30/05/2026',
-    notes: ['Khách thường dắt gia đình lớn đi nghỉ mát. Thích nướng BBQ ngoài ban công và bồn tắm gỗ Hinoki.'],
-    groupIds: ['group-01', 'group-04']
-  },
-  {
-    id: 'CUST-02',
-    name: 'Trần Thị Mai',
-    phone: '0987654321',
-    totalBookings: 4,
-    totalSpent: 2160000,
-    lastActive: '30/05/2026',
-    notes: ['Thuê theo giờ ngắn hạn 3 tiếng. Yêu cầu setup máy chiếu và Netflix sẵn sàng trong phòng.'],
-    groupIds: ['group-03']
-  },
-  {
-    id: 'CUST-03',
-    name: 'Phan Minh Anh',
-    phone: '0912345678',
-    totalBookings: 8,
-    totalSpent: 15840000,
-    lastActive: '28/05/2026',
-    notes: ['Gia đình đi nghỉ hè. Cần chuẩn bị bếp nướng BBQ và khu trò chơi trẻ em.'],
-    groupIds: ['group-01', 'group-04']
-  },
-  {
-    id: 'CUST-04',
-    name: 'Lê Hoàng Hải',
-    phone: '0933445566',
-    totalBookings: 5,
-    totalSpent: 8700000,
-    lastActive: '29/05/2026',
-    notes: ['Khách đi cặp đôi hưởng tuần trăng mật. Thích phòng biệt lập, hoàn toàn yên tĩnh để ngắm hoàng hôn.'],
-    groupIds: ['group-02', 'group-05']
-  },
-  {
-    id: 'CUST-05',
-    name: 'Phạm Quỳnh Chi',
-    phone: '0999887766',
-    totalBookings: 2,
-    totalSpent: 600000,
-    lastActive: '25/05/2026',
-    notes: ['Thuê phòng ngắn ngày để làm việc tập trung, cần không gian cách âm tốt và yên tĩnh.'],
-    groupIds: ['group-02']
-  }
-]
+// (INITIAL_GROUPS and INITIAL_CUSTOMERS have been moved to AdminDataContext.tsx)
 
 export default function CRMManagementPage() {
-  const { theme } = useAdminData()
+  const { 
+    theme, 
+    customers, 
+    setCustomers, 
+    groups, 
+    setGroups, 
+    vouchers,
+    isLoadingCustomers,
+    isLoadingGroups
+  } = useAdminData()
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'customers' | 'groups'>('customers')
   
-  const [customers, setCustomers] = useState<Customer[]>([])
-  const [groups, setGroups] = useState<CustomerGroup[]>([])
-  
-  const [isLoading, setIsLoading] = useState(true)
+  const [isAISimulating, setIsAISimulating] = useState(false)
+  const isLoading = isLoadingCustomers || isLoadingGroups || isAISimulating
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedGroupFilter, setSelectedGroupFilter] = useState<string>('all')
 
@@ -537,86 +458,24 @@ export default function CRMManagementPage() {
     }
   }
 
-  // Nạp dữ liệu ban đầu từ Supabase
+  // Tải danh sách voucher hoạt động từ global cache để liên kết tạo chiến dịch
   useEffect(() => {
-    const loadCRMData = async () => {
-      try {
-        setIsLoading(true)
-        const supabase = getSupabase()
-        
-        // Nạp song song các dữ liệu CRM và Vouchers từ Supabase
-        const [grpRes, custRes, relRes, vouchRes] = await Promise.all([
-          supabase.from('customer_groups').select('*').order('name', { ascending: true }),
-          supabase.from('customers').select('*').order('created_at', { ascending: false }),
-          supabase.from('customer_group_relations').select('*'),
-          supabase.from('vouchers').select('*').eq('status', 'active')
-        ])
-
-        if (grpRes.error) throw grpRes.error
-        if (custRes.error) throw custRes.error
-        if (relRes.error) throw relRes.error
-
-        const dbGroups = grpRes.data
-        const dbCustomers = custRes.data
-        const dbRelations = relRes.data
-        const dbVouchers = vouchRes.data
-
-        const mappedGroups = (dbGroups || []).map((g: any) => ({
-          id: g.id,
-          name: g.name,
-          description: g.description || '',
-          type: g.type || 'manual'
-        }))
-
-        const mappedCustomers = (dbCustomers || []).map((c: any) => {
-          const groupIds = (dbRelations || [])
-            .filter((r: any) => r.customer_id === c.id)
-            .map((r: any) => r.group_id)
-
-          return {
-            id: c.id,
-            name: c.name,
-            phone: c.phone,
-            totalBookings: c.total_bookings || 0,
-            totalSpent: Number(c.total_spent || 0),
-            lastActive: c.last_active ? new Date(c.last_active).toLocaleDateString('vi-VN') : 'Chưa hoạt động',
-            notes: c.notes || [],
-            groupIds: groupIds
-          }
-        })
-
-        // 4. Nạp danh sách voucher hoạt động từ vouchers để liên kết tạo chiến dịch
-        let loadedVouchers = [
-          { code: 'BLISSHE2026', label: 'BLISSHE2026 (Giảm 15% phòng nghỉ)' },
-          { code: 'VIPBIRTHDAY', label: 'VIPBIRTHDAY (Tặng 200k Sinh nhật)' },
-          { code: 'COZYSTAY', label: 'COZYSTAY (Nâng hạng phòng miễn phí)' },
-          { code: 'DIAMONDBDAY', label: 'DIAMONDBDAY (Đặc quyền Diamond 2 chiều)' },
-          { code: 'WINTERCHILL', label: 'WINTERCHILL (Giảm 10% mùa đông)' }
-        ]
-        if (dbVouchers && dbVouchers.length > 0) {
-          loadedVouchers = dbVouchers.map((v: any) => ({
-            code: v.code,
-            label: `${v.code} (${v.type === 'percent' ? `Giảm ${v.value}%` : `Giảm ${v.value.toLocaleString('vi-VN')}đ`})`
-          }))
-        }
-        setActiveVouchers(loadedVouchers)
-
-        if (mappedGroups.length > 0) setGroups(mappedGroups)
-        else setGroups(INITIAL_GROUPS)
-
-        if (mappedCustomers.length > 0) setCustomers(mappedCustomers)
-        else setCustomers(INITIAL_CUSTOMERS)
-
-      } catch (err) {
-        console.warn('[Supabase CRM Fetch] Đang hoạt động chế độ Fallback Mock Offline...', err)
-        setGroups(INITIAL_GROUPS)
-        setCustomers(INITIAL_CUSTOMERS)
-      } finally {
-        setIsLoading(false)
-      }
+    const active = vouchers
+      .filter(v => v.status === 'active')
+      .map(v => ({
+        code: v.code,
+        label: `${v.code} (${v.type === 'percent' ? `Giảm ${v.value}%` : `Giảm ${v.value.toLocaleString('vi-VN')}đ`})`
+      }))
+    if (active.length > 0) {
+      setActiveVouchers(active)
+    } else {
+      setActiveVouchers([
+        { code: 'BLISSALL10', label: 'BLISSALL10 (Giảm 10% khách hàng)' },
+        { code: 'GOLDENROOM', label: 'GOLDENROOM (Giảm 300k Thành viên Vàng)' },
+        { code: 'FAMILYCOZY', label: 'FAMILYCOZY (Giảm 15% đi gia đình)' }
+      ])
     }
-    loadCRMData()
-  }, [])
+  }, [vouchers])
 
   // Tự động đồng bộ và làm nổi bật tab nhóm đầu tiên khi dữ liệu nhóm được tải
   useEffect(() => {
@@ -680,7 +539,7 @@ export default function CRMManagementPage() {
    */
   const simulateAIAnalysis = () => {
     try {
-      setIsLoading(true)
+      setIsAISimulating(true)
       
       setTimeout(async () => {
         // AI phân tích tự động dựa trên từ khóa trong mô tả nhóm và ghi chú khách hàng
@@ -759,13 +618,13 @@ export default function CRMManagementPage() {
         }
 
         setCustomers(updatedCustomers)
-        setIsLoading(false)
+        setIsAISimulating(false)
         showToast('🤖 AI đã phân tích hành vi khách hàng & tự động phân nhóm dựa trên mô tả thành công (Bảo toàn nhóm thủ công)!')
       }, 800)
 
     } catch (e) {
       console.error(e)
-      setIsLoading(false)
+      setIsAISimulating(false)
     }
   }
 

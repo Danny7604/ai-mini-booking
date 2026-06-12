@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { getSupabase } from '@/lib/supabase'
-import { useAdminData } from '../AdminDataContext'
+import { useAdminData, Voucher } from '../AdminDataContext'
 import { 
   Search, 
   Plus, 
@@ -19,79 +19,13 @@ import {
   ToggleRight
 } from 'lucide-react'
 
-// Định nghĩa kiểu dữ liệu Voucher
-interface Voucher {
-  id: string
-  code: string
-  type: 'percent' | 'fixed'
-  value: number
-  usageCount: number
-  maxUsage: number
-  expiryDate: string
-  status: 'active' | 'paused' | 'expired'
-  targetType: 'all' | 'group' | 'tier' | 'event'
-  targetValue: string
-}
-
-// 1. Khởi tạo danh sách Voucher đa tầng cao cấp đại diện cho 4 nhóm đối tượng áp dụng
-const INITIAL_VOUCHERS: Voucher[] = [
-  {
-    id: 'VOUCH-01',
-    code: 'BLISSALL10',
-    type: 'percent',
-    value: 10,
-    usageCount: 45,
-    maxUsage: 100,
-    expiryDate: '2026-07-31',
-    status: 'active',
-    targetType: 'all',
-    targetValue: 'Tất cả khách hàng'
-  },
-  {
-    id: 'VOUCH-02',
-    code: 'GOLDENROOM',
-    type: 'fixed',
-    value: 300000,
-    usageCount: 18,
-    maxUsage: 20,
-    expiryDate: '2026-06-15',
-    status: 'active',
-    targetType: 'tier',
-    targetValue: 'Thành viên Vàng'
-  },
-  {
-    id: 'VOUCH-03',
-    code: 'FAMILYCOZY',
-    type: 'percent',
-    value: 15,
-    usageCount: 8,
-    maxUsage: 50,
-    expiryDate: '2026-08-30',
-    status: 'active',
-    targetType: 'group',
-    targetValue: 'Nhóm đi gia đình'
-  },
-  {
-    id: 'VOUCH-04',
-    code: 'SUMMER304',
-    type: 'fixed',
-    value: 200000,
-    usageCount: 10,
-    maxUsage: 10,
-    expiryDate: '2026-05-10',
-    status: 'expired',
-    targetType: 'event',
-    targetValue: 'Đại lễ 30/4 - 1/5'
-  }
-]
-
 const formatVND = (val: number) => {
   return val.toLocaleString('vi-VN') + 'đ'
 }
 
 export default function VouchersManagementPage() {
-  const [vouchers, setVouchers] = useState<Voucher[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const { vouchers, setVouchers, isLoadingVouchers } = useAdminData()
+  const isLoading = isLoadingVouchers
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | Voucher['status']>('all')
   const [targetFilter, setTargetFilter] = useState<'all' | Voucher['targetType']>('all')
@@ -117,46 +51,6 @@ export default function VouchersManagementPage() {
   // Highlight từ Copilot AI
   const [highlightedVoucherId, setHighlightedVoucherId] = useState<string | null>(null)
   const [highlightedFilter, setHighlightedFilter] = useState<string | null>(null)
-
-  // Nạp dữ liệu thực tế từ Supabase
-  useEffect(() => {
-    const loadVouchers = async () => {
-      try {
-        setIsLoading(true)
-        const supabase = getSupabase()
-        const { data: dbVouchers, error } = await supabase
-          .from('vouchers')
-          .select('*')
-          .order('created_at', { ascending: false })
-
-        if (error) throw error
-
-        if (dbVouchers && dbVouchers.length > 0) {
-          const mappedVouchers: Voucher[] = dbVouchers.map((v: any) => ({
-            id: v.code, // code làm ID duy nhất luôn
-            code: v.code,
-            type: v.type,
-            value: Number(v.value),
-            usageCount: v.usage_count || 0,
-            maxUsage: v.max_usage || 100,
-            expiryDate: v.expiry_date,
-            status: v.status === 'disabled' ? 'paused' : v.status === 'expired' ? 'expired' : 'active',
-            targetType: v.target_type,
-            targetValue: v.target_value || 'Tất cả'
-          }))
-          setVouchers(mappedVouchers)
-        } else {
-          setVouchers(INITIAL_VOUCHERS)
-        }
-      } catch (err) {
-        console.warn('[Supabase Vouchers Fetch] Fallback active:', err)
-        setVouchers(INITIAL_VOUCHERS)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    loadVouchers()
-  }, [])
 
   // Theo dõi cập nhật dynamic form targetValue khi người dùng đổi loại targetType
   useEffect(() => {
