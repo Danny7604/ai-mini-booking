@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { getSupabase } from '@/lib/supabase'
+import { useAdminData } from '../AdminDataContext'
 import { 
   Search, 
   Sparkles, 
@@ -425,6 +426,7 @@ const INITIAL_CUSTOMERS: Customer[] = [
 ]
 
 export default function CRMManagementPage() {
+  const { theme } = useAdminData()
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'customers' | 'groups'>('customers')
   
@@ -542,28 +544,22 @@ export default function CRMManagementPage() {
         setIsLoading(true)
         const supabase = getSupabase()
         
-        // 1. Nạp danh mục nhóm từ customer_groups
-        const { data: dbGroups, error: grpError } = await supabase
-          .from('customer_groups')
-          .select('*')
-          .order('name', { ascending: true })
-          
-        if (grpError) throw grpError
-        
-        // 2. Nạp hồ sơ khách hàng từ customers
-        const { data: dbCustomers, error: custError } = await supabase
-          .from('customers')
-          .select('*')
-          .order('created_at', { ascending: false })
-          
-        if (custError) throw custError
+        // Nạp song song các dữ liệu CRM và Vouchers từ Supabase
+        const [grpRes, custRes, relRes, vouchRes] = await Promise.all([
+          supabase.from('customer_groups').select('*').order('name', { ascending: true }),
+          supabase.from('customers').select('*').order('created_at', { ascending: false }),
+          supabase.from('customer_group_relations').select('*'),
+          supabase.from('vouchers').select('*').eq('status', 'active')
+        ])
 
-        // 3. Nạp ánh xạ nhóm của khách hàng từ customer_group_relations
-        const { data: dbRelations, error: relError } = await supabase
-          .from('customer_group_relations')
-          .select('*')
-          
-        if (relError) throw relError
+        if (grpRes.error) throw grpRes.error
+        if (custRes.error) throw custRes.error
+        if (relRes.error) throw relRes.error
+
+        const dbGroups = grpRes.data
+        const dbCustomers = custRes.data
+        const dbRelations = relRes.data
+        const dbVouchers = vouchRes.data
 
         const mappedGroups = (dbGroups || []).map((g: any) => ({
           id: g.id,
@@ -597,19 +593,11 @@ export default function CRMManagementPage() {
           { code: 'DIAMONDBDAY', label: 'DIAMONDBDAY (Đặc quyền Diamond 2 chiều)' },
           { code: 'WINTERCHILL', label: 'WINTERCHILL (Giảm 10% mùa đông)' }
         ]
-        try {
-          const { data: dbVouchers } = await supabase
-            .from('vouchers')
-            .select('*')
-            .eq('status', 'active')
-          if (dbVouchers && dbVouchers.length > 0) {
-            loadedVouchers = dbVouchers.map((v: any) => ({
-              code: v.code,
-              label: `${v.code} (${v.type === 'percent' ? `Giảm ${v.value}%` : `Giảm ${v.value.toLocaleString('vi-VN')}đ`})`
-            }))
-          }
-        } catch (vErr) {
-          console.warn('[CRM Fetch Vouchers] Fallback to mock vouchers:', vErr)
+        if (dbVouchers && dbVouchers.length > 0) {
+          loadedVouchers = dbVouchers.map((v: any) => ({
+            code: v.code,
+            label: `${v.code} (${v.type === 'percent' ? `Giảm ${v.value}%` : `Giảm ${v.value.toLocaleString('vi-VN')}đ`})`
+          }))
         }
         setActiveVouchers(loadedVouchers)
 
@@ -1383,7 +1371,9 @@ export default function CRMManagementPage() {
       {activeTab === 'customers' && (
         <div className="flex flex-col gap-5">
           {/* SEARCH BAR & LỌC TÀI CRM */}
-          <div className="flex flex-col md:flex-row gap-3 items-center justify-between bg-white border border-zinc-200 dark:border-zinc-800/80 p-4 rounded-3xl shadow-2xs">
+          <div className={`flex flex-col md:flex-row gap-3 items-center justify-between border p-4 rounded-3xl transition duration-200 ${
+            theme === 'dark' ? 'bg-zinc-900 border-zinc-800/80 shadow-none' : 'bg-white border-zinc-200 shadow-2xs'
+          }`}>
             
             {/* Search */}
             <div className="relative w-full md:w-80">
@@ -1392,7 +1382,11 @@ export default function CRMManagementPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Tìm khách hàng theo Tên hoặc SĐT..."
-                className="w-full bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-700 dark:text-zinc-300 focus:bg-white transition"
+                className={`w-full border rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:outline-none transition ${
+                  theme === 'dark'
+                    ? 'bg-zinc-900/60 border-zinc-800 text-zinc-300 focus:border-zinc-650 focus:bg-zinc-900'
+                    : 'bg-zinc-50 border-zinc-200 text-zinc-700 focus:border-zinc-400 focus:bg-white'
+                }`}
               />
               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 dark:text-zinc-500" />
             </div>
@@ -1403,7 +1397,11 @@ export default function CRMManagementPage() {
               <select
                 value={selectedGroupFilter}
                 onChange={(e) => setSelectedGroupFilter(e.target.value)}
-                className="bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-xs font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 cursor-pointer transition"
+                className={`border rounded-xl px-3 py-2 text-xs font-bold focus:outline-none cursor-pointer transition ${
+                  theme === 'dark'
+                    ? 'bg-zinc-850 text-zinc-200 border-zinc-700 focus:border-zinc-600'
+                    : 'bg-white text-zinc-700 border-zinc-200 focus:border-zinc-400'
+                }`}
               >
                 <option value="all">Tất cả nhóm</option>
                 {groups.map(g => (
@@ -1422,7 +1420,9 @@ export default function CRMManagementPage() {
               </span>
             </div>
           ) : (
-            <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-sm overflow-hidden flex flex-col">
+            <div className={`border rounded-3xl shadow-sm overflow-hidden flex flex-col transition duration-200 ${
+              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
+            }`}>
               <div className="overflow-x-auto w-full">
                 <table className="w-full text-left border-collapse">
                   <thead>
@@ -1628,7 +1628,7 @@ export default function CRMManagementPage() {
                   {/* Financial KPIs and Controls */}
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full md:w-auto flex-shrink-0">
                     <div className="flex gap-3">
-                      <div className="bg-white border border-zinc-200 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
+                      <div className="bg-card border border-zinc-200 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
                         <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
                           <Coins size={10} className="text-zinc-500 dark:text-zinc-400" /> Doanh Thu Nhóm
                         </span>
@@ -1636,7 +1636,7 @@ export default function CRMManagementPage() {
                           {formatVND(groupSpent)}
                         </span>
                       </div>
-                      <div className="bg-white border border-zinc-200 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
+                      <div className="bg-card border border-zinc-200 dark:border-zinc-800 px-3.5 py-2 rounded-2xl flex flex-col min-w-[110px]">
                         <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider flex items-center gap-1">
                           <TrendingUp size={10} className="text-emerald-500" /> Tỷ lệ Đóng Góp
                         </span>
@@ -1697,7 +1697,9 @@ export default function CRMManagementPage() {
                 </div>
 
                 {/* MEMBERS DATA SHEET AND ACTIONS */}
-                <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 md:p-6 flex flex-col gap-4 shadow-2xs">
+                <div className={`border rounded-3xl p-5 md:p-6 flex flex-col gap-4 shadow-2xs transition duration-200 ${
+                  theme === 'dark' ? 'bg-zinc-900 border-zinc-800 shadow-none' : 'bg-white border-zinc-200 shadow-2xs'
+                }`}>
                   {/* Table Header Controls */}
                   <div className="flex justify-between items-center pb-2 border-b border-zinc-200 dark:border-zinc-800">
                     <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-wider">
@@ -1715,7 +1717,7 @@ export default function CRMManagementPage() {
 
                       {/* Add Member Popover Overlay */}
                       {isAddMemberOpen && (
-                        <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl p-4 z-40 animate-in slide-in-from-top-2 duration-150 flex flex-col gap-3">
+                        <div className="absolute right-0 top-full mt-2 w-80 bg-card border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl p-4 z-40 animate-in slide-in-from-top-2 duration-150 flex flex-col gap-3">
                           <div className="flex justify-between items-center">
                             <span className="text-[10px] font-black uppercase text-zinc-500 dark:text-zinc-400 tracking-wider">Chọn khách hàng</span>
                             <button 
@@ -1764,7 +1766,7 @@ export default function CRMManagementPage() {
                                     setIsAddMemberOpen(false)
                                     setSearchMemberTerm('')
                                   }}
-                                  className="w-full flex items-center justify-between p-2 rounded-xl border-none hover:bg-zinc-50 dark:bg-zinc-900/60 text-left transition cursor-pointer bg-white border border-zinc-200 dark:border-zinc-800"
+                                  className="w-full flex items-center justify-between p-2 rounded-xl border hover:bg-zinc-50 dark:hover:bg-zinc-900/40 text-left transition cursor-pointer bg-card border-zinc-200 dark:border-zinc-800"
                                 >
                                   <div className="flex flex-col">
                                     <span className="text-[10px] font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">{cust.name}</span>
@@ -2034,15 +2036,15 @@ export default function CRMManagementPage() {
                         onClick={() => toggleGroupSelection(group.id)}
                         className={`w-full text-left p-3 rounded-xl border transition flex items-start gap-2.5 cursor-pointer ${
                           isSelected
-                            ? 'bg-purple-50/50 border-purple-300 text-purple-900 shadow-3xs'
-                            : 'bg-white hover:bg-zinc-50 dark:bg-zinc-900/60 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300'
+                            ? 'bg-purple-50/50 dark:bg-purple-950/40 border-purple-300 dark:border-purple-900/40 text-purple-900 dark:text-purple-300 shadow-3xs'
+                            : 'bg-card hover:bg-zinc-50 dark:hover:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300'
                         }`}
                       >
                         <div className="mt-0.5 flex-shrink-0">
                           <div className={`w-3.5 h-3.5 rounded border flex items-center justify-center transition ${
                             isSelected 
                               ? 'bg-purple-600 border-purple-600 text-white' 
-                              : 'border-stone-300 bg-white'
+                              : 'border-stone-300 dark:border-zinc-700 bg-white dark:bg-zinc-950'
                           }`}>
                             {isSelected && <Check size={10} className="stroke-[3]" />}
                           </div>
@@ -2096,7 +2098,9 @@ export default function CRMManagementPage() {
           onClick={() => setIsAddGroupOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
+            className={`w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 border text-zinc-800 dark:text-zinc-250 ${
+              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-150'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
@@ -2293,7 +2297,11 @@ export default function CRMManagementPage() {
                     <span className="text-xs text-purple-400 italic font-semibold font-sans">Chưa có ghi chú nào được lưu cho hội viên.</span>
                   ) : (
                     cust.notes.map((n, idx) => (
-                      <div key={idx} className="bg-white border border-purple-105 rounded-xl p-2.5 text-xs text-purple-950 font-semibold italic relative leading-relaxed font-sans shadow-3xs">
+                      <div key={idx} className={`rounded-xl p-2.5 text-xs font-semibold italic relative leading-relaxed font-sans shadow-3xs border ${
+                        theme === 'dark'
+                          ? 'bg-purple-950/20 border-purple-900/40 text-purple-200'
+                          : 'bg-white border-purple-100 text-purple-950'
+                      }`}>
                         "{n}"
                       </div>
                     ))
@@ -2341,7 +2349,7 @@ export default function CRMManagementPage() {
                     value={newDetailNote}
                     onChange={(e) => setNewDetailNote(e.target.value)}
                     placeholder="Nhập ghi chú mới để lưu..."
-                    className="flex-grow bg-white border border-purple-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-purple-650 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 font-sans"
+                    className="flex-grow bg-card border border-purple-200 dark:border-purple-900/40 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-purple-500 text-zinc-800 dark:text-zinc-200 font-sans"
                   />
                   <button
                     type="submit"
@@ -2378,7 +2386,9 @@ export default function CRMManagementPage() {
                         </div>
 
                         {/* Booking Card Content */}
-                        <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 flex-grow shadow-2xs hover:shadow-xs transition duration-200 flex flex-col gap-2.5">
+                        <div className={`border rounded-2xl p-4 flex-grow shadow-2xs hover:shadow-xs transition duration-200 flex flex-col gap-2.5 ${
+                          theme === 'dark' ? 'bg-zinc-900/60 border-zinc-800' : 'bg-white border-zinc-200'
+                        }`}>
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                             <div className="flex flex-col gap-0.5">
                               <span className="font-extrabold text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 text-xs sm:text-sm">{bk.roomName}</span>
@@ -2458,7 +2468,9 @@ export default function CRMManagementPage() {
           onClick={() => setIsAddCustomerOpen(false)}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
+            className={`w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 border text-zinc-800 dark:text-zinc-250 ${
+              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-150'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
@@ -2611,9 +2623,9 @@ export default function CRMManagementPage() {
                       <div className="flex items-center gap-3">
                         {/* Avatar Initials */}
                         <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-black shadow-inner uppercase ${
-                          tierInfo.colorTheme === 'violet' ? 'bg-purple-100 text-purple-700' :
-                          tierInfo.colorTheme === 'amber' ? 'bg-amber-100 text-amber-700' :
-                          tierInfo.colorTheme === 'slate' ? 'bg-slate-100 text-slate-700' :
+                          tierInfo.colorTheme === 'violet' ? 'bg-purple-100 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300' :
+                          tierInfo.colorTheme === 'amber' ? 'bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300' :
+                          tierInfo.colorTheme === 'slate' ? 'bg-slate-100 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300' :
                           'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'
                         }`}>
                           {member.name.charAt(0)}
@@ -2636,9 +2648,9 @@ export default function CRMManagementPage() {
 
                         {/* Tier badge */}
                         <span className={`px-2 py-0.5 border rounded-full text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs ${
-                          tierInfo.colorTheme === 'violet' ? 'bg-purple-50 text-purple-700 border-purple-200' :
-                          tierInfo.colorTheme === 'amber' ? 'bg-amber-50 text-amber-700 border-amber-200' :
-                          tierInfo.colorTheme === 'slate' ? 'bg-slate-50 text-slate-750 border-slate-200' :
+                          tierInfo.colorTheme === 'violet' ? 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-900/40' :
+                          tierInfo.colorTheme === 'amber' ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-900/40' :
+                          tierInfo.colorTheme === 'slate' ? 'bg-slate-50 dark:bg-slate-900/40 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-800' :
                           'bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'
                         }`}>
                           {renderTierIcon(tierInfo.colorTheme, 9)}
@@ -2650,12 +2662,12 @@ export default function CRMManagementPage() {
                           {selectedGroupForMembers.type === 'manual' ? (
                             <button
                               onClick={() => handleRemoveCustomerFromGroup(member.id, selectedGroupForMembers.id)}
-                              className="px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-red-600 bg-red-50 hover:bg-red-100 hover:text-red-700 border border-red-200/50 rounded-xl transition cursor-pointer"
+                              className="px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-red-600 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/50 hover:text-red-700 border border-red-200/50 dark:border-red-900/40 rounded-xl transition cursor-pointer"
                             >
                               Gỡ Khách
                             </button>
                           ) : (
-                            <span className="px-2.5 py-1 bg-purple-50 text-purple-600 border border-purple-200/40 rounded-xl text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default" title={member.notes.join(', ')}>
+                            <span className="px-2.5 py-1 bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-300 border border-purple-200/40 dark:border-purple-900/40 rounded-xl text-[9px] font-black uppercase tracking-wider flex items-center gap-0.5 shadow-2xs cursor-default" title={member.notes.join(', ')}>
                               <Bot size={9} /> AI Xếp
                             </span>
                           )}
@@ -2703,7 +2715,9 @@ export default function CRMManagementPage() {
           }}
         >
           <div 
-            className="bg-white w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
+            className={`w-full max-w-md rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 border text-zinc-800 dark:text-zinc-250 ${
+              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-150'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Nút Đóng Modal */}
@@ -2807,7 +2821,9 @@ export default function CRMManagementPage() {
             onClick={() => setIsMarketingModalOpen(false)}
           >
             <div 
-              className="bg-white w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 max-h-[92vh]"
+              className={`w-full max-w-4xl rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 flex flex-col gap-5 border text-zinc-800 dark:text-zinc-250 max-h-[92vh] ${
+                theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-150'
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Nút Đóng Modal */}
@@ -2885,7 +2901,7 @@ export default function CRMManagementPage() {
                     <select
                       value={marketingCampVoucher}
                       onChange={(e) => setMarketingCampVoucher(e.target.value)}
-                      className="w-full bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-800 dark:text-zinc-600 dark:text-zinc-200"
+                      className="w-full bg-card border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 text-zinc-850 dark:text-zinc-200"
                     >
                       <option value="">-- Không đính kèm mã voucher --</option>
                       {activeVouchers.map(v => (
@@ -2967,7 +2983,9 @@ export default function CRMManagementPage() {
                     </div>
 
                     {/* Zalo ZNS Preview Bubble */}
-                    <div className="bg-white border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 shadow-sm flex flex-col gap-2 mt-4 animate-in fade-in duration-200">
+                    <div className={`border rounded-2xl p-4 shadow-sm flex flex-col gap-2 mt-4 animate-in fade-in duration-200 ${
+                      theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
+                    }`}>
                       {/* Header */}
                       <div className="flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-2 mb-1 select-none">
                         <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
