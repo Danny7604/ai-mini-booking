@@ -57,7 +57,7 @@ function AdminLayoutContent({
   // Đồng bộ hóa trạng thái thu gọn của Sidebar với localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedState = localStorage.getItem('bliss_sidebar_collapsed')
+      const savedState = localStorage.getItem('dancin_sidebar_collapsed')
       if (savedState === 'true') {
         setIsCollapsed(true)
       }
@@ -68,7 +68,7 @@ function AdminLayoutContent({
     const nextState = !isCollapsed
     setIsCollapsed(nextState)
     if (typeof window !== 'undefined') {
-      localStorage.setItem('bliss_sidebar_collapsed', String(nextState))
+      localStorage.setItem('dancin_sidebar_collapsed', String(nextState))
     }
   }
 
@@ -80,7 +80,7 @@ function AdminLayoutContent({
     }
 
     const checkAuth = () => {
-      const adminSession = sessionStorage.getItem('bliss_admin')
+      const adminSession = sessionStorage.getItem('dancin_admin')
       if (!adminSession) {
         router.push('/admin/login')
       } else {
@@ -100,8 +100,8 @@ function AdminLayoutContent({
   }, [pathname, isLoginPage, router])
 
   const handleLogout = () => {
-    if (!confirm('Bạn có chắc chắn muốn đăng xuất khỏi cổng quản trị Bliss Home không?')) return
-    sessionStorage.removeItem('bliss_admin')
+    if (!confirm('Bạn có chắc chắn muốn đăng xuất khỏi cổng quản trị Dancin Home không?')) return
+    sessionStorage.removeItem('dancin_admin')
     router.push('/admin/login')
   }
 
@@ -187,7 +187,7 @@ function AdminLayoutContent({
               <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner ${
                 theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-zinc-100 border-zinc-200'
               }`}>
-                <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
+                <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
               </div>
               <button 
                 onClick={toggleSidebar} 
@@ -207,12 +207,12 @@ function AdminLayoutContent({
                 <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
                   theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
                 }`}>
-                  <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
+                  <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
                 </div>
                 <div>
                   <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
                     theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
-                  }`}>Bliss Home</h1>
+                  }`}>Dancin Home</h1>
                   <span className={`text-[9px] tracking-widest uppercase block mt-0.5 font-bold ${
                     theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
                   }`}>Admin Portal</span>
@@ -392,12 +392,12 @@ function AdminLayoutContent({
             <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
               theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
             }`}>
-              <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain dark:invert" />
+              <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
             </div>
             <div>
               <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
                 theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
-              }`}>Bliss Home</h1>
+              }`}>Dancin Home</h1>
               <span className={`text-[9px] tracking-widest uppercase block mt-0.5 font-bold ${
                 theme === 'dark' ? 'text-zinc-500' : 'text-zinc-400'
               }`}>Admin Portal</span>
@@ -540,7 +540,7 @@ function AdminLayoutContent({
             <h2 className={`text-sm md:text-base font-extrabold uppercase tracking-wider ${
               theme === 'dark' ? 'text-zinc-50' : 'text-zinc-900'
             }`}>
-              Hệ Thống Quản Trị Bliss Home
+              Hệ Thống Quản Trị Dancin Home
             </h2>
           </div>
 
@@ -559,7 +559,7 @@ function AdminLayoutContent({
               }`}
             >
               <Sparkles size={13} className={isAIOpen ? 'text-white animate-spin' : 'text-emerald-500'} />
-              <span>Bliss Copilot 🤖</span>
+              <span>Dancin Copilot 🤖</span>
             </button>
 
             {/* NÚT CHUYỂN ĐỔI LIGHT/DARK MODE */}

@@ -1,5 +1,5 @@
 const vi = {
-  brand: 'Bliss Home Booking',
+  brand: 'Dancin Home Booking',
   stepLabels: ['Thời gian', 'Chi nhánh', 'Phòng', 'Xác nhận'],
   back: '← Quay lại',
   next: 'Tiếp theo →',
@@ -25,7 +25,7 @@ const vi = {
   nameLabel: 'Họ tên',
   namePlaceholder: 'Nguyễn Văn A',
   phoneLabel: 'Số điện thoại',
-  phonePlaceholder: '0912 345 678',
+  phonePlaceholder: '0963 212 579',
   noteLabel: 'Lời nhắn / Yêu cầu thêm',
   notePlaceholder: 'Ví dụ: Tôi cần phòng yên tĩnh, có bồn tắm...',
 
@@ -52,7 +52,7 @@ const vi = {
 }
 
 const en = {
-  brand: 'Bliss Home Booking',
+  brand: 'Dancin Home Booking',
   stepLabels: ['Time', 'Branch', 'Room', 'Confirm'],
   back: '← Back',
   next: 'Next →',
@@ -78,7 +78,7 @@ const en = {
   nameLabel: 'Full Name',
   namePlaceholder: 'John Doe',
   phoneLabel: 'Phone Number',
-  phonePlaceholder: '0912 345 678',
+  phonePlaceholder: '0963 212 579',
   noteLabel: 'Message / Special Requests',
   notePlaceholder: 'e.g. I need a quiet room with a bathtub...',
 

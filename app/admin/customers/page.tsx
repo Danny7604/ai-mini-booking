@@ -438,7 +438,7 @@ export default function CRMManagementPage() {
       if (dbBookings && dbBookings.length > 0) {
         const mappedBookings: MockBooking[] = dbBookings.map((b: any) => ({
           id: b.id.substring(0, 8).toUpperCase(),
-          roomName: b.rooms?.name || 'Phòng nghỉ Bliss Home',
+          roomName: b.rooms?.name || 'Phòng nghỉ Dancin Home',
           branch: b.rooms?.branch || 'Chi nhánh Sài Gòn',
           checkIn: new Date(b.checkin_date).toLocaleDateString('vi-VN'),
           checkOut: new Date(b.checkout_date).toLocaleDateString('vi-VN'),
@@ -470,7 +470,7 @@ export default function CRMManagementPage() {
       setActiveVouchers(active)
     } else {
       setActiveVouchers([
-        { code: 'BLISSALL10', label: 'BLISSALL10 (Giảm 10% khách hàng)' },
+        { code: 'DANCINALL10', label: 'DANCINALL10 (Giảm 10% khách hàng)' },
         { code: 'GOLDENROOM', label: 'GOLDENROOM (Giảm 300k Thành viên Vàng)' },
         { code: 'FAMILYCOZY', label: 'FAMILYCOZY (Giảm 15% đi gia đình)' }
       ])
@@ -526,9 +526,9 @@ export default function CRMManagementPage() {
       }
     }
 
-    window.addEventListener('bliss-admin-action', handleAdminAction)
+    window.addEventListener('dancin-admin-action', handleAdminAction)
     return () => {
-      window.removeEventListener('bliss-admin-action', handleAdminAction)
+      window.removeEventListener('dancin-admin-action', handleAdminAction)
     }
   }, [customers])
 
@@ -1511,11 +1511,11 @@ export default function CRMManagementPage() {
                           setMarketingCampVoucher(activeVouchers[0]?.code || '')
                           
                           // Đề xuất nội dung tùy hành vi của nhóm
-                          let defaultMsg = `Chào {ten_khach}, Bliss Home gửi tặng bạn ưu đãi nghỉ dưỡng đặc biệt! Dùng mã {ma_voucher} để đặt phòng và nhận quà tặng chào mừng nhé!`
+                          let defaultMsg = `Chào {ten_khach}, Dancin Home gửi tặng bạn ưu đãi nghỉ dưỡng đặc biệt! Dùng mã {ma_voucher} để đặt phòng và nhận quà tặng chào mừng nhé!`
                           if (cleanName.includes('Gia đình') || cleanName.includes('gia đình')) {
-                            defaultMsg = `Chào {ten_khach}, Bliss Home dành tặng ưu đãi sum vầy đặc biệt cho cả nhà! Nhập mã {ma_voucher} để được ưu tiên nâng phòng VIP miễn phí và setup bếp BBQ ngoài trời nhé!`
+                            defaultMsg = `Chào {ten_khach}, Dancin Home dành tặng ưu đãi sum vầy đặc biệt cho cả nhà! Nhập mã {ma_voucher} để được ưu tiên nâng phòng VIP miễn phí và setup bếp BBQ ngoài trời nhé!`
                           } else if (cleanName.includes('Yên tĩnh') || cleanName.includes('yên tĩnh')) {
-                            defaultMsg = `Chào {ten_khach}, trốn phố thị xô bồ tìm lại bình yên cùng Bliss Home cuối tuần này nhé! Nhập mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.`
+                            defaultMsg = `Chào {ten_khach}, trốn phố thị xô bồ tìm lại bình yên cùng Dancin Home cuối tuần này nhé! Nhập mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.`
                           }
                           setMarketingCampContent(defaultMsg)
                           setMarketingCampBudget(500000)
@@ -2840,10 +2840,10 @@ export default function CRMManagementPage() {
                       {/* Header */}
                       <div className="flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-2 mb-1 select-none">
                         <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
-                          BH
+                          DH
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+                          <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Dancin Home Sài Gòn</span>
                           <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
                         </div>
                       </div>
@@ -2871,7 +2871,7 @@ export default function CRMManagementPage() {
 
                     {/* Simulator details footer */}
                     <span className="absolute bottom-2 left-0 right-0 text-center text-[8px] font-bold text-zinc-400 dark:text-zinc-500 select-none uppercase tracking-widest">
-                      Bliss ZNS Simulator
+                      Dancin ZNS Simulator
                     </span>
                   </div>
                 </div>

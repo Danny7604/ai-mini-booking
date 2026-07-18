@@ -35,7 +35,7 @@ const rooms: Room[] = [
     capacity: 2,
     bed: "1 Giường King lớn",
     badge: "BÁN CHẠY 🔥",
-    branch: "Bliss Home - Tân Bình (CS1) 🏡",
+    branch: "Dancin Home - Tân Bình (CS1) 🏡",
     address: "71 Xuân Hồng, Phường 12, Quận Tân Bình",
     description: "Ẩn mình trên tầng cao nhất dưới mái ngói dốc, Pine Forest Loft mang đến cho bạn cảm giác gác mái châu Âu ấm áp với khung cửa sổ tròn ngắm trọn thành phố. Điểm nhấn tuyệt hảo nhất là bồn tắm gỗ Hinoki thơm nhẹ ngoài ban công, nơi bạn có thể ngâm mình trong nước ấm giữa tiết trời Sài Gòn se lạnh lúc đêm muộn.",
     amenities: [
@@ -67,7 +67,7 @@ const rooms: Room[] = [
     capacity: 2,
     bed: "1 Giường King siêu lớn",
     badge: "SỐNG ẢO CỰC CHILL ☁️",
-    branch: "Bliss Home - Quận 10 (CS2) 🏙️",
+    branch: "Dancin Home - Quận 10 (CS2) 🏙️",
     address: "25a Đường 3/2, Phường 11, Quận 10",
     description: "Valley View Suite là thiên đường cho các tín độ yêu thích ngắm nhìn nhịp sống đô thị. Căn phòng sở hữu hệ cửa kính kịch trần góc rộng 180 độ hướng ra trung tâm thành phố. Mỗi sớm thức dậy hay khi đêm về, bạn chỉ cần kéo nhẹ rèm là cả một khoảng trời rực rỡ ùa vào tầm mắt. Phòng được trang bị bồn tắm kính sang trọng sát cửa sổ và máy chiếu phim thông minh HD riêng.",
     amenities: [
@@ -99,7 +99,7 @@ const rooms: Room[] = [
     capacity: 4,
     bed: "2 Giường Queen rộng rãi",
     badge: "CHO GIA ĐÌNH 🏡",
-    branch: "Bliss Home - Quận 5 (CS3) 🪟",
+    branch: "Dancin Home - Quận 5 (CS3) 🪟",
     address: "2N Đường Phạm Hữu Chí, Phường 12, Quận 5",
     description: "Được dựng hoàn toàn từ những thân gỗ thông mộc mạc nguyên khối mang lại hương thơm tự nhiên và cảm giác ấm cúng đặc biệt ngay giữa lòng phố Hoa Quận 5 cổ kính. Với thiết kế 2 giường lớn rộng rãi, lò sưởi giả lập siêu ấm áp và khoảng ban công nướng BBQ riêng tư, đây là lựa chọn số một cho gia đình nhỏ hoặc nhóm bạn thân muốn cùng nhau tụ họp.",
     amenities: [
@@ -131,9 +131,9 @@ const rooms: Room[] = [
     capacity: 2,
     bed: "1 Giường King ngập nắng",
     badge: "SỐNG NGHỆ THUẬT 📸",
-    branch: "Bliss Home - Gò Vấp (CS4) 🌸",
+    branch: "Dancin Home - Gò Vấp (CS4) 🌸",
     address: "331/16 Đường Phan Huy Ích, Phường 14, Quận Gò Vấp",
-    description: "Nhà kính ngập nắng được bao bọc bởi 4 bề kính cường lực cao cấp, ẩn mình giữa khu vườn hoa thơ mộng của Bliss Home Gò Vấp. Căn phòng ngập tràn ánh sáng tự nhiên vào ban ngày và là đài quan sát sao trời cực đỉnh khi đêm xuống. Bồn tắm sứ kiểu cổ điển đặt ngay trung tâm phòng sẽ mang đến những bức ảnh check-in sống ảo triệu tim.",
+    description: "Nhà kính ngập nắng được bao bọc bởi 4 bề kính cường lực cao cấp, ẩn mình giữa khu vườn hoa thơ mộng của Dancin Home Gò Vấp. Căn phòng ngập tràn ánh sáng tự nhiên vào ban ngày và là đài quan sát sao trời cực đỉnh khi đêm xuống. Bồn tắm sứ kiểu cổ điển đặt ngay trung tâm phòng sẽ mang đến những bức ảnh check-in sống ảo triệu tim.",
     amenities: [
       "Bồn tắm sứ nghệ thuật",
       "Kính ngắm sao trời ban đêm",
@@ -163,7 +163,7 @@ const rooms: Room[] = [
     capacity: 2,
     bed: "1 Giường đôi ấm cúng",
     badge: "GIÁ TỐT CỰC CHILL 🍃",
-    branch: "Bliss Home - Bình Thạnh (CS5) 🌿",
+    branch: "Dancin Home - Bình Thạnh (CS5) 🌿",
     address: "217/70/5 Đường Bùi Đình Túy, Phường 14, Quận Bình Thạnh",
     description: "Riverside Nest nằm khép mình sát bên khoảng sân xanh mát rợp bóng tre. Đây là nơi trú ẩn lý tưởng cho những tâm hồn mệt mỏi muốn trốn chạy khỏi ồn ào đô hội. Ban công của phòng được thiết kế võng lưới cực đại treo đè ra khoảng không tĩnh lặng, là vị trí tuyệt vời để bạn nằm đọc sách, thưởng tách trà nóng và lắng nghe âm thanh rì rào.",
     amenities: [
@@ -195,9 +195,9 @@ const rooms: Room[] = [
     capacity: 6,
     bed: "3 Giường King sang xịn",
     badge: "BỂ BƠI VÔ CỰC 🏊‍♂️",
-    branch: "Bliss Home - Quận 10 (CS2) 🏙️",
+    branch: "Dancin Home - Quận 10 (CS2) 🏙️",
     address: "25a Đường 3/2, Phường 11, Quận 10",
-    description: "Sunset Panorama đại diện cho sự sang trọng bậc nhất tại Bliss Home Quận 10. Căn hộ rộng lớn sở hữu sân hiên vô cực rộng 40m² cùng bể bơi mini nước ấm vô cực ngoài trời ngắm trọn hoàng hôn Sài Gòn rực rỡ. Nằm tại vị trí đắc địa cao tầng, bạn có thể thưởng thức ly cocktail mát lạnh và chiêm ngưỡng bầu trời đô thị chuyển sắc lộng lẫy.",
+    description: "Sunset Panorama đại diện cho sự sang trọng bậc nhất tại Dancin Home Quận 10. Căn hộ rộng lớn sở hữu sân hiên vô cực rộng 40m² cùng bể bơi mini nước ấm vô cực ngoài trời ngắm trọn hoàng hôn Sài Gòn rực rỡ. Nằm tại vị trí đắc địa cao tầng, bạn có thể thưởng thức ly cocktail mát lạnh và chiêm ngưỡng bầu trời đô thị chuyển sắc lộng lẫy.",
     amenities: [
       "Bể bơi vô cực ngoài trời",
       "Quầy bar mini với cocktail kit",
@@ -346,11 +346,11 @@ export default function RoomGallery({
                 price: Number(dbRoom.price),
                 hourlyPrice: parsedMeta?.hourlyPrice || Math.round(Number(dbRoom.price) / 10),
                 capacity: dbRoom.capacity,
-                branch: dbRoom.branch.includes('CS1') ? 'Bliss Home - Tân Bình (CS1) 🏡' 
-                      : dbRoom.branch.includes('CS2') ? 'Bliss Home - Quận 10 (CS2) 🏙️'
-                      : dbRoom.branch.includes('CS3') ? 'Bliss Home - Quận 5 (CS3) 🪟'
-                      : dbRoom.branch.includes('CS4') ? 'Bliss Home - Gò Vấp (CS4) 🌸'
-                      : 'Bliss Home - Bình Thạnh (CS5) 🌿',
+                branch: dbRoom.branch.includes('CS1') ? 'Dancin Home - Tân Bình (CS1) 🏡' 
+                      : dbRoom.branch.includes('CS2') ? 'Dancin Home - Quận 10 (CS2) 🏙️'
+                      : dbRoom.branch.includes('CS3') ? 'Dancin Home - Quận 5 (CS3) 🪟'
+                      : dbRoom.branch.includes('CS4') ? 'Dancin Home - Gò Vấp (CS4) 🌸'
+                      : 'Dancin Home - Bình Thạnh (CS5) 🌿',
                 description: parsedMeta?.description || staticRoom.description,
                 amenities: (parsedMeta?.amenities && parsedMeta.amenities.length > 0) ? parsedMeta.amenities : staticRoom.amenities,
                 tags: (parsedMeta?.tags && parsedMeta.tags.length > 0) ? parsedMeta.tags : staticRoom.tags,
@@ -361,10 +361,10 @@ export default function RoomGallery({
             } else {
               // Phòng mới tự tạo chưa có trong static rooms
               const customImageUrl = parsedMeta?.imageUrl || parsedMeta?.url || dbRoom.thumbnail || "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
-              const displayBranch = dbRoom.branch.includes('CS1') ? 'Bliss Home - Tân Bình (CS1) 🏡'
-                                  : dbRoom.branch.includes('CS2') ? 'Bliss Home - Quận 10 (CS2) 🏙️'
-                                  : dbRoom.branch.includes('CS3') ? 'Bliss Home - Quận 5 (CS3) 🪟'
-                                  : dbRoom.branch.includes('CS4') ? 'Bliss Home - Gò Vấp (CS4) 🌸'
+              const displayBranch = dbRoom.branch.includes('CS1') ? 'Dancin Home - Tân Bình (CS1) 🏡'
+                                  : dbRoom.branch.includes('CS2') ? 'Dancin Home - Quận 10 (CS2) 🏙️'
+                                  : dbRoom.branch.includes('CS3') ? 'Dancin Home - Quận 5 (CS3) 🪟'
+                                  : dbRoom.branch.includes('CS4') ? 'Dancin Home - Gò Vấp (CS4) 🌸'
                                   : dbRoom.branch
               return {
                 id: dbRoom.id,
@@ -379,7 +379,7 @@ export default function RoomGallery({
                 badge: parsedMeta?.isFeatured ? "NỔI BẬT 🔥" : "PHÒNG MỚI ✨",
                 branch: displayBranch,
                 address: displayBranch,
-                description: parsedMeta?.description || `Trải nghiệm căn phòng ${dbRoom.name} tuyệt đẹp tại chi nhánh Bliss Home.`,
+                description: parsedMeta?.description || `Trải nghiệm căn phòng ${dbRoom.name} tuyệt đẹp tại chi nhánh Dancin Home.`,
                 amenities: (parsedMeta?.amenities && parsedMeta.amenities.length > 0) ? parsedMeta.amenities : ["Máy pha cà phê", "Trà miễn phí", "Loa Bluetooth", "Wifi tốc độ cao"],
                 tags: (parsedMeta?.tags && parsedMeta.tags.length > 0) ? parsedMeta.tags : ["bath", "couple"],
                 images: [customImageUrl],
@@ -453,8 +453,8 @@ export default function RoomGallery({
     setIsProcessingWebhook(false)
     
     // Tự động điền (Auto-fill) thông tin khách hàng từ localStorage
-    const savedName = typeof window !== 'undefined' ? localStorage.getItem('bliss_customer_name') : null
-    const savedPhone = typeof window !== 'undefined' ? localStorage.getItem('bliss_customer_phone') : null
+    const savedName = typeof window !== 'undefined' ? localStorage.getItem('dancin_customer_name') : null
+    const savedPhone = typeof window !== 'undefined' ? localStorage.getItem('dancin_customer_phone') : null
     setFullName(savedName || '')
     setPhoneNumber(savedPhone || '')
     setNotes('')
@@ -499,9 +499,9 @@ export default function RoomGallery({
 
   const getDiscountPercent = (code: string) => {
     const cleanCode = code.trim().toUpperCase()
-    if (cleanCode === 'BLISSSUMMER') return 0.1  // 10%
-    if (cleanCode === 'BLISS20') return 0.2      // 20%
-    if (cleanCode === 'BLISS50') return 0.5      // 50%
+    if (cleanCode === 'DANCINSUMMER') return 0.1  // 10%
+    if (cleanCode === 'DANCIN20') return 0.2      // 20%
+    if (cleanCode === 'DANCIN50') return 0.5      // 50%
     return 0
   }
 
@@ -596,7 +596,7 @@ export default function RoomGallery({
     setIsSubmitting(true)
     setSubmitError(null)
 
-    const code = "BLISS-" + Math.floor(100000 + Math.random() * 900000)
+    const code = "DANCIN-" + Math.floor(100000 + Math.random() * 900000)
     setBookingCode(code)
 
     const formattedNote = isHourly 
@@ -631,8 +631,8 @@ export default function RoomGallery({
       }
 
       if (typeof window !== 'undefined') {
-        localStorage.setItem('bliss_customer_name', fullName.trim())
-        localStorage.setItem('bliss_customer_phone', phoneNumber.trim())
+        localStorage.setItem('dancin_customer_name', fullName.trim())
+        localStorage.setItem('dancin_customer_phone', phoneNumber.trim())
       }
 
       setShowSuccess(true)
@@ -640,8 +640,8 @@ export default function RoomGallery({
       console.error('Supabase submit fallback active. Error:', err)
       
       if (typeof window !== 'undefined') {
-        localStorage.setItem('bliss_customer_name', fullName.trim())
-        localStorage.setItem('bliss_customer_phone', phoneNumber.trim())
+        localStorage.setItem('dancin_customer_name', fullName.trim())
+        localStorage.setItem('dancin_customer_phone', phoneNumber.trim())
       }
       
       setShowSuccess(true)
@@ -662,7 +662,7 @@ export default function RoomGallery({
         body: JSON.stringify({
           gateway: 'mbbank',
           amount: totalPrice,
-          content: `BLISS ${bookingCode}`,
+          content: `DANCIN ${bookingCode}`,
           transactionDate: new Date().toISOString()
         })
       })
@@ -822,7 +822,7 @@ export default function RoomGallery({
             Không gian độc bản
           </span>
           <h2 className="text-2xl font-black text-stone-850 font-sans tracking-tight">
-            {selectedRoomId !== 'all' ? 'Căn Phòng Bạn Đã Chọn' : 'Các mẫu không gian tại Bliss'}
+            {selectedRoomId !== 'all' ? 'Căn Phòng Bạn Đã Chọn' : 'Các mẫu không gian tại Dancin'}
           </h2>
         </div>
 
@@ -846,7 +846,7 @@ export default function RoomGallery({
           <span className="text-4xl animate-bounce">🏕️</span>
           <h3 className="font-bold text-stone-850 text-base">Không tìm thấy phòng phù hợp</h3>
           <p className="text-sm text-stone-500 max-w-sm leading-relaxed">
-            Trợ lý Bliss help center chưa tìm thấy phòng nào có đặc tính này ở bộ lọc hiện tại. Bạn hãy đổi bộ lọc ngày giờ, chi nhánh hoặc mô tả lại phòng khác nhé!
+            Trợ lý Dancin help center chưa tìm thấy phòng nào có đặc tính này ở bộ lọc hiện tại. Bạn hãy đổi bộ lọc ngày giờ, chi nhánh hoặc mô tả lại phòng khác nhé!
           </p>
           <button
             onClick={onClearFilter}
@@ -1097,7 +1097,7 @@ export default function RoomGallery({
                         Rất tiếc ạ! Căn phòng <strong>{selectedRoom.name}</strong> đã có khách đặt trước vào khung giờ <strong>{checkinTime} ngày {formatFriendlyDate(checkinDate)}</strong> mất rồi.
                       </p>
                       <div className="bg-white border border-amber-200 rounded-xl p-3 flex flex-col gap-2 text-xs text-stone-750">
-                        <span className="text-[10px] font-extrabold text-amber-850 uppercase tracking-widest block">💡 Đề xuất từ Bliss help center</span>
+                        <span className="text-[10px] font-extrabold text-amber-850 uppercase tracking-widest block">💡 Đề xuất từ Dancin help center</span>
                         <p className="leading-relaxed text-[11px] font-medium text-stone-600">
                           Bạn có muốn chuyển đặt phòng sang căn <strong>{alternativeRoom.name}</strong> ({alternativeRoom.branch}) cũng có sức chứa tương đương (<strong>{alternativeRoom.capacity} khách</strong>) và đang còn trống lịch không ạ? 🌸
                         </p>
@@ -1170,7 +1170,7 @@ export default function RoomGallery({
                         type="text"
                         value={promoInput}
                         onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
-                        placeholder="Ví dụ: BLISSSUMMER..."
+                        placeholder="Ví dụ: DANCINSUMMER..."
                         className="flex-grow bg-white border border-stone-200 rounded-lg p-2 text-xs text-stone-700 outline-none focus:border-[#0D3149] font-semibold"
                       />
                       <button
@@ -1201,7 +1201,7 @@ export default function RoomGallery({
                       </div>
                       {isHourly && (
                         <div className="text-[10px] text-blue-800 bg-blue-50 px-2 py-1.5 rounded-lg font-semibold border border-blue-100/40 -mt-0.5 animate-pulse leading-normal">
-                          💡 Bliss Home áp dụng thời gian thuê theo giờ tối thiểu từ 2 tiếng/lần.
+                          💡 Dancin Home áp dụng thời gian thuê theo giờ tối thiểu từ 2 tiếng/lần.
                         </div>
                       )}
                       <div className="flex justify-between text-stone-550">
@@ -1264,7 +1264,7 @@ export default function RoomGallery({
             </h2>
             <p className="text-xs md:text-sm text-stone-500 leading-relaxed -mt-1.5 max-w-sm">
               {isPaid 
-                ? `Tuyệt vời! Bliss Home đã nhận thanh toán tự động thành công cho phòng ${selectedRoom.name}.`
+                ? `Tuyệt vời! Dancin Home đã nhận thanh toán tự động thành công cho phòng ${selectedRoom.name}.`
                 : `Vui lòng quét mã QR chuyển khoản Napas bên dưới hoặc giả lập chuyển khoản để kích hoạt đặt cọc tự động.`}
             </p>
 
@@ -1303,7 +1303,7 @@ export default function RoomGallery({
                 
                 <div className="w-44 h-44 bg-white border-2 border-[#0D3149]/20 rounded-2xl p-2 shadow-inner flex items-center justify-center relative overflow-hidden group">
                   <img
-                    src={`https://img.vietqr.io/image/mbbank-0901234567-compact2.png?amount=${totalPrice}&addInfo=BLISS%20${bookingCode}&accountName=BLISS%20HOME%20HOMESTAY`}
+                    src={`https://img.vietqr.io/image/mbbank-0901234567-compact2.png?amount=${totalPrice}&addInfo=DANCIN%20${bookingCode}&accountName=DANCIN%20HOME%20HOMESTAY`}
                     alt="VietQR Payment Transfer Code"
                     className="w-full h-full object-contain"
                     loading="lazy"
@@ -1313,8 +1313,8 @@ export default function RoomGallery({
                 </div>
 
                 <div className="text-[10px] text-stone-600 leading-relaxed font-semibold bg-stone-50 border border-stone-200/50 p-2.5 rounded-xl w-full text-center">
-                  🏦 MBBank • Số TK: <strong>0901234567</strong> • <strong>BLISS HOME HOMESTAY</strong> <br />
-                  Nội dung chuyển khoản: <strong className="text-blue-800 font-mono select-all">BLISS {bookingCode}</strong>
+                  🏦 MBBank • Số TK: <strong>0901234567</strong> • <strong>DANCIN HOME HOMESTAY</strong> <br />
+                  Nội dung chuyển khoản: <strong className="text-blue-800 font-mono select-all">DANCIN {bookingCode}</strong>
                 </div>
 
                 <div className="text-[9px] text-stone-450 font-medium animate-pulse">
@@ -1358,7 +1358,7 @@ export default function RoomGallery({
                 <span className="text-[9px] text-stone-450 font-medium">Đưa mã QR cho lễ tân chi nhánh hoặc nhập tự check-in để nhận phòng lập tức 🚀</span>
                 
                 <p className="text-[10px] text-stone-450 leading-relaxed italic mt-1 max-w-sm">
-                  Bliss Home đã tự động đặt cọc và khóa phòng Cozy Cabin. Hẹn gặp bạn sớm tại homestay! 🌲✨
+                  Dancin Home đã tự động đặt cọc và khóa phòng Cozy Cabin. Hẹn gặp bạn sớm tại homestay! 🌲✨
                 </p>
               </div>
             )}

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bliss Home Booking",
+  title: "Dancin Home Booking",
   description: "Đặt homestay thông minh với AI",
 };
 

@@ -454,7 +454,7 @@ export default function AutomationPage() {
           status: workflowStatus,
           nodes,
           edges,
-          n8n_webhook_url: 'https://n8n.blisshome.vn/webhook/booking-automations'
+          n8n_webhook_url: 'https://n8n.dancinhome.vn/webhook/booking-automations'
         })
       })
 
@@ -673,7 +673,7 @@ export default function AutomationPage() {
                     <code className="text-[9.5px] font-mono font-bold text-emerald-800 bg-emerald-50 py-1 px-2.5 rounded-lg border border-emerald-100">
                       booking_created
                     </code>
-                    <span className="text-[8.5px] text-zinc-500 dark:text-zinc-450 block mt-1">Kích hoạt mỗi khi có lượt thanh toán cọc đơn đặt phòng mới trên ứng dụng Bliss.</span>
+                    <span className="text-[8.5px] text-zinc-500 dark:text-zinc-450 block mt-1">Kích hoạt mỗi khi có lượt thanh toán cọc đơn đặt phòng mới trên ứng dụng Dancin.</span>
                   </div>
                 )}
 
@@ -696,12 +696,12 @@ export default function AutomationPage() {
                       <input
                         type="text"
                         readOnly
-                        value={`https://n8n.blisshome.vn/webhook/${selectedNode.id}`}
+                        value={`https://n8n.dancinhome.vn/webhook/${selectedNode.id}`}
                         className="w-full bg-card border border-zinc-300 dark:border-zinc-700 py-1 px-2 text-[9px] font-mono rounded-lg outline-none"
                       />
                       <button 
                         onClick={() => {
-                          navigator.clipboard.writeText(`https://n8n.blisshome.vn/webhook/${selectedNode.id}`)
+                          navigator.clipboard.writeText(`https://n8n.dancinhome.vn/webhook/${selectedNode.id}`)
                           triggerToast('Đã copy đường dẫn Webhook!', 'success')
                         }}
                         className="bg-black hover:bg-slate-800 text-white border-none py-1 px-2.5 text-[8.5px] font-black rounded-lg cursor-pointer transition active:scale-95"

@@ -71,7 +71,7 @@ export interface CustomerGroup {
 const INITIAL_VOUCHERS: Voucher[] = [
   {
     id: 'VOUCH-01',
-    code: 'BLISSALL10',
+    code: 'DANCINALL10',
     type: 'percent',
     value: 10,
     usageCount: 45,
@@ -142,7 +142,7 @@ const INITIAL_GROUPS: CustomerGroup[] = [
   {
     id: 'group-04',
     name: 'Thân thiết VIP 💎',
-    description: 'Danh mục do Admin gán thủ công cho hội viên chi tiêu tích lũy lớn hơn 10 triệu đồng tại Bliss Home.',
+    description: 'Danh mục do Admin gán thủ công cho hội viên chi tiêu tích lũy lớn hơn 10 triệu đồng tại Dancin Home.',
     type: 'manual'
   },
   {
@@ -234,10 +234,10 @@ const INITIAL_ROOMS: Room[] = [
 // Mock Booking Data
 const MOCK_BOOKINGS: Booking[] = [
   {
-    id: 'BLISS-783912',
+    id: 'DANCIN-783912',
     customerName: 'Nguyễn Văn Hùng',
     phone: '0901234567',
-    branch: 'Bliss Home - Tân Bình (CS1) 🏡',
+    branch: 'Dancin Home - Tân Bình (CS1) 🏡',
     roomName: 'Pine Forest Loft (Tân Bình CS1)',
     checkIn: '30/05/2026 14:00',
     checkOut: '31/05/2026 12:00',
@@ -247,10 +247,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Khách cần chuẩn bị bồn tắm gỗ Hinoki thơm nhẹ ngoài ban công.'
   },
   {
-    id: 'BLISS-982736',
+    id: 'DANCIN-982736',
     customerName: 'Trần Thị Mai',
     phone: '0987654321',
-    branch: 'Bliss Home - Quận 10 (CS2) 🏙️',
+    branch: 'Dancin Home - Quận 10 (CS2) 🏙️',
     roomName: 'Valley View Suite (Quận 10 CS2)',
     checkIn: '30/05/2026 15:30',
     checkOut: '30/05/2026 18:30',
@@ -260,10 +260,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Thuê theo giờ (3 tiếng). Khách yêu cầu setup máy chiếu HD và Netflix sẵn.'
   },
   {
-    id: 'BLISS-451928',
+    id: 'DANCIN-451928',
     customerName: 'Phan Minh Anh',
     phone: '0912345678',
-    branch: 'Bliss Home - Quận 5 (CS3) 🪟',
+    branch: 'Dancin Home - Quận 5 (CS3) 🪟',
     roomName: 'Cozy Wooden Cabin (Quận 5 CS3)',
     checkIn: '02/06/2026 14:00',
     checkOut: '04/06/2026 12:00',
@@ -273,10 +273,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Gia đình đi nghỉ mát. Cần chuẩn bị bếp nướng BBQ ngoài ban công.'
   },
   {
-    id: 'BLISS-829103',
+    id: 'DANCIN-829103',
     customerName: 'Lê Hoàng Hải',
     phone: '0933445566',
-    branch: 'Bliss Home - Quận 10 (CS2) 🏙️',
+    branch: 'Dancin Home - Quận 10 (CS2) 🏙️',
     roomName: 'Sunset Panorama (Quận 10 CS2)',
     checkIn: '29/05/2026 14:00',
     checkOut: '30/05/2026 12:00',
@@ -286,10 +286,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Khách VIP dắt gia đình đi bơi nghỉ dưỡng hoàng hôn.'
   },
   {
-    id: 'BLISS-672514',
+    id: 'DANCIN-672514',
     customerName: 'Phạm Quỳnh Chi',
     phone: '0999887766',
-    branch: 'Bliss Home - Gò Vấp (CS4) 🌸',
+    branch: 'Dancin Home - Gò Vấp (CS4) 🌸',
     roomName: 'Sunlit Glass House (Gò Vấp CS4)',
     checkIn: '30/05/2026 16:00',
     checkOut: '30/05/2026 18:00',
@@ -389,7 +389,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           else if (r.status === 'maintenance') mappedStatus = 'maintenance'
           
           let hourlyPrice = Math.round(Number(r.price) / 10)
-          let description = `Trải nghiệm căn phòng ${r.name} tuyệt đẹp tại chi nhánh Bliss Home.`
+          let description = `Trải nghiệm căn phòng ${r.name} tuyệt đẹp tại chi nhánh Dancin Home.`
           let amenities: string[] = []
           let tags: string[] = []
           let imageUrl = r.thumbnail
@@ -457,7 +457,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           customerName: b.customers?.name || 'Khách vãng lai',
           phone: b.customers?.phone || 'Chưa cập nhật',
           branch: b.rooms?.branch || 'Chi nhánh Sài Gòn 🏡',
-          roomName: b.rooms?.name || 'Phòng nghỉ Bliss Home',
+          roomName: b.rooms?.name || 'Phòng nghỉ Dancin Home',
           checkIn: new Date(b.checkin_date).toLocaleDateString('vi-VN') + ' 14:00',
           checkOut: new Date(b.checkout_date).toLocaleDateString('vi-VN') + ' 12:00',
           totalAmount: Number(b.total_price),

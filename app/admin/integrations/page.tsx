@@ -38,22 +38,22 @@ const MOCK_ZNS_TEMPLATES: ZNSTemplate[] = [
     name: 'Xác nhận đặt đơn phòng thành công 🏨',
     status: 'approved',
     mappedFields: ['{ten_khach}', '{ma_booking}', '{ten_phong}', '{ngay_checkin}'],
-    content: 'Chào {ten_khach}, Bliss Home Sài Gòn đã xác nhận đơn đặt phòng {ma_booking} thành công! Bạn sẽ check-in phòng {ten_phong} vào ngày {ngay_checkin}. Trân trọng đón tiếp!',
+    content: 'Chào {ten_khach}, Dancin Home Sài Gòn đã xác nhận đơn đặt phòng {ma_booking} thành công! Bạn sẽ check-in phòng {ten_phong} vào ngày {ngay_checkin}. Trân trọng đón tiếp!',
   },
   {
     id: 'ZNS-02-VOUCHER',
     name: 'Tặng Voucher Tri Ân Nhóm Hành Vi AI 🎁',
     status: 'approved',
     mappedFields: ['{ten_khach}', '{ma_voucher}'],
-    content: 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Bliss Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập cực chill.',
-    voucherCodeSample: 'BLISSHE2026'
+    content: 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Dancin Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập cực chill.',
+    voucherCodeSample: 'DANCINHE2026'
   },
   {
     id: 'ZNS-03-BIRTHDAY',
     name: 'Chúc mừng sinh nhật Hội viên Vàng/Kim cương 🎂',
     status: 'approved',
     mappedFields: ['{ten_khach}', '{ma_voucher}'],
-    content: 'Bliss Home gửi tặng quý hội viên {ten_khach} đặc quyền mừng sinh nhật rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình Hinoki.',
+    content: 'Dancin Home gửi tặng quý hội viên {ten_khach} đặc quyền mừng sinh nhật rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình Hinoki.',
     voucherCodeSample: 'VIPBIRTHDAY'
   },
   {
@@ -61,7 +61,7 @@ const MOCK_ZNS_TEMPLATES: ZNSTemplate[] = [
     name: 'Khảo sát chất lượng dịch vụ sau check-out ⭐',
     status: 'pending',
     mappedFields: ['{ten_khach}', '{ma_booking}'],
-    content: 'Kính chào {ten_khach}, Bliss Home hy vọng bạn đã có một kỳ nghỉ tuyệt vời! Vui lòng dành 1 phút đánh giá đơn đặt phòng {ma_booking} để giúp chúng tôi cải thiện chất lượng tốt hơn.',
+    content: 'Kính chào {ten_khach}, Dancin Home hy vọng bạn đã có một kỳ nghỉ tuyệt vời! Vui lòng dành 1 phút đánh giá đơn đặt phòng {ma_booking} để giúp chúng tôi cải thiện chất lượng tốt hơn.',
   }
 ]
 
@@ -71,8 +71,8 @@ export default function IntegrationsPage() {
   // States Zalo OA
   const [oaId, setOaId] = useState('284018249821849182')
   const [secretKey, setSecretKey] = useState('••••••••••••••••••••••••••••••••')
-  const [accessToken, setAccessToken] = useState('ZaloAccessToken_BlissHome_2026_SecureKeyStringLength_XYZ')
-  const [refreshToken, setRefreshToken] = useState('ZaloRefreshToken_BlissHome_2026_SecureKey')
+  const [accessToken, setAccessToken] = useState('ZaloAccessToken_DancinHome_2026_SecureKeyStringLength_XYZ')
+  const [refreshToken, setRefreshToken] = useState('ZaloRefreshToken_DancinHome_2026_SecureKey')
   const [isZaloConnected, setIsZaloConnected] = useState(true)
   const [isZaloLoading, setIsZaloLoading] = useState(false)
   const [showOaKeys, setShowOaKeys] = useState(false)
@@ -85,8 +85,8 @@ export default function IntegrationsPage() {
   // States Email Configuration
   const [emailProvider, setEmailProvider] = useState<'resend' | 'sendgrid' | 'ses' | 'smtp'>('resend')
   const [emailApiKey, setEmailApiKey] = useState('re_9xK2A8bJ_L7sD2M3nQp5wTzYc6rE9vU1m')
-  const [senderEmail, setSenderEmail] = useState('booking@blisshome.vn')
-  const [senderName, setSenderName] = useState('Bliss Home Sài Gòn')
+  const [senderEmail, setSenderEmail] = useState('thuongvn.work@gmail.com')
+  const [senderName, setSenderName] = useState('Dancin Home Sài Gòn')
   const [testEmailAddress, setTestEmailAddress] = useState('')
   const [isEmailLoading, setIsEmailLoading] = useState(false)
   const [isDkimVerified, setIsDkimVerified] = useState(true)
@@ -103,11 +103,11 @@ export default function IntegrationsPage() {
   // Sao chép Webhook Link
   const copyWebhookUrl = () => {
     try {
-      navigator.clipboard.writeText('https://blisshome.vn/api/webhooks/zalo')
+      navigator.clipboard.writeText('https://dancinhome.vn/api/webhooks/zalo')
       showToast('📋 Đã sao chép link Webhook Zalo vào Clipboard!')
     } catch (e) {
       console.error(e)
-      alert('Không thể sao chép tự động. Webhook URL: https://blisshome.vn/api/webhooks/zalo')
+      alert('Không thể sao chép tự động. Webhook URL: https://dancinhome.vn/api/webhooks/zalo')
     }
   }
 
@@ -130,7 +130,7 @@ export default function IntegrationsPage() {
 
   // Hủy kết nối Zalo OA
   const handleDisconnectZalo = () => {
-    if (!confirm('Bạn có chắc chắn muốn ngắt kết nối với Zalo OA của Bliss Home không? Các tiến trình gửi tin ZNS tự động sẽ bị đình chỉ.')) return
+    if (!confirm('Bạn có chắc chắn muốn ngắt kết nối với Zalo OA của Dancin Home không? Các tiến trình gửi tin ZNS tự động sẽ bị đình chỉ.')) return
     setIsZaloConnected(false)
     showToast('⚠️ Đã ngắt kết nối Zalo OA!')
   }
@@ -204,10 +204,10 @@ export default function IntegrationsPage() {
         {/* Banner Zalo ZNS Header */}
         <div className="flex items-center gap-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-2 mb-1 select-none">
           <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[9px] uppercase shadow-inner">
-            BH
+            DH
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Dancin Home Sài Gòn</span>
             <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
           </div>
         </div>
@@ -330,7 +330,7 @@ export default function IntegrationsPage() {
                   </span>
                   <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-medium block mt-0.5">
                     {isZaloConnected 
-                      ? 'Đồng bộ API Zalo OA Bliss Home Sài Gòn hoạt động bình thường.' 
+                      ? 'Đồng bộ API Zalo OA Dancin Home Sài Gòn hoạt động bình thường.' 
                       : 'Vui lòng thiết lập các thông số khóa bảo mật bên dưới để bắt đầu.'
                     }
                   </span>
@@ -420,7 +420,7 @@ export default function IntegrationsPage() {
                 </span>
                 <div className="flex items-center gap-2 bg-white border border-zinc-200 dark:border-zinc-700 rounded-xl p-2 mt-1">
                   <span className="text-[10px] font-mono font-bold text-zinc-700 dark:text-zinc-300 flex-grow select-all overflow-x-auto whitespace-nowrap pr-2">
-                    https://blisshome.vn/api/webhooks/zalo
+                    https://dancinhome.vn/api/webhooks/zalo
                   </span>
                   <button
                     type="button"
@@ -695,7 +695,7 @@ export default function IntegrationsPage() {
             <div className="flex flex-col gap-5 bg-zinc-50 dark:bg-zinc-900/50 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800">
               <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
                 <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-wider block">BẢO MẬT & XÁC THỰC</span>
-                <h4 className="text-xs font-extrabold text-zinc-900 dark:text-zinc-100 mt-0.5">Xác thực tên miền: blisshome.vn</h4>
+                <h4 className="text-xs font-extrabold text-zinc-900 dark:text-zinc-100 mt-0.5">Xác thực tên miền: dancinhome.vn</h4>
               </div>
 
               {/* Bản ghi SPF */}
@@ -720,7 +720,7 @@ export default function IntegrationsPage() {
                   </span>
                 </div>
                 <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900/60 p-1.5 rounded border border-zinc-200 dark:border-zinc-800/80 block break-all leading-tight select-all">
-                  resend-key._domainkey.blisshome.vn
+                  resend-key._domainkey.dancinhome.vn
                 </span>
               </div>
 

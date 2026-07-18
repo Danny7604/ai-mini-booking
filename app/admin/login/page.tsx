@@ -80,7 +80,7 @@ export default function AdminLoginPage() {
 
       if (authenticatedUser) {
         // Lưu phiên đăng nhập vào sessionStorage
-        sessionStorage.setItem('bliss_admin', JSON.stringify(authenticatedUser))
+        sessionStorage.setItem('dancin_admin', JSON.stringify(authenticatedUser))
         
         showToast(`Chào mừng quay trở lại, ${authenticatedUser.name}!`)
         
@@ -123,10 +123,10 @@ export default function AdminLoginPage() {
         {/* Brand Header */}
         <div className="flex flex-col items-center gap-3.5 text-center">
           <div className="w-14 h-14 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center p-2.5 shadow-xs">
-            <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain filter dark:invert" />
+            <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain filter dark:invert" />
           </div>
           <div className="flex flex-col">
-            <h1 className="text-2xl font-black tracking-wider text-zinc-900 dark:text-zinc-50 uppercase">Bliss Home</h1>
+            <h1 className="text-2xl font-black tracking-wider text-zinc-900 dark:text-zinc-50 uppercase">Dancin Home</h1>
             <span className="text-[9px] text-muted-foreground tracking-widest uppercase block mt-1 font-bold">Admin Portal Security</span>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function AdminLoginPage() {
             Đăng Nhập Quản Trị
           </h2>
           <p className="text-xs text-muted-foreground text-center mt-1.5 leading-relaxed">
-            Vui lòng điền thông tin tài khoản để truy cập hệ thống quản trị Bliss Home Sài Gòn.
+            Vui lòng điền thông tin tài khoản để truy cập hệ thống quản trị Dancin Home Sài Gòn.
           </p>
         </div>
 

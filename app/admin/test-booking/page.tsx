@@ -41,10 +41,10 @@ interface Room {
 // Danh mục Chi nhánh để lọc
 const BRANCHES = [
   { id: 'all', name: 'Chi nhánh/Branch' },
-  { id: 'cs1', name: 'Bliss Home - Tân Bình (CS1) 🏡' },
-  { id: 'cs2', name: 'Bliss Home - Quận 10 (CS2) 🏙️' },
-  { id: 'cs3', name: 'Bliss Home - Quận 5 (CS3) 🪟' },
-  { id: 'cs4', name: 'Bliss Home - Gò Vấp (CS4) 🌸' }
+  { id: 'cs1', name: 'Dancin Home - Tân Bình (CS1) 🏡' },
+  { id: 'cs2', name: 'Dancin Home - Quận 10 (CS2) 🏙️' },
+  { id: 'cs3', name: 'Dancin Home - Quận 5 (CS3) 🪟' },
+  { id: 'cs4', name: 'Dancin Home - Gò Vấp (CS4) 🌸' }
 ]
 
 // Danh mục Tình trạng phòng để lọc

@@ -29,13 +29,13 @@ interface Booking {
   notes?: string
 }
 
-// 1. Khởi tạo mảng MOCK_BOOKINGS chất lượng cao theo đúng chuẩn Bliss Home
+// 1. Khởi tạo mảng MOCK_BOOKINGS chất lượng cao theo đúng chuẩn Dancin Home
 const MOCK_BOOKINGS: Booking[] = [
   {
-    id: 'BLISS-783912',
+    id: 'DANCIN-783912',
     customerName: 'Nguyễn Văn Hùng',
     phone: '0901234567',
-    branch: 'Bliss Home - Tân Bình (CS1) 🏡',
+    branch: 'Dancin Home - Tân Bình (CS1) 🏡',
     roomName: 'Pine Forest Loft (Tân Bình CS1)',
     checkIn: '30/05/2026 14:00',
     checkOut: '31/05/2026 12:00',
@@ -45,10 +45,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Khách cần chuẩn bị bồn tắm gỗ Hinoki thơm nhẹ ngoài ban công.'
   },
   {
-    id: 'BLISS-982736',
+    id: 'DANCIN-982736',
     customerName: 'Trần Thị Mai',
     phone: '0987654321',
-    branch: 'Bliss Home - Quận 10 (CS2) 🏙️',
+    branch: 'Dancin Home - Quận 10 (CS2) 🏙️',
     roomName: 'Valley View Suite (Quận 10 CS2)',
     checkIn: '30/05/2026 15:30',
     checkOut: '30/05/2026 18:30',
@@ -58,10 +58,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Thuê theo giờ (3 tiếng). Khách yêu cầu setup máy chiếu HD và Netflix sẵn.'
   },
   {
-    id: 'BLISS-451928',
+    id: 'DANCIN-451928',
     customerName: 'Phan Minh Anh',
     phone: '0912345678',
-    branch: 'Bliss Home - Quận 5 (CS3) 🪟',
+    branch: 'Dancin Home - Quận 5 (CS3) 🪟',
     roomName: 'Cozy Wooden Cabin (Quận 5 CS3)',
     checkIn: '02/06/2026 14:00',
     checkOut: '04/06/2026 12:00',
@@ -71,10 +71,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Gia đình đi nghỉ mát. Cần chuẩn bị bếp nướng BBQ ngoài ban công.'
   },
   {
-    id: 'BLISS-829103',
+    id: 'DANCIN-829103',
     customerName: 'Lê Hoàng Hải',
     phone: '0933445566',
-    branch: 'Bliss Home - Quận 10 (CS2) 🏙️',
+    branch: 'Dancin Home - Quận 10 (CS2) 🏙️',
     roomName: 'Sunset Panorama (Quận 10 CS2)',
     checkIn: '29/05/2026 14:00',
     checkOut: '30/05/2026 12:00',
@@ -84,10 +84,10 @@ const MOCK_BOOKINGS: Booking[] = [
     notes: 'Khách VIP dắt gia đình đi bơi nghỉ dưỡng hoàng hôn.'
   },
   {
-    id: 'BLISS-672514',
+    id: 'DANCIN-672514',
     customerName: 'Phạm Quỳnh Chi',
     phone: '0999887766',
-    branch: 'Bliss Home - Gò Vấp (CS4) 🌸',
+    branch: 'Dancin Home - Gò Vấp (CS4) 🌸',
     roomName: 'Sunlit Glass House (Gò Vấp CS4)',
     checkIn: '30/05/2026 16:00',
     checkOut: '30/05/2026 18:00',
@@ -121,7 +121,7 @@ export default function BookingsManagementPage() {
   const [highlightedTab, setHighlightedTab] = useState<string | null>(null)
 
 
-  // LẮNG NGHE SỰ KIỆN TỪ BLISS COPILOT AI (CHAT-TO-ACTION)
+  // LẮNG NGHE SỰ KIỆN TỪ DANCIN COPILOT AI (CHAT-TO-ACTION)
   useEffect(() => {
     const handleAdminAction = (event: Event) => {
       const customEvent = event as CustomEvent<{
@@ -160,9 +160,9 @@ export default function BookingsManagementPage() {
       }
     }
 
-    window.addEventListener('bliss-admin-action', handleAdminAction)
+    window.addEventListener('dancin-admin-action', handleAdminAction)
     return () => {
-      window.removeEventListener('bliss-admin-action', handleAdminAction)
+      window.removeEventListener('dancin-admin-action', handleAdminAction)
     }
   }, [bookings])
 

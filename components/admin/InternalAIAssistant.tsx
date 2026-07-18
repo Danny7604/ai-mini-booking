@@ -30,7 +30,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
     {
       id: 'welcome-1',
       sender: 'bot',
-      text: 'Xin chào Admin! Tôi là **Bliss Copilot**, trợ lý vận hành nội bộ của Bliss Home Sài Gòn. 🔐 Tôi có thể hỗ trợ bạn kiểm tra hiệu suất phòng, soạn thảo chiến dịch voucher, tóm tắt trạng thái booking hoặc phân tích chi nhánh quá tải. Bạn muốn kiểm tra hạng mục nào hôm nay?',
+      text: 'Xin chào Admin! Tôi là **Dancin Copilot**, trợ lý vận hành nội bộ của Dancin Home Sài Gòn. 🔐 Tôi có thể hỗ trợ bạn kiểm tra hiệu suất phòng, soạn thảo chiến dịch voucher, tóm tắt trạng thái booking hoặc phân tích chi nhánh quá tải. Bạn muốn kiểm tra hạng mục nào hôm nay?',
       time: 'Vừa xong'
     }
   ])
@@ -51,7 +51,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
   /**
    * Xử lý thực thi hành động giao diện
    * 1. Điều hướng đến đúng trang đích nếu admin đang ở trang khác
-   * 2. Phát sự kiện Window CustomEvent 'bliss-admin-action'
+   * 2. Phát sự kiện Window CustomEvent 'dancin-admin-action'
    */
   const handleExecuteAction = async (msgId: string, action: NonNullable<Message['action']>) => {
     try {
@@ -68,7 +68,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
       }
 
       // 2. Dispatch Custom Event
-      const event = new CustomEvent('bliss-admin-action', {
+      const event = new CustomEvent('dancin-admin-action', {
         detail: {
           type: action.type,
           payload: action.payload,
@@ -83,7 +83,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
       )
 
     } catch (error) {
-      console.error('Lỗi khi thực thi lệnh giao diện Bliss Copilot:', error)
+      console.error('Lỗi khi thực thi lệnh giao diện Dancin Copilot:', error)
     }
   }
 
@@ -155,13 +155,13 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
         }
       ])
     } catch (error) {
-      console.error('Lỗi nghiêm trọng khi Bliss Copilot xử lý tin nhắn:', error)
+      console.error('Lỗi nghiêm trọng khi Dancin Copilot xử lý tin nhắn:', error)
       setMessages(prev => [
         ...prev,
         {
           id: 'error-' + Date.now(),
           sender: 'system',
-          text: '❌ **Lỗi Copilot**: Trợ lý AI gặp gián đoạn kết nối với máy chủ Bliss Home. Vui lòng thử lại sau giây lát hoặc kiểm tra kết nối mạng của bạn.',
+          text: '❌ **Lỗi Copilot**: Trợ lý AI gặp gián đoạn kết nối với máy chủ Dancin Home. Vui lòng thử lại sau giây lát hoặc kiểm tra kết nối mạng của bạn.',
           time
         }
       ])
@@ -183,7 +183,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
           </div>
           <div>
             <h3 className="text-sm font-black tracking-tight text-zinc-900 dark:text-zinc-50 uppercase flex items-center gap-1.5">
-              Bliss Copilot <span className="text-[8px] bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">INTERNAL AI</span>
+              Dancin Copilot <span className="text-[8px] bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">INTERNAL AI</span>
             </h3>
             <span className="text-[9px] text-zinc-500 dark:text-zinc-400 block -mt-0.5 font-mono flex items-center gap-1">
               <Terminal size={8} className="text-zinc-600 dark:text-zinc-400" /> Hệ thống sẵn sàng vận hành RAG & Actionable
@@ -217,7 +217,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
                 <span className="text-rose-500 font-mono">⚠️ Hệ Thống</span>
               ) : (
                 <>
-                  <Bot size={8} className="text-zinc-600 dark:text-zinc-400" /> <span>Bliss Copilot</span>
+                  <Bot size={8} className="text-zinc-600 dark:text-zinc-400" /> <span>Dancin Copilot</span>
                 </>
               )}
             </div>
@@ -283,7 +283,7 @@ export default function InternalAIAssistant({ isOpen, onClose }: InternalAIAssis
         {isTyping && (
           <div className="self-start max-w-[80%] flex flex-col gap-1">
             <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-bold flex items-center gap-1">
-              <Bot size={8} className="text-zinc-600 dark:text-zinc-400 animate-spin" /> Bliss Copilot đang phân tích dữ liệu...
+              <Bot size={8} className="text-zinc-600 dark:text-zinc-400 animate-spin" /> Dancin Copilot đang phân tích dữ liệu...
             </span>
             <div className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-3.5 py-2.5 rounded-2xl rounded-tl-none shadow-xs flex gap-1 items-center justify-center w-14">
               <span className="w-1.5 h-1.5 bg-zinc-900 dark:bg-zinc-100 rounded-full animate-bounce [animation-delay:-0.3s]"></span>

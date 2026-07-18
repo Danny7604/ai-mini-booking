@@ -27,27 +27,27 @@ const suggestions: Suggestion[] = [
 const wittyScenarios = [
   {
     keywords: ['thời tiết', 'nắng', 'mưa', 'lạnh', 'nóng', 'weather', 'bão', 'sương'],
-    response: 'Thời tiết Sài Gòn dạo này nắng mưa thất thường như tâm trạng người yêu cũ vậy đó! 🌧️☀️ Nhưng bạn yên tâm, ở Bliss Home thì phòng lúc nào cũng ấm áp, nước nóng đầy đủ và có bồn tắm gỗ Hinoki cực chill. Hay để Bé Bliss lọc mấy phòng có bồn tắm chill cho bạn ngâm mình trốn mưa trốn nắng nha? 👇'
+    response: 'Thời tiết Sài Gòn dạo này nắng mưa thất thường như tâm trạng người yêu cũ vậy đó! 🌧️☀️ Nhưng bạn yên tâm, ở Dancin Home thì phòng lúc nào cũng ấm áp, nước nóng đầy đủ và có bồn tắm gỗ Hinoki cực chill. Hay để Bé Dancin lọc mấy phòng có bồn tắm chill cho bạn ngâm mình trốn mưa trốn nắng nha? 👇'
   },
   {
     keywords: ['ai', 'tên gì', 'là gì', 'who', 'identify', 'tên là', 'bot', 'assistant'],
-    response: 'Bé Bliss là "chiến thần tư vấn" và là trợ lý ảo chính thức của Bliss Home Sài Gòn đây ạ! 👑 Nhiệm vụ lớn nhất đời mình là giúp các bạn yêu tìm phòng đi trốn deadline và thế giới. Bạn muốn tìm phòng gác mái lãng mạn cho 2 người hay phòng cabin rộng rãi cho cả hội bạn thân nè? 👇'
+    response: 'Bé Dancin là "chiến thần tư vấn" và là trợ lý ảo chính thức của Dancin Home Sài Gòn đây ạ! 👑 Nhiệm vụ lớn nhất đời mình là giúp các bạn yêu tìm phòng đi trốn deadline và thế giới. Bạn muốn tìm phòng gác mái lãng mạn cho 2 người hay phòng cabin rộng rãi cho cả hội bạn thân nè? 👇'
   },
   {
     keywords: ['ăn', 'uống', 'đói', 'nhậu', 'tiệc', 'food', 'bbq', 'nướng', 'lẩu', 'đồ ăn'],
-    response: 'Nhắc tới ăn uống là bụng Bé Bliss reo lên rồi nè! 🍲 Đi trốn tại Bliss Home thì tuyệt nhất là làm một bữa tiệc nướng BBQ thơm phức ngoài sân vườn. Bé Bliss có phòng **Cozy Wooden Cabin** có bếp lò và hiên nướng BBQ riêng cực đỉnh. Bạn có muốn mình lọc phòng này ra xem thử không? 👇'
+    response: 'Nhắc tới ăn uống là bụng Bé Dancin reo lên rồi nè! 🍲 Đi trốn tại Dancin Home thì tuyệt nhất là làm một bữa tiệc nướng BBQ thơm phức ngoài sân vườn. Bé Dancin có phòng **Cozy Wooden Cabin** có bếp lò và hiên nướng BBQ riêng cực đỉnh. Bạn có muốn mình lọc phòng này ra xem thử không? 👇'
   },
   {
     keywords: ['thất tình', 'buồn', 'cô đơn', 'mệt', 'stress', 'deadline', 'áp lực', 'khóc', 'yếu lòng', 'nản', 'tệ', 'chán'],
-    response: 'Thương bạn yêu quá hà! 🥺 Cuộc sống ngoài kia nhiều áp lực quá thì mình tạm gác lại hết, xách balo lên đi trốn để chữa lành thôi. Bé Bliss đề xuất căn **Riverside Nest** sát suối chảy róc rách cực yên bình, hoặc căn **Valley View Suite** nằm lười săn mây ngắm cảnh. Để mình lọc danh sách này cho bạn phục hồi năng lượng nha! 👇'
+    response: 'Thương bạn yêu quá hà! 🥺 Cuộc sống ngoài kia nhiều áp lực quá thì mình tạm gác lại hết, xách balo lên đi trốn để chữa lành thôi. Bé Dancin đề xuất căn **Riverside Nest** sát suối chảy róc rách cực yên bình, hoặc căn **Valley View Suite** nằm lười săn mây ngắm cảnh. Để mình lọc danh sách này cho bạn phục hồi năng lượng nha! 👇'
   },
   {
     keywords: ['đẹp trai', 'xinh gái', 'yêu bé', 'thả thính', 'dễ thương', 'cute', 'thính'],
-    response: 'Ái chà, bạn thính ngọt như mật vậy làm Bé Bliss ngại chín cả mặt rồi nè! 🥰 Nhưng mà Bé Bliss chỉ chung thủy với việc tìm phòng đẹp cho bạn thôi. Để đáp lại sự dễ thương này, mình lọc danh sách các phòng view hoàng hôn lãng mạn nhất Bliss Home cho hai đứa... à cho bạn xem nha! 👇'
+    response: 'Ái chà, bạn thính ngọt như mật vậy làm Bé Dancin ngại chín cả mặt rồi nè! 🥰 Nhưng mà Bé Dancin chỉ chung thủy với việc tìm phòng đẹp cho bạn thôi. Để đáp lại sự dễ thương này, mình lọc danh sách các phòng view hoàng hôn lãng mạn nhất Dancin Home cho hai đứa... à cho bạn xem nha! 👇'
   },
   {
     keywords: ['giá', 'bao nhiêu', 'tiền', 'đắt', 'rẻ', 'mắc', 'price', 'cost', 'hủy', 'cancel', 'book', 'đặt'],
-    response: 'Dạ giá phòng tại Bliss Home luôn được hiển thị công khai, minh bạch ngay bên cạnh danh sách phòng đó ạ. Rất nhiều lựa chọn từ bình dân đến sang chảnh! Để tiết kiệm thời gian, Bé Bliss lọc sẵn các phòng giá siêu "hạt dẻ" dưới 1.5 triệu/đêm cho bạn tham khảo trước nha? 👇'
+    response: 'Dạ giá phòng tại Dancin Home luôn được hiển thị công khai, minh bạch ngay bên cạnh danh sách phòng đó ạ. Rất nhiều lựa chọn từ bình dân đến sang chảnh! Để tiết kiệm thời gian, Bé Dancin lọc sẵn các phòng giá siêu "hạt dẻ" dưới 1.5 triệu/đêm cho bạn tham khảo trước nha? 👇'
   }
 ];
 
@@ -66,7 +66,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
     {
       id: 'welcome-1',
       sender: 'bot',
-      text: 'Xin chào! Mình là **Bliss help center**, trợ lý ảo của Bliss Home. 🌸 mình có thể giúp bạn tìm căn phòng ưng ý nhất tại đây. Bạn muốn căn phòng như thế nào? Hãy mô tả bằng tiếng Việt hoặc chọn nhanh các gợi ý phía dưới nhé!',
+      text: 'Xin chào! Mình là **Dancin help center**, trợ lý ảo của Dancin Home. 🌸 mình có thể giúp bạn tìm căn phòng ưng ý nhất tại đây. Bạn muốn căn phòng như thế nào? Hãy mô tả bằng tiếng Việt hoặc chọn nhanh các gợi ý phía dưới nhé!',
       time: 'Vừa xong'
     }
   ])
@@ -95,7 +95,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
           {
             id: 'welcome-2',
             sender: 'bot',
-            text: '🌸 Hiện tại đang là mùa săn mây ngập tràn vô cùng thơ mộng tại Bliss Home đó ạ! Bạn có muốn tìm phòng **có bồn tắm gỗ Hinoki** ngoài trời hay căn **view hoàng hôn góc siêu rộng** không ạ? 👇',
+            text: '🌸 Hiện tại đang là mùa săn mây ngập tràn vô cùng thơ mộng tại Dancin Home đó ạ! Bạn có muốn tìm phòng **có bồn tắm gỗ Hinoki** ngoài trời hay căn **view hoàng hôn góc siêu rộng** không ạ? 👇',
             time
           }
         ])
@@ -113,15 +113,15 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
 
     // 1. Phân tích Chi nhánh
     if (match('tân bình', 'cs1', 'xuân hồng')) {
-      detectedBranch = 'Bliss Home - Tân Bình (CS1) 🏡'
+      detectedBranch = 'Dancin Home - Tân Bình (CS1) 🏡'
     } else if (match('quận 10', 'cs2', 'ba tháng hai', '3/2')) {
-      detectedBranch = 'Bliss Home - Quận 10 (CS2) 🏙️'
+      detectedBranch = 'Dancin Home - Quận 10 (CS2) 🏙️'
     } else if (match('quận 5', 'cs3', 'phạm hữu chí')) {
-      detectedBranch = 'Bliss Home - Quận 5 (CS3) 🪟'
+      detectedBranch = 'Dancin Home - Quận 5 (CS3) 🪟'
     } else if (match('gò vấp', 'cs4', 'phan huy ích')) {
-      detectedBranch = 'Bliss Home - Gò Vấp (CS4) 🌸'
+      detectedBranch = 'Dancin Home - Gò Vấp (CS4) 🌸'
     } else if (match('bình thạnh', 'cs5', 'bùi đình túy')) {
-      detectedBranch = 'Bliss Home - Bình Thạnh (CS5) 🌿'
+      detectedBranch = 'Dancin Home - Bình Thạnh (CS5) 🌿'
     }
 
     // 2. Phân tích Phòng nghỉ
@@ -177,7 +177,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
         'phòng', 'room', 'chào', 'hi', 'helo', 'hello', 'tắm', 'mây', 'view', 
         'cặp', 'đôi', 'gia đình', 'rẻ', 'tiết kiệm', 'bể bơi', 'hồ bơi', 'pool', 
         'chi nhánh', 'địa chỉ', 'giá', 'giờ', 'đêm', 'đặt', 'book', 'saigon', 
-        'sài gòn', 'bliss', 'home', 'tân bình', 'quận 10', 'quận 5', 'gò vấp', 
+        'sài gòn', 'dancin', 'home', 'tân bình', 'quận 10', 'quận 5', 'gò vấp', 
         'bình thạnh', 'loft', 'suite', 'cabin', 'glass', 'nest', 'panorama', 
         'bồn', 'tắm', 'hinoki', 'marshall', 'nướng', 'bbq', 'netflix', 'ăn', 
         'uống', 'giúp', 'hỗ trợ', 'reset', 'làm mới', 'cảm ơn', 'thanks', 'tuyệt', 
@@ -191,12 +191,12 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
       if (matchedScenario) {
         botResponse = matchedScenario.response;
       } else if (!isRelevant) {
-        botResponse = 'Ui da, câu hỏi này của bạn làm Bé Bliss "đứng hình mất 2 giây" vì nằm ngoài vùng vũ trụ của mình rồi! 🛸 Chắc do bạn nói chuyện sâu sắc quá đó hihi. Để quay lại quỹ đạo đi trốn, bạn muốn Bé Bliss tìm phòng có bồn tắm chill ngâm mình hay phòng view thung lũng săn mây siêu thực đây? 👇';
+        botResponse = 'Ui da, câu hỏi này của bạn làm Bé Dancin "đứng hình mất 2 giây" vì nằm ngoài vùng vũ trụ của mình rồi! 🛸 Chắc do bạn nói chuyện sâu sắc quá đó hihi. Để quay lại quỹ đạo đi trốn, bạn muốn Bé Dancin tìm phòng có bồn tắm chill ngâm mình hay phòng view thung lũng săn mây siêu thực đây? 👇';
       } else {
         if (match('bồn tắm', 'tắm', 'bath', 'jacuzzi')) {
           newFilter = 'bath'
           newLabel = 'Có bồn tắm chill'
-          botResponse = 'Úi chà, gu ngâm mình thư giãn ngắm cảnh đúng không nè? 🛁 Bé Bliss đã lọc ngay các căn phòng có bồn tắm đắt giá nhất Bliss Home rồi đây. Đặc biệt căn **Pine Forest Loft** có bồn tắm Hinoki ngoài trời cho bạn tha hồ "sống ảo" xà phòng bay phấp phới luôn! Lướt xem liền nha!'
+          botResponse = 'Úi chà, gu ngâm mình thư giãn ngắm cảnh đúng không nè? 🛁 Bé Dancin đã lọc ngay các căn phòng có bồn tắm đắt giá nhất Dancin Home rồi đây. Đặc biệt căn **Pine Forest Loft** có bồn tắm Hinoki ngoài trời cho bạn tha hồ "sống ảo" xà phòng bay phấp phới luôn! Lướt xem liền nha!'
         } else if (match('mây', 'thung lũng', 'săn mây', 'view đồi', 'panorama')) {
           newFilter = 'cloud'
           newLabel = 'View săn mây cực đỉnh'
@@ -208,23 +208,23 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
         } else if (match('gia đình', '4 người', 'trẻ em', 'nhóm', 'đông người', 'family')) {
           newFilter = 'family'
           newLabel = 'Thích hợp gia đình'
-          botResponse = 'Chào cả nhà mình ạ! Biệt đội đi trốn thế giới tụ họp đông đủ chưa nè? 🏡 Bé Bliss đã lọc ngay các căn rộng rãi, đầy đủ bếp núc cho các chiến thần trổ tài nấu nướng. Căn cabin gỗ **Cozy Wooden Cabin** có lò sưởi ấm áp và hiên nướng BBQ sẽ là nơi lý tưởng để "tám" xuyên màn đêm đó!'
+          botResponse = 'Chào cả nhà mình ạ! Biệt đội đi trốn thế giới tụ họp đông đủ chưa nè? 🏡 Bé Dancin đã lọc ngay các căn rộng rãi, đầy đủ bếp núc cho các chiến thần trổ tài nấu nướng. Căn cabin gỗ **Cozy Wooden Cabin** có lò sưởi ấm áp và hiên nướng BBQ sẽ là nơi lý tưởng để "tám" xuyên màn đêm đó!'
         } else if (match('rẻ', 'tiết kiệm', 'giá tốt', 'ít tiền', 'budget', 'dưới 1.5 triệu')) {
           newFilter = 'budget'
           newLabel = 'Tiết kiệm (Dưới 1.5tr)'
-          botResponse = 'Đang "xẹp ví" nhưng tâm hồn vẫn muốn bay bổng đi trốn? Bé Bliss hiểu mà! 💸 Đã gom ngay danh sách các phòng siêu hạt dẻ dưới 1.5 triệu/đêm. Cực kỳ đề xuất căn **Riverside Nest (Tổ chim ven suối)** chỉ 950k/đêm để bạn tha hồ chill mà không lo "cháy túi"!'
+          botResponse = 'Đang "xẹp ví" nhưng tâm hồn vẫn muốn bay bổng đi trốn? Bé Dancin hiểu mà! 💸 Đã gom ngay danh sách các phòng siêu hạt dẻ dưới 1.5 triệu/đêm. Cực kỳ đề xuất căn **Riverside Nest (Tổ chim ven suối)** chỉ 950k/đêm để bạn tha hồ chill mà không lo "cháy túi"!'
         } else if (match('hồ bơi', 'bể bơi', 'pool', 'bơi')) {
           newFilter = 'pool'
           newLabel = 'Có hồ bơi vô cực'
           botResponse = 'Đắm mình giữa làn nước ấm ngắm hoàng hôn buông xuống rừng thông thì sang chảnh thôi rồi! 🏊‍♂️ Đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng. Chuẩn bị bikini để thả dáng sống ảo triệu like thôi bạn ơi!'
         } else if (match('công', 'địa chỉ', 'chi nhánh', 'ở đâu', 'vị trí')) {
-          botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Bliss Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Bliss dắt đi trốn nhé! 🏡'
+          botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Dancin Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Dancin dắt đi trốn nhé! 🏡'
         } else if (match('chào', 'hi', 'hello', 'helo', 'alo')) {
-          botResponse = 'Dạ lô bạn yêu! Rất vui được gặp bạn nè. 🌸 Bạn muốn tìm căn phòng nào để trốn deadline, trốn thế giới hay trốn... nợ? Hãy miêu tả căn phòng trong mơ hoặc chọn nhanh gợi ý phía dưới để Bé Bliss dẫn lối nha!'
+          botResponse = 'Dạ lô bạn yêu! Rất vui được gặp bạn nè. 🌸 Bạn muốn tìm căn phòng nào để trốn deadline, trốn thế giới hay trốn... nợ? Hãy miêu tả căn phòng trong mơ hoặc chọn nhanh gợi ý phía dưới để Bé Dancin dẫn lối nha!'
         } else if (match('cảm ơn', 'thank', 'tuyệt', 'ok')) {
-          botResponse = 'Hì hì, không có chi nè! Niềm vui của Bé Bliss là được hỗ trợ bạn tìm phòng đi trốn deadline. Chúc bạn tìm được căn phòng ưng ý tại Bliss Home nha! 🌸✨'
+          botResponse = 'Hì hì, không có chi nè! Niềm vui của Bé Dancin là được hỗ trợ bạn tìm phòng đi trốn deadline. Chúc bạn tìm được căn phòng ưng ý tại Dancin Home nha! 🌸✨'
         } else {
-          botResponse = `A ha! Nhận được tín hiệu vũ trụ từ bạn rồi nè: *" ${text} "*. ✨ Dựa trên tần số này, Bé Bliss đã lọc ra những phòng nghỉ chill nhất, gần gũi thiên nhiên nhất tại Bliss Home. Bạn xem chi tiết các phòng ở danh sách bên cạnh nha!`
+          botResponse = `A ha! Nhận được tín hiệu vũ trụ từ bạn rồi nè: *" ${text} "*. ✨ Dựa trên tần số này, Bé Dancin đã lọc ra những phòng nghỉ chill nhất, gần gũi thiên nhiên nhất tại Dancin Home. Bạn xem chi tiết các phòng ở danh sách bên cạnh nha!`
         }
       }
 
@@ -259,7 +259,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
 
     setIsTyping(true)
 
-    // 2. Trả lời cụ thể của Bot Bliss help center và lọc phòng
+    // 2. Trả lời cụ thể của Bot Dancin help center và lọc phòng
     setTimeout(() => {
       setIsTyping(false)
       const botTime = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
@@ -267,25 +267,25 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
 
       switch (filter) {
         case 'bath':
-          botResponse = 'Bé Bliss đã lọc các phòng **có bồn tắm cực kỳ thư giãn**. Ngâm mình ngắm rừng thông hay thung lũng mây bay thì còn gì chill bằng đúng không bạn! 🛁🌲'
+          botResponse = 'Bé Dancin đã lọc các phòng **có bồn tắm cực kỳ thư giãn**. Ngâm mình ngắm rừng thông hay thung lũng mây bay thì còn gì chill bằng đúng không bạn! 🛁🌲'
           break
         case 'cloud':
-          botResponse = 'Biển mây đang đợi bạn! Bé Bliss vừa mở bộ lọc những phòng **săn mây đẹp nhất**. Kéo nhẹ rèm là thấy mây ùa vào tận giường nằm luôn đó nha! ☁️✨'
+          botResponse = 'Biển mây đang đợi bạn! Bé Dancin vừa mở bộ lọc những phòng **săn mây đẹp nhất**. Kéo nhẹ rèm là thấy mây ùa vào tận giường nằm luôn đó nha! ☁️✨'
           break
         case 'couple':
-          botResponse = 'Tình yêu bay bổng trong không gian bình yên! Bé Bliss đã lựa ra các góc nhỏ ấm áp, lãng mạn **thích hợp nhất cho 2 người** du lịch cùng nhau. 👩‍❤️‍👨'
+          botResponse = 'Tình yêu bay bổng trong không gian bình yên! Bé Dancin đã lựa ra các góc nhỏ ấm áp, lãng mạn **thích hợp nhất cho 2 người** du lịch cùng nhau. 👩‍❤️‍👨'
           break
         case 'family':
-          botResponse = 'Chuyến đi gắn kết của cả nhà! Bé Bliss đã lọc các căn cabin gỗ rộng lớn, có bếp nấu nướng và sân nướng BBQ sưởi ấm rất **phù hợp cho gia đình từ 4-6 người**.'
+          botResponse = 'Chuyến đi gắn kết của cả nhà! Bé Dancin đã lọc các căn cabin gỗ rộng lớn, có bếp nấu nướng và sân nướng BBQ sưởi ấm rất **phù hợp cho gia đình từ 4-6 người**.'
           break
         case 'budget':
-          botResponse = 'Đi trốn thế giới nhưng chi phí cực kỳ nhẹ nhàng! Bé Bliss đã lọc các căn có **giá vô cùng hạt dẻ chỉ dưới 1.5 triệu/đêm** để bạn vui chơi không lo nghĩ.'
+          botResponse = 'Đi trốn thế giới nhưng chi phí cực kỳ nhẹ nhàng! Bé Dancin đã lọc các căn có **giá vô cùng hạt dẻ chỉ dưới 1.5 triệu/đêm** để bạn vui chơi không lo nghĩ.'
           break
         case 'pool':
-          botResponse = 'Thư thái vẫy vùng giữa mây ngàn! Bé Bliss đã lọc căn phòng hoàng hôn có **bể bơi nước ấm vô cực mini ngoài trời** siêu VIP cho bạn trải nghiệm.'
+          botResponse = 'Thư thái vẫy vùng giữa mây ngàn! Bé Dancin đã lọc căn phòng hoàng hôn có **bể bơi nước ấm vô cực mini ngoài trời** siêu VIP cho bạn trải nghiệm.'
           break
         default:
-          botResponse = 'Bé Bliss hiển thị danh sách các phòng lý tưởng cho bạn nhé!'
+          botResponse = 'Bé Dancin hiển thị danh sách các phòng lý tưởng cho bạn nhé!'
       }
 
       onFilterChange(filter, label)
@@ -308,7 +308,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
       {
         id: 'reset-1',
         sender: 'bot',
-        text: 'Lịch sử hội thoại đã được làm mới. Mình là **Bliss help center**, trợ lý ảo của Bliss Home. 🌸 Bạn có muốn mình hỗ trợ tìm phòng view đẹp hay bồn tắm ngâm mình không ạ?',
+        text: 'Lịch sử hội thoại đã được làm mới. Mình là **Dancin help center**, trợ lý ảo của Dancin Home. 🌸 Bạn có muốn mình hỗ trợ tìm phòng view đẹp hay bồn tắm ngâm mình không ạ?',
         time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
       }
     ])
@@ -317,18 +317,18 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
   return (
     <div className="bg-white/85 backdrop-blur-md border border-stone-200/50 rounded-3xl shadow-sm flex flex-col h-[500px] lg:h-[660px] overflow-hidden">
       {/* Header Khung Chat */}
-      <div className="bg-gradient-to-br from-stone-900 to-[#0D3149] p-4 flex items-center justify-between text-white flex-shrink-0">
+      <div className="bg-gradient-to-br from-stone-900 to-[#0D3149] p-4 flex items-between justify-between text-white flex-shrink-0">
         <div className="flex items-center gap-3">
           <div className="relative w-10 h-10 flex-shrink-0">
             <img
               src="/logo.png"
-              alt="Bliss help center Avatar"
+              alt="Dancin help center Avatar"
               className="w-full h-full object-contain rounded-full border-2 border-white/20 bg-white p-1"
             />
             <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-blue-500 border border-stone-900 rounded-full"></span>
           </div>
           <div>
-            <h4 className="font-extrabold text-sm leading-tight text-white font-sans">Bliss help center</h4>
+            <h4 className="font-extrabold text-sm leading-tight text-white font-sans">Dancin help center</h4>
             <span className="text-[10px] text-white/60 block mt-0.5">Trực tuyến • Phản hồi 24/7</span>
           </div>
         </div>

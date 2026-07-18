@@ -229,16 +229,16 @@ const CAMPAIGNS_PERFORMANCE: CampaignPerformance[] = [
 // ================= AI ANALYSES Markdowns =================
 
 const AI_ANALYSIS_WEEKLY = `
-### 🔮 BÁO CÁO PHÂN TÍCH NHANH BLISS COPILOT AI (WEEKLY REPORT)
+### 🔮 BÁO CÁO PHÂN TÍCH NHANH DANCIN COPILOT AI (WEEKLY REPORT)
 
-Dựa trên dữ liệu tuần này, Bliss Copilot AI xin gửi tới quý quản lý các nhận định và kế hoạch hành động tối ưu hóa công suất buồng phòng tại Bliss Home Sài Gòn:
+Dựa trên dữ liệu tuần này, Dancin Copilot AI xin gửi tới quý quản lý các nhận định và kế hoạch hành động tối ưu hóa công suất buồng phòng tại Dancin Home Sài Gòn:
 
 #### 1. Đánh giá sức khỏe kinh doanh trong tuần:
 * **Tăng trưởng Doanh thu đạt +8.5%:** Tuần này ghi nhận tổng doanh thu **14.200.000đ** với **9 đơn đặt phòng thành công**. 
 * **Pine Forest Loft CS1 (Tân Bình) đang đạt công suất tốt:** Các phòng gia đình tiếp tục làm chủ đạo, tuy nhiên, **Sunlit Glass House CS4 (Gò Vấp)** đang có dấu hiệu trống lịch đột ngột do thiếu lượng booking theo giờ ngắn hạn trong các ngày giữa tuần (thứ 4 trống hoàn toàn đơn booking).
 
 #### 2. Hiệu năng Vouchers & Chiến dịch Marketing:
-* **Tỉ lệ quy đổi Voucher là 34.2% (12/35 dùng):** Mã \`BLISSHE2026\` có CTR rất ấn tượng. Ngược lại, chiến dịch \`MKT-03\` gửi qua Email đạt CTR chỉ 9.8% - đây là kênh có hiệu quả thấp nhất do tiêu đề chưa kích thích khách hàng hành động.
+* **Tỉ lệ quy đổi Voucher là 34.2% (12/35 dùng):** Mã \`DANCINHE2026\` có CTR rất ấn tượng. Ngược lại, chiến dịch \`MKT-03\` gửi qua Email đạt CTR chỉ 9.8% - đây là kênh có hiệu quả thấp nhất do tiêu đề chưa kích thích khách hàng hành động.
 
 #### 3. Đề xuất Kế hoạch Hành động Marketing & Sales (Kế hoạch Gửi tin Tuần tới):
 1. **Dồn toàn lực cho chiến dịch Zalo ZNS:** Gửi thông báo tự động đính kèm mã giảm giá giờ thấp điểm 20% cho nhóm khách hàng **"Thích yên tĩnh"** vào ngày thứ Ba và thứ Tư tuần tới nhằm lấp trống lịch phòng tại chi nhánh **Gò Vấp (CS4)**.
@@ -247,9 +247,9 @@ Dựa trên dữ liệu tuần này, Bliss Copilot AI xin gửi tới quý quả
 `
 
 const AI_ANALYSIS_MONTHLY = `
-### 🔮 BÁO CÁO PHÂN TÍCH CHUYÊN SÂU BLISS COPILOT AI (MONTHLY REPORT)
+### 🔮 BÁO CÁO PHÂN TÍCH CHUYÊN SÂU DANCIN COPILOT AI (MONTHLY REPORT)
 
-Hệ thống AI vừa hoàn thành tổng hợp và khai thác dữ liệu hoạt động kinh doanh của Bliss Home Sài Gòn trong tháng qua. Báo cáo cụ thể như sau:
+Hệ thống AI vừa hoàn thành tổng hợp và khai thác dữ liệu hoạt động kinh doanh của Dancin Home Sài Gòn trong tháng qua. Báo cáo cụ thể như sau:
 
 #### 1. Nhận định Hoạt động Kinh doanh & Công suất Chi nhánh:
 * **Doanh thu đạt mốc ấn tượng 68.450.000đ (+14.2%):** Với **42 đơn phòng**, tháng này ghi nhận sự bùng nổ của nhóm khách hàng **"Đi gia đình"** đóng góp tới **50% doanh thu** (khoảng **34.225.000đ**).
@@ -270,9 +270,9 @@ Hệ thống AI vừa hoàn thành tổng hợp và khai thác dữ liệu hoạ
 `
 
 const AI_ANALYSIS_QUARTERLY = `
-### 🔮 BÁO CÁO PHÂN TÍCH QUÝ BLISS COPILOT AI (QUARTERLY REPORT)
+### 🔮 BÁO CÁO PHÂN TÍCH QUÝ DANCIN COPILOT AI (QUARTERLY REPORT)
 
-Chào quý quản lý, Bliss Copilot AI xin gửi báo cáo phân tích hiệu suất kinh doanh quý vừa qua và chiến lược phát triển trung hạn cho hệ thống Homestay Bliss Home:
+Chào quý quản lý, Dancin Copilot AI xin gửi báo cáo phân tích hiệu suất kinh doanh quý vừa qua và chiến lược phát triển trung hạn cho hệ thống Homestay Dancin Home:
 
 #### 1. Phân tích tài chính & Cơ cấu Doanh thu:
 * **Tổng doanh thu quý đạt 204.500.000đ (+22.1%):** Doanh số tăng trưởng đều đặn qua các tháng, chủ yếu nhờ việc giữ chân khách hàng cũ rất tốt.
@@ -290,9 +290,9 @@ Chào quý quản lý, Bliss Copilot AI xin gửi báo cáo phân tích hiệu s
 `
 
 const AI_ANALYSIS_YEARLY = `
-### 🔮 BÁO CÁO HOẠT ĐỘNG THƯỜNG NIÊN BLISS COPILOT AI (YEARLY REPORT)
+### 🔮 BÁO CÁO HOẠT ĐỘNG THƯỜNG NIÊN DANCIN COPILOT AI (YEARLY REPORT)
 
-Hệ thống AI xin gửi lời chúc mừng quý ban quản lý Bliss Home Sài Gòn đã có một năm kinh doanh tăng trưởng rực rỡ! Dưới đây là báo cáo tổng kết thường niên và định hướng kế hoạch sales dài hạn cho năm tới:
+Hệ thống AI xin gửi lời chúc mừng quý ban quản lý Dancin Home Sài Gòn đã có một năm kinh doanh tăng trưởng rực rỡ! Dưới đây là báo cáo tổng kết thường niên và định hướng kế hoạch sales dài hạn cho năm tới:
 
 #### 1. Tổng quan các chỉ số tài chính & Phân khúc thị trường:
 * **Doanh thu đạt mốc đột phá 818.000.000đ (+38.4%):** Một năm gặt hái thành công ngoài mong đợi với **540 lượt booking**. 
@@ -335,7 +335,7 @@ export default function AnalyticsDashboardPage() {
     return val.toLocaleString('vi-VN') + 'đ'
   }
 
-  // Khởi chạy Bliss Copilot AI phân tích dữ liệu
+  // Khởi chạy Dancin Copilot AI phân tích dữ liệu
   const handleTriggerAIAnalysis = () => {
     setIsAnalyzing(true)
     setAiAnalysis(null)
@@ -364,7 +364,7 @@ export default function AnalyticsDashboardPage() {
             Báo Cáo & Phân Tích Dữ Liệu
           </h2>
           <p className="text-xs text-muted-foreground font-medium mt-0.5">
-            Dữ liệu trực quan hóa về doanh số, buồng phòng, khách hàng quay lại và hiệu suất tiếp thị Bliss Home.
+            Dữ liệu trực quan hóa về doanh số, buồng phòng, khách hàng quay lại và hiệu suất tiếp thị Dancin Home.
           </p>
         </div>
 
@@ -951,7 +951,7 @@ export default function AnalyticsDashboardPage() {
                   <Bot size={20} className="animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="text-sm md:text-base font-extrabold uppercase tracking-wider text-white">Bliss Copilot AI Analytics</h3>
+                  <h3 className="text-sm md:text-base font-extrabold uppercase tracking-wider text-white">Dancin Copilot AI Analytics</h3>
                   <span className="text-[10px] text-white/50 font-bold block mt-0.5 tracking-wider uppercase">ĐỀ XUẤT KẾ HOẠCH SALE & MARKETING TỰ ĐỘNG</span>
                 </div>
               </div>

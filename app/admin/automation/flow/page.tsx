@@ -335,7 +335,7 @@ function AutomationFlowEditor() {
           y: 80,
           config: {
             template: 'Mẫu ZNS Chào mừng Thành viên mới',
-            content: 'Chào mừng bạn {{$trigger.name}} đến với Bliss Home! Tặng riêng bạn mã giảm giá 10% {{$voucher.code}} cho kỳ nghỉ tuyệt vời của bạn.'
+            content: 'Chào mừng bạn {{$trigger.name}} đến với Dancin Home! Tặng riêng bạn mã giảm giá 10% {{$voucher.code}} cho kỳ nghỉ tuyệt vời của bạn.'
           }
         },
         {
@@ -350,7 +350,7 @@ function AutomationFlowEditor() {
           y: 260,
           config: {
             template: 'Mẫu ZNS Tri ân Khách hàng cũ',
-            content: 'Chào mừng quý khách quay lại {{$trigger.name}}! Bliss Home rất hân hạnh được tiếp tục phục vụ bạn tại phòng {{$booking.room_name}}.'
+            content: 'Chào mừng quý khách quay lại {{$trigger.name}}! Dancin Home rất hân hạnh được tiếp tục phục vụ bạn tại phòng {{$booking.room_name}}.'
           }
         }
       ],
@@ -381,7 +381,7 @@ function AutomationFlowEditor() {
           x: 60,
           y: 180,
           config: {
-            webhook_url: 'https://hook.make.com/blisshome-booking-webhook',
+            webhook_url: 'https://hook.make.com/dancinhome-booking-webhook',
             source_app: 'Make.com Integration'
           }
         },
@@ -396,7 +396,7 @@ function AutomationFlowEditor() {
           x: 350,
           y: 180,
           config: {
-            sheet_name: 'Bliss Bookings 2026',
+            sheet_name: 'Dancin Bookings 2026',
             headers: 'Booking ID, Khách hàng, SĐT, Phòng, Giá, Ngày Check-in'
           }
         },
@@ -511,7 +511,7 @@ function AutomationFlowEditor() {
   const [logicRelation, setLogicRelation] = useState<'AND' | 'OR'>('AND')
   const [logicConditions, setLogicConditions] = useState<Array<{ field: string, operator: string, value: string }>>([])
 
-  const [activeVouchers, setActiveVouchers] = useState<string[]>(['BLISSHE2026', 'VIPBIRTHDAY', 'COZYSTAY'])
+  const [activeVouchers, setActiveVouchers] = useState<string[]>(['DANCINSUMMER', 'VIPBIRTHDAY', 'COZYSTAY'])
   const logsEndRef = useRef<HTMLDivElement>(null)
 
   // Cuộn log khi chạy giả lập
@@ -530,7 +530,7 @@ function AutomationFlowEditor() {
   // Load Google Credentials & Handle OAuth redirect callback
   useEffect(() => {
     // 1. Load credentials from LocalStorage
-    const savedCreds = localStorage.getItem('bliss_google_credentials')
+    const savedCreds = localStorage.getItem('dancin_google_credentials')
     if (savedCreds) {
       try {
         const creds = JSON.parse(savedCreds)
@@ -539,12 +539,12 @@ function AutomationFlowEditor() {
       } catch (e) {}
     }
 
-    const savedTokens = localStorage.getItem('bliss_google_tokens')
+    const savedTokens = localStorage.getItem('dancin_google_tokens')
     if (savedTokens) {
       try {
         const tokens = JSON.parse(savedTokens)
         if (tokens.access_token) {
-          setGoogleConnection(tokens.email || 'cskh@blisshome.vn')
+          setGoogleConnection(tokens.email || 'thuongvn.work@gmail.com')
           setGoogleLinkedEmail(tokens.email || '')
         }
       } catch (e) {}
@@ -564,7 +564,7 @@ function AutomationFlowEditor() {
 
         try {
           // Read client credentials
-          const credsStr = localStorage.getItem('bliss_google_credentials')
+          const credsStr = localStorage.getItem('dancin_google_credentials')
           if (!credsStr) {
             throw new Error('Không tìm thấy Client ID hoặc Client Secret trong LocalStorage. Vui lòng nhập trước khi liên kết!')
           }
@@ -601,7 +601,7 @@ function AutomationFlowEditor() {
             expires_at: Date.now() + (data.expires_in * 1000),
             email: data.email
           }
-          localStorage.setItem('bliss_google_tokens', JSON.stringify(tokens))
+          localStorage.setItem('dancin_google_tokens', JSON.stringify(tokens))
           setGoogleConnection(data.email)
           setGoogleLinkedEmail(data.email)
 
@@ -639,7 +639,7 @@ function AutomationFlowEditor() {
   }, [scenarioIdParam])
 
   const getOrRefreshAccessToken = async (): Promise<string | null> => {
-    const savedTokens = localStorage.getItem('bliss_google_tokens')
+    const savedTokens = localStorage.getItem('dancin_google_tokens')
     if (!savedTokens) return null
 
     try {
@@ -655,7 +655,7 @@ function AutomationFlowEditor() {
       }
 
       // Expired, need to refresh!
-      const savedCreds = localStorage.getItem('bliss_google_credentials')
+      const savedCreds = localStorage.getItem('dancin_google_credentials')
       if (!savedCreds) return null
       const parsedCreds = JSON.parse(savedCreds)
       if (!parsedCreds || typeof parsedCreds !== 'object') return null
@@ -691,7 +691,7 @@ function AutomationFlowEditor() {
         access_token: data.access_token,
         expires_at: Date.now() + (data.expires_in * 1000)
       }
-      localStorage.setItem('bliss_google_tokens', JSON.stringify(updatedTokens))
+      localStorage.setItem('dancin_google_tokens', JSON.stringify(updatedTokens))
       
       setLogs(prev => [
         ...prev,
@@ -799,7 +799,7 @@ function AutomationFlowEditor() {
       } catch (e: any) {
         console.warn('Lỗi đọc database public.automations, chuyển sang LocalStorage fallback:', e.message)
         // Fallback LocalStorage cache
-        const localData = localStorage.getItem('bliss_scenarios')
+        const localData = localStorage.getItem('dancin_scenarios')
         let loadedScenarios: Scenario[] = []
         if (localData) {
           try {
@@ -883,14 +883,14 @@ function AutomationFlowEditor() {
             trigger: {
               name: customer?.name || 'Khách đặt phòng',
               phone: customer?.phone || '0901234567',
-              email: customer?.email || 'customer@blisshome.vn'
+              email: customer?.email || 'customer@dancinhome.vn'
             },
             crm: {
               behavior_group: customer?.notes && customer.notes.length > 1 ? 'Khách Quay Lại' : 'Khách Mới',
               total_spent: customer?.total_spent ? customer.total_spent.toLocaleString() : '0'
             },
             voucher: {
-              code: newBooking.voucher_code || 'BLISSHE2026',
+              code: newBooking.voucher_code || 'DANCINSUMMER',
               discount: '10%'
             }
           }
@@ -1045,8 +1045,8 @@ function AutomationFlowEditor() {
             const sheetNameConfig = nextNode.config.sheet_name || ''
             
             // Check if we have a real Google account tokens
-            const savedTokens = localStorage.getItem('bliss_google_tokens')
-            if (savedTokens && googleConnection !== 'none' && googleConnection !== 'bliss_cskh') {
+            const savedTokens = localStorage.getItem('dancin_google_tokens')
+            if (savedTokens && googleConnection !== 'none' && googleConnection !== 'dancin_cskh') {
               try {
                 // Parse spreadsheet ID (extracts ID from URL if pasted as full link)
                 let spreadsheetId = sheetNameConfig
@@ -1070,10 +1070,10 @@ function AutomationFlowEditor() {
                   dataContext.booking?.id || 'booking-' + Date.now(),
                   dataContext.trigger?.name || 'Nguyễn Văn Hùng',
                   dataContext.trigger?.phone || '0901234567',
-                  dataContext.trigger?.email || 'customer@blisshome.vn',
+                  dataContext.trigger?.email || 'customer@dancinhome.vn',
                   dataContext.booking?.room_name || 'Hinoki River View Suite 🌊',
                   dataContext.booking?.room_price || '1,500,000',
-                  dataContext.voucher?.code || 'BLISSHE2026',
+                  dataContext.voucher?.code || 'DANCINSUMMER',
                   new Date().toLocaleString()
                 ]
 
@@ -1526,7 +1526,7 @@ function AutomationFlowEditor() {
         try {
           const updatedScenarios = scenarios.filter(s => s.id !== id)
           setScenarios(updatedScenarios)
-          localStorage.setItem('bliss_scenarios', JSON.stringify(updatedScenarios))
+          localStorage.setItem('dancin_scenarios', JSON.stringify(updatedScenarios))
 
           const supabase = getSupabase()
           await supabase.from('automations').delete().eq('id', id)
@@ -1579,7 +1579,7 @@ function AutomationFlowEditor() {
       : [...scenarios, scenarioData]
 
     setScenarios(updatedScenarios)
-    localStorage.setItem('bliss_scenarios', JSON.stringify(updatedScenarios))
+    localStorage.setItem('dancin_scenarios', JSON.stringify(updatedScenarios))
 
     // ĐỒNG BỘ LÊN SUPABASE SERVER (NẾU BẢNG KHẢ DỤNG)
     try {
@@ -1611,7 +1611,7 @@ function AutomationFlowEditor() {
     setIsLogsDrawerOpen(true)
     setLogs(prev => [
       ...prev, 
-      { timestamp: new Date().toLocaleTimeString(), message: `🔮 Bliss Flow AI đang phân tích sơ đồ: "${aiPrompt}"...`, type: 'info' }
+      { timestamp: new Date().toLocaleTimeString(), message: `🔮 Dancin Flow AI đang phân tích sơ đồ: "${aiPrompt}"...`, type: 'info' }
     ])
 
     await new Promise(resolve => setTimeout(resolve, 1500))
@@ -1633,7 +1633,7 @@ function AutomationFlowEditor() {
           x: 100,
           y: 200,
           config: {
-            webhook_url: 'https://hook.make.com/generated-blisshome-webhook',
+            webhook_url: 'https://hook.make.com/generated-dancinhome-webhook',
             source_app: 'n8n Integration'
           }
         },
@@ -1712,7 +1712,7 @@ function AutomationFlowEditor() {
           y: 200,
           config: {
             template: 'Mẫu ZNS Chào mừng Thành viên mới',
-            content: 'Chào mừng bạn {{$trigger.name}} đã đặt phòng {{$booking.room_name}} tại Bliss Home!'
+            content: 'Chào mừng bạn {{$trigger.name}} đã đặt phòng {{$booking.room_name}} tại Dancin Home!'
           }
         }
       ]
@@ -1775,7 +1775,7 @@ function AutomationFlowEditor() {
         total_spent: '14,800,000'
       },
       voucher: {
-        code: 'BLISSHE2026',
+        code: 'DANCINSUMMER',
         discount: '15%'
       }
     }
@@ -1854,8 +1854,8 @@ function AutomationFlowEditor() {
           ])
         } else if (lbl.includes('sheets')) {
           const sheetNameConfig = nextNode.config.sheet_name || ''
-          const savedTokens = localStorage.getItem('bliss_google_tokens')
-          if (savedTokens && googleConnection !== 'none' && googleConnection !== 'bliss_cskh') {
+          const savedTokens = localStorage.getItem('dancin_google_tokens')
+          if (savedTokens && googleConnection !== 'none' && googleConnection !== 'dancin_cskh') {
             try {
               let spreadsheetId = sheetNameConfig
               if (spreadsheetId.includes('/d/')) {
@@ -1880,7 +1880,7 @@ function AutomationFlowEditor() {
                 mockContext.trigger?.email || 'hoangnam@gmail.com',
                 mockContext.booking?.room_name || 'Phòng VIP Suite CS2 Thảo Điền',
                 mockContext.booking?.room_price || '2,200,000',
-                mockContext.voucher?.code || 'BLISSHE2026',
+                mockContext.voucher?.code || 'DANCINSUMMER',
                 new Date().toLocaleString()
               ]
 
@@ -1934,7 +1934,7 @@ function AutomationFlowEditor() {
         } else if (lbl.includes('voucher') || lbl.includes('tri ân')) {
           setLogs(prev => [
             ...prev,
-            { timestamp: new Date().toLocaleTimeString(), message: `🎫 [MÃ GIẢM GIÁ]: Đã phát sinh mã voucher tự động: BLISSHH2026. Hạng chiết khấu: ${nextNode.config.voucher_discount || '10%'}.`, type: 'success' }
+            { timestamp: new Date().toLocaleTimeString(), message: `🎫 [MÃ GIẢM GIÁ]: Đã phát sinh mã voucher tự động: DANCINSUMMER. Hạng chiết khấu: ${nextNode.config.voucher_discount || '10%'}.`, type: 'success' }
           ])
         } else {
           setLogs(prev => [
@@ -2085,7 +2085,7 @@ function AutomationFlowEditor() {
 
     try {
       // Save credentials first
-      localStorage.setItem('bliss_google_credentials', JSON.stringify({
+      localStorage.setItem('dancin_google_credentials', JSON.stringify({
         client_id: googleClientId,
         client_secret: googleClientSecret
       }))
@@ -2589,7 +2589,7 @@ function AutomationFlowEditor() {
         content: 'Nội dung thông điệp tự động gửi khách hàng {{$trigger.name}}...',
         webhook_url: 'https://hook.make.com/your-endpoint',
         webhook_method: 'POST',
-        sheet_name: 'Bliss Bookings Data',
+        sheet_name: 'Dancin Bookings Data',
         telegram_message: 'Thông báo tự động: Khách {{$trigger.name}} vừa đặt phòng!',
         action_type: actionType || (appType === 'google_sheets' ? 'add_row' : 'custom_action')
       }
@@ -2752,7 +2752,7 @@ function AutomationFlowEditor() {
           <div className="flex justify-between items-center bg-card dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-3xl shadow-sm">
             <div>
               <h1 className="text-base md:text-lg font-black tracking-tight text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase">
-                Bliss home Automation AI
+                Dancin Home Automation AI
               </h1>
               <span className="text-[10px] text-slate-600 block mt-1 font-bold">Quản lý các kịch bản chạy tự động hóa & tích hợp Make/n8n</span>
             </div>
@@ -2979,7 +2979,7 @@ function AutomationFlowEditor() {
               </div>
             </div>
 
-            {/* Cột 2: Bliss Flow AI Generator tích hợp siêu nhỏ gọn ở giữa */}
+            {/* Cột 2: Dancin Flow AI Generator tích hợp siêu nhỏ gọn ở giữa */}
             <div className="flex-grow max-w-md xl:mx-4 flex items-center gap-2 bg-card border border-zinc-300 dark:border-zinc-700 rounded-xl px-2.5 py-1.5 shadow-2xs">
               <Sparkles size={13} className="text-indigo-600 flex-shrink-0 ml-0.5" />
               <input
@@ -3465,7 +3465,7 @@ function AutomationFlowEditor() {
                             onChange={(e) => {
                               setGoogleConnection(e.target.value)
                               if (e.target.value === 'none') {
-                                localStorage.removeItem('bliss_google_tokens')
+                                localStorage.removeItem('dancin_google_tokens')
                                 setGoogleLinkedEmail('')
                               }
                             }}
@@ -3475,7 +3475,7 @@ function AutomationFlowEditor() {
                             {googleLinkedEmail ? (
                               <option value={googleLinkedEmail}>{googleLinkedEmail} (Tài khoản thật)</option>
                             ) : (
-                              <option value="bliss_cskh">cskh@blisshome.vn (Demo Workspace)</option>
+                              <option value="dancin_cskh">thuongvn.work@gmail.com (Demo Workspace)</option>
                             )}
                           </select>
                           
@@ -3486,7 +3486,7 @@ function AutomationFlowEditor() {
                             className={`w-full py-2 text-xs font-black rounded-lg flex items-center justify-center gap-1 border shadow-xs transition-all duration-200 active:scale-95 cursor-pointer ${
                                   isConnectingGoogle 
                                     ? 'bg-slate-100 text-zinc-400 dark:text-zinc-500 border-zinc-200 dark:border-zinc-800 cursor-not-allowed'
-                                    : googleConnection !== 'none' && googleConnection !== 'bliss_cskh'
+                                    : googleConnection !== 'none' && googleConnection !== 'dancin_cskh'
                                       ? 'bg-card hover:bg-emerald-50 text-emerald-600 border-emerald-200 hover:border-emerald-300'
                                       : 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600'
                             }`}
@@ -3499,7 +3499,7 @@ function AutomationFlowEditor() {
                                 </svg>
                                 Đang kết nối tài khoản Google...
                               </>
-                            ) : googleConnection !== 'none' && googleConnection !== 'bliss_cskh' ? (
+                            ) : googleConnection !== 'none' && googleConnection !== 'dancin_cskh' ? (
                               'Kết nối tài khoản Google khác +'
                             ) : (
                               'Liên kết Google Account +'
@@ -3527,7 +3527,7 @@ function AutomationFlowEditor() {
                                   value={googleClientId}
                                   onChange={(e) => {
                                     setGoogleClientId(e.target.value)
-                                    localStorage.setItem('bliss_google_credentials', JSON.stringify({
+                                    localStorage.setItem('dancin_google_credentials', JSON.stringify({
                                       client_id: e.target.value,
                                       client_secret: googleClientSecret
                                     }))
@@ -3543,7 +3543,7 @@ function AutomationFlowEditor() {
                                   value={googleClientSecret}
                                   onChange={(e) => {
                                     setGoogleClientSecret(e.target.value)
-                                    localStorage.setItem('bliss_google_credentials', JSON.stringify({
+                                    localStorage.setItem('dancin_google_credentials', JSON.stringify({
                                       client_id: googleClientId,
                                       client_secret: e.target.value
                                     }))
@@ -3620,7 +3620,7 @@ function AutomationFlowEditor() {
                           label="Tên file Google Sheets"
                           value={sheetName}
                           onChange={sheetName => setSheetName(sheetName)}
-                          placeholder="Ví dụ: Bliss Bookings 2026"
+                          placeholder="Ví dụ: Dancin Bookings 2026"
                         />
                         <div className="flex flex-col gap-1">
                           <label className="font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase text-[9.5px]">Danh sách tiêu đề cột (Phân tách bằng dấu phẩy)</label>

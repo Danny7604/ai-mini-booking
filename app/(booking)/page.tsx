@@ -6,11 +6,11 @@ import AIAssistant from '@/components/AIAssistant'
 
 const branches = [
   { value: 'all', label: 'Tất cả chi nhánh 📍' },
-  { value: 'Bliss Home - Tân Bình (CS1) 🏡', label: 'Bliss Home - Tân Bình (CS1) 🏡' },
-  { value: 'Bliss Home - Quận 10 (CS2) 🏙️', label: 'Bliss Home - Quận 10 (CS2) 🏙️' },
-  { value: 'Bliss Home - Quận 5 (CS3) 🪟', label: 'Bliss Home - Quận 5 (CS3) 🪟' },
-  { value: 'Bliss Home - Gò Vấp (CS4) 🌸', label: 'Bliss Home - Gò Vấp (CS4) 🌸' },
-  { value: 'Bliss Home - Bình Thạnh (CS5) 🌿', label: 'Bliss Home - Bình Thạnh (CS5) 🌿' }
+  { value: 'Dancin Home - Tân Bình (CS1) 🏡', label: 'Dancin Home - Tân Bình (CS1) 🏡' },
+  { value: 'Dancin Home - Quận 10 (CS2) 🏙️', label: 'Dancin Home - Quận 10 (CS2) 🏙️' },
+  { value: 'Dancin Home - Quận 5 (CS3) 🪟', label: 'Dancin Home - Quận 5 (CS3) 🪟' },
+  { value: 'Dancin Home - Gò Vấp (CS4) 🌸', label: 'Dancin Home - Gò Vấp (CS4) 🌸' },
+  { value: 'Dancin Home - Bình Thạnh (CS5) 🌿', label: 'Dancin Home - Bình Thạnh (CS5) 🌿' }
 ]
 
 export const ROOM_FEATURES = [
@@ -50,12 +50,12 @@ export default function Home() {
 
   // Danh sách phòng nghỉ hoạt động thực tế phục vụ dropdown
   const [availableRoomsList, setAvailableRoomsList] = useState<{ id: string, name: string, branch: string }[]>([
-    { id: 'pine-forest-loft', name: 'Pine Forest Loft (Tân Bình CS1) 🏡', branch: 'Bliss Home - Tân Bình (CS1) 🏡' },
-    { id: 'valley-view-suite', name: 'Valley View Suite (Quận 10 CS2) 🏙️', branch: 'Bliss Home - Quận 10 (CS2) 🏙️' },
-    { id: 'cozy-wooden-cabin', name: 'Cozy Wooden Cabin (Quận 5 CS3) 🪟', branch: 'Bliss Home - Quận 5 (CS3) 🪟' },
-    { id: 'sunlit-glass-house', name: 'Sunlit Glass House (Gò Vấp CS4) 🌸', branch: 'Bliss Home - Gò Vấp (CS4) 🌸' },
-    { id: 'riverside-nest', name: 'Riverside Nest (Bình Thạnh CS5) 🌿', branch: 'Bliss Home - Bình Thạnh (CS5) 🌿' },
-    { id: 'sunset-panorama', name: 'Sunset Panorama (Quận 10 CS2) 🏙️', branch: 'Bliss Home - Quận 10 (CS2) 🏙️' }
+    { id: 'pine-forest-loft', name: 'Pine Forest Loft (Tân Bình CS1) 🏡', branch: 'Dancin Home - Tân Bình (CS1) 🏡' },
+    { id: 'valley-view-suite', name: 'Valley View Suite (Quận 10 CS2) 🏙️', branch: 'Dancin Home - Quận 10 (CS2) 🏙️' },
+    { id: 'cozy-wooden-cabin', name: 'Cozy Wooden Cabin (Quận 5 CS3) 🪟', branch: 'Dancin Home - Quận 5 (CS3) 🪟' },
+    { id: 'sunlit-glass-house', name: 'Sunlit Glass House (Gò Vấp CS4) 🌸', branch: 'Dancin Home - Gò Vấp (CS4) 🌸' },
+    { id: 'riverside-nest', name: 'Riverside Nest (Bình Thạnh CS5) 🌿', branch: 'Dancin Home - Bình Thạnh (CS5) 🌿' },
+    { id: 'sunset-panorama', name: 'Sunset Panorama (Quận 10 CS2) 🏙️', branch: 'Dancin Home - Quận 10 (CS2) 🏙️' }
   ])
 
   // Fetch danh sách phòng trống thực tế từ database để đồng bộ dropdown
@@ -73,11 +73,11 @@ export default function Home() {
 
         if (dbRooms && dbRooms.length > 0) {
           const mappedDropdownRooms = dbRooms.map((r: any) => {
-            const displayBranch = r.branch.includes('CS1') ? 'Bliss Home - Tân Bình (CS1) 🏡' 
-                                : r.branch.includes('CS2') ? 'Bliss Home - Quận 10 (CS2) 🏙️'
-                                : r.branch.includes('CS3') ? 'Bliss Home - Quận 5 (CS3) 🪟'
-                                : r.branch.includes('CS4') ? 'Bliss Home - Gò Vấp (CS4) 🌸'
-                                : 'Bliss Home - Bình Thạnh (CS5) 🌿'
+            const displayBranch = r.branch.includes('CS1') ? 'Dancin Home - Tân Bình (CS1) 🏡' 
+                                : r.branch.includes('CS2') ? 'Dancin Home - Quận 10 (CS2) 🏙️'
+                                : r.branch.includes('CS3') ? 'Dancin Home - Quận 5 (CS3) 🪟'
+                                : r.branch.includes('CS4') ? 'Dancin Home - Gò Vấp (CS4) 🌸'
+                                : 'Dancin Home - Bình Thạnh (CS5) 🌿'
             return {
               id: r.id,
               name: `${r.name}`,
@@ -211,14 +211,14 @@ export default function Home() {
         <div className="flex items-center gap-3">
           {/* HIGH-FIDELITY BRAND LOGO */}
           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-inner p-1 overflow-hidden flex-shrink-0">
-            <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+            <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
           </div>
           <div>
-            <h1 className="text-xl font-black tracking-tight leading-none font-sans text-white uppercase">Bliss Home</h1>
+            <h1 className="text-xl font-black tracking-tight leading-none font-sans text-white uppercase">Dancin Home</h1>
           </div>
         </div>
         <div className="text-xs md:text-sm bg-white/10 backdrop-blur-md py-1.5 px-3.5 rounded-full font-medium border border-white/10 flex items-center gap-1.5">
-          🎁 Ưu đãi hè 10%: <strong className="text-amber-300 font-extrabold">BLISSSUMMER</strong>
+          🎁 Ưu đãi hè 10%: <strong className="text-amber-300 font-extrabold">DANCINSUMMER</strong>
         </div>
       </header>
 
@@ -226,7 +226,7 @@ export default function Home() {
       <section className="w-full max-w-full px-4 lg:px-8 xl:px-12 mt-6">
         <div className="w-full bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-md flex flex-col gap-4">
           <h2 className="text-sm font-bold text-stone-850 uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-100 pb-2">
-            🔑 Lên Kế Hoạch Kỳ Nghỉ Tại Bliss Home
+            🔑 Lên Kế Hoạch Kỳ Nghỉ Tại Dancin Home
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4 items-end">
@@ -268,7 +268,7 @@ export default function Home() {
                 type="text"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
-                placeholder="Nhập mã ưu đãi (vd: BLISSSUMMER)..."
+                placeholder="Nhập mã ưu đãi (vd: DANCINSUMMER)..."
                 className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold"
               />
             </div>
@@ -435,21 +435,27 @@ export default function Home() {
           <div className="col-span-1 md:col-span-4 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-inner p-1 overflow-hidden flex-shrink-0">
-                <img src="/logo.png" alt="Bliss Home Logo" className="w-full h-full object-contain" />
+                <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold tracking-wide uppercase text-white font-sans leading-none">Bliss Home</h3>
+                <h3 className="text-base font-extrabold tracking-wide uppercase text-white font-sans leading-none">Dancin Home</h3>
               </div>
             </div>
             <p className="text-stone-500 text-xs leading-relaxed max-w-sm">
-              Bliss Home Homestay cung cấp chuỗi không gian lưu trú độc bản, tiện nghi và ấm cúng tọa lạc tại các vị trí đắc địa khắp Tp. Hồ Chí Minh.
+              Dancin Home Homestay cung cấp chuỗi không gian lưu trú độc bản, tiện nghi và ấm cúng tọa lạc tại các vị trí đắc địa khắp Tp. Hồ Chí Minh.
             </p>
             <div className="flex flex-col gap-1.5 text-xs text-stone-400 mt-2">
               <span className="flex items-center gap-1.5">
-                📸 Instagram: <strong className="text-white hover:text-sky-300 transition cursor-pointer">@Blisshomestay.Saigon</strong>
+                📞 Điện thoại: <strong className="text-white hover:text-sky-300 transition cursor-pointer">0963212579</strong>
               </span>
               <span className="flex items-center gap-1.5">
-                🎵 TikTok: <strong className="text-white hover:text-sky-300 transition cursor-pointer">@Bliss.homestay.saigon</strong>
+                ✉️ Email: <strong className="text-white hover:text-sky-300 transition cursor-pointer">thuongvn.work@gmail.com</strong>
+              </span>
+              <span className="flex items-center gap-1.5">
+                📸 Instagram: <strong className="text-white hover:text-sky-300 transition cursor-pointer">@Dancinhomestay.Saigon</strong>
+              </span>
+              <span className="flex items-center gap-1.5">
+                🎵 TikTok: <strong className="text-white hover:text-sky-300 transition cursor-pointer">@Dancin.homestay.saigon</strong>
               </span>
             </div>
           </div>
@@ -457,7 +463,7 @@ export default function Home() {
           {/* Chi nhánh & Địa chỉ */}
           <div className="col-span-1 md:col-span-8 flex flex-col gap-4">
             <h4 className="text-xs font-black uppercase text-white tracking-widest border-b border-stone-850 pb-2">
-              📍 Hệ Thống Chi Nhánh Bliss Home Sài Gòn
+              📍 Hệ Thống Chi Nhánh Dancin Home Sài Gòn
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs leading-relaxed">
               <div className="flex flex-col gap-2">
@@ -484,7 +490,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-stone-850 text-center text-[10px] text-stone-600">
-          <p>&copy; 2026 Bliss Home. Tất cả quyền được bảo lưu. Thiết kế & Phát triển kỹ thuật bởi Dancin Builder.</p>
+          <p>&copy; 2026 Dancin Home. Tất cả quyền được bảo lưu. Thiết kế & Phát triển kỹ thuật bởi Dancin Builder.</p>
         </div>
       </footer>
     </div>
