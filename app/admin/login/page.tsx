@@ -122,8 +122,8 @@ export default function AdminLoginPage() {
         
         {/* Brand Header */}
         <div className="flex flex-col items-center gap-3.5 text-center">
-          <div className="w-14 h-14 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center p-2.5 shadow-xs">
-            <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain filter dark:invert" />
+          <div className="w-14 h-14 bg-white border border-zinc-200 rounded-xl flex items-center justify-center p-2.5 shadow-xs">
+            <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
             <h1 className="text-2xl font-black tracking-wider text-zinc-900 dark:text-zinc-50 uppercase">Dancin Home</h1>

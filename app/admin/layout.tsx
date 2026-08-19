@@ -184,10 +184,8 @@ function AdminLayoutContent({
         } ${isCollapsed ? 'flex-col gap-3.5 px-3 py-5' : 'pl-6 pr-3 py-5'}`}>
           {isCollapsed ? (
             <>
-              <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner ${
-                theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-zinc-100 border-zinc-200'
-              }`}>
-                <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
+              <div className="w-9 h-9 border border-zinc-200 rounded-xl flex items-center justify-center p-1 overflow-hidden shadow-inner bg-white">
+                <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
               </div>
               <button 
                 onClick={toggleSidebar} 
@@ -204,10 +202,8 @@ function AdminLayoutContent({
           ) : (
             <>
               <div className="flex items-center gap-3">
-                <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
-                  theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
-                }`}>
-                  <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
+                <div className="w-9 h-9 border border-zinc-200 rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner bg-white">
+                  <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
@@ -389,10 +385,8 @@ function AdminLayoutContent({
           theme === 'dark' ? 'border-zinc-800 bg-zinc-900/20' : 'border-zinc-200 bg-zinc-100/30'
         }`}>
           <div className="flex items-center gap-3">
-            <div className={`w-9 h-9 border rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner ${
-              theme === 'dark' ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-zinc-200'
-            }`}>
-              <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain dark:invert" />
+            <div className="w-9 h-9 border border-zinc-200 rounded-xl flex items-center justify-center p-1 overflow-hidden flex-shrink-0 shadow-inner bg-white">
+              <img src="/logo.png" alt="Dancin Home Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <h1 className={`text-base font-black tracking-tight leading-none uppercase ${
