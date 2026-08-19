@@ -1,5 +1,5 @@
 -- =========================================================================
--- BLISS HOME - SQL SEED DATA ĐỒNG BỘ TOÀN DIỆN MỚI (PHIÊN BẢN CHỐNG LỖI CÚ PHÁP TUYỆT ĐỐI)
+-- DANCIN HOME - SQL SEED DATA ĐỒNG BỘ TOÀN DIỆN MỚI (PHIÊN BẢN CHỐNG LỖI CÚ PHÁP TUYỆT ĐỐI)
 -- HƯỚNG DẪN: COPY TOÀN BỘ CODE DƯỚI ĐÂY DÂN VÀO SQL EDITOR CỦA SUPABASE RỒI BẤM RUN
 -- CÔNG DỤNG: DÙNG ĐÚNG CÚ PHÁP DOLLAR-QUOTED ($$) CỦA POSTGRESQL ĐỂ TRÁNH MỌI LỖI KÝ TỰ BÀN PHÍM
 -- =========================================================================
@@ -19,7 +19,7 @@ TRUNCATE TABLE public.rooms CASCADE;
 -- 3. NẠP TOÀN BỘ 20 PHÒNG MẪU (DÙNG ĐÚNG ĐỊNH DẠNG $$ ĐỂ KHÔNG BỊ LỖI PHÂN TÍCH NHÁY ĐƠN)
 INSERT INTO public.rooms (name, branch, capacity, price, status, thumbnail) VALUES
 -- --- CHI NHÁNH 1: TÂN BÌNH CS1 ---
-($$Bungalow Hương Thơm$$, $$CS1 - Tân Bình 🏡$$, 2, 850000, $$available$$, $${"imageUrl":"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80","hourlyPrice":100000,"description":"Trải nghiệm Bungalow Hương Thơm tuyệt đẹp tại chi nhánh Bliss Home.","amenities":["Máy pha cà phê","Trà miễn phí","Loa Bluetooth","Wifi tốc độ cao"],"tags":["bath","couple"],"isPublished":true,"isFeatured":false}$$),
+($$Bungalow Hương Thơm$$, $$CS1 - Tân Bình 🏡$$, 2, 850000, $$available$$, $${"imageUrl":"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80","hourlyPrice":100000,"description":"Trải nghiệm Bungalow Hương Thơm tuyệt đẹp tại chi nhánh Dancin Home.","amenities":["Máy pha cà phê","Trà miễn phí","Loa Bluetooth","Wifi tốc độ cao"],"tags":["bath","couple"],"isPublished":true,"isFeatured":false}$$),
 ($$Nhà Gỗ Mộc Lan$$, $$CS1 - Tân Bình 🏡$$, 4, 1200000, $$occupied$$, $${"imageUrl":"https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80","hourlyPrice":120000,"description":"Rustic Family Suite với không gian gỗ ấm cúng cho cả gia đình.","amenities":["Lò sưởi giả lập","Sân nướng BBQ","Bếp đầy đủ dụng cụ"],"tags":["family","forest"],"isPublished":true,"isFeatured":true}$$),
 ($$Phòng Đơn Đồi Tiêu$$, $$CS1 - Tân Bình 🏡$$, 1, 600000, $$available$$, $${"imageUrl":"https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1000&q=80","hourlyPrice":60000,"description":"Không gian tĩnh lặng thiền định lý tưởng cho người đi một mình.","amenities":["Trà thảo mộc","Đèn đọc sách","Wifi tốc độ cao"],"tags":["couple","budget"],"isPublished":true,"isFeatured":false}$$),
 ($$Lều Glamping Thung Lũng$$, $$CS1 - Tân Bình 🏡$$, 2, 950000, $$available$$, $${"imageUrl":"https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1000&q=80","hourlyPrice":95000,"description":"Trải nghiệm ngủ lều sang chảnh hòa mình cùng thiên nhiên.","amenities":["Ban công võng lưới","Sân nướng BBQ","Wifi tốc độ cao"],"tags":["couple","budget"],"isPublished":true,"isFeatured":false}$$),

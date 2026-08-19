@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       name,
       status: status || 'draft',
       react_flow_data: reactFlowData,
-      n8n_webhook_url: n8n_webhook_url || 'https://n8n.blisshome.vn/webhook/mock-workflow',
+      n8n_webhook_url: n8n_webhook_url || 'https://n8n.dancin.vn/webhook/mock-workflow',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     }

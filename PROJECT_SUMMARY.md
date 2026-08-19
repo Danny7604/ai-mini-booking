@@ -1,6 +1,6 @@
-# 🏡 TỔNG QUAN HỆ THỐNG BLISS HOME BOOKING & ADMIN PORTAL
+# 🏡 TỔNG QUAN HỆ THỐNG DANCIN HOME BOOKING & ADMIN PORTAL
 
-Hệ thống quản lý đặt phòng và chăm sóc khách hàng tự động **Bliss Home** là một giải pháp chuyển đổi số toàn diện cho chuỗi Homestay cao cấp. Hệ thống được chia làm hai phân hệ cốt lõi: **Ứng dụng Đặt phòng Khách hàng (Client Booking)** và **Cổng Quản trị Doanh nghiệp (Admin Portal)**. 
+Hệ thống quản lý đặt phòng và chăm sóc khách hàng tự động **Dancin Home** là một giải pháp chuyển đổi số toàn diện cho chuỗi Homestay cao cấp. Hệ thống được chia làm hai phân hệ cốt lõi: **Ứng dụng Đặt phòng Khách hàng (Client Booking)** và **Cổng Quản trị Doanh nghiệp (Admin Portal)**. 
 
 Hệ thống sử dụng bảng màu thương hiệu **Navy Thượng Hạng (`#0A273A`)** kết hợp với sắc xanh ngọc và nền đá sáng sang trọng, tạo cảm giác vintage cổ điển nhưng vô cùng hiện đại và cao đẳng.
 
@@ -20,8 +20,8 @@ Giao diện đặt phòng hướng tới trải nghiệm tối giản, nhanh ch�
 ### B. Cổng Quản Trị Hệ Thống (Admin Portal - `/admin`)
 Cấu trúc bố cục được thiết kế theo chuẩn **SaaS Enterprise** đem lại hiệu suất vận hành cao nhất:
 * **Khung Cố Định Tuyệt Đối (100% Frozen layout):**
-  * **Frozen Column (Cột Menu trái):** Sidebar cố định chiều cao, chứa Logo Bliss Home nổi bật, danh sách Menu chính điều hướng nhanh và nhóm **Cài đặt + Đăng xuất** được ghim cứng cố định dưới đáy màn hình. Hỗ trợ thu gọn (collapsed mode) tinh tế.
-  * **Frozen Row (Dòng Header trên):** Cố định tiêu đề phân hệ, nút kích hoạt trợ lý ảo **Bliss Copilot 🤖** và thông tin Quản trị viên thử nghiệm.
+  * **Frozen Column (Cột Menu trái):** Sidebar cố định chiều cao, chứa Logo Dancin Home nổi bật, danh sách Menu chính điều hướng nhanh và nhóm **Cài đặt + Đăng xuất** được ghim cứng cố định dưới đáy màn hình. Hỗ trợ thu gọn (collapsed mode) tinh tế.
+  * **Frozen Row (Dòng Header trên):** Cố định tiêu đề phân hệ, nút kích hoạt trợ lý ảo **Dancin Copilot 🤖** và thông tin Quản trị viên thử nghiệm.
   * **Scrollable Content (Khung nội dung chính):** Chỉ riêng vùng làm việc ở giữa là cuộn lên xuống mượt mà dưới Header và bên cạnh Sidebar. Không bao giờ xảy ra lỗi trôi hay khuất tầm nhìn menu.
 
 ---
@@ -36,7 +36,7 @@ Hệ thống biểu đồ được vẽ bằng **công nghệ hình học SVG th
 * **Bảng Xếp Hạng Phòng/Chi Nhánh:** Liệt kê doanh số thực tế và tỷ lệ lấp đầy phòng (làm nổi bật phòng gỗ CS3 Quận 5 hoạt động xuất sắc >90% và phòng kính CS4 Gò Vấp cần cải thiện).
 * **Hiệu quả Tiếp Thị (Horizontal Stacked Bar):** Phân tích chỉ số CTR (Click-Through Rate) của các chiến dịch Marketing, tự động gắn nhãn: *Thành công vượt trội 🚀 (>30%)*, *Hoạt động hiệu quả ✅ (15-30%)*, *Cần tối ưu ⚠️ (<15%)*.
 
-### 🤫 B. Trợ Lý Phân Tích Chiến Lược Bliss Copilot AI
+### 🤫 B. Trợ Lý Phân Tích Chiến Lược Dancin Copilot AI
 * Tích hợp trực tiếp tại cuối trang Dashboard. Khi nhấn nút **"Phân Tích Dữ Liệu Bằng AI"**, trợ lý ảo sẽ tự động "đọc hiểu" các chỉ số thống kê trên đồ thị và xuất ra báo cáo Markdown phân tích chuyên sâu.
 * Cung cấp các **đề xuất Kế hoạch Sales & Marketing thực tế** (cải tạo rèm che phòng kính Gò Vấp lấp đầy giờ trưa; nhân rộng combo BBQ gỗ CS3 sang Tân Bình; dừng chiến dịch Email CTR kém để dồn ngân sách Zalo ZNS sinh nhật).
 
@@ -90,7 +90,7 @@ graph TD
 * Nhấp xác nhận, dữ liệu được ghi nhận vào bảng `campaigns` để hệ thống tự động đẩy tin nhắn qua API Zalo ZNS tới đúng số điện thoại của từng khách hàng trong nhóm.
 
 ### D. Chu trình Vận hành Trạng thái Phòng & Dọn dẹp/Bảo trì (Room Operational Lifecycle)
-Hệ thống Bliss Home tuân thủ nghiêm ngặt quy trình vận hành phòng khép kín để đảm bảo an toàn tuyệt đối và tính sẵn sàng của cơ sở vật chất trước khi đón lượt khách mới:
+Hệ thống Dancin Home tuân thủ nghiêm ngặt quy trình vận hành phòng khép kín để đảm bảo an toàn tuyệt đối và tính sẵn sàng của cơ sở vật chất trước khi đón lượt khách mới:
 
 ```mermaid
 stateDiagram-v2
@@ -104,7 +104,7 @@ stateDiagram-v2
 1. **Phòng trống / Sẵn sàng (`ready`):** Phòng đã dọn sạch sẽ, thẻ từ/chìa khóa đã được cất trả lại đúng vị trí trong Hộp khóa thông minh (Smart Keybox). Chỉ khi ở trạng thái này, hệ thống mới cho phép mở check-in cho khách mới.
 2. **Khách ở (`occupied`):** Khách đã check-in thành công, lấy thẻ/chìa khóa và đang lưu trú trong phòng.
 3. **Khách Check out (`dirty`):** Khách hoàn tất thời gian lưu trú và rời đi. Hệ thống tự động chuyển trạng thái phòng sang `Chờ dọn dẹp` để ngăn chặn việc khách tiếp theo tự động check-in sớm khi phòng chưa được làm sạch.
-4. **Dọn dẹp / Bảo trì (`housekeeping`):** Nhân viên dọn dẹp hoặc nhân sự bảo trì của Bliss Home đến phòng để xử lý vệ sinh, kiểm tra kỹ thuật. 
+4. **Dọn dẹp / Bảo trì (`housekeeping`):** Nhân viên dọn dẹp hoặc nhân sự bảo trì của Dancin Home đến phòng để xử lý vệ sinh, kiểm tra kỹ thuật. 
 5. **Trả thẻ & Trả phòng trống:** Khi và chỉ khi nhân viên hoàn tất 100% công việc dọn dẹp/bảo trì, **cất lại thẻ từ/chìa khóa vật lý vào Hộp khóa (Keybox)** và nhấn nút xác nhận *"Hoàn tất dọn dẹp & Cất khóa"* trên Admin Portal, trạng thái phòng mới được chuyển về **`Phòng trống / Sẵn sàng` (Ready)**. Lúc này, mã PIN Keybox mới cho khách tiếp theo mới chính thức được kích hoạt và cấp phép hiển thị.
 
 ---
@@ -124,5 +124,5 @@ stateDiagram-v2
   * Không cần nhân sự thiết lập email/Zalo thủ công rườm rà. Hệ thống tự kết nối các mã Voucher vào các chiến dịch tiếp thị nhóm chỉ bằng vài click.
   * Quản trị và kiểm duyệt nội dung tin nhắn gửi đi cực kỳ trực quan với màn hình smartphone live preview.
 * **Quyết định kinh doanh thông minh nhờ AI:**
-  * Trợ lý ảo **Bliss Copilot AI** đồng hành 24/7 như một chuyên gia tư vấn chiến lược tại chỗ, đưa ra các sales/marketing plan cụ thể cho từng tuần/tháng/quý mà không tốn chi phí thuê ngoài.
+  * Trợ lý ảo **Dancin Copilot AI** đồng hành 24/7 như một chuyên gia tư vấn chiến lược tại chỗ, đưa ra các sales/marketing plan cụ thể cho từng tuần/tháng/quý mà không tốn chi phí thuê ngoài.
 * **Vận hành chuyên nghiệp & Nhàn nhã:** Giao diện Frozen Layout giúp lễ tân, quản lý vận hành kiểm soát tất cả hoạt động đặt phòng, hồ sơ khách hàng, và hiệu năng doanh số một cách tập trung, nhanh chóng và không bao giờ bị gián đoạn.

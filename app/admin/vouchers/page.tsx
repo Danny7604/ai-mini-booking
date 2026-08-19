@@ -65,7 +65,7 @@ export default function VouchersManagementPage() {
     }
   }, [newTargetType, selectedTier, selectedGroupTag, typedEventName])
 
-  // LẮNG NGHE LỆNH TỪ BLISS COPILOT AI (CHAT-TO-ACTION)
+  // LẮNG NGHE LỆNH TỪ DANCIN COPILOT AI (CHAT-TO-ACTION)
   useEffect(() => {
     const handleAdminAction = (event: Event) => {
       const customEvent = event as CustomEvent<{
@@ -114,9 +114,9 @@ export default function VouchersManagementPage() {
       }
     }
 
-    window.addEventListener('bliss-admin-action', handleAdminAction)
+    window.addEventListener('dancin-admin-action', handleAdminAction)
     return () => {
-      window.removeEventListener('bliss-admin-action', handleAdminAction)
+      window.removeEventListener('dancin-admin-action', handleAdminAction)
     }
   }, [vouchers])
 
@@ -372,7 +372,7 @@ export default function VouchersManagementPage() {
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
           <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
-            Đang đồng bộ cổng khuyến mãi Bliss...
+            Đang đồng bộ cổng khuyến mãi Dancin...
           </span>
         </div>
       ) : (

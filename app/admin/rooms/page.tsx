@@ -69,10 +69,10 @@ const PREDEFINED_FEATURES = [
 // Danh mục Chi nhánh để lọc
 const BRANCHES = [
   { id: 'all', name: 'Chi nhánh/Branch' },
-  { id: 'cs1', name: 'Bliss Home - Tân Bình (CS1) 🏡' },
-  { id: 'cs2', name: 'Bliss Home - Quận 10 (CS2) 🏙️' },
-  { id: 'cs3', name: 'Bliss Home - Quận 5 (CS3) 🪟' },
-  { id: 'cs4', name: 'Bliss Home - Gò Vấp (CS4) 🌸' }
+  { id: 'cs1', name: 'Dancin Home - Tân Bình (CS1) 🏡' },
+  { id: 'cs2', name: 'Dancin Home - Quận 10 (CS2) 🏙️' },
+  { id: 'cs3', name: 'Dancin Home - Quận 5 (CS3) 🪟' },
+  { id: 'cs4', name: 'Dancin Home - Gò Vấp (CS4) 🌸' }
 ]
 
 // Danh mục Tình trạng phòng để lọc
@@ -311,7 +311,7 @@ export default function RoomGridManagementDashboard() {
     const metadata = {
       imageUrl: newRoomImageUrl.trim() || 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80',
       hourlyPrice: Number(newRoomHourlyPrice),
-      description: newRoomDescription.trim() || `Trải nghiệm căn phòng ${newRoomName} tuyệt đẹp tại chi nhánh Bliss Home.`,
+      description: newRoomDescription.trim() || `Trải nghiệm căn phòng ${newRoomName} tuyệt đẹp tại chi nhánh Dancin Home.`,
       amenities: newRoomAmenities,
       tags: newRoomTags,
       isPublished: isPub,
@@ -413,7 +413,7 @@ export default function RoomGridManagementDashboard() {
       const meta = {
         imageUrl: room.imageUrl || 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80',
         hourlyPrice: room.hourlyPrice || Math.round(room.price / 10),
-        description: room.description || `Trải nghiệm căn phòng ${room.name} tuyệt đẹp tại chi nhánh Bliss Home.`,
+        description: room.description || `Trải nghiệm căn phòng ${room.name} tuyệt đẹp tại chi nhánh Dancin Home.`,
         amenities: room.amenities || [],
         tags: room.tags || [],
         isPublished: updatedPub,
@@ -592,7 +592,7 @@ export default function RoomGridManagementDashboard() {
       const meta = {
         imageUrl: activeEditingRoom.imageUrl || 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80',
         hourlyPrice: activeEditingRoom.hourlyPrice || Math.round(activeEditingRoom.price / 10),
-        description: activeEditingRoom.description || `Trải nghiệm căn phòng ${activeEditingRoom.name} tuyệt đẹp tại chi nhánh Bliss Home.`,
+        description: activeEditingRoom.description || `Trải nghiệm căn phòng ${activeEditingRoom.name} tuyệt đẹp tại chi nhánh Dancin Home.`,
         amenities: activeEditingRoom.amenities || [],
         tags: activeEditingRoom.tags || [],
         isPublished: updatedPub,
@@ -683,7 +683,7 @@ export default function RoomGridManagementDashboard() {
         const meta = {
           imageUrl: activeEditingRoom.imageUrl || 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80',
           hourlyPrice: activeEditingRoom.hourlyPrice || Math.round(activeEditingRoom.price / 10),
-          description: activeEditingRoom.description || `Trải nghiệm căn phòng ${activeEditingRoom.name} tuyệt đẹp tại chi nhánh Bliss Home.`,
+          description: activeEditingRoom.description || `Trải nghiệm căn phòng ${activeEditingRoom.name} tuyệt đẹp tại chi nhánh Dancin Home.`,
           amenities: activeEditingRoom.amenities || [],
           tags: activeEditingRoom.tags || [],
           isPublished: true,
@@ -888,7 +888,7 @@ export default function RoomGridManagementDashboard() {
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
           <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
-            Đang tải dữ liệu sơ đồ phòng Bliss...
+            Đang tải dữ liệu sơ đồ phòng Dancin...
           </span>
         </div>
       ) : (
@@ -1435,7 +1435,7 @@ export default function RoomGridManagementDashboard() {
                     <div className="flex-grow min-w-0">
                       <h4 className="font-extrabold text-xs">Đăng Công Khai Lên Trang Chủ (Hiển thị ngay)</h4>
                       <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-medium mt-1 leading-snug">
-                        Khách hàng có thể tìm thấy phòng này trên Bliss Gallery, xem chi tiết và đặt phòng trực tuyến.
+                        Khách hàng có thể tìm thấy phòng này trên Dancin Gallery, xem chi tiết và đặt phòng trực tuyến.
                       </p>
                     </div>
                   </div>

@@ -52,7 +52,7 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
     // Giả lập trễ mạng tải dữ liệu (800ms)
     await new Promise(resolve => setTimeout(resolve, 800))
 
-    // Trả về Mock Data chuẩn cấu trúc nghiệp vụ Bliss Home
+    // Trả về Mock Data chuẩn cấu trúc nghiệp vụ Dancin Home
     return {
       stats: {
         revenue: 18450000,
@@ -74,12 +74,12 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
         { 
           id: 'alert-3', 
           type: 'info', 
-          message: '✨ Gợi ý Bliss Copilot: Mã giảm giá "BLISSSUMMER" đang đạt hiệu suất sử dụng cao nhất ngày hôm nay (đã áp dụng 8 lượt thành công).' 
+          message: '✨ Gợi ý Dancin Copilot: Mã giảm giá "DANCINSUMMER" đang đạt hiệu suất sử dụng cao nhất ngày hôm nay (đã áp dụng 8 lượt thành công).' 
         }
       ],
       recentBookings: [
         {
-          id: 'BLISS-783912',
+          id: 'DANCIN-783912',
           customerName: 'Nguyễn Văn Hùng',
           phone: '0901234567',
           roomName: 'Pine Forest Loft (Tân Bình CS1) 🏡',
@@ -90,7 +90,7 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
           status: 'success'
         },
         {
-          id: 'BLISS-982736',
+          id: 'DANCIN-982736',
           customerName: 'Trần Thị Mai',
           phone: '0987654321',
           roomName: 'Valley View Suite (Quận 10 CS2) 🏙️',
@@ -101,7 +101,7 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
           status: 'pending'
         },
         {
-          id: 'BLISS-451928',
+          id: 'DANCIN-451928',
           customerName: 'Phan Minh Anh',
           phone: '0912345678',
           roomName: 'Cozy Wooden Cabin (Quận 5 CS3) 🪟',
@@ -112,7 +112,7 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
           status: 'success'
         },
         {
-          id: 'BLISS-829103',
+          id: 'DANCIN-829103',
           customerName: 'Lê Hoàng Hải',
           phone: '0933445566',
           roomName: 'Sunset Panorama (Quận 10 CS2) 🏙️',
@@ -123,7 +123,7 @@ const fetchDashboardData = async (): Promise<DashboardData> => {
           status: 'success'
         },
         {
-          id: 'BLISS-672514',
+          id: 'DANCIN-672514',
           customerName: 'Phạm Quỳnh Chi',
           phone: '0999887766',
           roomName: 'Sunlit Glass House (Gò Vấp CS4) 🌸',
@@ -182,7 +182,7 @@ export default function AdminDashboardPage() {
     { 
       id: 'alert-3', 
       type: 'info' as const, 
-      message: '✨ Gợi ý Bliss Copilot: Mã giảm giá "BLISSSUMMER" đang đạt hiệu suất sử dụng cao nhất ngày hôm nay (đã áp dụng 8 lượt thành công).' 
+      message: '✨ Gợi ý Dancin Copilot: Mã giảm giá "DANCINSUMMER" đang đạt hiệu suất sử dụng cao nhất ngày hôm nay (đã áp dụng 8 lượt thành công).' 
     }
   ]
 
@@ -190,7 +190,7 @@ export default function AdminDashboardPage() {
     id: b.id,
     customerName: b.customerName,
     phone: b.phone,
-    roomName: `${b.roomName} (${b.branch.replace('Bliss Home - ', '').split('CS')[0].trim()})`,
+    roomName: `${b.roomName} (${b.branch.replace('Dancin Home - ', '').split('CS')[0].trim()})`,
     bookingType: b.notes?.includes('giờ') ? 'Theo giờ' : 'Theo đêm',
     duration: b.notes?.includes('giờ') ? '3 giờ' : '1 đêm',
     checkinTime: b.checkIn,
@@ -241,9 +241,9 @@ export default function AdminDashboardPage() {
       }
     }
 
-    window.addEventListener('bliss-admin-action', handleAdminAction)
+    window.addEventListener('dancin-admin-action', handleAdminAction)
     return () => {
-      window.removeEventListener('bliss-admin-action', handleAdminAction)
+      window.removeEventListener('dancin-admin-action', handleAdminAction)
     }
   }, [data])
 
@@ -257,7 +257,7 @@ export default function AdminDashboardPage() {
       <div className="flex flex-col items-center justify-center min-h-[450px] gap-3">
         <div className="w-10 h-10 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
         <span className="text-xs text-muted-foreground font-bold uppercase tracking-widest animate-pulse">
-          Đang kết nối hệ thống Bliss Home...
+          Đang kết nối hệ thống Dancin Home...
         </span>
       </div>
     )
@@ -294,7 +294,7 @@ export default function AdminDashboardPage() {
             Tổng Quan Hoạt Động
           </h2>
           <p className="text-xs text-muted-foreground font-medium">
-            Thông tin hoạt động thực tế của toàn hệ thống chi nhánh Bliss Home Sài Gòn.
+            Thông tin hoạt động thực tế của toàn hệ thống chi nhánh Dancin Home Sài Gòn.
           </p>
         </div>
         
@@ -400,7 +400,7 @@ export default function AdminDashboardPage() {
       <div className="bg-card border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-5 md:p-6 shadow-xs flex flex-col gap-4">
         <h3 className="text-xs font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 uppercase tracking-widest flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
           <Sparkles size={14} className="text-zinc-800 dark:text-zinc-300 animate-pulse" /> 
-          Bliss Copilot Cảnh báo & Đề xuất vận hành
+          Dancin Copilot Cảnh báo & Đề xuất vận hành
         </h3>
 
         <div className="flex flex-col gap-3">

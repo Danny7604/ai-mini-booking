@@ -882,7 +882,7 @@ export default function RoomActionModal({ room, onClose, onSave, onDeleteRoom }:
             <CheckCircle2 size={18} className="stroke-[3]" />
           </div>
           <div>
-            <h3 className="text-base font-black text-zinc-900 dark:text-zinc-100 uppercase tracking-tight leading-none">Bliss Home Room Operations</h3>
+            <h3 className="text-base font-black text-zinc-900 dark:text-zinc-100 uppercase tracking-tight leading-none">Dancin Home Room Operations</h3>
             <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold tracking-wider block mt-1">
               Phòng: <strong className="text-zinc-900 dark:text-zinc-50 font-black">{room.name}</strong> • Chi nhánh: {room.branchName}
             </span>

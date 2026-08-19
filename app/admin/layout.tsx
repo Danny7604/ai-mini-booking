@@ -545,7 +545,7 @@ function AdminLayoutContent({
           </div>
 
           <div className="flex items-center gap-4">
-            {/* NÚT TOGGLE KÍCH HOẠT BLISS COPILOT AI */}
+            {/* NÚT TOGGLE KÍCH HOẠT DANCIN COPILOT AI */}
             <button
               onClick={() => setIsAIOpen(!isAIOpen)}
               className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all duration-300 shadow-sm border cursor-pointer flex items-center gap-1.5 ${

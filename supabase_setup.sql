@@ -1,5 +1,5 @@
 -- =========================================================================
--- BLISS HOME - HỆ THỐNG CƠ SỞ DỮ LIỆU QUAN HỆ TOÀN DIỆN (SUPABASE / POSTGRESQL)
+-- DANCIN HOME - HỆ THỐNG CƠ SỞ DỮ LIỆU QUAN HỆ TOÀN DIỆN (SUPABASE / POSTGRESQL)
 -- KẾT NỐI ĐỒNG BỘ TRANG BOOKING VÀ CỔNG QUẢN TRỊ ADMIN PORTAL
 -- =========================================================================
 
@@ -168,7 +168,7 @@ INSERT INTO public.customers (id, name, phone, total_spent, total_bookings, note
 
 -- 3. SEED DATA VOUCHERS (VOUCHERS)
 INSERT INTO public.vouchers (code, type, value, usage_count, max_usage, expiry_date, status, target_type, target_value) VALUES
-('BLISSHE2026', 'percent', 15.00, 12, 100, '2026-12-31', 'active', 'group', 'Nhóm AI: Thích yên tĩnh 🤫'),
+('DANCINHE2026', 'percent', 15.00, 12, 100, '2026-12-31', 'active', 'group', 'Nhóm AI: Thích yên tĩnh 🤫'),
 ('VIPBIRTHDAY', 'fixed', 200000.00, 5, 50, '2026-08-31', 'active', 'tier', 'Hạng: Gold (Vàng) 🥇'),
 ('COZYSTAY', 'fixed', 100000.00, 28, 200, '2026-11-30', 'active', 'all', 'Tất cả khách hàng CRM 👥'),
 ('DIAMONDBDAY', 'percent', 100.00, 1, 5, '2026-06-30', 'active', 'tier', 'Hạng: Diamond (Kim Cương) 💎'),
@@ -180,7 +180,7 @@ INSERT INTO public.bookings (id, customer_id, room_id, voucher_code, checkin_dat
 ('b0000000-0000-0000-0000-000000000001', 'c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'COZYSTAY', '2026-04-10', '2026-04-12', 1600000, 'checked_out', 'Yêu cầu phòng thật yên tĩnh cách âm'),
 ('b0000000-0000-0000-0000-000000000002', 'c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000002', 'VIPBIRTHDAY', '2026-05-01', '2026-05-03', 2800000, 'checked_out', 'Setup thêm bếp nướng BBQ và bồn tắm Hinoki'),
 ('b0000000-0000-0000-0000-000000000003', 'c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000002', NULL, '2026-05-20', '2026-05-25', 7500000, 'confirmed', 'Khách quen yêu cầu phòng lầu cao'),
-('b0000000-0000-0000-0000-000000000004', 'c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'BLISSHE2026', '2026-06-05', '2026-06-10', 6550000, 'pending', 'Mừng kỷ niệm ngày cưới'),
+('b0000000-0000-0000-0000-000000000004', 'c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'DANCINHE2026', '2026-06-05', '2026-06-10', 6550000, 'pending', 'Mừng kỷ niệm ngày cưới'),
 
 -- Đơn đặt phòng của Trần Thị Mai (CUST-02)
 ('b0000000-0000-0000-0000-000000000005', 'c0000000-0000-0000-0000-000000000002', 'a0000000-0000-0000-0000-000000000003', NULL, '2026-05-15', '2026-05-17', 2160000, 'checked_out', 'Set up máy chiếu phim Netflix độ phân giải HD');
@@ -202,9 +202,9 @@ INSERT INTO public.customer_group_relations (customer_id, group_id) VALUES
 
 -- 7. SEED DATA CHIẾN DỊCH MARKETING (CAMPAIGNS)
 INSERT INTO public.campaigns (id, name, channel, target_audience, status, sent_count, click_rate, budget, message_content, voucher_code) VALUES
-('f0000000-0000-0000-0000-000000000001', 'Trở về với mộc mạc - Giảm 15% cuối tuần 🌿', 'Zalo ZNS', 'Nhóm AI: Thích yên tĩnh 🤫', 'active', 120, 24.50, 500000, 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Bliss Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.', 'BLISSHE2026'),
-('f0000000-0000-0000-0000-000000000002', 'Chào hè rực rỡ - Tặng Voucher Gold 200k ☀️', 'Zalo ZNS', 'Hạng: Gold (Vàng) 🥇', 'completed', 450, 38.20, 1200000, 'Bliss Home gửi tặng quý hội viên Vàng {ten_khach} đặc quyền chào hè rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình có ban công rộng rãi và bồn Hinoki gỗ thơm ngát.', 'VIPBIRTHDAY'),
-('f0000000-0000-0000-0000-000000000003', 'Trải nghiệm Cabin gỗ - Chill cùng tiệc nướng BBQ 🥩', 'Email', 'Nhóm AI: Đi gia đình 🏡', 'draft', 0, 0.00, 800000, 'Kính gửi {ten_khach},\n\nMùa hè này dắt bé và cả nhà đi nghỉ dưỡng lớn tại Cozy Wooden Cabin CS3 của Bliss Home nhé! Trọn gói đã bao gồm setup bếp nướng BBQ ngoài trời cực vui, bồn tắm Hinoki sảng khoái và vườn tược rộn rã. Dùng mã {ma_voucher} để được ưu tiên nâng hạng phòng miễn phí.\n\nThân ái,\nBliss Home Sài Gòn', 'COZYSTAY');
+('f0000000-0000-0000-0000-000000000001', 'Trở về với mộc mạc - Giảm 15% cuối tuần 🌿', 'Zalo ZNS', 'Nhóm AI: Thích yên tĩnh 🤫', 'active', 120, 24.50, 500000, 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Dancin Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.', 'DANCINHE2026'),
+('f0000000-0000-0000-0000-000000000002', 'Chào hè rực rỡ - Tặng Voucher Gold 200k ☀️', 'Zalo ZNS', 'Hạng: Gold (Vàng) 🥇', 'completed', 450, 38.20, 1200000, 'Dancin Home gửi tặng quý hội viên Vàng {ten_khach} đặc quyền chào hè rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình có ban công rộng rãi và bồn Hinoki gỗ thơm ngát.', 'VIPBIRTHDAY'),
+('f0000000-0000-0000-0000-000000000003', 'Trải nghiệm Cabin gỗ - Chill cùng tiệc nướng BBQ 🥩', 'Email', 'Nhóm AI: Đi gia đình 🏡', 'draft', 0, 0.00, 800000, 'Kính gửi {ten_khach},\n\nMùa hè này dắt bé và cả nhà đi nghỉ dưỡng lớn tại Cozy Wooden Cabin CS3 của Dancin Home nhé! Trọn gói đã bao gồm setup bếp nướng BBQ ngoài trời cực vui, bồn tắm Hinoki sảng khoái và vườn tược rộn rã. Dùng mã {ma_voucher} để được ưu tiên nâng hạng phòng miễn phí.\n\nThân ái,\nDancin Home Sài Gòn', 'COZYSTAY');
 
 -- CẬP NHẬT LẠI STATS BẰNG TRIGGER SAU KHI SEED DỮ LIỆU ĐỂ ĐẢM BẢO CHÍNH XÁC TUYỆT ĐỐI
 UPDATE public.bookings SET status = 'checked_out' WHERE id = 'b0000000-0000-0000-0000-000000000001';

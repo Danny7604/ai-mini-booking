@@ -29,7 +29,7 @@ const formatVND = (val: number) => {
   return val.toLocaleString('vi-VN') + 'đ'
 }
 
-// 2. Dữ liệu Hạng Thành Viên giả lập cao cấp đạt chuẩn Bliss Home Sài Gòn
+// 2. Dữ liệu Hạng Thành Viên giả lập cao cấp đạt chuẩn Dancin Home Sài Gòn
 const INITIAL_TIERS: MembershipTier[] = [
   {
     id: 'tier-bronze',
@@ -81,7 +81,7 @@ const INITIAL_TIERS: MembershipTier[] = [
       'Tặng 1 đêm nghỉ dưỡng nhân ngày sinh nhật',
       'Giảm giá tối đa 15% tổng hóa đơn phòng',
       'Tích lũy điểm nhân hệ số 1.5x',
-      'Tham gia sự kiện riêng tư của Bliss Home'
+      'Tham gia sự kiện riêng tư của Dancin Home'
     ],
     colorTheme: 'violet'
   }
@@ -160,9 +160,9 @@ export default function MembershipsManagementPage() {
       }
     }
 
-    window.addEventListener('bliss-admin-action', handleAdminAction)
+    window.addEventListener('dancin-admin-action', handleAdminAction)
     return () => {
-      window.removeEventListener('bliss-admin-action', handleAdminAction)
+      window.removeEventListener('dancin-admin-action', handleAdminAction)
     }
   }, [tiers])
 
@@ -270,7 +270,7 @@ export default function MembershipsManagementPage() {
         <div className="flex flex-col items-center justify-center min-h-[350px] gap-3">
           <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
-            Đang đồng bộ luật thành viên Bliss...
+            Đang đồng bộ luật thành viên Dancin...
           </span>
         </div>
       ) : (

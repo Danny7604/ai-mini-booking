@@ -11,14 +11,14 @@ export async function POST(request: Request) {
 
     console.log(`[BANK WEBHOOK]: Nhận tín hiệu từ cổng ${gateway || 'Chung'}. Số tiền: ${amount || 0}. Nội dung: "${content}"`)
 
-    // Trích xuất mã đơn dạng BLISS-XXXXXX hoặc BLISS XXXXXX
-    const match = content.match(/BLISS[- ]?([0-9]{6})/i)
+    // Trích xuất mã đơn dạng DANCIN-XXXXXX hoặc DANCIN XXXXXX
+    const match = content.match(/DANCIN[- ]?([0-9]{6})/i)
     if (!match) {
       console.warn(`[BANK WEBHOOK]: Không tìm thấy mã đơn hợp lệ trong nội dung giao dịch: "${content}"`)
       return Response.json({ error: 'Invalid transaction content schema' }, { status: 400 })
     }
 
-    const bookingCode = `BLISS-${match[1]}`
+    const bookingCode = `DANCIN-${match[1]}`
     console.log(`[BANK WEBHOOK]: Trích xuất mã đơn thành công: "${bookingCode}"`)
 
     const supabase = getSupabase()

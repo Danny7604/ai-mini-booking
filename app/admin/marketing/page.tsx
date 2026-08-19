@@ -40,7 +40,7 @@ interface Campaign {
   voucherCode?: string
 }
 
-// 1. Dữ liệu chiến dịch tiếp thị giả lập cao cấp đạt chuẩn Bliss Home
+// 1. Dữ liệu chiến dịch tiếp thị giả lập cao cấp đạt chuẩn Dancin Home
 const INITIAL_CAMPAIGNS: Campaign[] = [
   {
     id: 'MKT-01',
@@ -51,8 +51,8 @@ const INITIAL_CAMPAIGNS: Campaign[] = [
     sentCount: 120,
     clickRate: 24.5,
     budget: 500000,
-    messageContent: 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Bliss Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.',
-    voucherCode: 'BLISSHE2026'
+    messageContent: 'Chào {ten_khach}, trốn thành thị xô bồ để tìm lại bình yên cùng Dancin Home Sài Gòn cuối tuần này nhé! Nhập ngay mã {ma_voucher} để nhận ưu đãi giảm 15% phòng nghỉ biệt lập ngắm hoàng hôn cực chill.',
+    voucherCode: 'DANCINHE2026'
   },
   {
     id: 'MKT-02',
@@ -63,7 +63,7 @@ const INITIAL_CAMPAIGNS: Campaign[] = [
     sentCount: 450,
     clickRate: 38.2,
     budget: 1200000,
-    messageContent: 'Bliss Home gửi tặng quý hội viên Vàng {ten_khach} đặc quyền chào hè rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình có ban công rộng rãi và bồn Hinoki gỗ thơm ngát.',
+    messageContent: 'Dancin Home gửi tặng quý hội viên Vàng {ten_khach} đặc quyền chào hè rực rỡ! Tặng mã giảm giá {ma_voucher} trị giá 200k khi đặt phòng gia đình có ban công rộng rãi và bồn Hinoki gỗ thơm ngát.',
     voucherCode: 'VIPBIRTHDAY'
   },
   {
@@ -75,7 +75,7 @@ const INITIAL_CAMPAIGNS: Campaign[] = [
     sentCount: 0,
     clickRate: 0,
     budget: 800000,
-    messageContent: 'Kính gửi {ten_khach},\n\nMùa hè này dắt bé và cả nhà đi nghỉ dưỡng lớn tại Cozy Wooden Cabin CS3 của Bliss Home nhé! Trọn gói đã bao gồm setup bếp nướng BBQ ngoài trời cực vui, bồn tắm Hinoki sảng khoái và vườn tược rộn rã. Dùng mã {ma_voucher} để được ưu tiên nâng hạng phòng miễn phí.\n\nThân ái,\nBliss Home Sài Gòn',
+    messageContent: 'Kính gửi {ten_khach},\n\nMùa hè này dắt bé và cả nhà đi nghỉ dưỡng lớn tại Cozy Wooden Cabin CS3 của Dancin Home nhé! Trọn gói đã bao gồm setup bếp nướng BBQ ngoài trời cực vui, bồn tắm Hinoki sảng khoái và vườn tược rộn rã. Dùng mã {ma_voucher} để được ưu tiên nâng hạng phòng miễn phí.\n\nThân ái,\nDancin Home Sài Gòn',
     voucherCode: 'COZYSTAY'
   },
   {
@@ -87,7 +87,7 @@ const INITIAL_CAMPAIGNS: Campaign[] = [
     sentCount: 85,
     clickRate: 45.6,
     budget: 1500000,
-    messageContent: 'Chúc mừng sinh nhật {ten_khach} - Thượng khách Diamond của Bliss Home! Trân trọng gửi tặng bạn 1 đêm nghỉ dưỡng hoàn toàn miễn phí nhân tuần lễ sinh nhật đặc quyền. Nhập mã {ma_voucher} để quy đổi đặc quyền đưa đón sân bay 2 chiều và buffet sáng.',
+    messageContent: 'Chúc mừng sinh nhật {ten_khach} - Thượng khách Diamond của Dancin Home! Trân trọng gửi tặng bạn 1 đêm nghỉ dưỡng hoàn toàn miễn phí nhân tuần lễ sinh nhật đặc quyền. Nhập mã {ma_voucher} để quy đổi đặc quyền đưa đón sân bay 2 chiều và buffet sáng.',
     voucherCode: 'DIAMONDBDAY'
   }
 ]
@@ -106,7 +106,7 @@ const TARGETS = [
 
 // Danh sách các voucher hoạt động để gán
 const AVAILABLE_VOUCHERS = [
-  { code: 'BLISSHE2026', label: 'BLISSHE2026 (Giảm 15% phòng nghỉ)' },
+  { code: 'DANCINHE2026', label: 'DANCINHE2026 (Giảm 15% phòng nghỉ)' },
   { code: 'VIPBIRTHDAY', label: 'VIPBIRTHDAY (Tặng 200k Sinh nhật)' },
   { code: 'COZYSTAY', label: 'COZYSTAY (Nâng hạng phòng miễn phí)' },
   { code: 'DIAMONDBDAY', label: 'DIAMONDBDAY (Đặc quyền Diamond 2 chiều)' },
@@ -357,7 +357,7 @@ export default function MarketingCampaignsPage() {
    * Xóa chiến dịch
    */
   const handleDeleteCampaign = (id: string, name: string) => {
-    if (!confirm(`Bạn có chắc chắn muốn xóa chiến dịch "${name}" ra khỏi danh sách tiếp thị của Bliss Home không?`)) return
+    if (!confirm(`Bạn có chắc chắn muốn xóa chiến dịch "${name}" ra khỏi danh sách tiếp thị của Dancin Home không?`)) return
     
     try {
       setCampaigns(prev => prev.filter(c => c.id !== id))
@@ -433,7 +433,7 @@ export default function MarketingCampaignsPage() {
             BH
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Bliss Home Sài Gòn</span>
+            <span className="text-[10px] font-black text-zinc-800 dark:text-zinc-600 dark:text-zinc-200 leading-tight">Dancin Home Sài Gòn</span>
             <span className="text-[8px] text-zinc-400 dark:text-zinc-500 font-bold block mt-0.5 leading-none">Thông báo dịch vụ ZNS</span>
           </div>
         </div>
@@ -497,7 +497,7 @@ export default function MarketingCampaignsPage() {
             Chiến Dịch Marketing
           </h2>
           <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
-            Tạo chiến dịch tin nhắn chăm sóc tự động Zalo ZNS và Email dựa trên tệp hành vi khách hàng CRM Bliss Home.
+            Tạo chiến dịch tin nhắn chăm sóc tự động Zalo ZNS và Email dựa trên tệp hành vi khách hàng CRM Dancin Home.
           </p>
         </div>
 
@@ -611,7 +611,7 @@ export default function MarketingCampaignsPage() {
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
           <div className="w-8 h-8 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
-            Đang tải dữ liệu chiến dịch Bliss...
+            Đang tải dữ liệu chiến dịch Dancin...
           </span>
         </div>
       ) : (
