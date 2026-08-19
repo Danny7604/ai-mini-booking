@@ -72,11 +72,16 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
   ])
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
-  // Cuộn tin nhắn xuống cuối cùng khi có tin nhắn mới
+  // Cuộn tin nhắn xuống cuối cùng khi có tin nhắn mới (chỉ cuộn khung chat, không cuộn viewport trình duyệt)
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      })
+    }
   }
 
   useEffect(() => {
@@ -343,7 +348,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
       </div>
 
       {/* Khu vực Tin nhắn cuộn */}
-      <div className="flex-grow overflow-y-auto p-4 flex flex-col gap-3 scroll-smooth bg-stone-50/20">
+      <div ref={scrollContainerRef} className="flex-grow overflow-y-auto p-4 flex flex-col gap-3 scroll-smooth bg-stone-50/20">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -377,7 +382,6 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggestion Chips */}
