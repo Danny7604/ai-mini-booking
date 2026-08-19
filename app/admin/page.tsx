@@ -251,12 +251,14 @@ export default function AdminDashboardPage() {
     return val.toLocaleString('vi-VN') + 'đ'
   }
 
-  // 1. GIAO DIỆN KHI ĐANG TẢI DỮ LIỆU (LOADING SPIN)
+  // 1. GIAO DIỆN KHI ĐANG TẢI DỮ LIỆU (LOADING MASCOT)
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[450px] gap-3">
-        <div className="w-10 h-10 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
-        <span className="text-xs text-muted-foreground font-bold uppercase tracking-widest animate-pulse">
+      <div className="flex flex-col items-center justify-center min-h-[450px] gap-4">
+        <div className="w-16 h-16 animate-bounce">
+          <img src="/mascot.png" alt="Dancin Mascot Loading" className="w-full h-full object-contain" />
+        </div>
+        <span className="text-[10px] text-muted-foreground font-black uppercase tracking-widest animate-pulse">
           Đang kết nối hệ thống Dancin Home...
         </span>
       </div>

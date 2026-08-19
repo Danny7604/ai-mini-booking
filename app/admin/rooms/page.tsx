@@ -885,9 +885,11 @@ export default function RoomGridManagementDashboard() {
 
       {/* LƯỚI SƠ ĐỒ PHÒNG GIẢ LẬP (GRID MAP) */}
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center min-h-[300px] gap-3">
-          <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
+        <div className="flex flex-col items-center justify-center min-h-[300px] gap-4">
+          <div className="w-16 h-16 animate-bounce">
+            <img src="/mascot.png" alt="Dancin Mascot Loading" className="w-full h-full object-contain" />
+          </div>
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-widest animate-pulse">
             Đang tải dữ liệu sơ đồ phòng Dancin...
           </span>
         </div>

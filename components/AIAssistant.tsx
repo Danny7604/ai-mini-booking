@@ -321,7 +321,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
         <div className="flex items-center gap-3">
           <div className="relative w-10 h-10 flex-shrink-0">
             <img
-              src="/logo.png"
+              src="/mascot.png"
               alt="Dancin help center Avatar"
               className="w-full h-full object-contain rounded-full border-2 border-white/20 bg-white p-1"
             />

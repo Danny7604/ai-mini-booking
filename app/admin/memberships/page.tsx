@@ -267,15 +267,39 @@ export default function MembershipsManagementPage() {
 
       {/* HIỂN THỊ LOADING */}
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center min-h-[350px] gap-3">
-          <div className="w-8 h-8 border-4 border-zinc-900 dark:border-zinc-100 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
+        <div className="flex flex-col items-center justify-center min-h-[350px] gap-4">
+          <div className="w-16 h-16 animate-bounce">
+            <img src="/mascot.png" alt="Dancin Mascot Loading" className="w-full h-full object-contain" />
+          </div>
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-widest animate-pulse">
             Đang đồng bộ luật thành viên Dancin...
           </span>
         </div>
       ) : (
-        /* GRID THẺ THÀNH VIÊN QUYỀN LỰC */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="flex flex-col gap-6">
+          {/* BANNER GIỚI THIỆU MASCOT MỚI */}
+          <div className="bg-gradient-to-r from-[#0C1D2A] via-[#08354E] to-[#0A273A] border border-zinc-200 dark:border-zinc-800/80 rounded-[30px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md overflow-hidden relative group">
+            <div className="flex flex-col gap-2 max-w-xl relative z-10 text-white">
+              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[9px] font-black tracking-widest uppercase px-3 py-1 rounded-full w-fit">
+                Mascot Đại Sứ Trải Nghiệm 🐱
+              </span>
+              <h3 className="text-lg md:text-xl font-black tracking-tight leading-snug mt-2">
+                Gặp gỡ Dancin Cat - Trợ lý & Đại sứ Dancin Home!
+              </h3>
+              <p className="text-xs text-zinc-300 leading-relaxed font-semibold">
+                Dưới sự quản lý tự động của chú mèo Dancin Cat, hệ thống sẽ tự động theo dõi lịch sử chi tiêu thực tế của khách hàng từ Supabase CRM để tự động áp dụng phân hạng thành viên (Bronze, Silver, Gold, Diamond) và tự động chiết khấu đặc quyền trực tiếp trên hóa đơn đặt phòng.
+              </p>
+            </div>
+            <div className="relative w-32 h-32 md:w-36 md:h-36 flex-shrink-0 z-10 select-none group-hover:scale-105 transition-transform duration-500">
+              <img src="/mascot.png" alt="Dancin Cat Mascot" className="w-full h-full object-contain filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.3)]" />
+            </div>
+            
+            {/* Subtle background glow effect */}
+            <div className="absolute right-10 top-1/2 -translate-y-1/2 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          </div>
+
+          /* GRID THẺ THÀNH VIÊN QUYỀN LỰC */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {tiers.map((tier) => {
             const isHighlighted = highlightedTierId === tier.id
 
@@ -335,6 +359,7 @@ export default function MembershipsManagementPage() {
               </div>
             )
           })}
+          </div>
         </div>
       )}
 
