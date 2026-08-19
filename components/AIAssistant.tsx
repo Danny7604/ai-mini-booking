@@ -112,15 +112,15 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
     let detectedRoom = ''
 
     // 1. Phân tích Chi nhánh
-    if (match('tân bình', 'cs1', 'xuân hồng')) {
+    if (match('tân bình', 'cs1', 'cộng hòa')) {
       detectedBranch = 'Dancin Home - Tân Bình (CS1) 🏡'
-    } else if (match('quận 10', 'cs2', 'ba tháng hai', '3/2')) {
+    } else if (match('quận 10', 'cs2', 'sư vạn hạnh')) {
       detectedBranch = 'Dancin Home - Quận 10 (CS2) 🏙️'
-    } else if (match('quận 5', 'cs3', 'phạm hữu chí')) {
+    } else if (match('quận 5', 'cs3', 'nguyễn trãi')) {
       detectedBranch = 'Dancin Home - Quận 5 (CS3) 🪟'
-    } else if (match('gò vấp', 'cs4', 'phan huy ích')) {
+    } else if (match('gò vấp', 'cs4', 'quang trung')) {
       detectedBranch = 'Dancin Home - Gò Vấp (CS4) 🌸'
-    } else if (match('bình thạnh', 'cs5', 'bùi đình túy')) {
+    } else if (match('bình thạnh', 'cs5', 'bạch đằng')) {
       detectedBranch = 'Dancin Home - Bình Thạnh (CS5) 🌿'
     }
 
@@ -218,7 +218,7 @@ export default function AIAssistant({ currentFilter, onFilterChange, onAISearchS
           newLabel = 'Có hồ bơi vô cực'
           botResponse = 'Đắm mình giữa làn nước ấm ngắm hoàng hôn buông xuống rừng thông thì sang chảnh thôi rồi! 🏊‍♂️ Đã lọc ngay căn **Sunset Panorama** VIP có bể bơi nước ấm vô cực riêng. Chuẩn bị bikini để thả dáng sống ảo triệu like thôi bạn ơi!'
         } else if (match('công', 'địa chỉ', 'chi nhánh', 'ở đâu', 'vị trí')) {
-          botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Dancin Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 71 Xuân Hồng, P.12.\n📍 **CS2 (Quận 10)**: 25a Đường 3/2, P.11.\n📍 **CS3 (Quận 5)**: 2N Đường Phạm Hữu Chí, P.12.\n📍 **CS4 (Gò Vấp)**: 331/16 Đường Phan Huy Ích, P.14.\n📍 **CS5 (Bình Thạnh)**: 217/70/5 Đường Bùi Đình Tuý, P.14.\n\nChọn một điểm rồi Bé Dancin dắt đi trốn nhé! 🏡'
+          botResponse = 'Nghe đồn bạn muốn tìm tọa độ đi trốn? Dancin Home đang phủ sóng 5 chi nhánh siêu gần ngay tại Sài Gòn đây: \n\n📍 **CS1 (Tân Bình)**: 142 Cộng Hòa, P.4.\n📍 **CS2 (Quận 10)**: 582 Sư Vạn Hạnh, P.10.\n📍 **CS3 (Quận 5)**: 168 Nguyễn Trãi, P.3.\n📍 **CS4 (Gò Vấp)**: 89 Quang Trung, P.10.\n📍 **CS5 (Bình Thạnh)**: 45 Bạch Đằng, P.15.\n\nChọn một điểm rồi Bé Dancin dắt đi trốn nhé! 🏡'
         } else if (match('chào', 'hi', 'hello', 'helo', 'alo')) {
           botResponse = 'Dạ lô bạn yêu! Rất vui được gặp bạn nè. 🌸 Bạn muốn tìm căn phòng nào để trốn deadline, trốn thế giới hay trốn... nợ? Hãy miêu tả căn phòng trong mơ hoặc chọn nhanh gợi ý phía dưới để Bé Dancin dẫn lối nha!'
         } else if (match('cảm ơn', 'thank', 'tuyệt', 'ok')) {

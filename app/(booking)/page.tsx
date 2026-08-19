@@ -224,21 +224,21 @@ export default function Home() {
 
       {/* THANH TÌM KIẾM HỢP NHẤT THÔNG MINH (UNIFIED INTELLIGENT SEARCH WIDGET) */}
       <section className="w-full max-w-full px-4 lg:px-8 xl:px-12 mt-6">
-        <div className="w-full bg-white border border-stone-200/60 rounded-3xl p-5 md:p-6 shadow-md flex flex-col gap-4">
-          <h2 className="text-sm font-bold text-stone-850 uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-100 pb-2">
+        <div className="w-full bg-white border border-stone-200/60 rounded-3xl p-4 md:p-5 shadow-sm flex flex-col gap-3">
+          <h2 className="text-xs font-bold text-stone-850 uppercase tracking-wider flex items-center gap-1.5 border-b border-stone-100 pb-1.5">
             🔑 Lên Kế Hoạch Kỳ Nghỉ Tại Dancin Home
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4 items-end">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-3 items-end">
             
             {/* HÀNG 1: CHI NHÁNH - PHÒNG NGHĨ - MÃ GIẢM GIÁ */}
             {/* 1. Chọn Chi Nhánh (lg:col-span-4) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-4">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">📍 Chi Nhánh</label>
+            <div className="flex flex-col gap-1 lg:col-span-4">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">📍 Chi Nhánh</label>
               <select
                 value={selectedBranch}
                 onChange={(e) => handleBranchChange(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2.5 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
               >
                 {branches.map((b) => (
                   <option key={b.value} value={b.value}>{b.label}</option>
@@ -247,12 +247,12 @@ export default function Home() {
             </div>
 
             {/* 2. Chọn Phòng Nghỉ (lg:col-span-4) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-4">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">🚪 Phòng Nghỉ</label>
+            <div className="flex flex-col gap-1 lg:col-span-4">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">🚪 Phòng Nghỉ</label>
               <select
                 value={selectedRoomId}
                 onChange={(e) => handleRoomChange(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2.5 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
               >
                 <option value="all">Tất cả phòng nghỉ 🚪</option>
                 {filteredRoomsDropdown.map((room) => (
@@ -262,38 +262,38 @@ export default function Home() {
             </div>
 
             {/* 3. Ô Nhập Mã Giảm Giá (lg:col-span-4) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-4">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">🎟️ Mã Giảm Giá</label>
+            <div className="flex flex-col gap-1 lg:col-span-4">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">🎟️ Mã Giảm Giá</label>
               <input
                 type="text"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
                 placeholder="Nhập mã ưu đãi (vd: DANCINSUMMER)..."
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2.5 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold"
               />
             </div>
 
             {/* HÀNG 2: THỜI GIAN NHẬN / TRẢ & NÚT HÀNH ĐỘNG */}
             {/* 4. Ngày Nhận (lg:col-span-3) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-3">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">📅 Ngày Nhận</label>
+            <div className="flex flex-col gap-1 lg:col-span-3">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">📅 Ngày Nhận</label>
               <input
                 type="date"
                 value={checkinDate}
                 onChange={(e) => setCheckinDate(e.target.value)}
                 onClick={(e) => { try { if ('showPicker' in e.currentTarget) { (e.currentTarget as any).showPicker(); } } catch (err) {} }}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2.5 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
                 min={new Date().toISOString().split('T')[0]}
               />
             </div>
 
             {/* 5. Giờ Nhận (lg:col-span-2) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-2">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">⏰ Giờ Nhận</label>
+            <div className="flex flex-col gap-1 lg:col-span-2">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">⏰ Giờ Nhận</label>
               <select
                 value={checkinTime}
                 onChange={(e) => setCheckinTime(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-2 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
               >
                 {timeSlots.map((time) => (
                   <option key={time} value={time}>{time}</option>
@@ -302,25 +302,25 @@ export default function Home() {
             </div>
 
             {/* 6. Ngày Trả (lg:col-span-3) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-3">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">📅 Ngày Trả</label>
+            <div className="flex flex-col gap-1 lg:col-span-3">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">📅 Ngày Trả</label>
               <input
                 type="date"
                 value={checkoutDate}
                 onChange={(e) => setCheckoutDate(e.target.value)}
                 onClick={(e) => { try { if ('showPicker' in e.currentTarget) { (e.currentTarget as any).showPicker(); } } catch (err) {} }}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-3 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2.5 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
                 min={checkinDate || new Date().toISOString().split('T')[0]}
               />
             </div>
 
             {/* 7. Giờ Trả (lg:col-span-2) */}
-            <div className="flex flex-col gap-1.5 lg:col-span-2">
-              <label className="text-sm md:text-base font-extrabold text-stone-600 uppercase">⏰ Giờ Trả</label>
+            <div className="flex flex-col gap-1 lg:col-span-2">
+              <label className="text-[10px] font-black text-stone-400 uppercase tracking-widest">⏰ Giờ Trả</label>
               <select
                 value={checkoutTime}
                 onChange={(e) => setCheckoutTime(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-200/85 rounded-xl px-2 py-2.5 text-sm md:text-base text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
+                className="w-full bg-stone-50 border border-stone-200/85 rounded-lg px-2 py-1.5 text-xs text-stone-750 outline-none focus:border-[#0A273A] font-bold cursor-pointer"
               >
                 {timeSlots.map((time) => (
                   <option key={time} value={time}>{time}</option>
@@ -332,7 +332,7 @@ export default function Home() {
             <div className="lg:col-span-2">
               <button
                 onClick={handleSearchSubmit}
-                className="w-full bg-[#0A273A] hover:bg-[#124263] text-white font-extrabold text-base md:text-lg py-2 rounded-xl transition duration-300 shadow-md border-none flex items-center justify-center gap-1.5 cursor-pointer h-[46px]"
+                className="w-full bg-[#0A273A] hover:bg-[#124263] text-white font-black text-xs py-1.5 rounded-lg transition duration-300 shadow-xs border-none flex items-center justify-center gap-1 cursor-pointer h-[32px]"
               >
                 <span>Tìm Phòng Trống</span>
               </button>
@@ -468,21 +468,21 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs leading-relaxed">
               <div className="flex flex-col gap-2">
                 <p>
-                  🏠 <strong className="text-white">CS1 (Tân Bình):</strong> 71 Xuân Hồng, Phường 12, Quận Tân Bình.
+                  🏠 <strong className="text-white">CS1 (Tân Bình):</strong> 142 Cộng Hòa, Phường 4, Quận Tân Bình.
                 </p>
                 <p>
-                  🏠 <strong className="text-white">CS2 (Quận 10):</strong> 25a Đường 3/2, Phường 11, Quận 10.
+                  🏠 <strong className="text-white">CS2 (Quận 10):</strong> 582 Sư Vạn Hạnh, Phường 10, Quận 10.
                 </p>
                 <p>
-                  🏠 <strong className="text-white">CS3 (Quận 5):</strong> 2N Đường Phạm Hữu Chí, Phường 12, Quận 5.
+                  🏠 <strong className="text-white">CS3 (Quận 5):</strong> 168 Nguyễn Trãi, Phường 3, Quận 5.
                 </p>
               </div>
               <div className="flex flex-col gap-2">
                 <p>
-                  🏠 <strong className="text-white">CS4 (Gò Vấp):</strong> 331/16 Đường Phan Huy ích, Phường 14, Quận Gò Vấp.
+                  🏠 <strong className="text-white">CS4 (Gò Vấp):</strong> 89 Quang Trung, Phường 10, Quận Gò Vấp.
                 </p>
                 <p>
-                  🏠 <strong className="text-white">CS5 (Bình Thạnh):</strong> 217/70/5 Đường Bùi Đình Tuý, Phường 14, Quận Bình Thạnh.
+                  🏠 <strong className="text-white">CS5 (Bình Thạnh):</strong> 45 Bạch Đằng, Phường 15, Quận Bình Thạnh.
                 </p>
               </div>
             </div>

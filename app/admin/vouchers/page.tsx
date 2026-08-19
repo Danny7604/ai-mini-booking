@@ -370,7 +370,7 @@ export default function VouchersManagementPage() {
       {/* HIỂN THỊ LOADING */}
       {isLoading ? (
         <div className="flex flex-col items-center justify-center min-h-[300px] gap-4">
-          <div className="w-16 h-16 animate-bounce">
+          <div className="w-28 h-28 animate-bounce">
             <img src="/mascot.png" alt="Dancin Mascot Loading" className="w-full h-full object-contain" />
           </div>
           <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-widest animate-pulse">

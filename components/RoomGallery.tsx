@@ -36,7 +36,7 @@ const rooms: Room[] = [
     bed: "1 Giường King lớn",
     badge: "BÁN CHẠY 🔥",
     branch: "Dancin Home - Tân Bình (CS1) 🏡",
-    address: "71 Xuân Hồng, Phường 12, Quận Tân Bình",
+    address: "142 Cộng Hòa, Phường 4, Quận Tân Bình",
     description: "Ẩn mình trên tầng cao nhất dưới mái ngói dốc, Pine Forest Loft mang đến cho bạn cảm giác gác mái châu Âu ấm áp với khung cửa sổ tròn ngắm trọn thành phố. Điểm nhấn tuyệt hảo nhất là bồn tắm gỗ Hinoki thơm nhẹ ngoài ban công, nơi bạn có thể ngâm mình trong nước ấm giữa tiết trời Sài Gòn se lạnh lúc đêm muộn.",
     amenities: [
       "Bồn tắm gỗ ngoài trời",
@@ -68,7 +68,7 @@ const rooms: Room[] = [
     bed: "1 Giường King siêu lớn",
     badge: "SỐNG ẢO CỰC CHILL ☁️",
     branch: "Dancin Home - Quận 10 (CS2) 🏙️",
-    address: "25a Đường 3/2, Phường 11, Quận 10",
+    address: "582 Sư Vạn Hạnh, Phường 10, Quận 10",
     description: "Valley View Suite là thiên đường cho các tín độ yêu thích ngắm nhìn nhịp sống đô thị. Căn phòng sở hữu hệ cửa kính kịch trần góc rộng 180 độ hướng ra trung tâm thành phố. Mỗi sớm thức dậy hay khi đêm về, bạn chỉ cần kéo nhẹ rèm là cả một khoảng trời rực rỡ ùa vào tầm mắt. Phòng được trang bị bồn tắm kính sang trọng sát cửa sổ và máy chiếu phim thông minh HD riêng.",
     amenities: [
       "Bồn tắm kính sang trọng",
@@ -100,7 +100,7 @@ const rooms: Room[] = [
     bed: "2 Giường Queen rộng rãi",
     badge: "CHO GIA ĐÌNH 🏡",
     branch: "Dancin Home - Quận 5 (CS3) 🪟",
-    address: "2N Đường Phạm Hữu Chí, Phường 12, Quận 5",
+    address: "168 Nguyễn Trãi, Phường 3, Quận 5",
     description: "Được dựng hoàn toàn từ những thân gỗ thông mộc mạc nguyên khối mang lại hương thơm tự nhiên và cảm giác ấm cúng đặc biệt ngay giữa lòng phố Hoa Quận 5 cổ kính. Với thiết kế 2 giường lớn rộng rãi, lò sưởi giả lập siêu ấm áp và khoảng ban công nướng BBQ riêng tư, đây là lựa chọn số một cho gia đình nhỏ hoặc nhóm bạn thân muốn cùng nhau tụ họp.",
     amenities: [
       "Lò sưởi giả lập ấm áp",
@@ -132,7 +132,7 @@ const rooms: Room[] = [
     bed: "1 Giường King ngập nắng",
     badge: "SỐNG NGHỆ THUẬT 📸",
     branch: "Dancin Home - Gò Vấp (CS4) 🌸",
-    address: "331/16 Đường Phan Huy Ích, Phường 14, Quận Gò Vấp",
+    address: "89 Quang Trung, Phường 10, Quận Gò Vấp",
     description: "Nhà kính ngập nắng được bao bọc bởi 4 bề kính cường lực cao cấp, ẩn mình giữa khu vườn hoa thơ mộng của Dancin Home Gò Vấp. Căn phòng ngập tràn ánh sáng tự nhiên vào ban ngày và là đài quan sát sao trời cực đỉnh khi đêm xuống. Bồn tắm sứ kiểu cổ điển đặt ngay trung tâm phòng sẽ mang đến những bức ảnh check-in sống ảo triệu tim.",
     amenities: [
       "Bồn tắm sứ nghệ thuật",
@@ -164,7 +164,7 @@ const rooms: Room[] = [
     bed: "1 Giường đôi ấm cúng",
     badge: "GIÁ TỐT CỰC CHILL 🍃",
     branch: "Dancin Home - Bình Thạnh (CS5) 🌿",
-    address: "217/70/5 Đường Bùi Đình Túy, Phường 14, Quận Bình Thạnh",
+    address: "45 Bạch Đằng, Phường 15, Quận Bình Thạnh",
     description: "Riverside Nest nằm khép mình sát bên khoảng sân xanh mát rợp bóng tre. Đây là nơi trú ẩn lý tưởng cho những tâm hồn mệt mỏi muốn trốn chạy khỏi ồn ào đô hội. Ban công của phòng được thiết kế võng lưới cực đại treo đè ra khoảng không tĩnh lặng, là vị trí tuyệt vời để bạn nằm đọc sách, thưởng tách trà nóng và lắng nghe âm thanh rì rào.",
     amenities: [
       "Ban công võng lưới ngoài trời",
@@ -196,7 +196,7 @@ const rooms: Room[] = [
     bed: "3 Giường King sang xịn",
     badge: "BỂ BƠI VÔ CỰC 🏊‍♂️",
     branch: "Dancin Home - Quận 10 (CS2) 🏙️",
-    address: "25a Đường 3/2, Phường 11, Quận 10",
+    address: "582 Sư Vạn Hạnh, Phường 10, Quận 10",
     description: "Sunset Panorama đại diện cho sự sang trọng bậc nhất tại Dancin Home Quận 10. Căn hộ rộng lớn sở hữu sân hiên vô cực rộng 40m² cùng bể bơi mini nước ấm vô cực ngoài trời ngắm trọn hoàng hôn Sài Gòn rực rỡ. Nằm tại vị trí đắc địa cao tầng, bạn có thể thưởng thức ly cocktail mát lạnh và chiêm ngưỡng bầu trời đô thị chuyển sắc lộng lẫy.",
     amenities: [
       "Bể bơi vô cực ngoài trời",
